@@ -1,0 +1,6 @@
+alias install='sudo pacman -Sy'
+alias remove='sudo pacman -Rs'
+alias search='sudo pacman -Ss'
+alias list='sudo pacman -Qs'
+alias update='sudo pacman -Syy'
+alias upgrade='sudo pacman -Syyu'

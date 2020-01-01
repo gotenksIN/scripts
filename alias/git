@@ -1,0 +1,6 @@
+alias gitcp='git cherry-pick'
+alias gitr='git reset'
+alias gitrh='git reset --hard'
+alias gitf='git fetch'
+alias gitcpc='git cherry-pick --continue'
+alias gitc='git commit'

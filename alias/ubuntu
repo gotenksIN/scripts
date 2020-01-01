@@ -1,0 +1,6 @@
+alias install='sudo apt install'
+alias remove='sudo apt remove'
+alias purge='sudo apt autoremove --purge'
+alias search='sudo apt search'
+alias update='sudo apt update'
+alias upgrade='sudo apt update && sudo apt upgrade'

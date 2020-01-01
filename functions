@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+
+# Copyright (C) 2020-21 Omkar CHandorkar
+# Copyright (C) 2018-20 Akhil Narang
+# SPDX-License-Identifier: GPL-3.0-only
+
+function upinfo() {
+    echo -ne "${green}$(hostname) ${red}uptime is ${cyan} \\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10,$11}'
+}
+
+function onLogin() {
+    # Colors
+    green='\e[0;32m'
+    cyan='\e[0;36m'
+    red='\e[0;31m'
+    lightgray='\e[0;37m'
+
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM=auto
+    export GIT_PS1_SHOWCOLORHINTS=1
+    unset PS1
+    #PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+    if [[ -f "${HOME}/git-prompt.sh" ]]; then
+        source ~/git-prompt.sh
+        PS1='| \h (\w)$(__git_ps1 " {%s}") |-> '
+    else
+        PS1='| \h (\w) |-> '
+    fi
+    clear
+    HOST=$(hostname)
+    if [[ ${#HOST} -lt 14 ]]; then
+        echo -e "${lightgray}";figlet -c "$(hostname)"
+    fi
+    echo ""
+    echo -ne "${red}Today is:\\t\\t${cyan} $(date)"
+    echo ""
+    echo -e "${red}Kernel Information: \\t${cyan} $(uname -smr)"
+    echo -ne "${cyan}"
+    upinfo
+    echo ""
+    echo -e "Welcome to $(hostname), $(whoami)!"
+    echo -e
+    fortune
+}
