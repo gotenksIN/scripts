@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 
-# Copyright (C) 2020-21 Omkar CHandorkar
 # Copyright (C) 2018-20 Akhil Narang
+# Copyright (C) 2020 Omkar CHandorkar
 # SPDX-License-Identifier: GPL-3.0-only
 
 function upinfo() {
