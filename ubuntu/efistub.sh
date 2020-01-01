@@ -9,5 +9,5 @@ sudo apt install -y efibootmgr
 #
 #Make a efistub entry using the following command
 #
-#sudo efibootmgr --create --disk $DISK --part $NUM --loader $LOADER --label "$LABEL" --unicode 'root=UUID=$UUID rw initrd=$INIT' --verbose
+sudo efibootmgr --create --disk $DISK --part $NUM --loader $LOADER --label "$LABEL" --unicode "root=UUID=$UUID rw initrd=$INIT" --verbose
 #
