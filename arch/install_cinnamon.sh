@@ -1,5 +1,5 @@
 #Install all packages required for cinnamon to work nicely
-sudo pacman -Sy cinnamon gnome-terminal gnome-screenshot lightdm eog nemo-fileroller rhythmbox gedit evince
+sudo pacman -Sy xorg-server cinnamon gnome-terminal gnome-screenshot lightdm eog nemo-fileroller rhythmbox gedit evince
 localectl set-locale LANG=en_US.UTF-8
 
 #Install packages related to bluetooth as needed
