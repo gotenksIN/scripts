@@ -20,6 +20,6 @@ cd lightdm-slick-greeter
 makepkg -si
 cd
 sudo su
-sed -i 's/greeter-session=lightdm-yourgreeter-greeter/greeter-session=lightdm-slick-greeter' /etc/lightdm/lightdm.conf
+sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
 exit
