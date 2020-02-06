@@ -15,7 +15,7 @@ exit
 #Install packages related to bluetooth as needed
 echo "Do you have any bluetooth adaptors installed? (Y/n)"
 read inputs
-if [[ $input == "Y" || $input == "y" ]]; then
+if [[ $inputs == "Y" || $inputs == "y" ]]; then
 sudo pacman -Sy blueberry
 sudo systemctl enable bluetooth.service
 fi
