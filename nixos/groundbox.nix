@@ -173,6 +173,7 @@ in {
       networkmanager
       papirus-icon-theme
       pfetch
+      scrot
       tdesktop
       vlc
       vscode
