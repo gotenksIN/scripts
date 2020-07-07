@@ -4,14 +4,23 @@
 
 { config, pkgs, ... }:
 
-{
+let  
+     customTarball = fetchTarball "https://github.com/gotenksIN/custom-nixpkgs/archive/develop.tar.gz";
+     masterTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
+
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
+  # Enable non-free packages, and add an `latest` reference to use packages
+  # from the nixpkgs master branch.
   nixpkgs.config = {
     allowUnfree = true;
+    packageOverrides = pkgs: {
+      latest = import masterTarball { config = config.nixpkgs.config; };
+      custom = import customTarball { };
     };
   };
 
@@ -20,10 +29,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   
   # Use the latest testing kernel
-    boot.kernelPackages = pkgs.unstable.linuxPackages_testing;
+    boot.kernelPackages = pkgs.linuxPackages_testing;
 
   networking.hostName = "GroundBox"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable NetworkManager
     networking.networkmanager.enable = true;
@@ -63,7 +72,8 @@
       noto-fonts
       roboto
       ubuntu_font_family
-    ];
+      ];
+    };
 
   # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
@@ -176,4 +186,3 @@
 system.copySystemConfiguration = true;
 
 }
-
