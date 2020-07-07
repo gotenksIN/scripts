@@ -161,6 +161,7 @@ in {
       gnumake
       htop
       kotatogram-desktop
+      nasm
       ncdu
       neofetch
       networkmanager
