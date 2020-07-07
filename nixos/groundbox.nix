@@ -69,6 +69,8 @@ in {
     fonts = with pkgs.latest; [
       cascadia-code
       noto-fonts
+      noto-fonts-emoji
+      open-sans
       roboto
       ubuntu_font_family
       ];
@@ -76,9 +78,11 @@ in {
 
   # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
+    bash
     busybox
     cmake
     curl
+    ffmpeg
     htop
     lsb-release
     nano
@@ -165,9 +169,6 @@ in {
       ncdu
       neofetch
       networkmanager
-      noto-fonts
-      noto-fonts-emoji
-      open-sans
       papirus-icon-theme
       pfetch
       tdesktop
