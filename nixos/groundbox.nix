@@ -157,6 +157,7 @@ in {
       bat
       cmatrix
       curl
+      elisa
       figlet
       fontconfig
       fortune
