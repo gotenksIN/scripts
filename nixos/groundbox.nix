@@ -4,11 +4,7 @@
 
 { config, pkgs, ... }:
 
-let  
-    unstableTarball = fetchTarball https://github.com/gotenksIN/nixpkgs/archive/nixos-unstable.tar.gz;
-    masterTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
-
-in {
+{
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -18,10 +14,6 @@ in {
   # from the nixpkgs master branch.
   nixpkgs.config = {
     allowUnfree = true;
-    packageOverrides = pkgs: {
-      latest = import masterTarball { config = config.nixpkgs.config; };
-      unstable = import unstableTarball { };
-    };
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -29,7 +21,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   
   # Use the latest testing kernel
-    boot.kernelPackages = pkgs.unstable.linuxPackages_testing;
+    boot.kernelPackages = pkgs.linuxPackages_testing;
 
   networking.hostName = "GroundBox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -66,8 +58,9 @@ in {
   # Configure fonts
   fonts = {
     enableDefaultFonts = true;
-    fonts = with pkgs.latest; [
+    fonts = with pkgs; [
       cascadia-code
+      jetbrains-mono
       noto-fonts
       noto-fonts-emoji
       open-sans
@@ -103,7 +96,6 @@ in {
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryFlavor = "gnome3";
     };
 
   # List services that you want to enable:
@@ -137,7 +129,6 @@ in {
   services.udev.packages = with pkgs; [
     android-udev-rules
     libu2f-host
-    gnome3.gnome-settings-daemon
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -163,10 +154,11 @@ in {
       fontconfig
       fortune
       git
-      gnome-keyring
+      gnome3.gnome-keyring
       google-chrome
       gnumake
       htop
+      kdeApplications.spectacle
       kotatogram-desktop
       nasm
       ncdu
@@ -174,6 +166,7 @@ in {
       networkmanager
       papirus-icon-theme
       pfetch
+      plasma-browser-integration
       scrot
       tdesktop
       vlc
