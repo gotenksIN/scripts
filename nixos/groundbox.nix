@@ -155,6 +155,7 @@ in {
       android-udev-rules
       aria2
       bat
+      capitaine-cursors
       cmatrix
       curl
       elisa
