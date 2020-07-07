@@ -5,8 +5,8 @@
 { config, pkgs, ... }:
 
 let  
-     customTarball = fetchTarball "https://github.com/gotenksIN/custom-nixpkgs/archive/develop.tar.gz";
-     masterTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
+    unstableTarball = fetchTarball https://github.com/gotenksIN/nixpkgs/archive/nixos-unstable.tar.gz;
+    masterTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
 
 in {
   imports =
@@ -20,7 +20,7 @@ in {
     allowUnfree = true;
     packageOverrides = pkgs: {
       latest = import masterTarball { config = config.nixpkgs.config; };
-      custom = import customTarball { };
+      unstable = import unstableTarball { };
     };
   };
 
@@ -29,7 +29,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   
   # Use the latest testing kernel
-    boot.kernelPackages = pkgs.linuxPackages_testing;
+    boot.kernelPackages = pkgs.unstable.linuxPackages_testing;
 
   networking.hostName = "GroundBox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -68,7 +68,6 @@ in {
     enableDefaultFonts = true;
     fonts = with pkgs.latest; [
       cascadia-code
-      pkgs.custom.jetbrains-mono-nerdfonts
       noto-fonts
       roboto
       ubuntu_font_family
