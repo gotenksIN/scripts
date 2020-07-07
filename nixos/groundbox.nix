@@ -103,7 +103,7 @@ in {
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-  #   pinentryFlavor = "gnome3";
+      pinentryFlavor = "gnome3";
     };
 
   # List services that you want to enable:
@@ -163,6 +163,7 @@ in {
       fontconfig
       fortune
       git
+      gnome-keyring
       google-chrome
       gnumake
       htop
