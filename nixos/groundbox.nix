@@ -83,7 +83,6 @@
     ninja
     plata-theme
     python38
-    python38Packages.keyring
     python38Packages.pip
     python38Packages.python-fontconfig
     traceroute
@@ -103,9 +102,6 @@
 
   # Enable the OpenSSH daemon.
     services.openssh.enable = true;
-
-  # Enable Gnome3 keyring
-    services.gnome3.gnome-keyring.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -158,9 +154,6 @@
       fontconfig
       fortune
       git
-      gnome3.gnome-keyring
-      gnome3.libgnome-keyring
-      gnome3.seahorse
       (google-chrome.overrideAttrs(old: {
       sha256 = "16rmzyzjmxmhmr5yqbzqbwf5sq94iqcwlm04fkafiwcycd17nyhs";
       sha256bin64 = "0wjmc1wdmwiq9d1f5gk4c9jkj1p116kaz9nb0hvhjf01iv07xl2m";
