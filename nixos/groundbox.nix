@@ -83,6 +83,7 @@
     ninja
     plata-theme
     python38
+    python38Packages.keyring
     python38Packages.pip
     python38Packages.python-fontconfig
     traceroute
@@ -155,7 +156,13 @@
       fortune
       git
       gnome3.gnome-keyring
-      google-chrome
+      gnome3.libgnome-keyring
+      gnome3.seahorse
+      (google-chrome.overrideAttrs(old: {
+      sha256 = "16rmzyzjmxmhmr5yqbzqbwf5sq94iqcwlm04fkafiwcycd17nyhs";
+      sha256bin64 = "0wjmc1wdmwiq9d1f5gk4c9jkj1p116kaz9nb0hvhjf01iv07xl2m";
+      version = "85.0.4168.2";
+    }))
       gnumake
       htop
       kdeApplications.spectacle
@@ -170,7 +177,7 @@
       scrot
       tdesktop
       vlc
-      vscode
+      vscode-with-extensions
     ];
 
   # This value determines the NixOS release from which the default
