@@ -4,7 +4,10 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  masterTarball =fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
+
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -14,6 +17,9 @@
   # from the nixpkgs master branch.
   nixpkgs.config = {
     allowUnfree = true;
+    packageOverrides = pkgs: {
+      latest = import masterTarball { config = config.nixpkgs.config; };
+    };
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -21,7 +27,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   
   # Use the latest testing kernel
-    boot.kernelPackages = pkgs.linuxPackages_testing;
+    boot.kernelPackages = pkgs.latest.linuxPackages_testing;
 
   networking.hostName = "GroundBox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -173,7 +179,7 @@
       scrot
       tdesktop
       vlc
-      vscode-with-extensions
+      vscode
     ];
 
   # This value determines the NixOS release from which the default
