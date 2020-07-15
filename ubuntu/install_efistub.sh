@@ -8,11 +8,6 @@ echo 'cp /boot/vmlinuz /boot/initrd.img /boot/efi/EFI/ubuntu/' | sudo tee -a /et
 sudo chmod +x /etc/kernel/postinst.d/zz-update-efistub
 sudo /etc/kernel/postinst.d/zz-update-efistub
 
-#Remove grub and all it's dependencies
-
-sudo apt autoremove --purge -y grub-common grub-pc
-sudo apt install -y efibootmgr
-
 label='Ubuntu (efistub)'
 loader='\EFI\ubuntu\vmlinuz'
 initrd='\EFI\ubuntu\initrd.img'
