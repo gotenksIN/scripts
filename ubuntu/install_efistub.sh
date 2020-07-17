@@ -22,4 +22,4 @@ printf -v largs "%s " \
         "root=UUID=$(findmnt -kno UUID /) rw" \
         "initrd=${initrd}"
 
- efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* }" --verbose
+sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } quiet splash" --verbose
