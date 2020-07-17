@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt install zsh zsh-autosuggestions fortune-mod figlet git htop cmatrix neofetch aria2 curl
 
 git config --global user.name "Omkar Chandorkar"
