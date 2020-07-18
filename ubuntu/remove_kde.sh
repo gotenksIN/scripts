@@ -1,1 +1,0 @@
-sudo apt autoremove --purge kubuntu-desktop ^breeze kate kate5-data kbd kcalc ^kde kdialog kdoctools5 debconf-kde-data debconf-kde-helper libdebconf-kde1 libkdecorations2-5v5 libkdecorations2private7 ^libkf5 ^qml
