@@ -2,7 +2,7 @@
 
 sudo rm -rf /var/cache/snapd/
 
-sudo apt remove --purge snapd gnome-software apparmor ^avahi rsyslog apport ^vim mobile-broadband-provider-info popularity-contest bolt \
+sudo apt autoremove --purge snapd gnome-software apparmor ^avahi rsyslog apport ^vim mobile-broadband-provider-info popularity-contest bolt \
 pix hexchat thunderbird transmission libreoffice gnome-orca gnote graphviz imagemagick celluloid rhythmbox redshift \
 gnome-2048 gnome-calculator gnome-calendar gnome-chess gnome-mahjongg gnome-software-plugin-snap gnome-sudoku gnome-system-monitor gnome-disk-utility \
 gnome-online-accounts gnome-session-common language-selector-common language-selector-gnome ^kwayland language-pack-de-base language-pack-es-base \
