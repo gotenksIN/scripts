@@ -160,11 +160,7 @@ in {
       fontconfig
       fortune
       git
-      (google-chrome.overrideAttrs(old: {
-      sha256 = "16rmzyzjmxmhmr5yqbzqbwf5sq94iqcwlm04fkafiwcycd17nyhs";
-      sha256bin64 = "0wjmc1wdmwiq9d1f5gk4c9jkj1p116kaz9nb0hvhjf01iv07xl2m";
-      version = "85.0.4168.2";
-    }))
+      google-chrome-dev
       gnumake
       htop
       kdeApplications.spectacle
