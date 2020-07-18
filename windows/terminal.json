@@ -1,0 +1,36 @@
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "theme": "dark",
+    "copyOnSelect": false,
+    "copyFormatting": false,
+    "disabledProfileSources": ["Windows.Terminal.Azure"],
+    "experimental.rendering.forceFullRepaint": true,
+    
+    "profiles": {
+        "defaults": {
+            "colorScheme" : "One Half Dark",
+            "fontFace": "MesloLGS Nerd Font Mono",
+            "fontSize": 10,
+            "antialiasingMode": "cleartype",
+            "closeOnExit": "graceful"
+            },
+        "list": [{
+            "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+            "hidden": false,
+            "name": "PowerShell",
+            "source": "Windows.Terminal.PowershellCore"
+            },{
+            "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+            "hidden": false,
+            "name": "Ubuntu",
+            "startingDirectory": "//wsl$/Ubuntu/home/gotenks",
+            "source": "Windows.Terminal.Wsl"
+        }]
+    },
+    "schemes": [],
+    
+    "keybindings":[]
+    }
+    
