@@ -39,18 +39,6 @@ in {
     systemd.services.NetworkManager-wait-online.enable = false;
     networking.dhcpcd.enable = false;
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  # networking.useDHCP = false;
-  # networking.interfaces.eno1.useDHCP = false;
-  # networking.interfaces.enp0s20f0u1.useDHCP = false;
-  # networking.interfaces.wlo1.useDHCP = false;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Select internationalisation properties.
     i18n.defaultLocale = "en_GB.UTF-8";
     console = {
@@ -98,25 +86,10 @@ in {
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable sound.
     sound.enable = true;
@@ -172,7 +145,6 @@ in {
       papirus-icon-theme
       pfetch
       plasma-browser-integration
-      scrot
       tdesktop
       vlc
       vscode
