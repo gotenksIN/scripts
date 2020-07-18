@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
-# Fetch the latest copy of the nixos-unstable channel from my github.
-# Inlcudes patch for nvidia drivers to work on latest testing kernel
-let unstableTarball = fetchTarball https://github.com/gotenksIN/nixpkgs/archive/nixos-unstable.tar.gz;
+let
+  masterTarball =fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
 
 in
 {
@@ -14,9 +13,7 @@ in
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
+      latest = import masterTarball { config = config.nixpkgs.config; };
     };
   };
 
@@ -25,7 +22,7 @@ in
     boot.loader.efi.canTouchEfiVariables = true;
 
   # Use the latest testing kernel
-    boot.kernelPackages = pkgs.unstable.linuxPackages_testing;
+    boot.kernelPackages = pkgs.latest.linuxPackages_testing;
 
     networking.hostName = "RyzenBox"; # Define your hostname.
   
@@ -42,18 +39,9 @@ in
   # networking.useDHCP = false;
   # networking.interfaces.eno1.useDHCP = false;
 
-  # Enables wireless support via wpa_supplicant.
-  # networking.wireless.enable = true;
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-    networking.firewall.enable = true;
 
   # Select internationalisation properties.
     i18n.defaultLocale = "en_GB.UTF-8";
@@ -65,10 +53,39 @@ in
   # Set your time zone.
     time.timeZone = "Asia/Kolkata";
 
+  # Configure fonts
+  fonts = {
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+      cascadia-code
+      jetbrains-mono
+      noto-fonts
+      noto-fonts-emoji
+      open-sans
+      roboto
+      ubuntu_font_family
+      ];
+    };
+
   # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
-      bash
-      wget
+    bash
+    busybox
+    cmake
+    curl
+    ffmpeg
+    htop
+    lsb-release
+    nano
+    networkmanager
+    ninja
+    plata-theme
+    python38
+    python38Packages.pip
+    python38Packages.python-fontconfig
+    traceroute
+    wget
+    unzip
     ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -76,8 +93,7 @@ in
   # programs.mtr.enable = true;
     programs.gnupg.agent = {
       enable = true;
-  #   enableSSHSupport = true;
-      pinentryFlavor = "gnome3";
+      enableSSHSupport = true;
     };
 
   # Enable the OpenSSH daemon.
@@ -93,21 +109,17 @@ in
   # Enable the X11 windowing system.
    services.xserver = {
         enable = true;
-        displayManager.gdm.enable = true;
-        desktopManager.gnome3.enable = true;
+        displayManager.sddm.enable = true;
+        desktopManager.plasma5.enable = true;
         videoDrivers = [ "pkgs.unstable.nvidia" ];
         layout = "us";
         };
 
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
-    # Enable extra services for Gnome
-    services = {
-      gvfs.enable = true;
-      udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
-      gnome3.chrome-gnome-shell.enable = true;
-    };
+  # Install udev packages
+  services.udev.packages = with pkgs; [
+    android-udev-rules
+    libu2f-host
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.gotenks = {
@@ -121,35 +133,32 @@ in
 
   # Install some packages I use quite often
     users.users.gotenks.packages = with pkgs; [
+      android-udev-rules
       aria2
       bat
-      chrome-gnome-shell
-      cmake
+      capitaine-cursors
       cmatrix
       curl
+      elisa
       figlet
       fontconfig
       fortune
       git
-      google-chrome-beta
-      gnome3.gnome-shell-extensions
-      gnome3.gnome-tweaks
-      gnomeExtensions.appindicator
-      gnomeExtensions.dash-to-dock
+      google-chrome-dev
       gnumake
       htop
+      kdeApplications.spectacle
+      kotatogram-desktop
+      nasm
       ncdu
       neofetch
       networkmanager
-      noto-fonts
-      noto-fonts-emoji
-      open-sans
       papirus-icon-theme
       pfetch
-      plata-theme
-      python38
-      python38Packages.python-fontconfig
+      plasma-browser-integration
+      scrot
       tdesktop
+      vlc
       vscode
     ];
 
