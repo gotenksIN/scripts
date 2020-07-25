@@ -13,6 +13,7 @@
             "colorScheme" : "One Half Dark",
             "fontFace": "MesloLGS Nerd Font Mono",
             "fontSize": 10,
+            "fontWeight": "semi-light",
             "antialiasingMode": "cleartype",
             "closeOnExit": "graceful"
             },
