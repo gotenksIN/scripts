@@ -1,0 +1,14 @@
+[user]
+	name = Omkar Chandorkar
+	email = forumomkar@gmail.com
+	signingkey = 6D8DEF354ED78DE805938A9D95A33FD984777F70
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[core]
+	editor = nano
+[init]
+	defaultBranch = master

@@ -101,8 +101,8 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source ~/scripts/functions
-source ~/scripts/aliases
-source ~/scripts/ubuntu/alias
+source ~/scripts/common/functions
+source ~/scripts/common/aliases
+
 onLogin
 export GPG_TTY=$(tty)
