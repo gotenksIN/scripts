@@ -5,3 +5,4 @@ sudo apt install zsh zsh-autosuggestions fortune-mod figlet git htop cmatrix neo
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$USER/.oh-my-zsh/custom/themes/powerlevel10k
+chsh -s /usr/bin/zsh
