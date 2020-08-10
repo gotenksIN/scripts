@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo pacman -Sy ffmpeg vlc steam fortune-mod figlet zsh htop git cmatrix ncdu nano
 
 git clone https://aur.archlinux.org/yay.git

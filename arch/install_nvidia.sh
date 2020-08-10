@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo pacman -Sy nvidia nvidia-settings
 
 #Stuff for people with a integrated + dedicated GPU

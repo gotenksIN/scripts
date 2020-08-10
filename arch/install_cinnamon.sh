@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #Install all packages required for cinnamon to work nicely
 sudo pacman -Sy xorg-server cinnamon gnome-terminal gnome-screenshot lightdm eog nemo-fileroller rhythmbox gedit evince
 sudo localectl set-locale LANG=en_US.UTF-8

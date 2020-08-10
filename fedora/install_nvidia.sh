@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
 sudo dnf update -y
 

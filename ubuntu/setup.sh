@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 sudo apt install zsh zsh-autosuggestions fortune-mod figlet git htop cmatrix neofetch aria2 curl ncdu \
                  python3-pip python3-venv zip unzip
