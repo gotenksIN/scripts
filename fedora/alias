@@ -1,5 +1,0 @@
-alias install='sudo dnf install'
-alias remove='sudo dnf remove'
-alias search='sudo dnf search'
-alias list='sudo dnf list'
-alias upgrade='sudo dnf update'
