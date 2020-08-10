@@ -24,8 +24,8 @@ EOL
 #Installing OpenCL driver to make your hashcat and any other GUI programs work
 sudo apt install -y ocl-icd-libopencl1 nvidia-cuda-toolkit
 
-echo "Do you want to reboot now [Y/n] ?"
-read inputs
-if [$inputs == "Y" || $inputs == "y"]; then
+echo -n "Do you want to reboot now [y/n]: "
+read -r -n1 input
+if [[ "$input" =~ ^[Yy]$ ]]; then
 	reboot
 fi
