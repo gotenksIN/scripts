@@ -4,5 +4,5 @@ sudo apt install parrot-kde sddm
 
 sudo systemctl enable sddm.service
 
-sudo cp -r -v Dotfiles/.config/* ~/.config/
-sudo cp -r -v Dotfiles/.local/* ~/.local/
+cp -r -v Dotfiles/.config/* ~/.config/
+cp -r -v Dotfiles/.local/* ~/.local/
