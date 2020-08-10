@@ -9,9 +9,8 @@ alias nouveau off
 alias lbm-nouveau off
 EOL
 
-
-echo "Do you want to reebot now ?"
-read inputs
-if [$inputs == "Y" || $inputs == "y"]; then
-	reboot
+echo -n "Do you want to reboot now [y/n]: "
+read -r -n1 input
+if [[ "$input" =~ ^[Yy]$ ]]; then
+        reboot
 fi
