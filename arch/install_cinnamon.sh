@@ -15,9 +15,9 @@ sed -i "s/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greet
 exit
 
 #Install packages related to bluetooth as needed
-echo "Do you have any bluetooth adaptors installed? (Y/n)"
-read inputs
-if [[ $inputs == "Y" || $inputs == "y" ]]; then
+echo "Do you have any bluetooth adaptors installed? [y/n]: "
+read -r -n1 input
+if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo pacman -Sy blueberry
 sudo systemctl enable bluetooth.service
 fi
