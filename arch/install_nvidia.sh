@@ -1,9 +1,11 @@
+#!/usr/bin/env bash
+
 sudo pacman -Sy nvidia nvidia-settings
 
 #Stuff for people with a integrated + dedicated GPU
-echo "Do you have Intel integrated GPU and discrete NVIDIA GPU? (Y/n)"
-read inputs
-if [[ $inputs == "Y" || $inputs == "y" ]]; then
+echo "Do you have Intel integrated GPU and discrete NVIDIA GPU? [y/n]: "
+read -r -n1 input
+if [[ "$input" =~ ^[Yy]$ ]]; then
 git clone https://aur.archlinux.org/optimus-manager.git
 cd optimus-manager
 makepkg -si
