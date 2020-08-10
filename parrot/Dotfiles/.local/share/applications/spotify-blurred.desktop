@@ -1,0 +1,23 @@
+[Desktop Entry]
+Categories=Audio;Music;Player;AudioVideo;
+Comment[en_IN]=
+Comment=
+Exec=~/.config/plasma-blur.sh 'spotify %U' 'Spotify' 4
+GenericName[en_IN]=Music Player
+GenericName=Music Player
+Icon=spotify-client
+MimeType=
+Name[en_IN]=Spotify (Blurred)
+Name=Spotify (Blurred)
+Path=
+StartupNotify=true
+StartupWMClass=spotify
+Terminal=false
+TerminalOptions=
+TryExec=spotify
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-RunOnDiscreteGpu=false
+X-KDE-SubstituteUID=false
+X-KDE-Username=
