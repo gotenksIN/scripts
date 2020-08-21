@@ -1,9 +1,13 @@
 {
+    "source": {
+        "autoUpdateIntervalInMinutes": 0
+    },
     "visual": {
         "progressBar": "accent"
     },
     "experimentalFeatures": {
         "experimentalCmd": true,
-        "experimentalArg": false
+        "experimentalArg": true,
+        "experimentalMSStore": true
     }
 }
