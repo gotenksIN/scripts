@@ -6,3 +6,4 @@ alias update='sudo apt update'
 alias upgrade='sudo apt update && sudo apt upgrade'
 alias list='dpkg -l | grep'
 alias cleanup="dpkg -l | grep '^rc' | awk '{print $2}' | xargs sudo apt-get purge --yes"
+alias cat='batcat --style=grid,header --theme="zenburn"'
