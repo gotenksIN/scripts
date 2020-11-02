@@ -1,22 +1,22 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    
+
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "confirmCloseAllTabs": false,
     "copyOnSelect": false,
     "copyFormatting": false,
     "disabledProfileSources": ["Windows.Terminal.Azure"],
-    "experimental.rendering.forceFullRepaint": true,
     "keybindings":[],
 
     "profiles": {
         "defaults": {
             "antialiasingMode": "cleartype",
-            "closeOnExit": "graceful",
+            "closeOnExit": "always",
             "colorScheme" : "One Half Dark",
             "fontFace": "MesloLGS Nerd Font Mono",
             "fontSize": 10,
-            "fontWeight": "semi-light"
+            "fontWeight": "semi-light",
+            "suppressApplicationTitle": true
             },
         "list": [{
             "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -32,5 +32,7 @@
         }]
     },
     "schemes": [],
-    "theme": "dark"
+    "snapToGridOnResize": false,
+    "theme": "dark",
+    "useTabSwitcher": false
     }
