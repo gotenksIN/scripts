@@ -8,6 +8,8 @@
     "experimentalFeatures": {
         "experimentalCmd": true,
         "experimentalArg": true,
-        "experimentalMSStore": true
+        "experimentalMSStore": true,
+        "list": true,
+        "upgrade": true
     }
 }
