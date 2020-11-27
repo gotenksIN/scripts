@@ -12,3 +12,5 @@
 	editor = nano
 [init]
 	defaultBranch = master
+[merge]
+	log = true
