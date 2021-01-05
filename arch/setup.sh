@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -Sy ffmpeg fortune-mod figlet zsh htop git cmatrix ncdu nano
+sudo pacman -Sy ffmpeg fortune-mod figlet zsh htop git cmatrix ncdu nano base-devel
 
 git clone https://aur.archlinux.org/yay.git --depth 1
 cd yay
