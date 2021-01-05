@@ -2,10 +2,11 @@
 
 sudo pacman -Sy ffmpeg vlc steam fortune-mod figlet zsh htop git cmatrix ncdu nano
 
-git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay.git --depth 1
 cd yay
 makepkg -si
-cd
+cd ..
+rm -rf yay
 
 yay -Sy microsoft-edge-dev-bin kotatogram-desktop-bin visual-studio-code-insiders-bin
 
