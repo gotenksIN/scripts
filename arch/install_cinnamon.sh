@@ -9,7 +9,7 @@ sudo locale-gen
 git clone https://aur.archlinux.org/lightdm-slick-greeter --depth=1
 cd lightdm-slick-greeter
 makepkg -si
-cd -
+cd ..
 rm -rf lightdm-slick-greeter
 sudo sed -i "s/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/" /etc/lightdm/lightdm.conf
 
@@ -17,7 +17,7 @@ sudo sed -i "s/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-
 echo "Do you have any bluetooth adaptors installed? [y/n]: "
 read -r -n1 input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-sudo pacman -Sy blueberry
+sudo pacman -Sy bluez bluez-libs bluez-utils bluez-tools
 sudo systemctl enable bluetooth.service
 fi
 
