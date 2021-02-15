@@ -6,10 +6,10 @@
         "progressBar": "accent"
     },
     "experimentalFeatures": {
-        "experimentalCmd": true,
-        "experimentalArg": true,
         "experimentalMSStore": true,
         "list": true,
-        "upgrade": true
+        "upgrade": true ,
+        "uninstall": true ,
+        "importExport": true
     }
 }
