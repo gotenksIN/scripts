@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# Guard adding Ookla repo
+echo "Do you want to add Ookla repo? [y/n]: "
+read -r -n1 input
+if [[ "$input" =~ ^[Yy]$ ]]; then
+sudo apt-get install gnupg1 apt-transport-https dirmngr
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+fi
+
 # Guard gui dependent applications behind this
 echo "Do you intend on using GUI? [y/n]: "
 read -r -n1 input
@@ -14,6 +23,11 @@ fi
 
 sudo apt install zsh fortune-mod figlet git htop cmatrix neofetch aria2 curl ncdu \
                  python3-pip python3-venv zip unzip bat p7zip-full ripgrep
+
+# Install speedtest only if debian unstable repo exists
+if grep -rq "deb https://ookla.bintray.com/debian generic main" /etc/apt; then
+sudo apt install speedtest
+fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$USER/.oh-my-zsh/custom/themes/powerlevel10k
