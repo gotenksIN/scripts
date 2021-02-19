@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Guard adding Ookla repo
-echo "Do you want to add Ookla repo? [y/n]: "
+echo "Do you want to add Ookla repo? [y/N]: "
 read -r -n1 input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo apt-get install gnupg1 apt-transport-https dirmngr
@@ -10,7 +10,7 @@ echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/so
 fi
 
 # Guard gui dependent applications behind this
-echo "Do you intend on using GUI? [y/n]: "
+echo "Do you intend on using GUI? [y/N]: "
 read -r -n1 input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -21,10 +21,13 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 sudo apt install microsoft-edge-dev code-insiders
 fi
 
+# Update package list
+sudo apt-get update
+
 sudo apt install zsh fortune-mod figlet git htop cmatrix neofetch aria2 curl ncdu \
                  python3-pip python3-venv zip unzip bat p7zip-full ripgrep
 
-# Install speedtest only if debian unstable repo exists
+# Install speedtest only if Ookla repo exists
 if grep -rq "deb https://ookla.bintray.com/debian generic main" /etc/apt; then
 sudo apt install speedtest
 fi

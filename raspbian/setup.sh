@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Guard adding Debian Unstable repo
-echo "Do you want to add Debian Unstable repo? [y/n]: "
+echo "Do you want to add Debian Unstable repo? [y/N]: "
 read -r -n1 input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 echo "deb http://deb.debian.org/debian/ unstable main" | sudo tee --append /etc/apt/sources.list
@@ -11,7 +11,7 @@ sudo sh -c 'printf "Package: *\nPin: release a=unstable\nPin-Priority: 90\n" > /
 fi
 
 # Guard adding Ookla repo
-echo "Do you want to add Ookla repo? [y/n]: "
+echo "Do you want to add Ookla repo? [y/N]: "
 read -r -n1 input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo apt-get install gnupg1 apt-transport-https dirmngr
@@ -30,7 +30,7 @@ if grep -rq "deb http://deb.debian.org/debian/ unstable main" /etc/apt; then
 sudo apt install bat
 fi
 
-# Install speedtest only if debian unstable repo exists
+# Install speedtest only if Ookola repo exists
 if grep -rq "deb https://ookla.bintray.com/debian generic main" /etc/apt; then
 sudo apt install speedtest
 fi
