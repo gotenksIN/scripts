@@ -1,15 +1,15 @@
 {
+    "$schema": "https://aka.ms/winget-settings.schema.json",
+
+    "experimentalFeatures": {
+        "dependencies": true ,
+        "experimentalMSStore": true,
+        "packagedAPI": true
+    },
+    "network": {
+        "downloader": "do"
+    },
     "source": {
         "autoUpdateIntervalInMinutes": 0
-    },
-    "visual": {
-        "progressBar": "accent"
-    },
-    "experimentalFeatures": {
-        "experimentalMSStore": true,
-        "list": true,
-        "upgrade": true ,
-        "uninstall": true ,
-        "importExport": true
     }
 }
