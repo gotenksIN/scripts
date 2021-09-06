@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-
 # Copyright (C) 2018-20 Akhil Narang
-# Copyright (C) 2020 Omkar CHandorkar
+# Copyright (C) 2020-21 Omkar Chandorkar
 # SPDX-License-Identifier: GPL-3.0-only
 
 function upinfo() {
@@ -68,19 +67,4 @@ extract ()
   else
     echo "'$1' is not a valid file"
   fi
-}
-
-function aosip_gerrit()
-{
-    if [ ! -d ".git" ]; then
-        echo -e "Please run this inside a git directory";
-    else
-        git remote rm gerrit 2>/dev/null;
-        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.review.aosip.dev.username);
-        if [[ -z "${GERRIT_USER}" ]]; then
-            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSiP" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSiP|ssh://review.aosip.dev:29418/AOSIP|");
-        else
-            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSiP" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSiP|ssh://${GERRIT_USER}@review.aosip.dev:29418/AOSIP|");
-        fi
-    fi
 }
