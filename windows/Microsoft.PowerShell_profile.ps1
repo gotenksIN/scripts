@@ -1,4 +1,3 @@
-Import-Module posh-git
-Import-Module oh-my-posh
-Set-Theme Powerlevel10k-Lean
+oh-my-posh --init --shell pwsh --config ~\AppData\Local\Programs\oh-my-posh\themes\powerlevel10k_lean.omp.json | Invoke-Expression
+Set-Alias neofetch neofetch.ps1
 clear

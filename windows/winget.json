@@ -2,14 +2,10 @@
     "$schema": "https://aka.ms/winget-settings.schema.json",
 
     "experimentalFeatures": {
-        "dependencies": true ,
-        "experimentalMSStore": true,
-        "packagedAPI": true
+        "directMSI": true ,
+        "experimentalMSStore": true
     },
     "network": {
         "downloader": "do"
-    },
-    "source": {
-        "autoUpdateIntervalInMinutes": 0
     }
 }
