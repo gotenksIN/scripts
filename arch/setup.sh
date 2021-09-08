@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-sudo pacman -Sy ffmpeg fortune-mod figlet zsh htop git cmatrix ncdu nano base-devel wget curl aria2 inetutils
-
 git clone https://aur.archlinux.org/yay.git --depth 1
 cd yay
 makepkg -si
 cd ..
 rm -rf yay
+
+sudo yay -Sy fortune-mod figlet zsh htop git ncdu nano base-devel wget curl aria2 inetutils bat ripgrep p7zip ookla-speedtest-bin
 
 # Guard gui dependent applications behind this
 echo "Do you intend on using GUI? [y/n]: "
