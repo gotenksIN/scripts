@@ -11,3 +11,5 @@ alias gita='git add'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+alias cat='batcat --style=grid,header --theme="zenburn"'
