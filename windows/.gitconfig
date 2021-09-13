@@ -1,0 +1,16 @@
+[user]
+	name = Omkar Chandorkar
+	email = gotenksIN@aosip.dev
+	signingkey = 6D8DEF354ED78DE805938A9D95A33FD984777F70
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[core]
+	editor = nano
+[init]
+	defaultBranch = master
+[merge]
+	log = true
