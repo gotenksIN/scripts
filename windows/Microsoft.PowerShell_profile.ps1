@@ -12,12 +12,10 @@ function gitc { git commit -S --signoff }
 function gitcp([string]$Hash) { git cherry-pick "$Hash" }
 function gitcpc { git cherry-pick --continue }
 function gitf([string]$PathToFetch) { git fetch "$PathToFetch" }
-
-# TODO: handle with and without args
-function gitp { git push }
-function gitfp { git push -f }
-function gitr { git reset }
-function gitrh { git reset --hard }
+function gitp([string]$WhereToPush, [string]$FromWhereToPush) { git push "$WhereToPush" "$FromWhereToPush" }
+function gitp([string]$WhereToPush, [string]$FromWhereToPush) { git push -f "$WhereToPush" "$FromWhereToPush" }
+function gitr([string]$Hash) { git reset "$Hash" }
+function gitrh([string]$Hash) { git reset --hard "$Hash" }
 
 # Clear terminal once profile is finished loading
 clear
