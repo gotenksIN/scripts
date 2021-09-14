@@ -1,5 +1,5 @@
 # Init oh-my-posh
-oh-my-posh --init --shell pwsh --config ~\AppData\Local\Programs\oh-my-posh\themes\powerlevel10k_lean.omp.json | Invoke-Expression
+oh-my-posh --init --shell pwsh --config ~\AppData\Local\Programs\oh-my-posh\themes\wopian.omp.json | Invoke-Expression
 
 # Alias winfetch script to neofetch
 Set-Alias neofetch neofetch.ps1
