@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-09-13T19:28:27.210-00:00",
+	"CreationDate" : "2021-09-14T13:16:30.548-00:00",
 	"Sources" : 
 	[
 		{
@@ -53,9 +53,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
