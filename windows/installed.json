@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-09-16T10:51:13.193-00:00",
+	"CreationDate" : "2021-09-17T08:28:40.690-00:00",
 	"Sources" : 
 	[
 		{
@@ -25,22 +25,16 @@
 					"PackageIdentifier" : "Iriun.IriunWebcam"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminalPreview"
-				},
-				{
-					"PackageIdentifier" : "Mozilla.Firefox.Nightly"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
-					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Teams"
@@ -62,12 +56,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VC++2008Redist-x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Nvidia.GeForceExperience"
