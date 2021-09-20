@@ -13,7 +13,7 @@ function gitcp([string]$Hash) { git cherry-pick "$Hash" }
 function gitcpc { git cherry-pick --continue }
 function gitf([string]$PathToFetch) { git fetch "$PathToFetch" }
 function gitp([string]$WhereToPush, [string]$FromWhereToPush) { git push "$WhereToPush" "$FromWhereToPush" }
-function gitp([string]$WhereToPush, [string]$FromWhereToPush) { git push -f "$WhereToPush" "$FromWhereToPush" }
+function gitfp([string]$WhereToPush, [string]$FromWhereToPush) { git push -f "$WhereToPush" "$FromWhereToPush" }
 function gitr([string]$Hash) { git reset "$Hash" }
 function gitrh([string]$Hash) { git reset --hard "$Hash" }
 
