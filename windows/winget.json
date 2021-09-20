@@ -2,8 +2,13 @@
     "$schema": "https://aka.ms/winget-settings.schema.json",
 
     "experimentalFeatures": {
-        "directMSI": true ,
-        "experimentalMSStore": true
+        "dependencies": true,
+        "directMSI": true
+    },
+    "installBehavior": {
+        "preferences": {
+            "scope": "user"
+        }
     },
     "network": {
         "downloader": "do"
