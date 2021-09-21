@@ -2,7 +2,7 @@
 oh-my-posh --init --shell pwsh --config ~\AppData\Local\Programs\oh-my-posh\themes\powerlevel10k_lean.omp.json | Invoke-Expression
 
 # Alias winfetch script to neofetch
-Set-Alias neofetch neofetch.ps1
+Set-Alias neofetch pwshfetch-test-1.ps1
 
 Import-Module -Name Terminal-Icons
 
