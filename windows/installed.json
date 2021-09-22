@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-09-20T10:06:06.615-00:00",
+	"CreationDate" : "2021-09-22T10:38:47.162-00:00",
 	"Sources" : 
 	[
 		{
@@ -17,9 +17,6 @@
 				},
 				{
 					"PackageIdentifier" : "GnuPG.GnuPG"
-				},
-				{
-					"PackageIdentifier" : "GnuPG.Gpg4win"
 				},
 				{
 					"PackageIdentifier" : "Iriun.IriunWebcam"
@@ -73,5 +70,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.0.11692"
+	"WinGetVersion" : "1.0.12576"
 }
