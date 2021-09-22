@@ -4,34 +4,41 @@
 "copyFormatting": "none",
 "copyOnSelect": false,
 "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-"profiles": {
-    "defaults": {
+"profiles":
+{
+    "defaults":
+    {
+        "altGrAliasing": false,
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
         "closeOnExit": "always",
         "colorScheme": "One Half Dark",
-        "font": {
+        "font":
+        {
             "face": "MesloLGS Nerd Font Mono",
             "size": 10,
             "weight": "normal"
         },
-        "suppressApplicationTitle": true
+        "useAcrylic": true
     },
-    "list": [ {
+    "list":
+    [
+        {
             "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
             "hidden": false,
             "name": "PowerShell",
             "source": "Windows.Terminal.PowershellCore"
-            }, {
-            "guid": "{d1569d34-e3dc-506e-b3ef-3ca18387f714}",
+        },
+        {
+            "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
             "hidden": false,
             "name": "Ubuntu",
             "source": "Windows.Terminal.Wsl",
-            "startingDirectory": "\\\\wsl$\\Ubuntu-CommPrev\\home\\gotenks"
-            }
-        ]
-    },
-"schemes": 
+            "startingDirectory": "\\\\wsl.localhost\\Ubuntu\\home\\gotenks"
+        }
+    ]
+},
+"schemes":
 [
     {
         "background": "#0C0C0C",
@@ -264,7 +271,9 @@
         "yellow": "#808000"
     }
 ],
+"showTabsInTitlebar": true,
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
-"theme": "dark"
+"theme": "dark",
+"useAcrylicInTabRow": true
 }
