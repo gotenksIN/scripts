@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
-                 python3-pip python3-venv zip unzip bat p7zip-full ripgrep
+                 python3-pip python3-venv bat p7zip-full ripgrep
 
 # Install Ookla Speedtest
 curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
