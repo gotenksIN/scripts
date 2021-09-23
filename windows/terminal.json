@@ -8,6 +8,7 @@
 {
     "defaults":
     {
+        "acrylicOpacity": 0.80000000000000004,
         "altGrAliasing": false,
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
@@ -19,8 +20,7 @@
             "size": 10,
             "weight": "normal"
         },
-        "useAcrylic": true,
-        "acrylicOpacity": 0.8
+        "useAcrylic": true
     },
     "list":
     [
@@ -31,11 +31,11 @@
             "source": "Windows.Terminal.PowershellCore"
         },
         {
-            "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-            "hidden": false,
+            "commandline": "wsl.exe -d Ubuntu-CommPrev",
+            "guid": "{9c7defa0-b7ba-4b19-aeff-d545dbf0a7df}",
+            "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
             "name": "Ubuntu",
-            "source": "Windows.Terminal.Wsl",
-            "startingDirectory": "\\\\wsl.localhost\\Ubuntu\\home\\gotenks"
+            "startingDirectory": "\\\\wsl.localhost\\Ubuntu-CommPrev\\home\\gotenks"
         }
     ]
 },
