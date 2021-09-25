@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-09-22T10:38:47.162-00:00",
+	"CreationDate" : "2021-09-25T16:14:16.422-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
-				{
-					"PackageIdentifier" : "MullvadVPN.MullvadVPN"
-				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
 				},
@@ -43,22 +40,25 @@
 					"PackageIdentifier" : "qBittorrent.qBittorrent"
 				},
 				{
-					"PackageIdentifier" : "Zoom.Zoom"
-				},
-				{
-					"PackageIdentifier" : "Python.Python.3"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VC++2015-2019Redist-x64"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VC++2012Redist-x86"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
 				},
 				{
+					"PackageIdentifier" : "Zoom.Zoom"
+				},
+				{
 					"PackageIdentifier" : "Nvidia.PhysX"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VC++2012Redist-x64"
 				}
 			],
 			"SourceDetails" : 
@@ -70,5 +70,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.0.12576"
+	"WinGetVersion" : "1.0.12581"
 }
