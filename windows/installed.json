@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-09-25T16:14:16.422-00:00",
+	"CreationDate" : "2021-09-29T13:46:40.500-00:00",
 	"Sources" : 
 	[
 		{
@@ -14,6 +14,9 @@
 				},
 				{
 					"PackageIdentifier" : "GnuPG.GnuPG"
+				},
+				{
+					"PackageIdentifier" : "GnuPG.Gpg4win"
 				},
 				{
 					"PackageIdentifier" : "Iriun.IriunWebcam"
@@ -31,6 +34,9 @@
 					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
+					"PackageIdentifier" : "Valve.Steam"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Teams"
 				},
 				{
@@ -40,16 +46,16 @@
 					"PackageIdentifier" : "qBittorrent.qBittorrent"
 				},
 				{
+					"PackageIdentifier" : "Clement.bottom"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VC++2010Redist-x64"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VC++2015-2019Redist-x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VC++2012Redist-x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
 				},
 				{
 					"PackageIdentifier" : "Zoom.Zoom"
@@ -58,7 +64,7 @@
 					"PackageIdentifier" : "Nvidia.PhysX"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2012Redist-x64"
+					"PackageIdentifier" : "Microsoft.VC++2010Redist-x86"
 				}
 			],
 			"SourceDetails" : 
