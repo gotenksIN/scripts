@@ -1,4 +1,2 @@
 #!/usr/bin/env bash
-sudo add-apt-repository ppa:ubuntucinnamonremix/unstable
-
-sudo apt install ubuntucinnamon-minimal
+sudo apt install cinnamon lightdm slick-greeter arc-theme papirus-icon-theme
