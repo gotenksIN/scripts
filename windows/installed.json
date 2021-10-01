@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-09-29T13:46:40.500-00:00",
+	"CreationDate" : "2021-10-01T08:44:25.400-00:00",
 	"Sources" : 
 	[
 		{
@@ -23,6 +23,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminalPreview"
@@ -58,6 +61,9 @@
 					"PackageIdentifier" : "Microsoft.VC++2015-2019Redist-x64"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
+				},
+				{
 					"PackageIdentifier" : "Zoom.Zoom"
 				},
 				{
@@ -76,5 +82,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.0.12581"
+	"WinGetVersion" : "1.1.12702"
 }
