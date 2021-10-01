@@ -8,8 +8,7 @@ curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
 sudo apt install speedtest
 
 # Guard gui dependent applications behind this
-echo "Do you intend on using GUI? [y/N]: "
-read -r -n1 input
+read -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg

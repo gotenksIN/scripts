@@ -12,11 +12,8 @@ label='Ubuntu (efistub)'
 loader='\EFI\ubuntu\vmlinuz'
 initrd='\EFI\ubuntu\initrd.img'
 
-echo "Enter your boot disk device (e.g. /dev/sda)"
-read disk
-
-echo "Enter partition number for your boot partition"
-read part
+read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
+read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
 
 printf -v largs "%s " \
         "root=UUID=$(findmnt -kno UUID /) rw" \
