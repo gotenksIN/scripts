@@ -3,7 +3,7 @@
     "bootloader": "systemd-bootctl",
     "custom-commands": [
         "cd /home/gotenks; git clone https://github.com/gotenksIN/scripts",
-        "chown -R gotenks:gotenks /home/devel/scripts"
+        "chown -R gotenks:gotenks /home/gotenks/scripts"
     ],
     "filesystem": "f2fs",
     "gfx_driver": "Nvidia",
