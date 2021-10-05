@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano \
+sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
                 wget2 curl aria2 inetutils bat ripgrep p7zip efibootmgr
 
 git clone https://aur.archlinux.org/yay.git --depth 1
