@@ -21,7 +21,7 @@
         "NetworkManager": true
     },
     "ntp": true,
-    "packages": ["git"],
+    "packages": ["git", "nano", "linux-zen-headers"],
     "profile": "minimal",
     "superusers": {
         "gotenks": {
