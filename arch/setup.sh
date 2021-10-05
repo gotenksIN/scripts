@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
-                wget2 curl aria2 inetutils bat ripgrep p7zip efibootmgr
+                wget2 curl aria2 inetutils bat ripgrep p7zip efibootmgr neofetch
 
 git clone https://aur.archlinux.org/yay.git --depth 1
 cd yay
