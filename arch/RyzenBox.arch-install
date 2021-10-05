@@ -3,19 +3,20 @@
     "bootloader": "systemd-bootctl",
     "custom-commands": [
         "cd /home/gotenks; git clone https://github.com/gotenksIN/scripts",
-        "chown -R gotenks:gotenks /home/gotenks/scripts"
+        "chown -R gotenks:gotenks /home/gotenks/scripts",
+        "echo 'blacklist pcspkr' > /etc/modprobe.d/nobeep.conf"
     ],
     "filesystem": "f2fs",
     "gfx_driver": "Nvidia",
     "harddrive": {
-        "path": "/dev/nvme0n2"
+        "path": "/dev/nvme1n1"
     },
     "hostname": "RyzenBox",
     "kernels": [
         "linux-zen"
     ],
     "keyboard-language": "us",
-    "mirror-region": "Worldwide",
+    "mirror-region": "Germany",
     "nic": {
         "NetworkManager": true
     },
