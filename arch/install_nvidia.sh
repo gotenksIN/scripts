@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+read -e -p "Are you using any custom kernel? [Y/n]: " input
+if [[ "$input" =~ ^[Yy]$ ]]; then
+sudo pacman -Sy nvidia-dkms nvidia-utils libvdpau-va-gl
+else
 sudo pacman -Sy nvidia nvidia-utils libvdpau-va-gl
+fi
 
 #Stuff for people with a integrated + dedicated GPU
 read -e -p "Do you have Intel integrated GPU and discrete NVIDIA GPU? [y/n]: " input
