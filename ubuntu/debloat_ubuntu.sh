@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt autoremove --purge snapd gnome-software-plugin-snap apparmor rsyslog apport ^vim mobile-broadband-provider-info ^avahi ^cloud \
-hexchat thunderbird transmission ^libreoffice gnome-orca gnote graphviz ^imagemagick celluloid rhythmbox redshift fonts-arundina netplan.io \
+hexchat thunderbird transmission ^libreoffice gnome-orca gnote graphviz ^imagemagick celluloid rhythmbox redshift fonts-arundina \
 gnome-2048 gnome-calculator gnome-calendar gnome-chess gnome-mahjongg gnome-software-plugin-snap gnome-sudoku bolt ^libreoffice \
 language-pack-de-base language-pack-es-base popularity-contest language-pack-ru-base gnome-disk-utility gnome-font-viewer ^gnome-games \
 hunspell-de-at-frami hunspell-de-ch-frami hunspell-de-de-frami hunspell-en-au hunspell-en-ca hunspell-en-za hunspell-es hunspell-fr \
