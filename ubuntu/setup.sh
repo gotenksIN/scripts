@@ -4,8 +4,16 @@ sudo apt install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
                  python3-pip python3-venv bat p7zip-full ripgrep
 
 # Install Ookla Speedtest
-curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
+wget https://install.speedtest.net/app/cli/install.deb.sh
+chmod +x install.deb.sh
+sudo os=ubuntu dist=hirsute ./install.deb.sh
+rm install.deb.sh
 sudo apt install speedtest
+
+# Install bottom
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.4/bottom_0.6.4_amd64.deb
+sudo dpkg -i bottom_0.6.4_amd64.deb
+rm bottom_0.6.4_amd64.deb
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
