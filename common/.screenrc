@@ -1,0 +1,4 @@
+term screen-256color
+startup_message off
+termcapinfo xterm*|rxvt*|kterm*|Eterm* ti@:te@
+
