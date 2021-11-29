@@ -1,4 +1,5 @@
 {
+"$help": "https://aka.ms/terminal-documentation",
 "$schema": "https://aka.ms/terminal-profiles-schema",
 "confirmCloseAllTabs": false,
 "copyFormatting": "none",
@@ -8,7 +9,6 @@
 {
     "defaults":
     {
-        "acrylicOpacity": 0.80000000000000004,
         "altGrAliasing": false,
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
@@ -20,6 +20,7 @@
             "size": 10,
             "weight": "normal"
         },
+        "opacity": 80,
         "useAcrylic": true
     },
     "list":
@@ -29,13 +30,6 @@
             "hidden": false,
             "name": "PowerShell",
             "source": "Windows.Terminal.PowershellCore"
-        },
-        {
-            "commandline": "wsl.exe -d Ubuntu-CommPrev",
-            "guid": "{9c7defa0-b7ba-4b19-aeff-d545dbf0a7df}",
-            "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-            "name": "Ubuntu",
-            "startingDirectory": "\\\\wsl.localhost\\Ubuntu-CommPrev\\home\\gotenks"
         }
     ]
 },
