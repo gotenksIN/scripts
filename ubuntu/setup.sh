@@ -18,7 +18,6 @@ rm bottom_0.6.4_amd64.deb
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable
 sudo add-apt-repository ppa:font-manager/staging
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -26,7 +25,7 @@ sudo rm microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
-sudo apt install microsoft-edge-dev code-insiders steam vlc qbittorrent font-manager
+sudo apt install microsoft-edge-dev code-insiders font-manager
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
