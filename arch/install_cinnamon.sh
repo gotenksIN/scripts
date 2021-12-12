@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install all packages required for cinnamon to work nicely
-yay -Sy xorg-server cinnamon gnome-terminal-transparency gnome-screenshot lightdm lightdm-slick-greeter nemo-fileroller gnome-keyring pipewire pipewire-pulse papirus-icon-theme arc-gtk-theme
+yay -Sy xorg-server cinnamon gnome-screenshot lightdm lightdm-slick-greeter nemo-fileroller gnome-keyring pipewire pipewire-pulse papirus-icon-theme arc-gtk-theme dconf-editor
 sudo localectl set-locale LANG=en_US.UTF-8
 sudo locale-gen
 
