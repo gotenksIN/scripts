@@ -11,3 +11,5 @@ alias gita='git add'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+alias reboot-uefi="systemctl reboot --firmware-setup"
