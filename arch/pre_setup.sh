@@ -16,7 +16,10 @@ echo"$hostname" > /etc/hostname
 echo "%wheel ALL = (ALL) ALL" > /etc/sudoers.d/wheel
 
 # ello mate
-echo "LANG=en_GB.UTF-8" > /etc/locale.conf
+sed -i 's/^# en_GB\.U/en_GB\.U/' /etc/locale.gen
+sed -i 's/^# en_US\.U/en_US\.U/' /etc/locale.gen
+localectl set-locale LANG=en_GB.UTF-8
+locale-gen
 
 # Add muh user
 read -e -p "Enter your username: " -i "gotenks" username
