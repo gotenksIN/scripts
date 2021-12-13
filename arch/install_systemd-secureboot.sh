@@ -19,15 +19,19 @@ read -e -p "Enter label for uefi entry (Label is what would show up in UEFI entr
 read -e -p "Enter label for systemd-boot entry (This is what would show up in systemd-boot options): " -i "rendumOS (fallback)" flabel
 
 # Setup systemd-boot
-sudo -s echo "default  arch.conf" > /boot/loader/loader.conf
-sudo -s echo "timeout  0" >> /boot/loader/loader.conf
-sudo -s echo "console-mode max" >> /boot/loader/loader.conf
-sudo -s echo "editor   no" >> /boot/loader/loader.conf
+sudo tee /boot/loader/loader.conf > /dev/null <<EOF
+default  arch.conf
+timeout  0
+console-mode max
+editor   no
+EOF
 
 # Setup arch config for systemd-boot
-sudo -s echo "title   $flabel" > /boot/loader/entries/arch.conf
-sudo -s echo "linux   /$loader" >> /boot/loader/entries/arch.conf
-sudo -s echo "initrd  /$initrd" >> /boot/loader/entries/arch.conf
+sudo tee /boot/loader/entries/arch.conf > /dev/null <<EOF
+title   $flabel"
+linux   /$loader
+initrd  /$initrd
+EOF
 
 # Microcode setup for arch
 read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
@@ -35,14 +39,14 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
 read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
 if [[ "$cpu" =~ ^[1]$ ]]; then
 sudo pacman -Sy intel-ucode
-sudo -s echo "initrd  /$microcode" >> /boot/loader/entries/arch.conf
+echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 else
 sudo pacman -Sy amd-ucode
-sudo -s echo "initrd  /$microcode" >> /boot/loader/entries/arch.conf
+echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 fi
 fi
 
-sudo -s echo "options root=$UUID rw quiet splash" >> /boot/loader/entries/arch.conf
+echo "options root=$UUID rw quiet splash" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 
 # Create secure-boot compatible entry
 sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l EFI/systemd/PreLoader.efi --verbose
