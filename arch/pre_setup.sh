@@ -19,8 +19,9 @@ echo "%wheel ALL = (ALL) ALL" > /etc/sudoers.d/wheel
 echo "LANG=en_GB.UTF-8" > /etc/locale.conf
 
 # Add muh user
-useradd -m -G wheel gotenks
-passwd gotenks
+read -e -p "Enter your username: " -i "gotenks" username
+useradd -m -G wheel $username
+passwd $username
 
 # set root password
 passwd
