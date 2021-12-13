@@ -28,3 +28,6 @@ passwd $username
 
 # set root password
 passwd
+
+# Disable pcspkr
+echo 'blacklist pcspkr' > /etc/modprobe.d/nobeep.conf
