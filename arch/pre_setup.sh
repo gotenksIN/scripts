@@ -10,7 +10,7 @@ hwclock --systohc
 
 # Set hostname
 read -e -p "Enter your hostname: " hostname
-echo"$hostname" > /etc/hostname
+echo "$hostname" > /etc/hostname
 
 # Allow users of group `wheel` to use sudo
 echo "%wheel ALL = (ALL) ALL" > /etc/sudoers.d/wheel
