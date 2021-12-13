@@ -24,9 +24,11 @@ locale-gen
 # Add muh user
 read -e -p "Enter your username: " -i "gotenks" username
 useradd -m -G wheel $username
+echo "Set password for "$username
 passwd $username
 
 # set root password
+echo "Set root password"
 passwd
 
 # Disable pcspkr
