@@ -17,5 +17,3 @@ fi
 
 # Enable some services for convenience
 sudo systemctl enable lightdm.service
-sudo systemctl enable NetworkManager.service
-sudo systemctl disable NetworkManager-wait-online.service
