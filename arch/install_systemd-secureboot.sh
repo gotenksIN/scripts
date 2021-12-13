@@ -40,14 +40,15 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
 read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
 if [[ "$cpu" =~ ^[1]$ ]]; then
 sudo pacman -Sy intel-ucode
-echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
+microcode="intel-ucode.img"
 else
 sudo pacman -Sy amd-ucode
+microcode="amd-ucode.img"
+fi
 echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 fi
-fi
 
-echo "options root=$UUID rw quiet splash" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
+echo "options root=UUID=$UUID rw quiet splash" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 
 # Create secure-boot compatible entry
 sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l EFI/systemd/PreLoader.efi --verbose
