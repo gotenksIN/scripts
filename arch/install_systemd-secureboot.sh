@@ -8,6 +8,7 @@ sudo bootctl install
 
 # Copy signed preloader to esp
 sudo cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
+sudo cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 
 # Setup all vars
 export UUID=$(findmnt -kno UUID /)
@@ -28,7 +29,7 @@ EOF
 
 # Setup arch config for systemd-boot
 sudo tee /boot/loader/entries/arch.conf > /dev/null <<EOF
-title   $flabel"
+title   $flabel
 linux   /$loader
 initrd  /$initrd
 EOF
