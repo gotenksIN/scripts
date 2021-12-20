@@ -11,9 +11,9 @@ rm install.deb.sh
 sudo apt install speedtest
 
 # Install bottom
-curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.4/bottom_0.6.4_amd64.deb
-sudo dpkg -i bottom_0.6.4_amd64.deb
-rm bottom_0.6.4_amd64.deb
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.5/bottom_0.6.5_amd64.deb
+sudo dpkg -i bottom_0.6.5_amd64.deb
+rm bottom_0.6.5_amd64.deb
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
