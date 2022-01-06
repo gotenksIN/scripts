@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-12-20T21:25:18.226-00:00",
+	"CreationDate" : "2022-01-06T17:07:00.087-00:00",
 	"Sources" :
 	[
 		{
@@ -20,6 +20,9 @@
 				},
 				{
 					"PackageIdentifier" : "GnuPG.Gpg4win"
+				},
+				{
+					"PackageIdentifier" : "Iriun.IriunWebcam"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -46,40 +49,25 @@
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2013Redist-x64"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2010Redist-x64"
+					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2012Redist-x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VC++2008Redist-x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VC++2013Redist-x86"
-				},
-				{
-					"PackageIdentifier" : "Nvidia.PhysX"
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
 					"PackageIdentifier" : "Clement.bottom"
 				},
 				{
+					"PackageIdentifier" : "Nvidia.PhysX"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.XNARedist"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VC++2010Redist-x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VC++2012Redist-x64"
 				}
 			],
 			"SourceDetails" :
