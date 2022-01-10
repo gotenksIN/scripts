@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-01-06T17:07:00.087-00:00",
+	"CreationDate" : "2022-01-10T08:14:20.454-00:00",
 	"Sources" :
 	[
 		{
@@ -43,9 +43,6 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "Ubisoft.Connect"
-				},
-				{
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
@@ -61,13 +58,7 @@
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
-					"PackageIdentifier" : "Clement.bottom"
-				},
-				{
 					"PackageIdentifier" : "Nvidia.PhysX"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.XNARedist"
 				}
 			],
 			"SourceDetails" :
