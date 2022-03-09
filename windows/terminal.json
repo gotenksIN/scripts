@@ -5,6 +5,9 @@
 "copyFormatting": "none",
 "copyOnSelect": false,
 "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+"initialCols": 150,
+"initialRows": 40,
+"launchMode": "default",
 "profiles":
 {
     "defaults":
@@ -13,7 +16,7 @@
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
         "closeOnExit": "always",
-        "colorScheme": "One Half Dark",
+        "colorScheme": "Snazzy",
         "font":
         {
             "face": "MesloLGS Nerd Font Mono",
@@ -128,6 +131,29 @@
         "yellow": "#C18301"
     },
     {
+        "background": "#282A36",
+        "black": "#282A36",
+        "blue": "#57C7FF",
+        "brightBlack": "#686868",
+        "brightBlue": "#57C7FF",
+        "brightCyan": "#9AEDFE",
+        "brightGreen": "#5AF78E",
+        "brightPurple": "#FF6AC1",
+        "brightRed": "#FF5C57",
+        "brightWhite": "#EFF0EB",
+        "brightYellow": "#F3F99D",
+        "cursorColor": "#97979B",
+        "cyan": "#9AEDFE",
+        "foreground": "#EFF0EB",
+        "green": "#5AF78E",
+        "name": "Snazzy",
+        "purple": "#FF6AC1",
+        "red": "#FF5C57",
+        "selectionBackground": "#3E404A",
+        "white": "#F1F1F0",
+        "yellow": "#F3F99D"
+    },
+    {
         "background": "#002B36",
         "black": "#002B36",
         "blue": "#268BD2",
@@ -216,29 +242,6 @@
         "purple": "#75507B",
         "red": "#CC0000",
         "selectionBackground": "#FFFFFF",
-        "white": "#D3D7CF",
-        "yellow": "#C4A000"
-    },
-    {
-        "background": "#300A24",
-        "black": "#2E3436",
-        "blue": "#3465A4",
-        "brightBlack": "#555753",
-        "brightBlue": "#729FCF",
-        "brightCyan": "#34E2E2",
-        "brightGreen": "#8AE234",
-        "brightPurple": "#AD7FA8",
-        "brightRed": "#EF2929",
-        "brightWhite": "#EEEEEC",
-        "brightYellow": "#FCE94F",
-        "cursorColor": "#BBBBBB",
-        "cyan": "#06989A",
-        "foreground": "#EEEEEC",
-        "green": "#4E9A06",
-        "name": "Ubuntu Default",
-        "purple": "#75507B",
-        "red": "#CC0000",
-        "selectionBackground": "#B5D5FF",
         "white": "#D3D7CF",
         "yellow": "#C4A000"
     },
