@@ -8,12 +8,12 @@ echo 'cp /boot/vmlinuz /boot/initrd.img /boot/efi/EFI/ubuntu/' | sudo tee -a /et
 sudo chmod +x /etc/kernel/postinst.d/zz-update-efistub
 sudo /etc/kernel/postinst.d/zz-update-efistub
 
-label='Ubuntu (efistub)'
 loader='\EFI\ubuntu\vmlinuz'
 initrd='\EFI\ubuntu\initrd.img'
 
 read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
 read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
+read -e -p "Enter label for this entry (Label is what would show up in UEFI entries): " -i "ubuntu (efistub)" label
 
 printf -v largs "%s " \
         "root=UUID=$(findmnt -kno UUID /) rw" \
