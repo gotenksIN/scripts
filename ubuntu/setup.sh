@@ -11,9 +11,9 @@ rm install.deb.sh
 sudo apt install speedtest
 
 # Install bottom
-curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.5/bottom_0.6.5_amd64.deb
-sudo dpkg -i bottom_0.6.5_amd64.deb
-rm bottom_0.6.5_amd64.deb
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_0.6.8_amd64.deb
+sudo dpkg -i bottom_0.6.8_amd64.deb
+rm bottom_0.6.8_amd64.deb
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
@@ -25,7 +25,7 @@ sudo rm microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
-sudo apt install microsoft-edge-dev code-insiders font-manager telegram-desktop
+sudo apt install microsoft-edge-dev code-insiders font-manager
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
