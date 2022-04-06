@@ -1,13 +1,13 @@
 {
 "$help": "https://aka.ms/terminal-documentation",
 "$schema": "https://aka.ms/terminal-profiles-schema",
+"actions": [],
 "confirmCloseAllTabs": false,
 "copyFormatting": "none",
 "copyOnSelect": false,
 "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
 "initialCols": 150,
 "initialRows": 40,
-"launchMode": "default",
 "profiles":
 {
     "defaults":
@@ -270,6 +270,7 @@
     }
 ],
 "showTabsInTitlebar": true,
+"showTerminalTitleInTitlebar": true,
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
 "theme": "dark"
