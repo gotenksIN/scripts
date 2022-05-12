@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install signed preloader for uefi and pacman hook to auto-update systemd-boot
-yay -Sy systemd-boot-pacman-hook preloader-signed
+paru -Sy systemd-boot-pacman-hook preloader-signed
 
 # Install systemd-boot
 sudo bootctl install
