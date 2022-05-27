@@ -99,8 +99,9 @@
   fonts = {
     enableDefaultFonts = true;
     fonts = with pkgs; [
-      cascadia-code
+      inter
       jetbrains-mono
+      meslo-lgs-nf
       noto-fonts
       noto-fonts-emoji
       open-sans
