@@ -18,6 +18,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "RyzenBox"; # Define your hostname.
 
   # Set your time zone.
