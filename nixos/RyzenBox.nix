@@ -67,20 +67,26 @@
   # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
     android-udev-rules
+    aria2
     bash
     cmake
     curl
+    evince
     ffmpeg
+    git
+    gnome.eog
+    gnome.gnome-screenshot
+    htop
     htop
     lsb-release
     nano
+    ncdu
+    neofetch
     networkmanager
-    ninja
-    plata-theme
     python310
     python310Packages.pip
-    wget
     unzip
+    wget
     ];
 
   # Install udev packages
@@ -111,25 +117,23 @@
     };
 
   # Install some packages I use quite often
-    users.users.gotenks.packages = with pkgs; [
-      aria2
-      bat
-      capitaine-cursors
-      figlet
-      fontconfig
-      fortune
-      git
-      google-chrome
-      htop
-      gnome.gnome-screenshot
-      kotatogram-desktop
-      ncdu
-      neofetch
-      papirus-icon-theme
-      pfetch
-      vlc
-      vscode-with-extensions
-    ];
+  users.users.gotenks.packages = with pkgs; [
+    alacritty
+    bat
+    bottom
+    capitaine-cursors
+    figlet
+    font-manager
+    fortune
+    google-chrome
+    kotatogram-desktop
+    ookla-speedtest
+    papirus-icon-theme
+    plata-theme
+    ripgrep
+    vlc
+    vscode-with-extensions
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
