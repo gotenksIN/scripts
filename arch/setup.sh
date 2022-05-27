@@ -7,18 +7,18 @@ sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
 sudo systemctl enable NetworkManager.service
 sudo systemctl disable NetworkManager-wait-online.service
 
-git clone https://aur.archlinux.org/paru.git --depth 1
-cd paru
+git clone https://aur.archlinux.org/yay.git --depth 1
+cd yay
 makepkg -si
 cd ..
-rm -rf paru
+rm -rf yay
 
-paru -Sy ookla-speedtest-bin
+yay -Sy ookla-speedtest-bin
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-paru -Sy microsoft-edge-dev-bin telegram-desktop alacritty \
+yay -Sy microsoft-edge-dev-bin telegram-desktop alacritty \
         visual-studio-code-insiders-bin ttf-dejavu ttf-droid \
         gnu-free-fonts ttf-liberation noto-fonts noto-fonts-cjk \
         noto-fonts-emoji noto-fonts-extra ttf-ubuntu-font-family \

@@ -10,7 +10,7 @@ fi
 #Stuff for people with a integrated + dedicated GPU
 read -e -p "Do you have Intel integrated GPU and discrete NVIDIA GPU? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-paru -Sy system76-power
+yay -Sy system76-power
 
 # Stuff for system76-power to work properly
 sudo systemctl enable system76-power.service
