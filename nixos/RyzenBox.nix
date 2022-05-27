@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
     ];
 
+  # Allow installing proprietary packages
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -18,6 +19,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Use latest mainline kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "RyzenBox"; # Define your hostname.
@@ -39,6 +41,7 @@
       keyMap = "us";
   };
 
+  # Set GUI specific configs
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
@@ -48,27 +51,20 @@
     displayManager.defaultSession = "cinnamon";
     videoDrivers = [ "nvidia" ];
   };
-
   hardware.opengl.enable = true;
 
-  # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-  #sound.enable = false;
+  # Set pipewire configuration
   hardware.pulseaudio.enable = false;
-
-  # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
   };
 
-  # List packages installed in system profile. To search, run:
-    environment.systemPackages = with pkgs; [
-    android-udev-rules
+  # List packages installed in system profile.
+  environment.systemPackages = with pkgs; [
     aria2
     bash
     cmake
@@ -89,7 +85,7 @@
     python310Packages.pip
     unzip
     wget
-    ];
+  ];
 
   # Install udev packages
   services.udev.packages = with pkgs; [
@@ -120,12 +116,10 @@
 
   # Install some packages I use quite often
   users.users.gotenks.packages = with pkgs; [
-    alacritty
     bat
     bottom
     capitaine-cursors
     figlet
-    font-manager
     fortune
     google-chrome
     kotatogram-desktop
@@ -144,8 +138,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  # List services that you want to enable:
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
