@@ -44,8 +44,10 @@
       cinnamon.enable = true;
     };
     displayManager.defaultSession = "cinnamon";
-    videoDrivers = [ "pkgs.unstable.nvidia" ];
+    videoDrivers = [ "nvidia" ];
   };
+
+  hardware.opengl.enable = true;
 
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
   #sound.enable = false;
