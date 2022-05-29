@@ -5,15 +5,12 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Allow installing proprietary packages
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config = { allowUnfree = true; };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -37,17 +34,15 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
-      font = "Lat2-Terminus16";
-      keyMap = "us";
+    font = "Lat2-Terminus16";
+    keyMap = "us";
   };
 
   # Set GUI specific configs
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
-    desktopManager = {
-      cinnamon.enable = true;
-    };
+    desktopManager = { cinnamon.enable = true; };
     displayManager.defaultSession = "cinnamon";
     videoDrivers = [ "nvidia" ];
   };
@@ -88,15 +83,16 @@
   ];
 
   # Install udev packages
-  services.udev.packages = with pkgs; [
-    android-udev-rules
-  ];
+  services.udev.packages = with pkgs; [ android-udev-rules ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gotenks = {
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      extraGroups = [ "wheel" "networkmanager"]; # Enable ‘sudo’ and allow use of 'networkmanager' for the user.
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ]; # Enable ‘sudo’ and allow use of 'networkmanager' for the user.
   };
 
   # Configure fonts
@@ -111,8 +107,8 @@
       open-sans
       roboto
       ubuntu_font_family
-      ];
-    };
+    ];
+  };
 
   # Install some packages I use quite often
   users.users.gotenks.packages = with pkgs; [
