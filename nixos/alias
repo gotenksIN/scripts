@@ -1,7 +1,6 @@
 alias cat='bat --style=grid,header --theme="zenburn"'
 alias install='nix-env -iA'
 alias remove='nix-env --uninstall'
-alias search='nix search'
 alias update='nix-channel --update'
 alias upgrade='nix-env -u'
 alias list='nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq | grep'
