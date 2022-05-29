@@ -121,12 +121,13 @@
     capitaine-cursors
     figlet
     fortune
-    kotatogram-desktop
     microsoft-edge-dev
+    nixfmt
     ookla-speedtest
     papirus-icon-theme
     plata-theme
     ripgrep
+    tdesktop
     vlc
     vscode-with-extensions
   ];
