@@ -121,8 +121,8 @@
     capitaine-cursors
     figlet
     fortune
-    google-chrome
     kotatogram-desktop
+    microsoft-edge-dev
     ookla-speedtest
     papirus-icon-theme
     plata-theme
@@ -148,4 +148,3 @@
   system.stateVersion = "21.11"; # Did you read the comment?
 
 }
-
