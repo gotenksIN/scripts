@@ -108,6 +108,7 @@
       roboto
       ubuntu_font_family
     ];
+    fontDir.enable = true;
   };
 
   # Install some packages I use quite often
@@ -126,6 +127,7 @@
     tdesktop
     vlc
     vscode-with-extensions
+    gitRepo
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
