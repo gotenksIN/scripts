@@ -1,9 +1,9 @@
 [user]
 	name = Omkar Chandorkar
 	email = gotenksIN@aospa.co
-	signingkey = 6D8DEF354ED78DE805938A9D95A33FD984777F70
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/l6Yi9GMuGJjmHcntZfujdE0kCtg5Lkt1ZcJLeVZP+ gotenks@RyzenBox
 [gpg]
-	program = gpg
+	format = ssh
 [commit]
 	gpgsign = true
 [pull]
@@ -14,3 +14,5 @@
 	defaultBranch = master
 [merge]
 	log = true
+[tag]
+	gpgsign = true
