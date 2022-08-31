@@ -1,14 +1,19 @@
 {
     "$schema": "https://aka.ms/winget-settings.schema.json",
 
+    "source": {
+        "autoUpdateIntervalInMinutes": 0
+    },
+    "visual": {
+        "progressBar": "accent"
+    },
     "experimentalFeatures": {
         "dependencies": true,
-        "directMSI": true
+        "directMSI": true,
+        "zipInstall": true
     },
-    "installBehavior": {
-        "preferences": {
-            "scope": "user"
-        }
+    "uninstallbehaviour": {
+        "purgePortablePackage": true
     },
     "network": {
         "downloader": "do"
