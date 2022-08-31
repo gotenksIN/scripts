@@ -33,6 +33,15 @@
             "hidden": false,
             "name": "PowerShell",
             "source": "Windows.Terminal.PowershellCore"
+        },
+        {
+            "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
+            "elevate": true,
+            "guid": "{0246fa08-bf32-4291-b7ed-71f2acc3aeea}",
+            "hidden": false,
+            "icon": "ms-appx:///ProfileIcons/pwsh.png",
+            "name": "PowerShell (Administrator)",
+            "startingDirectory": "%USERPROFILE%"
         }
     ]
 },
