@@ -1,22 +1,19 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2021-11-29T09:21:59.012-00:00",
-	"Sources" : 
+	"CreationDate" : "2022-08-31T10:45:19.402-00:00",
+	"Sources" :
 	[
 		{
-			"Packages" : 
+			"Packages" :
 			[
 				{
 					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
+					"PackageIdentifier" : "Discord.Discord"
+				},
+				{
 					"PackageIdentifier" : "Git.Git"
-				},
-				{
-					"PackageIdentifier" : "GnuPG.GnuPG"
-				},
-				{
-					"PackageIdentifier" : "GnuPG.Gpg4win"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -28,32 +25,32 @@
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
 					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Teams"
-				},
-				{
-					"PackageIdentifier" : "Clement.bottom"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
 				},
 				{
-					"PackageIdentifier" : "Zoom.Zoom"
+					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
+					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
 				}
 			],
 			"SourceDetails" : 
 			{
-				"Argument" : "https://winget.azureedge.net/cache",
+				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
 		}
 	],
-	"WinGetVersion" : "1.2.3131-preview"
+	"WinGetVersion" : "1.4.2161-preview"
 }
