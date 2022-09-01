@@ -35,6 +35,12 @@
             "source": "Windows.Terminal.PowershellCore"
         },
         {
+            "guid": "{d1569d34-e3dc-506e-b3ef-3ca18387f714}",
+            "hidden": false,
+            "name": "Ubuntu",
+            "source": "Windows.Terminal.Wsl"
+        },
+        {
             "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
             "elevate": true,
             "guid": "{0246fa08-bf32-4291-b7ed-71f2acc3aeea}",
@@ -251,6 +257,29 @@
         "purple": "#75507B",
         "red": "#CC0000",
         "selectionBackground": "#FFFFFF",
+        "white": "#D3D7CF",
+        "yellow": "#C4A000"
+    },
+    {
+        "background": "#300A24",
+        "black": "#2E3436",
+        "blue": "#3465A4",
+        "brightBlack": "#555753",
+        "brightBlue": "#729FCF",
+        "brightCyan": "#34E2E2",
+        "brightGreen": "#8AE234",
+        "brightPurple": "#AD7FA8",
+        "brightRed": "#EF2929",
+        "brightWhite": "#EEEEEC",
+        "brightYellow": "#FCE94F",
+        "cursorColor": "#BBBBBB",
+        "cyan": "#06989A",
+        "foreground": "#EEEEEC",
+        "green": "#4E9A06",
+        "name": "Ubuntu Default",
+        "purple": "#75507B",
+        "red": "#CC0000",
+        "selectionBackground": "#B5D5FF",
         "white": "#D3D7CF",
         "yellow": "#C4A000"
     },
