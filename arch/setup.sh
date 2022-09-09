@@ -2,7 +2,7 @@
 
 sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
                 wget curl aria2 inetutils bat ripgrep p7zip efibootmgr neofetch \
-                screen ccache networkmanager python-pip
+                screen ccache networkmanager python-pip schedtool
 
 sudo systemctl enable NetworkManager.service
 sudo systemctl disable NetworkManager-wait-online.service

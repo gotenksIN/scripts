@@ -59,3 +59,7 @@ function extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+function fastreposync() {
+  time schedtool -B -e ionice -n 0 `which repo` sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle -j$(nproc --all) "$@";
+}
