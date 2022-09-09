@@ -63,3 +63,17 @@ function extract () {
 function fastreposync() {
   time schedtool -B -e ionice -n 0 `which repo` sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle -j$(nproc --all) "$@";
 }
+
+function gerrit() {
+    if [ ! -d ".git" ]; then
+        echo -e "Please run this inside a git directory";
+    else
+        git remote rm gerrit 2>/dev/null;
+        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.gerrit.aospa.co.username);
+        if [[ -z "${GERRIT_USER}" ]]; then
+            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSPA" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSPA|ssh://gerrit.aospa.co:29418/AOSPA|");
+        else
+            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSPA" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSPA|ssh://${GERRIT_USER}@gerrit.aospa.co:29418/AOSPA|");
+        fi
+    fi
+}
