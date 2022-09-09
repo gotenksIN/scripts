@@ -105,5 +105,4 @@ source ~/scripts/common/functions
 source ~/scripts/common/aliases
 
 onLogin
-export GPG_TTY=$(tty)
 export PATH=$PATH:/home/$USER/.local/bin
