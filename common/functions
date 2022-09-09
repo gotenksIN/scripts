@@ -77,3 +77,12 @@ function gerrit() {
         fi
     fi
 }
+
+function set_ccache () {
+  ccache_path=$(which ccache)
+  export USE_CCACHE=1
+  export CCACHE_EXEC="$ccache_path"
+  export CCACHE_DIR=/home/$USER/.cache/ccache
+  $ccache_path -M 10G
+  $ccache_path -o compression=true
+}
