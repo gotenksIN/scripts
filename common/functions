@@ -45,7 +45,7 @@ function onLogin() {
     fortune
 }
 
-extract () {
+function extract () {
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)   tar xjvf $1    ;;
