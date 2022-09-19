@@ -15,6 +15,7 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
         microcode="\intel-ucode.img"
         printf -v largs "%s " \
                 "root=UUID=$(findmnt -kno UUID /) rw" \
+                "rootfstype=$(findmnt -kno FSTYPE /)" \
                 "initrd"=${microcode} "initrd=${initrd}" \
                 quiet splash
         else
@@ -22,6 +23,7 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
         microcode="\amd-ucode.img"
         printf -v largs "%s " \
                 "root=UUID=$(findmnt -kno UUID /) rw" \
+                "rootfstype=$(findmnt -kno FSTYPE /)" \
                 "initrd"=${microcode} "initrd=${initrd}" \
                 initcall_blacklist=acpi_cpufreq_init \
                 amd_pstate.shared_mem=1 \
@@ -30,6 +32,7 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
 else
         printf -v largs "%s " \
                 "root=UUID=$(findmnt -kno UUID /) rw" \
+                "rootfstype=$(findmnt -kno FSTYPE /)" \
                 "initrd=${initrd}" quiet splash
 fi
 
