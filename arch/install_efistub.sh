@@ -5,6 +5,7 @@ read -e -p "Enter partition number for your boot partition (e.g. if your /boot i
 read -e -p "Enter loader name (e.g. vmlinuz-linux): " -i "vmlinuz-linux" loader
 read -e -p "Enter initrd name (e.g. initramfs-linux.img): " -i "initramfs-linux.img" initrd
 read -e -p "Enter label for this entry (Label is what would show up in UEFI entries): " -i "rendumOS (efistub)" label
+read -e -p "Enter any extra arguments you want to pass to kernel cmdline: " extra
 
 read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
@@ -25,4 +26,4 @@ printf -v largs "%s " \
         "initrd=${initrd}"
 fi
 
-sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } quiet splash" --verbose
+sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } quiet splash ${extra}" --verbose
