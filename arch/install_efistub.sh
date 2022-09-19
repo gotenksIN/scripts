@@ -19,11 +19,13 @@ microcode="amd-ucode.img"
 fi
 printf -v largs "%s " \
         "root=UUID=$(findmnt -kno UUID /) rw" \
-        "initrd"=${microcode} "initrd=${initrd}"
+        "initrd"=${microcode} "initrd=${initrd}" \
+        quiet splash
+
 else
 printf -v largs "%s " \
         "root=UUID=$(findmnt -kno UUID /) rw" \
-        "initrd=${initrd}"
+        "initrd=${initrd}" quiet splash
 fi
 
-sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } quiet splash ${extra}" --verbose
+sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } ${extra}" --verbose
