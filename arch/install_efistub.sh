@@ -9,23 +9,28 @@ read -e -p "Enter any extra arguments you want to pass to kernel cmdline: " extr
 
 read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
-if [[ "$cpu" =~ ^[1]$ ]]; then
-sudo pacman -Sy intel-ucode
-microcode="intel-ucode.img"
+        read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
+        if [[ "$cpu" =~ ^[1]$ ]]; then
+        sudo pacman -Sy intel-ucode
+        microcode="\intel-ucode.img"
+        printf -v largs "%s " \
+                "root=UUID=$(findmnt -kno UUID /) rw" \
+                "initrd"=${microcode} "initrd=${initrd}" \
+                quiet splash
+        else
+        sudo pacman -Sy amd-ucode
+        microcode="\amd-ucode.img"
+        printf -v largs "%s " \
+                "root=UUID=$(findmnt -kno UUID /) rw" \
+                "initrd"=${microcode} "initrd=${initrd}" \
+                initcall_blacklist=acpi_cpufreq_init \
+                amd_pstate.shared_mem=1 \
+                quiet splash
+        fi
 else
-sudo pacman -Sy amd-ucode
-microcode="amd-ucode.img"
-fi
-printf -v largs "%s " \
-        "root=UUID=$(findmnt -kno UUID /) rw" \
-        "initrd"=${microcode} "initrd=${initrd}" \
-        quiet splash
-
-else
-printf -v largs "%s " \
-        "root=UUID=$(findmnt -kno UUID /) rw" \
-        "initrd=${initrd}" quiet splash
+        printf -v largs "%s " \
+                "root=UUID=$(findmnt -kno UUID /) rw" \
+                "initrd=${initrd}" quiet splash
 fi
 
 sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } ${extra}" --verbose
