@@ -34,7 +34,7 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/vscode
 sudo dnf5 upgrade
-sudo dnf5 install microsoft-edge-dev code-insiders font-manager gnome-tweaks papirus-icon-theme
+sudo dnf5 install microsoft-edge-dev code-insiders font-manager gnome-tweaks papirus-icon-theme piper
 fi
 
 # Setup zsh
