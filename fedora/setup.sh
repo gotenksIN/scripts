@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
 
+# Install dnf5
+sudo dnf copr enable rpmsoftwaremanagement/dnf5-unstable -y
+sudo dnf install dnf5 -y
+
 # Upgrade installed packages
-sudo dnf update --refresh
+sudo dnf5 upgrade
 
 # Enable RPM Fusion repositories
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf5 install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf5 install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf groupupdate core
 
 # Install frequently used packages
-sudo dnf install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
-    python3-pip bat p7zip ripgrep schedtool ccache dnfdragora util-linux-user \
-    telegram-desktop
+sudo dnf5 install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
+    python3-pip bat p7zip ripgrep schedtool ccache telegram-desktop util-linux-user
 
 # Install Ookla Speedtest
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
-sudo dnf install speedtest
+sudo dnf5 install speedtest
 
 # Install bottom
 sudo dnf copr enable atim/bottom -y
-sudo dnf install bottom
+sudo dnf5 install bottom
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
@@ -30,8 +33,8 @@ sudo dnf groupupdate sound-and-video
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/vscode
-sudo dnf update --refresh
-sudo dnf install microsoft-edge-dev code-insiders font-manager gnome-tweaks papirus-icon-theme
+sudo dnf5 upgrade
+sudo dnf5 install microsoft-edge-dev code-insiders font-manager gnome-tweaks papirus-icon-theme
 fi
 
 # Setup zsh
