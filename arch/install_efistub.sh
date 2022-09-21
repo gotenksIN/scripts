@@ -14,16 +14,16 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
         sudo pacman -Sy intel-ucode
         microcode="\intel-ucode.img"
         printf -v largs "%s " \
-                "root=UUID=$(findmnt -kno UUID /) rw" \
-                "rootfstype=$(findmnt -kno FSTYPE /)" \
+                "root=UUID=$(sudo findmnt -kno UUID /) rw" \
+                "rootfstype=$(sudo findmnt -kno FSTYPE /)" \
                 "initrd"=${microcode} "initrd=${initrd}" \
                 quiet splash
         else
         sudo pacman -Sy amd-ucode
         microcode="\amd-ucode.img"
         printf -v largs "%s " \
-                "root=UUID=$(findmnt -kno UUID /) rw" \
-                "rootfstype=$(findmnt -kno FSTYPE /)" \
+                "root=UUID=$(sudo findmnt -kno UUID /) rw" \
+                "rootfstype=$(sudo findmnt -kno FSTYPE /)" \
                 "initrd"=${microcode} "initrd=${initrd}" \
                 initcall_blacklist=acpi_cpufreq_init \
                 amd_pstate.shared_mem=1 \
@@ -31,8 +31,8 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
         fi
 else
         printf -v largs "%s " \
-                "root=UUID=$(findmnt -kno UUID /) rw" \
-                "rootfstype=$(findmnt -kno FSTYPE /)" \
+                "root=UUID=$(sudo findmnt -kno UUID /) rw" \
+                "rootfstype=$(sudo findmnt -kno FSTYPE /)" \
                 "initrd=${initrd}" quiet splash
 fi
 
