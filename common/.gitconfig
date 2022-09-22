@@ -16,3 +16,7 @@
 	log = true
 [tag]
 	gpgsign = true
+[color]
+	ui = auto
+[review "gerrit.aospa.co"]
+	username = gotenksIN
