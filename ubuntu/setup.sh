@@ -3,6 +3,10 @@
 sudo apt install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
                  python3-pip python3-venv bat p7zip-full ripgrep schedtool
 
+# Find architecture
+arch=`dpkg --print-architecture`
+echo "Current system is detected as ${arch} architecture."
+
 # Install Ookla Speedtest
 wget https://install.speedtest.net/app/cli/install.deb.sh
 chmod +x install.deb.sh
@@ -11,9 +15,17 @@ rm install.deb.sh
 sudo apt install speedtest
 
 # Install bottom
-curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_0.6.8_amd64.deb
-sudo dpkg -i bottom_0.6.8_amd64.deb
-rm bottom_0.6.8_amd64.deb
+if [[ $arch = amd64 ]]; then
+echo checkpoint
+curl -LO https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-unknown-linux-gnu.deb
+sudo dpkg -i bottom_x86_64-unknown-linux-gnu.deb
+rm bottom_x86_64-unknown-linux-gnu.deb
+elif [[ $arch = arm64 ]]; then
+echo checkpoint
+curl -LO https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_aarch64-unknown-linux-gnu.deb
+sudo dpkg -i bottom_aarch64-unknown-linux-gnu.deb
+rm bottom_aarch64-unknown-linux-gnu.deb
+fi
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
