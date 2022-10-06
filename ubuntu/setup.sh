@@ -8,10 +8,12 @@ arch=`dpkg --print-architecture`
 echo "Current system is detected as ${arch} architecture."
 
 # Install Ookla Speedtest
-wget https://install.speedtest.net/app/cli/install.deb.sh
-chmod +x install.deb.sh
-sudo os=ubuntu dist=hirsute ./install.deb.sh
-rm install.deb.sh
+sudo tee /etc/apt/sources.list.d/ookla_speedtest-cli.list > /dev/null <<EOF
+deb [signed-by=/etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/ubuntu/ jammy main
+deb-src [signed-by=/etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/ubuntu/ jammy main
+EOF
+curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg > /dev/null
+sudo apt update
 sudo apt install speedtest
 
 # Install bottom
