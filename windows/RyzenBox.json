@@ -1,11 +1,14 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-08-31T11:19:42.209-00:00",
+	"CreationDate" : "2022-10-31T12:21:19.703-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
+				{
+					"PackageIdentifier" : "SatisfactoryModding.SatisfactoryModManager"
+				},
 				{
 					"PackageIdentifier" : "7zip.7zip"
 				},
@@ -31,6 +34,9 @@
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
+					"PackageIdentifier" : "RaspberryPiFoundation.RaspberryPiImager"
+				},
+				{
 					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
@@ -40,19 +46,25 @@
 					"PackageIdentifier" : "WinDirStat.WinDirStat"
 				},
 				{
-					"PackageIdentifier" : "qBittorrent.qBittorrent"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2015-2019Redist-x64"
+					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Logitech.GHUB"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2015-2019Redist-x86"
+					"PackageIdentifier" : "Microsoft.VC++2008Redist-x64"
+				},
+				{
+					"PackageIdentifier" : "Mumble.Mumble"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
 				},
 				{
 					"PackageIdentifier" : "Nvidia.PhysX"
@@ -61,7 +73,7 @@
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
-					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
+					"PackageIdentifier" : "Oracle.JDK.18"
 				}
 			],
 			"SourceDetails" :
