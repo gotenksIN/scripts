@@ -20,7 +20,7 @@
         "font":
         {
             "face": "MesloLGS Nerd Font Mono",
-            "size": 10,
+            "size": 10.0,
             "weight": "normal"
         },
         "opacity": 80,
@@ -29,21 +29,17 @@
     "list":
     [
         {
-            "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+            "commandline": "\"C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe\"",
+            "guid": "{29e9424f-b246-4353-847c-ed7ba076c919}",
             "hidden": false,
+            "icon": "ms-appx:///ProfileIcons/pwsh.png",
             "name": "PowerShell",
-            "source": "Windows.Terminal.PowershellCore"
+            "startingDirectory": "%USERPROFILE%"
         },
         {
-            "guid": "{d1569d34-e3dc-506e-b3ef-3ca18387f714}",
-            "hidden": false,
-            "name": "Ubuntu",
-            "source": "Windows.Terminal.Wsl"
-        },
-        {
-            "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
+            "commandline": "\"C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe\"",
             "elevate": true,
-            "guid": "{0246fa08-bf32-4291-b7ed-71f2acc3aeea}",
+            "guid": "{d7bf3c3d-04e7-4b9d-a073-fce6d6102aae}",
             "hidden": false,
             "icon": "ms-appx:///ProfileIcons/pwsh.png",
             "name": "PowerShell (Administrator)",
@@ -311,5 +307,6 @@
 "showTerminalTitleInTitlebar": true,
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
-"theme": "dark"
+"theme": "dark",
+"themes": []
 }
