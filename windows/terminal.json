@@ -44,6 +44,16 @@
             "icon": "ms-appx:///ProfileIcons/pwsh.png",
             "name": "PowerShell (Administrator)",
             "startingDirectory": "%USERPROFILE%"
+        },
+        {
+            "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+            "hidden": true,
+            "name": "Windows PowerShell"
+        },
+        {
+            "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+            "hidden": true,
+            "name": "Command Prompt"
         }
     ]
 },
