@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-08-31T11:27:55.625-00:00",
+	"CreationDate" : "2022-11-04T12:52:45.724-00:00",
 	"Sources" :
 	[
 		{
@@ -25,22 +25,31 @@
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
+					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
-					"PackageIdentifier" : "Spotify.Spotify"
+					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
+				},
+				{
+					"PackageIdentifier" : "WireGuard.WireGuard"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.Runtime.3_1"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
-					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				}
 			],
 			"SourceDetails" : 
