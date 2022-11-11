@@ -29,7 +29,7 @@
     "list":
     [
         {
-            "commandline": "\"C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe\"",
+            "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
             "guid": "{29e9424f-b246-4353-847c-ed7ba076c919}",
             "hidden": false,
             "icon": "ms-appx:///ProfileIcons/pwsh.png",
@@ -37,7 +37,7 @@
             "startingDirectory": "%USERPROFILE%"
         },
         {
-            "commandline": "\"C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe\"",
+            "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
             "elevate": true,
             "guid": "{d7bf3c3d-04e7-4b9d-a073-fce6d6102aae}",
             "hidden": false,
