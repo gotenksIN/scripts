@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-11-04T12:52:45.724-00:00",
+	"CreationDate" : "2022-11-11T15:39:54.073-00:00",
 	"Sources" :
 	[
 		{
@@ -28,7 +28,7 @@
 					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
@@ -40,16 +40,7 @@
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
-				},
-				{
 					"PackageIdentifier" : "VideoLAN.VLC"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				}
 			],
 			"SourceDetails" : 
