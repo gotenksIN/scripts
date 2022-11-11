@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-10-31T12:21:19.703-00:00",
+	"CreationDate" : "2022-11-11T22:18:18.966-00:00",
 	"Sources" :
 	[
 		{
@@ -13,10 +13,16 @@
 					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
+					"PackageIdentifier" : "Piriform.Defraggler"
+				},
+				{
 					"PackageIdentifier" : "Discord.Discord"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
+				},
+				{
+					"PackageIdentifier" : "HandBrake.HandBrake"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -26,6 +32,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
+				},
+				{
+					"PackageIdentifier" : "OBSProject.OBSStudio"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
@@ -46,25 +55,34 @@
 					"PackageIdentifier" : "WinDirStat.WinDirStat"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
+				},
+				{
+					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
 					"PackageIdentifier" : "Logitech.GHUB"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VC++2008Redist-x64"
-				},
-				{
-					"PackageIdentifier" : "Mumble.Mumble"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell.Preview"
+					"PackageIdentifier" : "Mumble.Mumble.Client"
 				},
 				{
 					"PackageIdentifier" : "Nvidia.PhysX"
@@ -73,7 +91,19 @@
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
+				},
+				{
 					"PackageIdentifier" : "Oracle.JDK.18"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
 				}
 			],
 			"SourceDetails" :
