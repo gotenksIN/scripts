@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-11-11T22:18:18.966-00:00",
+	"CreationDate" : "2022-11-27T19:36:59.029-00:00",
 	"Sources" :
 	[
 		{
@@ -52,16 +52,19 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
+					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
 					"PackageIdentifier" : "WinDirStat.WinDirStat"
+				},
+				{
+					"PackageIdentifier" : "AOMEI.PartitionAssistant"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
 				},
 				{
 					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
@@ -73,13 +76,10 @@
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
+					"PackageIdentifier" : "Logitech.GHUB"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Logitech.GHUB"
 				},
 				{
 					"PackageIdentifier" : "Mumble.Mumble.Client"
@@ -88,22 +88,13 @@
 					"PackageIdentifier" : "Nvidia.PhysX"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
-				},
-				{
 					"PackageIdentifier" : "Oracle.JDK.18"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				}
 			],
 			"SourceDetails" :
@@ -115,5 +106,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.4.2161-preview"
+	"WinGetVersion" : "1.4.3132-preview"
 }
