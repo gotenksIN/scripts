@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-11-27T19:36:59.029-00:00",
+	"CreationDate" : "2022-12-06T23:02:56.184-00:00",
 	"Sources" :
 	[
 		{
@@ -22,19 +22,10 @@
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "HandBrake.HandBrake"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
-				},
-				{
-					"PackageIdentifier" : "OBSProject.OBSStudio"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
@@ -83,9 +74,6 @@
 				},
 				{
 					"PackageIdentifier" : "Mumble.Mumble.Client"
-				},
-				{
-					"PackageIdentifier" : "Nvidia.PhysX"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JDK.18"
