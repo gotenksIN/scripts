@@ -16,3 +16,6 @@ elif [[ "$(command -v dnf)" != "" ]]; then
     cp -r ~/scripts/common/\.* ~/
     echo "source ~/scripts/fedora/alias" >> ~/.zshrc
 fi
+
+echo "Enable SSH Agent on startup"
+systemctl --user enable --now ssh-agent
