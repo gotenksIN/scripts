@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2022-12-15T08:07:29.451-00:00",
+	"CreationDate" : "2022-12-15T08:29:55.343-00:00",
 	"Sources" :
 	[
 		{
@@ -65,6 +65,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JDK.18"
