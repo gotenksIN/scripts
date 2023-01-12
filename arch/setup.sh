@@ -16,8 +16,8 @@ rm -rf yay-bin
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-yay -Sy microsoft-edge-dev-bin telegram-desktop alacritty \
-        visual-studio-code-insiders-bin ttf-dejavu ttf-droid \
+yay -Sy microsoft-edge-stable-bin telegram-desktop alacritty \
+        visual-studio-code-bin ttf-dejavu ttf-droid \
         gnu-free-fonts ttf-liberation noto-fonts noto-fonts-cjk \
         noto-fonts-emoji noto-fonts-extra ttf-ubuntu-font-family \
         gsfonts discord spotify font-manager-git
