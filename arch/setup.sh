@@ -7,13 +7,11 @@ sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
 sudo systemctl enable NetworkManager.service
 sudo systemctl disable NetworkManager-wait-online.service
 
-git clone https://aur.archlinux.org/yay.git --depth 1
-cd yay
+git clone https://aur.archlinux.org/yay-bin.git --depth 1
+cd yay-bin
 makepkg -si
 cd ..
-rm -rf yay
-
-yay -Sy ookla-speedtest-bin
+rm -rf yay-bin
 
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
