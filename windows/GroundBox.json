@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-01-24T17:24:08.031-00:00",
+	"CreationDate" : "2023-03-23T10:22:50.284-00:00",
 	"Sources" :
 	[
 		{
@@ -28,6 +28,9 @@
 					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
+					"PackageIdentifier" : "evsar3.sshfs-win-manager"
+				},
+				{
 					"PackageIdentifier" : "SlackTechnologies.Slack"
 				},
 				{
@@ -40,10 +43,13 @@
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Logitech.GHUB"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "SSHFS-Win.SSHFS-Win"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.Runtime.3_1"
@@ -55,7 +61,7 @@
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "WinFsp.WinFsp"
 				},
 				{
 					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
@@ -85,5 +91,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.4.3132-preview"
+	"WinGetVersion" : "1.5.441-preview"
 }
