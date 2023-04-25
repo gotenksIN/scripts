@@ -20,7 +20,3 @@
 	ui = auto
 [review "gerrit.aospa.co"]
 	username = gotenksIN
-[includeIf "gitdir:~/Android/murena/"]
-  path = ~/.murena-gitconfig
-[push]
-	autoSetupRemote = true
