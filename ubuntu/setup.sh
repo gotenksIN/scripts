@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
-                 python3-pip python3-venv bat p7zip-full ripgrep schedtool
+                 python3-pip python3-venv bat p7zip-full ripgrep schedtool nala
 
 # Find architecture
 arch=`dpkg --print-architecture`
