@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-01-24T09:01:42.196-00:00",
+	"CreationDate" : "2023-04-26T10:27:30.193-00:00",
 	"Sources" :
 	[
 		{
@@ -8,9 +8,6 @@
 			[
 				{
 					"PackageIdentifier" : "SatisfactoryModding.SatisfactoryModManager"
-				},
-				{
-					"PackageIdentifier" : "NexusMods.Vortex"
 				},
 				{
 					"PackageIdentifier" : "7zip.7zip"
@@ -43,9 +40,6 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "Ubisoft.Connect"
-				},
-				{
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
@@ -55,34 +49,37 @@
 					"PackageIdentifier" : "qBittorrent.qBittorrent"
 				},
 				{
+					"PackageIdentifier" : "AOMEI.PartitionAssistant"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Logitech.GHUB"
+					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
+					"PackageIdentifier" : "Google.NearbyShare"
+				},
+				{
+					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JDK.18"
-				},
-				{
-					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -112,5 +109,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.4.3132-preview"
+	"WinGetVersion" : "1.5.1081-preview"
 }
