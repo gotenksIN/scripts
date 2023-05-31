@@ -20,6 +20,7 @@
     "Experimental": {
         "dependencies": true,
         "directMSI": true,
-        "zipInstall": true
+        "pinning": true,
+        "configuration": true
     }
 }
