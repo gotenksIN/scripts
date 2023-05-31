@@ -1,13 +1,13 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-03-23T10:22:50.284-00:00",
+	"CreationDate" : "2023-05-31T12:13:48.297-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
 				{
-					"PackageIdentifier" : "7zip.7zip"
+					"PackageIdentifier" : "M2Team.NanaZip"
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
@@ -19,13 +19,22 @@
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
+					"PackageIdentifier" : "Plex.Plex"
+				},
+				{
 					"PackageIdentifier" : "Spotify.Spotify"
+				},
+				{
+					"PackageIdentifier" : "WinDirStat.WinDirStat"
 				},
 				{
 					"PackageIdentifier" : "evsar3.sshfs-win-manager"
@@ -34,10 +43,7 @@
 					"PackageIdentifier" : "SlackTechnologies.Slack"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
-				},
-				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
@@ -46,19 +52,25 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
 					"PackageIdentifier" : "SSHFS-Win.SSHFS-Win"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.3_1"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
+					"PackageIdentifier" : "Google.NearbyShare"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
 				},
 				{
 					"PackageIdentifier" : "WinFsp.WinFsp"
@@ -67,29 +79,14 @@
 					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
 				}
 			],
-			"SourceDetails" : 
+			"SourceDetails" :
 			{
 				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
-		},
-		{
-			"Packages" :
-			[
-				{
-					"PackageIdentifier" : "XP8JK4HZBVF435"
-				}
-			],
-			"SourceDetails" :
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
-			}
 		}
 	],
-	"WinGetVersion" : "1.5.441-preview"
+	"WinGetVersion" : "1.5.1361-preview"
 }
