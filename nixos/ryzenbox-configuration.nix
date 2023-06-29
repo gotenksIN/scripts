@@ -22,6 +22,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Disable service for faster boot times
+  systemd.services.NetworkManager-wait-online.enable = false;
+  networking.dhcpcd.enable = false;
+
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
