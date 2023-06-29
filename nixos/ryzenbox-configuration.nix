@@ -72,6 +72,7 @@
   users.users.gotenks = {
     isNormalUser = true;
     description = "Omkar Chandorkar";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       microsoft-edge
