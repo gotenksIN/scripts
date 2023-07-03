@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-sudo apt install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
-                 python3-pip python3-venv bat p7zip-full ripgrep schedtool nala
+sudo apt install nala
+
+sudo nala install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
+                 python3-pip python3-venv bat p7zip-full ripgrep schedtool
 
 # Find architecture
 arch=`dpkg --print-architecture`
@@ -13,20 +15,18 @@ deb [signed-by=/etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https:
 deb-src [signed-by=/etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/ubuntu/ jammy main
 EOF
 curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg > /dev/null
-sudo apt update
-sudo apt install speedtest
+sudo nala update
+sudo nala install speedtest
 
 # Install bottom
 if [[ $arch = amd64 ]]; then
-echo checkpoint
-curl -LO https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-unknown-linux-gnu.deb
-sudo dpkg -i bottom_x86_64-unknown-linux-gnu.deb
-rm bottom_x86_64-unknown-linux-gnu.deb
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.3/bottom_0.9.3_amd64.deb
+sudo dpkg -i bottom_0.9.3_amd64.deb
+rm bottom_0.9.3_amd64.deb
 elif [[ $arch = arm64 ]]; then
-echo checkpoint
-curl -LO https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_aarch64-unknown-linux-gnu.deb
-sudo dpkg -i bottom_aarch64-unknown-linux-gnu.deb
-rm bottom_aarch64-unknown-linux-gnu.deb
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.3/bottom_0.9.3_arm64.deb
+sudo dpkg -i bottom_0.9.3_arm64.deb
+rm bottom_0.9.3_arm64.deb
 fi
 
 if [[ $arch = amd64 ]]; then
@@ -38,8 +38,8 @@ sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/
 sudo rm packages.microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/edge/ stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update
-sudo apt install microsoft-edge-dev code-insiders font-manager
+sudo nala update
+sudo nala install microsoft-edge code font-manager
 fi
 fi
 

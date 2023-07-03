@@ -1,6 +1,7 @@
 alias install='sudo nala install'
 alias remove='sudo nala remove'
 alias search='nala search'
+alias update='sudo nala update'
 alias upgrade='sudo nala upgrade'
 alias list='dpkg -l | grep'
 alias cat='batcat --style=grid,header --theme="zenburn"'
