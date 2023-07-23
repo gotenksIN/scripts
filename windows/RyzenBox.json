@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-07-01T12:30:55.762-00:00",
+	"CreationDate" : "2023-07-23T19:52:13.274-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
-				{
-					"PackageIdentifier" : "SatisfactoryModding.SatisfactoryModManager"
-				},
 				{
 					"PackageIdentifier" : "7zip.7zip"
 				},
@@ -46,7 +43,7 @@
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
-					"PackageIdentifier" : "WinDirStat.WinDirStat"
+					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
 					"PackageIdentifier" : "qBittorrent.qBittorrent"
@@ -55,31 +52,28 @@
 					"PackageIdentifier" : "WinSCP.WinSCP"
 				},
 				{
-					"PackageIdentifier" : "Google.NearbyShare"
-				},
-				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
 					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "calibre.calibre"
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "calibre.calibre"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
