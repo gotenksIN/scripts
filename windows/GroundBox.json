@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-07-01T08:27:29.942-00:00",
+	"CreationDate" : "2023-07-23T20:00:24.731-00:00",
 	"Sources" :
 	[
 		{
@@ -25,25 +25,13 @@
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
-				},
-				{
-					"PackageIdentifier" : "MusicBee.MusicBee"
-				},
-				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OneDrive.Insiders"
-				},
-				{
-					"PackageIdentifier" : "Plex.Plex"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
-					"PackageIdentifier" : "WinDirStat.WinDirStat"
+					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
 					"PackageIdentifier" : "SlackTechnologies.Slack"
@@ -52,10 +40,7 @@
 					"PackageIdentifier" : "WinSCP.WinSCP"
 				},
 				{
-					"PackageIdentifier" : "Google.NearbyShare"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -64,22 +49,13 @@
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
-				},
-				{
-					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
 				}
 			],
 			"SourceDetails" :
