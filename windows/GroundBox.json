@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-07-23T20:00:24.731-00:00",
+	"CreationDate" : "2023-08-02T06:28:04.167-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
-				{
-					"PackageIdentifier" : "M2Team.NanaZip"
-				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
 				},
@@ -19,16 +16,10 @@
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
@@ -38,6 +29,9 @@
 				},
 				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
+				},
+				{
+					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
