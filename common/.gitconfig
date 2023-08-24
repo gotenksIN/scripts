@@ -20,3 +20,5 @@
 	ui = auto
 [review "gerrit.aospa.co"]
 	username = gotenksIN
+[push]
+	autoSetupRemote = true
