@@ -22,3 +22,5 @@
 	username = gotenksIN
 [push]
 	autoSetupRemote = true
+[includeIf "gitdir:~/peartree/"]
+  path = ~/.peartree-gitconfig
