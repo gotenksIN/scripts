@@ -1,11 +1,14 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-07-23T19:52:13.274-00:00",
+	"CreationDate" : "2023-09-08T13:13:46.763-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
 				{
 					"PackageIdentifier" : "7zip.7zip"
 				},
@@ -14,6 +17,9 @@
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
+				},
+				{
+					"PackageIdentifier" : "Google.Chrome"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -34,9 +40,6 @@
 					"PackageIdentifier" : "RaspberryPiFoundation.RaspberryPiImager"
 				},
 				{
-					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
@@ -44,9 +47,6 @@
 				},
 				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
-				},
-				{
-					"PackageIdentifier" : "qBittorrent.qBittorrent"
 				},
 				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
@@ -61,19 +61,19 @@
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
-					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "calibre.calibre"
 				},
 				{
-					"PackageIdentifier" : "calibre.calibre"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
@@ -91,5 +91,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.1573-preview"
+	"WinGetVersion" : "1.6.2291-preview"
 }
