@@ -20,13 +20,13 @@ sudo nala install speedtest
 
 # Install bottom
 if [[ $arch = amd64 ]]; then
-curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.3/bottom_0.9.3_amd64.deb
-sudo dpkg -i bottom_0.9.3_amd64.deb
-rm bottom_0.9.3_amd64.deb
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.6/bottom_0.9.6_amd64.deb
+sudo dpkg -i bottom_0.9.6_amd64.deb
+rm bottom_0.9.6_amd64.deb
 elif [[ $arch = arm64 ]]; then
-curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.3/bottom_0.9.3_arm64.deb
-sudo dpkg -i bottom_0.9.3_arm64.deb
-rm bottom_0.9.3_arm64.deb
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.6/bottom_0.9.6_arm64.deb
+sudo dpkg -i bottom_0.9.6_arm64.deb
+rm bottom_0.9.6_arm64.deb
 fi
 
 if [[ $arch = amd64 ]]; then
