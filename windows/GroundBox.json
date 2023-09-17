@@ -1,11 +1,20 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-08-02T06:28:04.167-00:00",
+	"CreationDate" : "2023-09-17T11:24:27.266-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
+					"PackageIdentifier" : "M2Team.NanaZip"
+				},
+				{
+					"PackageIdentifier" : "Canonical.Ubuntu.2204"
+				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
 				},
@@ -13,13 +22,22 @@
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
+					"PackageIdentifier" : "Google.Chrome"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Edge"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
@@ -29,9 +47,6 @@
 				},
 				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
-				},
-				{
-					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
@@ -61,5 +76,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.1573-preview"
+	"WinGetVersion" : "1.7.2491-preview"
 }
