@@ -16,11 +16,11 @@ rm -rf yay-bin
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-yay -Sy microsoft-edge-stable-bin telegram-desktop alacritty \
+yay -Sy microsoft-edge-stable-bin telegram-desktop \
         visual-studio-code-bin ttf-dejavu ttf-droid \
         gnu-free-fonts ttf-liberation noto-fonts noto-fonts-cjk \
         noto-fonts-emoji noto-fonts-extra ttf-ubuntu-font-family \
-        gsfonts discord spotify font-manager-git
+        gsfonts discord font-manager
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
