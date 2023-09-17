@@ -3,5 +3,6 @@ alias remove='sudo nala remove'
 alias search='nala search'
 alias update='sudo nala update'
 alias upgrade='sudo nala upgrade'
+alias cleanup="sudo apt remove --purge $(dpkg -l | awk '/^rc/{print $2}')"
 alias list='dpkg -l | grep'
 alias cat='batcat --style=grid,header --theme="zenburn"'
