@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-09-08T13:13:46.763-00:00",
+	"CreationDate" : "2023-10-12T17:37:27.349-00:00",
 	"Sources" :
 	[
 		{
@@ -49,7 +49,19 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
+					"PackageIdentifier" : "qBittorrent.qBittorrent"
+				},
+				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2013.x86"
+				},
+				{
+					"PackageIdentifier" : "AOMEI.PartitionAssistant"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
@@ -58,28 +70,31 @@
 					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "GOG.Galaxy"
 				},
 				{
-					"PackageIdentifier" : "calibre.calibre"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
+					"PackageIdentifier" : "calibre.calibre"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JDK.18"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
 				}
 			],
 			"SourceDetails" :
@@ -91,5 +106,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.2291-preview"
+	"WinGetVersion" : "1.7.2782-preview"
 }
