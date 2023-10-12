@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo snap remove firefox
+
 sudo apt autoremove --purge snapd gnome-software-plugin-snap apparmor rsyslog apport ^vim mobile-broadband-provider-info ^cloud \
 hexchat thunderbird transmission ^libreoffice gnome-orca gnote graphviz ^imagemagick celluloid rhythmbox redshift fonts-arundina \
 gnome-2048 gnome-calculator gnome-calendar gnome-chess gnome-mahjongg gnome-software-plugin-snap gnome-sudoku bolt ^libreoffice \
