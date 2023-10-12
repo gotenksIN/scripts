@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-09-17T11:24:27.266-00:00",
+	"CreationDate" : "2023-10-12T18:54:08.657-00:00",
 	"Sources" :
 	[
 		{
@@ -11,9 +11,6 @@
 				},
 				{
 					"PackageIdentifier" : "M2Team.NanaZip"
-				},
-				{
-					"PackageIdentifier" : "Canonical.Ubuntu.2204"
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
@@ -49,10 +46,10 @@
 					"PackageIdentifier" : "WinSCP.WinSCP"
 				},
 				{
-					"PackageIdentifier" : "WireGuard.WireGuard"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
@@ -62,6 +59,9 @@
 				},
 				{
 					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
+					"PackageIdentifier" : "Oracle.JDK.20"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
@@ -76,5 +76,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.7.2491-preview"
+	"WinGetVersion" : "1.7.2782-preview"
 }
