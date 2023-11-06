@@ -1,1 +1,1 @@
-SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+eval `keychain --eval --agents ssh id_ed25519`
