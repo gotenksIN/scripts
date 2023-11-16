@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-10-12T18:54:08.657-00:00",
+	"CreationDate" : "2023-11-16T23:25:17.124-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
-				},
 				{
 					"PackageIdentifier" : "M2Team.NanaZip"
 				},
@@ -17,9 +14,6 @@
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
-				},
-				{
-					"PackageIdentifier" : "Google.Chrome"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -37,6 +31,9 @@
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
+					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
@@ -46,7 +43,10 @@
 					"PackageIdentifier" : "WinSCP.WinSCP"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "AOMEI.PartitionAssistant"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
@@ -55,19 +55,31 @@
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
+					"PackageIdentifier" : "Google.NearbyShare"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.7"
 				},
 				{
-					"PackageIdentifier" : "Oracle.JDK.20"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.7"
 				}
 			],
-			"SourceDetails" :
+			"SourceDetails" : 
 			{
 				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
@@ -76,5 +88,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.7.2782-preview"
+	"WinGetVersion" : "1.7.3172-preview"
 }
