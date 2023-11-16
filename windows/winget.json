@@ -17,8 +17,9 @@
         "downloader": "do"
     },
     "Experimental": {
-        "dependencies": true,
         "directMSI": true,
-        "configuration": true
+        "windowsFeature": true,
+        "configuration03": true,
+        "reboot": true
     }
 }
