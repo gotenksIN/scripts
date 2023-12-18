@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-10-12T17:37:27.349-00:00",
+	"CreationDate" : "2023-12-18T11:29:08.068-00:00",
 	"Sources" :
 	[
 		{
@@ -13,13 +13,19 @@
 					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
+					"PackageIdentifier" : "CrystalDewWorld.CrystalDiskInfo"
+				},
+				{
 					"PackageIdentifier" : "Discord.Discord"
+				},
+				{
+					"PackageIdentifier" : "Mozilla.Firefox.DeveloperEdition"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "Google.Chrome"
+					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -28,13 +34,16 @@
 					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.AppInstaller"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
-					"PackageIdentifier" : "MusicBee.MusicBee"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
 					"PackageIdentifier" : "RaspberryPiFoundation.RaspberryPiImager"
@@ -49,31 +58,28 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "qBittorrent.qBittorrent"
-				},
-				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2013.x86"
 				},
 				{
 					"PackageIdentifier" : "AOMEI.PartitionAssistant"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
+					"PackageIdentifier" : "calibre.calibre"
 				},
 				{
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "Google.NearbyShare"
 				},
 				{
 					"PackageIdentifier" : "GOG.Galaxy"
@@ -82,19 +88,13 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "calibre.calibre"
-				},
-				{
-					"PackageIdentifier" : "Oracle.JDK.18"
+					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
 				}
 			],
 			"SourceDetails" :
@@ -106,5 +106,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.7.2782-preview"
+	"WinGetVersion" : "1.7.3452-preview"
 }
