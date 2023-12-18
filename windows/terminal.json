@@ -8,6 +8,12 @@
 "defaultProfile": "{29e9424f-b246-4353-847c-ed7ba076c919}",
 "initialCols": 150,
 "initialRows": 40,
+"newTabMenu":
+[
+    {
+        "type": "remainingProfiles"
+    }
+],
 "profiles":
 {
     "defaults":
@@ -16,7 +22,8 @@
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
         "closeOnExit": "always",
-        "colorScheme": "Snazzy",
+        "colorScheme": "Dracula",
+        "cursorShape": "bar",
         "font":
         {
             "face": "MesloLGS Nerd Font Mono",
@@ -54,6 +61,12 @@
             "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
             "hidden": true,
             "name": "Command Prompt"
+        },
+        {
+            "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+            "hidden": true,
+            "name": "Ubuntu",
+            "source": "Windows.Terminal.Wsl"
         }
     ]
 },
@@ -104,6 +117,29 @@
         "selectionBackground": "#FFFFFF",
         "white": "#CCCCCC",
         "yellow": "#C19C00"
+    },
+    {
+        "name": "Dracula",
+        "cursorColor": "#F8F8F2",
+        "selectionBackground": "#44475A",
+        "background": "#282A36",
+        "foreground": "#F8F8F2",
+        "black": "#21222C",
+        "blue": "#BD93F9",
+        "cyan": "#8BE9FD",
+        "green": "#50FA7B",
+        "purple": "#FF79C6",
+        "red": "#FF5555",
+        "white": "#F8F8F2",
+        "yellow": "#F1FA8C",
+        "brightBlack": "#6272A4",
+        "brightBlue": "#D6ACFF",
+        "brightCyan": "#A4FFFF",
+        "brightGreen": "#69FF94",
+        "brightPurple": "#FF92DF",
+        "brightRed": "#FF6E6E",
+        "brightWhite": "#FFFFFF",
+        "brightYellow": "#FFFFA5"
     },
     {
         "background": "#282C34",
@@ -288,6 +324,29 @@
         "selectionBackground": "#B5D5FF",
         "white": "#D3D7CF",
         "yellow": "#C4A000"
+    },
+    {
+        "background": "#300A24",
+        "black": "#171421",
+        "blue": "#0037DA",
+        "brightBlack": "#767676",
+        "brightBlue": "#08458F",
+        "brightCyan": "#2C9FB3",
+        "brightGreen": "#26A269",
+        "brightPurple": "#A347BA",
+        "brightRed": "#C01C28",
+        "brightWhite": "#F2F2F2",
+        "brightYellow": "#A2734C",
+        "cursorColor": "#FFFFFF",
+        "cyan": "#3A96DD",
+        "foreground": "#FFFFFF",
+        "green": "#26A269",
+        "name": "Ubuntu-ColorScheme",
+        "purple": "#881798",
+        "red": "#C21A23",
+        "selectionBackground": "#FFFFFF",
+        "white": "#CCCCCC",
+        "yellow": "#A2734C"
     },
     {
         "background": "#000000",
