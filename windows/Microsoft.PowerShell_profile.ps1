@@ -17,5 +17,9 @@ function gitfp { git push -f @args }
 function gitr { git reset @args }
 function gitrh { git reset --hard @args }
 
+# Add some easy download aliases
+function quick_download { aria2c -x16 @args }
+function pd_download ([string]$id) { aria2c -x16 https://pixeldrain.com/api/file/$id }
+
 # Clear terminal once profile is finished loading
 clear
