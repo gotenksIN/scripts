@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-01-28T18:23:33.013-00:00",
+	"CreationDate" : "2024-02-19T10:27:26.459-00:00",
 	"Sources" :
 	[
 		{
@@ -11,6 +11,9 @@
 				},
 				{
 					"PackageIdentifier" : "7zip.7zip"
+				},
+				{
+					"PackageIdentifier" : "Canonical.Ubuntu.2204"
 				},
 				{
 					"PackageIdentifier" : "CrystalDewWorld.CrystalDiskInfo"
@@ -43,6 +46,9 @@
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.DevHome"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
@@ -53,6 +59,9 @@
 				},
 				{
 					"PackageIdentifier" : "RaspberryPiFoundation.RaspberryPiImager"
+				},
+				{
+					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
 					"PackageIdentifier" : "Valve.Steam"
@@ -70,19 +79,10 @@
 					"PackageIdentifier" : "AOMEI.PartitionAssistant"
 				},
 				{
-					"PackageIdentifier" : "calibre.calibre"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
-				},
-				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Google.NearbyShare"
 				},
 				{
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
@@ -97,10 +97,19 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
+					"PackageIdentifier" : "calibre.calibre"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
+				},
+				{
+					"PackageIdentifier" : "Google.NearbyShare"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				}
 			],
 			"SourceDetails" :
