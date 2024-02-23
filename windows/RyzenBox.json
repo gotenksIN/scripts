@@ -1,22 +1,16 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-02-19T10:27:26.459-00:00",
+	"CreationDate" : "2024-02-23T12:50:27.136-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
-				},
-				{
-					"PackageIdentifier" : "7zip.7zip"
+					"PackageIdentifier" : "M2Team.NanaZip"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu.2204"
-				},
-				{
-					"PackageIdentifier" : "CrystalDewWorld.CrystalDiskInfo"
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
@@ -46,19 +40,10 @@
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DevHome"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
-				},
-				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
-					"PackageIdentifier" : "RaspberryPiFoundation.RaspberryPiImager"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
@@ -67,10 +52,10 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
+					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "AntibodySoftware.WizTree"
+					"PackageIdentifier" : "SlackTechnologies.Slack"
 				},
 				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
@@ -88,22 +73,22 @@
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
-					"PackageIdentifier" : "GOG.Galaxy"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "calibre.calibre"
+					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "EpicGames.EpicGamesLauncher"
+					"PackageIdentifier" : "valinet.ExplorerPatcher"
 				},
 				{
 					"PackageIdentifier" : "Google.NearbyShare"
