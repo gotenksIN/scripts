@@ -18,8 +18,7 @@
     },
     "Experimental": {
         "directMSI": true,
-        "windowsFeature": true,
         "configuration03": true,
-        "reboot": true
+        "sideBySide": true
     }
 }
