@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-02-23T12:50:27.136-00:00",
+	"CreationDate" : "2024-04-03T11:56:22.985-00:00",
 	"Sources" :
 	[
 		{
@@ -20,6 +20,9 @@
 				},
 				{
 					"PackageIdentifier" : "REALiX.HWiNFO"
+				},
+				{
+					"PackageIdentifier" : "Logitech.OnboardMemoryManager"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -52,6 +55,9 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
+					"PackageIdentifier" : "Telegram.Unigram"
+				},
+				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
@@ -67,10 +73,10 @@
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
-					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
@@ -79,22 +85,25 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
+					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
 					"PackageIdentifier" : "valinet.ExplorerPatcher"
 				},
 				{
-					"PackageIdentifier" : "Google.NearbyShare"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
 				}
 			],
 			"SourceDetails" :
@@ -106,5 +115,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.7.3481-preview"
+	"WinGetVersion" : "1.8.924-preview"
 }
