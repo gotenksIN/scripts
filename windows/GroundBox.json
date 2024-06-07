@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-02-17T11:29:15.187-00:00",
+	"CreationDate" : "2024-06-07T10:02:33.660-00:00",
 	"Sources" :
 	[
 		{
@@ -14,6 +14,9 @@
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
+				},
+				{
+					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
@@ -37,13 +40,16 @@
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DevHome"
-				},
-				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
+					"PackageIdentifier" : "Spotify.Spotify"
+				},
+				{
+					"PackageIdentifier" : "Telegram.Unigram"
 				},
 				{
 					"PackageIdentifier" : "VideoLAN.VLC"
@@ -58,16 +64,13 @@
 					"PackageIdentifier" : "WinSCP.WinSCP"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
-				},
-				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
-					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.7"
@@ -79,22 +82,28 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "Google.NearbyShare"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
-				},
-				{
 					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.7"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
+					"PackageIdentifier" : "Cloudflare.Warp"
+				},
+				{
+					"PackageIdentifier" : "Google.QuickShare"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				}
 			],
-			"SourceDetails" : 
+			"SourceDetails" :
 			{
 				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
@@ -103,5 +112,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.7.3481-preview"
+	"WinGetVersion" : "1.9.1551-preview"
 }
