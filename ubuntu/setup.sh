@@ -3,7 +3,7 @@
 sudo apt install nala
 
 sudo nala install zsh fortune-mod figlet git htop aria2 curl ncdu \
-                 python3-pip python3-venv bat p7zip-full ripgrep schedtool keychain
+                 python3-pip python3-venv bat 7zip ripgrep schedtool keychain
 
 # Find architecture
 arch=`dpkg --print-architecture`
