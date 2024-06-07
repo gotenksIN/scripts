@@ -2,7 +2,7 @@
 
 sudo apt install nala
 
-sudo nala install zsh fortune-mod figlet git htop neofetch aria2 curl ncdu \
+sudo nala install zsh fortune-mod figlet git htop aria2 curl ncdu \
                  python3-pip python3-venv bat p7zip-full ripgrep schedtool keychain
 
 # Find architecture
@@ -28,6 +28,10 @@ curl -LO https://github.com/ClementTsang/bottom/releases/download/0.9.6/bottom_0
 sudo dpkg -i bottom_0.9.6_arm64.deb
 rm bottom_0.9.6_arm64.deb
 fi
+
+# Install fastfetch
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+sudo nala install fastfetch
 
 if [[ $arch = amd64 ]]; then
 # Guard gui dependent applications behind this
