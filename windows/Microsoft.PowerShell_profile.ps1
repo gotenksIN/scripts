@@ -1,9 +1,6 @@
 # Init oh-my-posh
 oh-my-posh --init --shell pwsh --config ~\AppData\Local\Programs\oh-my-posh\themes\star.omp.json | Invoke-Expression
 
-# Alias winfetch script to neofetch
-Set-Alias neofetch winfetch.ps1
-
 Import-Module -Name Terminal-Icons
 
 # Set git aliases from commmon/aliases
