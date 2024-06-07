@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-04-03T11:56:22.985-00:00",
+	"CreationDate" : "2024-06-07T08:57:17.708-00:00",
 	"Sources" :
 	[
 		{
@@ -14,6 +14,9 @@
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
+				},
+				{
+					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
@@ -58,6 +61,9 @@
 					"PackageIdentifier" : "Telegram.Unigram"
 				},
 				{
+					"PackageIdentifier" : "Ubisoft.Connect"
+				},
+				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
@@ -68,6 +74,9 @@
 				},
 				{
 					"PackageIdentifier" : "AOMEI.PartitionAssistant"
+				},
+				{
+					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
@@ -88,19 +97,19 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
+					"PackageIdentifier" : "Cloudflare.Warp"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
 					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
-					"PackageIdentifier" : "valinet.ExplorerPatcher"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
-					"PackageIdentifier" : "Google.QuickShare"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
@@ -115,5 +124,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.8.924-preview"
+	"WinGetVersion" : "1.9.1551-preview"
 }
