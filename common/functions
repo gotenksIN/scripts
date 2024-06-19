@@ -141,7 +141,6 @@ function helptree() {
       msg "$tree_status datarmnet-ext subtree as of $1..."
       git subtree $2 -P techpack/datarmnet-ext -m "techpack: datarmnet-ext: $commit_status tag '$1'" \
         https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/datarmnet-ext $1
-    elif [[ $version = "5.4" || $version = "4.19" ]]; then
       msg "$tree_status camera-kernel subtree as of $1..."
       git subtree $2 -P techpack/camera -m "techpack: camera: $commit_status tag '$1'" \
         https://git.codelinaro.org/clo/la/platform/vendor/opensource/camera-kernel $1
@@ -151,12 +150,6 @@ function helptree() {
       msg "$tree_status video-driver subtree as of $1..."
       git subtree $2 -P techpack/video -m "techpack: video: $commit_status tag '$1'" \
         https://git.codelinaro.org/clo/la/platform/vendor/opensource/video-driver $1
-    elif [[ $version = "4.19" || $version = "4.14" ]]; then
-      if [[ $2 = "add" ]] || [ -d "techpack/data" ]; then
-        msg "$tree_status data-kernel as of $1..."
-        git subtree $2 -P techpack/data -m "techpack: data: $commit_status tag '$1'"  \
-          https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/data-kernel $1
-      fi
     fi
   fi
 }
