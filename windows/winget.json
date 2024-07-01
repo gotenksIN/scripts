@@ -19,6 +19,8 @@
     "Experimental": {
         "directMSI": true,
         "configuration03": true,
-        "sideBySide": true
+        "configureSelfElevate": true,
+        "configureExport": true,
+        "indexV2": true
     }
 }
