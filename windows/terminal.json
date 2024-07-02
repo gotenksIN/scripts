@@ -8,6 +8,7 @@
 "defaultProfile": "{29e9424f-b246-4353-847c-ed7ba076c919}",
 "initialCols": 150,
 "initialRows": 40,
+"keybindings": [],
 "newTabMenu":
 [
     {
@@ -27,7 +28,7 @@
         "font":
         {
             "face": "MesloLGS Nerd Font Mono",
-            "size": 10.0,
+            "size": 10,
             "weight": "normal"
         },
         "opacity": 80,
@@ -71,6 +72,7 @@
         }
     ]
 },
+"rendering.graphicsAPI": "direct3d11",
 "schemes":
 [
     {
@@ -148,5 +150,6 @@
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
 "theme": "dark",
-"themes": []
+"themes": [],
+"useAcrylicInTabRow": false
 }
