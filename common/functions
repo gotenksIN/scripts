@@ -192,3 +192,10 @@ function updatetree() {
   fi
   helptree $1 pull $2
 }
+
+function pdup() {
+    [ -z "$PD_API_KEY" ] && echo "Error: API Key not specified!" && return
+    [ -z "$1" ] && echo "Error: File not specified!" && return
+    ID=$(curl --progress-bar -T "$1" -u :$PD_API_KEY https://pixeldrain.com/api/file/ | cat | grep -Po '(?<="id":")[^"]*')
+    echo -e "\nhttps://pixeldrain.com/u/$ID"
+}
