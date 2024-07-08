@@ -101,6 +101,15 @@ function set_ccache () {
   $ccache_path -o compression=true
 }
 
+function ccache_for_release () {
+  ccache_path=$(which ccache)
+  export USE_CCACHE=1
+  export CCACHE_EXEC="$ccache_path"
+  export CCACHE_DIR=/home/$USER/.cache/release-ccache
+  $ccache_path -M 25G
+  $ccache_path -o compression=true
+}
+
 function msg() {
   echo -e "\e[1;32m$1\e[0m"
 }
