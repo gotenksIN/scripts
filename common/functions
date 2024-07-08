@@ -78,6 +78,20 @@ function gerrit() {
     fi
 }
 
+function lmogerrit() {
+    if [ ! -d ".git" ]; then
+        echo -e "Please run this inside a git directory";
+    else
+        git remote rm gerrit 2>/dev/null;
+        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.gerrit.aospa.co.username);
+        if [[ -z "${GERRIT_USER}" ]]; then
+            git remote add gerrit $(git remote -v | grep -i "git\.libremobileos\.com:40057[:\/]LMODroid" | awk '{print $2}' | uniq | sed -e "s|.*git.libremobileos.com[:\/]LMODroid|ssh://gerrit.libremobileos.com:29418/LMODroid|");
+        else
+            git remote add gerrit $(git remote -v | grep -i "git\.libremobileos\.com:40057[:\/]LMODroid" | awk '{print $2}' | uniq | sed -e "s|.*git.libremobileos.com[:\/]LMODroid|ssh://${GERRIT_USER}@gerrit.libremobileos.com:29418/LMODroid|");
+        fi
+    fi
+}
+
 function set_ccache () {
   ccache_path=$(which ccache)
   export USE_CCACHE=1
