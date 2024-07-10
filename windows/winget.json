@@ -20,7 +20,6 @@
         "directMSI": true,
         "configuration03": true,
         "configureSelfElevate": true,
-        "configureExport": true,
-        "indexV2": true
+        "configureExport": true
     }
 }
