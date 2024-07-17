@@ -1,0 +1,8 @@
+[wsl2]
+kernel=C:\\bzImage-x64v3
+memory=8GB
+swap=0
+guiApplications=false
+
+[experimental]
+autoMemoryReclaim=dropcache
