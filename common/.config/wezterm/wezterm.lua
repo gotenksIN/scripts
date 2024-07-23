@@ -6,6 +6,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 config.color_scheme = 'Dracula (Official)'
+config.default_cursor_style = 'SteadyBar'
 config.enable_scroll_bar=true
 config.enable_tab_bar = false
 config.font = wezterm.font 'MesloLGS Nerd Font'
