@@ -45,21 +45,6 @@ function onLogin() {
     fortune
 }
 
-function extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjvf $1    ;;
-      *.tar.gz)    tar xzvf $1    ;;
-      *.tar)       tar xvf $1   ;;
-      *.tbz2)      tar xjf $1    ;;
-      *.tgz)       tar xzf $1    ;;
-      *)           7z x $1       ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
 function fastreposync() {
   time schedtool -B -e ionice -n 0 `which repo` sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle -j$(nproc --all) "$@";
 }
