@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-07-02T11:03:44.281-00:00",
+	"CreationDate" : "2024-08-07T08:02:47.953-00:00",
 	"Sources" :
 	[
 		{
@@ -22,12 +22,6 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "FACEITLTD.FACEITAC"
-				},
-				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
@@ -43,10 +37,16 @@
 					"PackageIdentifier" : "Cloudflare.Warp"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+				},
+				{
+					"PackageIdentifier" : "MusicBee.MusicBee"
 				},
 				{
 					"PackageIdentifier" : "Valve.Steam"
@@ -62,9 +62,6 @@
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
-				},
-				{
-					"PackageIdentifier" : "FACEITLTD.FACEITClient"
 				},
 				{
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
@@ -107,9 +104,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
-				},
-				{
-					"PackageIdentifier" : "Telegram.Unigram"
 				}
 			],
 			"SourceDetails" :
@@ -121,5 +115,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.9.1792-preview"
+	"WinGetVersion" : "1.9.2151-preview"
 }
