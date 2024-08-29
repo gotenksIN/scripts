@@ -1,25 +1,23 @@
 {
     "$schema": "https://aka.ms/winget-settings.schema.json",
 
-    "Visual": {
+    "visual": {
         "progressBar": "accent"
     },
-    "Logging": {
+    "logging": {
         "level": "verbose"
     },
-    "InstallBehavior": {
+    "installBehavior": {
         "disableInstallNotes": true
     },
-    "UninstallBehavior": {
-        "purgePortablePackage": true
-    },
-    "Network": {
+    "network": {
         "downloader": "do"
     },
-    "Experimental": {
+    "experimentalFeatures": {
         "directMSI": true,
         "configuration03": true,
         "configureSelfElevate": true,
-        "configureExport": true
+        "configureExport": true,
+        "resume": true
     }
 }
