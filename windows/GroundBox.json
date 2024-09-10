@@ -1,16 +1,67 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-06-07T10:02:33.660-00:00",
+	"CreationDate" : "2024-09-10T16:53:12.227-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
 				{
-					"PackageIdentifier" : "M2Team.NanaZip"
+					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "Canonical.Ubuntu.2204"
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
+					"PackageIdentifier" : "VideoLAN.VLC"
+				},
+				{
+					"PackageIdentifier" : "AntibodySoftware.WizTree"
+				},
+				{
+					"PackageIdentifier" : "WireGuard.WireGuard"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
+					"PackageIdentifier" : "Google.QuickShare"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
+				},
+				{
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+				},
+				{
+					"PackageIdentifier" : "Cloudflare.Warp"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Edge"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+				},
+				{
+					"PackageIdentifier" : "Valve.Steam"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.7"
+				},
+				{
+					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
@@ -19,13 +70,28 @@
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
-					"PackageIdentifier" : "Git.Git"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Edge"
+					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+					"PackageIdentifier" : "SlackTechnologies.Slack"
+				},
+				{
+					"PackageIdentifier" : "WinSCP.WinSCP"
+				},
+				{
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier" : "M2Team.NanaZip"
+				},
+				{
+					"PackageIdentifier" : "Canonical.Ubuntu.2204"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.AppInstaller"
@@ -38,69 +104,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
-				},
-				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
-					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
-					"PackageIdentifier" : "Telegram.Unigram"
-				},
-				{
-					"PackageIdentifier" : "VideoLAN.VLC"
-				},
-				{
-					"PackageIdentifier" : "AntibodySoftware.WizTree"
-				},
-				{
-					"PackageIdentifier" : "SlackTechnologies.Slack"
-				},
-				{
-					"PackageIdentifier" : "WinSCP.WinSCP"
-				},
-				{
-					"PackageIdentifier" : "WireGuard.WireGuard"
-				},
-				{
-					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.7"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
-				},
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
-				},
-				{
-					"PackageIdentifier" : "Cloudflare.Warp"
-				},
-				{
-					"PackageIdentifier" : "Google.QuickShare"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
 				}
 			],
 			"SourceDetails" :
@@ -112,5 +115,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.9.1551-preview"
+	"WinGetVersion" : "1.9.2411-preview"
 }
