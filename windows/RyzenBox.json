@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-08-07T08:02:47.953-00:00",
+	"CreationDate" : "2024-09-10T17:57:21.768-00:00",
 	"Sources" :
 	[
 		{
@@ -34,6 +34,9 @@
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
 				},
 				{
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+				},
+				{
 					"PackageIdentifier" : "Cloudflare.Warp"
 				},
 				{
@@ -59,6 +62,12 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
+				},
+				{
+					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
@@ -113,7 +122,22 @@
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
+		},
+		{
+			"Packages" :
+			[
+				{
+					"PackageIdentifier" : "9NTSNMSVCB5L"
+				}
+			],
+			"SourceDetails" :
+			{
+				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+				"Identifier" : "StoreEdgeFD",
+				"Name" : "msstore",
+				"Type" : "Microsoft.Rest"
+			}
 		}
 	],
-	"WinGetVersion" : "1.9.2151-preview"
+	"WinGetVersion" : "1.9.2411-preview"
 }
