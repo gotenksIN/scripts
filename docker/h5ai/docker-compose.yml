@@ -1,0 +1,14 @@
+services:
+  h5ai:
+    container_name: h5ai
+    ports:
+      - '8081:80'
+    volumes:
+      - '/home/gotenks/HDD:/h5ai'
+      - '/home/gotenks/.config/h5ai_docker:/config'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    restart: unless-stopped
+    image: 'awesometic/h5ai:latest'
