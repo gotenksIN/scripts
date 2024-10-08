@@ -2,7 +2,6 @@
 "$help": "https://aka.ms/terminal-documentation",
 "$schema": "https://raw.githubusercontent.com/microsoft/terminal/main/doc/cascadia/profiles.schema.json",
 "actions": [],
-"confirmCloseAllTabs": false,
 "copyFormatting": "none",
 "copyOnSelect": false,
 "defaultProfile": "{29e9424f-b246-4353-847c-ed7ba076c919}",
@@ -151,5 +150,6 @@
 "tabSwitcherMode": "disabled",
 "theme": "dark",
 "themes": [],
-"useAcrylicInTabRow": false
+"useAcrylicInTabRow": false,
+"warning.confirmCloseAllTabs": false
 }
