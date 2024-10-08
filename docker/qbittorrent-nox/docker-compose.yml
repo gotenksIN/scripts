@@ -1,0 +1,21 @@
+services:
+  qbittorrent-nox:
+    container_name: qbittorrent-nox
+    environment:
+      - QBT_EULA=accept
+      - QBT_VERSION=latest
+      - QBT_WEBUI_PORT=8080
+      - TZ=Asia/Kolkata
+    image: qbittorrentofficial/qbittorrent-nox:latest
+    ports:
+      - 6881:6881/tcp
+      - 6881:6881/udp
+      - 8080:8080/tcp
+    read_only: true
+    stop_grace_period: 30m
+    tmpfs:
+      - /tmp
+    tty: true
+    volumes:
+      - /home/gotenks/.config:/config
+      - /home/gotenks/HDD/Downloads:/downloads
