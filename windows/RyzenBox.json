@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-10-08T08:22:11.809-00:00",
+	"CreationDate" : "2024-11-05T08:39:03.732-00:00",
 	"Sources" :
 	[
 		{
@@ -25,28 +25,22 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Motorola.MobileDrivers"
-				},
-				{
-					"PackageIdentifier" : "WireGuard.WireGuard"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
-				},
-				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
-				},
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
+					"PackageIdentifier" : "tailscale.tailscale"
 				},
 				{
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Cloudflare.Warp"
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -61,16 +55,13 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "tailscale.tailscale"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
@@ -86,6 +77,9 @@
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
+					"PackageIdentifier" : "SatisfactoryModding.SatisfactoryModManager"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
@@ -106,7 +100,7 @@
 					"PackageIdentifier" : "M2Team.NanaZip"
 				},
 				{
-					"PackageIdentifier" : "Canonical.Ubuntu.2204"
+					"PackageIdentifier" : "Canonical.Ubuntu"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.AppInstaller"
@@ -145,5 +139,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.9.2411-preview"
+	"WinGetVersion" : "1.9.25180"
 }
