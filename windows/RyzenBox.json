@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-11-05T08:39:03.732-00:00",
+	"CreationDate" : "2024-12-02T12:24:49.924-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
-				{
-					"PackageIdentifier" : "CrystalDewWorld.CrystalDiskInfo"
-				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
@@ -25,7 +22,10 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "tailscale.tailscale"
+					"PackageIdentifier" : "calibre.calibre"
+				},
+				{
+					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
 					"PackageIdentifier" : "Google.QuickShare"
@@ -37,22 +37,22 @@
 					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
 					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Edge"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "MusicBee.MusicBee"
 				},
 				{
 					"PackageIdentifier" : "Valve.Steam"
+				},
+				{
+					"PackageIdentifier" : "tailscale.tailscale"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -77,9 +77,6 @@
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "SatisfactoryModding.SatisfactoryModManager"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
@@ -113,6 +110,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
 			"SourceDetails" :
@@ -139,5 +139,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.9.25180"
+	"WinGetVersion" : "1.10.40-preview"
 }
