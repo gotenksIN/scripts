@@ -77,7 +77,7 @@
         }
     ]
 },
-"rendering.graphicsAPI": "direct3d11",
+"rendering.graphicsAPI": "direct2d",
 "schemes":
 [
     {
