@@ -54,11 +54,11 @@ function gerrit() {
         echo -e "Please run this inside a git directory";
     else
         git remote rm gerrit 2>/dev/null;
-        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.gerrit.aospa.co.username);
+        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.gerrit-ssh.aospa.co.username);
         if [[ -z "${GERRIT_USER}" ]]; then
-            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSPA" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSPA|ssh://gerrit.aospa.co:29418/AOSPA|");
+            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSPA" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSPA|ssh://gerrit-ssh.aospa.co:29418/AOSPA|");
         else
-            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSPA" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSPA|ssh://${GERRIT_USER}@gerrit.aospa.co:29418/AOSPA|");
+            git remote add gerrit $(git remote -v | grep -i "github\.com[:\/]AOSPA" | awk '{print $2}' | uniq | sed -e "s|.*github.com[:\/]AOSPA|ssh://${GERRIT_USER}@gerrit-ssh.aospa.co:29418/AOSPA|");
         fi
     fi
 }
@@ -68,7 +68,7 @@ function lmogerrit() {
         echo -e "Please run this inside a git directory";
     else
         git remote rm gerrit 2>/dev/null;
-        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.gerrit.aospa.co.username);
+        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.gerrit-ssh.aospa.co.username);
         if [[ -z "${GERRIT_USER}" ]]; then
             git remote add gerrit $(git remote -v | grep -i "git\.libremobileos\.com[:\/]LMODroid" | awk '{print $2}' | uniq | sed -e "s|.*git.libremobileos.com[:\/]LMODroid|ssh://gerrit.libremobileos.com:29418/LMODroid|");
         else
