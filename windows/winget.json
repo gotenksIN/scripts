@@ -10,15 +10,17 @@
     "installBehavior": {
         "disableInstallNotes": true
     },
+    "UninstallBehavior": {
+        "purgePortablePackage": true
+    },
     "network": {
         "downloader": "do"
     },
     "experimentalFeatures": {
-        "directMSI": true,
-        "configuration03": true,
-        "configureSelfElevate": true,
         "configureExport": true,
-        "resume": true,
-        "fonts": true
+        "directMSI": true,
+        "dsc3": true,
+        "fonts": true,
+        "resume": true
     }
 }
