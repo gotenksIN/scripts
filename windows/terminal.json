@@ -5,6 +5,13 @@
 "copyFormatting": "none",
 "copyOnSelect": false,
 "defaultProfile": "{29e9424f-b246-4353-847c-ed7ba076c919}",
+"disabledProfileSources":
+[
+    "Windows.Terminal.VisualStudio",
+    "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
+    "Windows.Terminal.Azure",
+    "Windows.Terminal.PowershellCore"
+],
 "initialCols": 150,
 "initialRows": 40,
 "keybindings": [],
@@ -68,16 +75,9 @@
             "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
             "name": "Ubuntu",
             "source": "Windows.Terminal.Wsl"
-        },
-        {
-            "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-            "hidden": true,
-            "name": "Git Bash",
-            "source": "Git"
         }
     ]
 },
-"rendering.graphicsAPI": "direct3d11",
 "schemes":
 [
     {
@@ -156,6 +156,5 @@
 "tabSwitcherMode": "disabled",
 "theme": "dark",
 "themes": [],
-"useAcrylicInTabRow": false,
-"warning.confirmCloseAllTabs": false
+"useAcrylicInTabRow": false
 }
