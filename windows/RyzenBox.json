@@ -1,11 +1,14 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-12-02T12:24:49.924-00:00",
+	"CreationDate" : "2025-05-30T15:56:54.348-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
+				{
+					"PackageIdentifier" : "NexusMods.Vortex"
+				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
@@ -16,43 +19,37 @@
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
-				},
-				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
-				},
-				{
-					"PackageIdentifier" : "calibre.calibre"
 				},
 				{
 					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
+					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
 					"PackageIdentifier" : "Google.QuickShare"
-				},
-				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
-				},
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Edge"
-				},
-				{
-					"PackageIdentifier" : "MusicBee.MusicBee"
+					"PackageIdentifier" : "BitSum.ParkControl"
 				},
 				{
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "tailscale.tailscale"
+					"PackageIdentifier" : "AOMEI.PartitionAssistant"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
+				},
+				{
+					"PackageIdentifier" : "GOG.Galaxy"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -62,6 +59,12 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
+					"PackageIdentifier" : "xanderfrangos.twinkletray"
 				},
 				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
@@ -76,7 +79,7 @@
 					"PackageIdentifier" : "Logitech.OnboardMemoryManager"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Microsoft.Sysinternals.Strings"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
@@ -110,9 +113,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
 			"SourceDetails" :
@@ -122,22 +122,7 @@
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
-		},
-		{
-			"Packages" :
-			[
-				{
-					"PackageIdentifier" : "9NTSNMSVCB5L"
-				}
-			],
-			"SourceDetails" :
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
-			}
 		}
 	],
-	"WinGetVersion" : "1.10.40-preview"
+	"WinGetVersion" : "1.11.320-preview"
 }
