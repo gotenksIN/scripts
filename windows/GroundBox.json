@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-06-16T08:14:47.330-00:00",
+	"CreationDate" : "2025-06-22T07:59:23.989-00:00",
 	"Sources" :
 	[
 		{
@@ -19,6 +19,9 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
 					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
@@ -34,9 +37,6 @@
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
@@ -46,7 +46,7 @@
 					"PackageIdentifier" : "AOMEI.PartitionAssistant"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.8"
@@ -58,13 +58,16 @@
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.9"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
+					"PackageIdentifier" : "xanderfrangos.twinkletray"
 				},
 				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
@@ -121,6 +124,9 @@
 			"Packages" :
 			[
 				{
+					"PackageIdentifier" : "9N97ZCKPD60Q"
+				},
+				{
 					"PackageIdentifier" : "9PCX3HX4HZ0Z"
 				}
 			],
@@ -133,5 +139,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.11.350-preview"
+	"WinGetVersion" : "1.11.400"
 }
