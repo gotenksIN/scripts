@@ -10,9 +10,12 @@ arch=`dpkg --print-architecture`
 echo "Current system is detected as ${arch} architecture."
 
 # Install Ookla Speedtest
-sudo tee /etc/apt/sources.list.d/ookla_speedtest-cli.list > /dev/null <<EOF
-deb [signed-by=/usr/share/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/ubuntu/ jammy main
-deb-src [signed-by=/usr/share/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/ubuntu/ jammy main
+sudo tee /etc/apt/sources.list.d/ookla_speedtest-cli.sources > /dev/null <<EOF
+Types: deb
+URIs: https://packagecloud.io/ookla/speedtest-cli/ubuntu/
+Suites: jammy
+Components: main
+Signed-By: /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg
 EOF
 curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/ookla_speedtest-cli-archive-keyring.gpg > /dev/null
 sudo nala update
@@ -36,8 +39,21 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/microsoft.gpg
 sudo rm packages.microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge/ stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo tee /etc/apt/sources.list.d/microsoft-edge.sources > /dev/null <<EOF
+Types: deb
+URIs: https://packages.microsoft.com/repos/edge
+Suites: stable
+Components: main
+Signed-By: /usr/share/keyrings/microsoft.gpg
+EOF
+sudo tee /etc/apt/sources.list.d/vscode.sources > /dev/null <<EOF
+Types: deb
+URIs: https://packages.microsoft.com/repos/code
+Suites: stable
+Components: main
+Architectures: amd64,arm64,armhf
+Signed-By: /usr/share/keyrings/microsoft.gpg
+EOF
 sudo nala update
 sudo nala install microsoft-edge-stable code font-manager flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
