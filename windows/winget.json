@@ -17,9 +17,7 @@
         "downloader": "do"
     },
     "experimentalFeatures": {
-        "configureExport": true,
         "directMSI": true,
-        "dsc3": true,
         "fonts": true,
         "resume": true
     }
