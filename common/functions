@@ -83,7 +83,7 @@ function set_ccache () {
   export USE_THINLTO_CACHE=1
   export CCACHE_EXEC="$ccache_path"
   export CCACHE_DIR=/home/$USER/.cache/ccache
-  $ccache_path -M 10G
+  $ccache_path -M 20G
   $ccache_path -o compression=false
 }
 
@@ -93,7 +93,7 @@ function ccache_for_release () {
   export USE_THINLTO_CACHE=1
   export CCACHE_EXEC="$ccache_path"
   export CCACHE_DIR=/home/$USER/.cache/release-ccache
-  $ccache_path -M 25G
+  $ccache_path -M 50G
   $ccache_path -o compression=false
 }
 
