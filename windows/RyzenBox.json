@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-07-24T10:44:59.780-00:00",
+	"CreationDate" : "2025-08-03T09:10:07.642-00:00",
 	"Sources" :
 	[
 		{
@@ -25,13 +25,13 @@
 					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
+					"PackageIdentifier" : "Google.QuickShare"
+				},
+				{
 					"PackageIdentifier" : "Zoom.Zoom"
 				},
 				{
 					"PackageIdentifier" : "Tailscale.Tailscale"
-				},
-				{
-					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -88,10 +88,22 @@
 					"PackageIdentifier" : "Microsoft.Sysinternals.Strings"
 				},
 				{
+					"PackageIdentifier" : "Ookla.Speedtest.CLI"
+				},
+				{
+					"PackageIdentifier" : "Rclone.Rclone"
+				},
+				{
 					"PackageIdentifier" : "SatisfactoryModding.SatisfactoryModManager"
 				},
 				{
 					"PackageIdentifier" : "Spotify.Spotify"
+				},
+				{
+					"PackageIdentifier" : "aria2.aria2"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.bat"
 				},
 				{
 					"PackageIdentifier" : "SlackTechnologies.Slack"
