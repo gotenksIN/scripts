@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-08-09T09:18:03.649-00:00",
+	"CreationDate" : "2025-08-09T09:21:49.008-00:00",
 	"Sources" :
 	[
 		{
@@ -76,7 +76,19 @@
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
+					"PackageIdentifier" : "Ookla.Speedtest.CLI"
+				},
+				{
+					"PackageIdentifier" : "Rclone.Rclone"
+				},
+				{
 					"PackageIdentifier" : "Spotify.Spotify"
+				},
+				{
+					"PackageIdentifier" : "aria2.aria2"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.bat"
 				},
 				{
 					"PackageIdentifier" : "SlackTechnologies.Slack"
