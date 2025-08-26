@@ -4,6 +4,3 @@ memory=8GB
 swap=0
 guiApplications=false
 nestedVirtualization=false
-
-[experimental]
-autoMemoryReclaim=dropcache
