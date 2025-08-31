@@ -84,7 +84,7 @@ function set_ccache () {
   export CCACHE_EXEC="$ccache_path"
   export CCACHE_DIR=/home/$USER/.cache/ccache
   $ccache_path -M 20G
-  $ccache_path -o compression=false
+  $ccache_path -o compression=true
 }
 
 function ccache_for_release () {
@@ -94,7 +94,7 @@ function ccache_for_release () {
   export CCACHE_EXEC="$ccache_path"
   export CCACHE_DIR=/home/$USER/.cache/release-ccache
   $ccache_path -M 50G
-  $ccache_path -o compression=false
+  $ccache_path -o compression=true
 }
 
 function msg() {
