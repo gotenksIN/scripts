@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-08-25T08:26:51.246-00:00",
+	"CreationDate" : "2025-09-02T08:19:10.001-00:00",
 	"Sources" :
 	[
 		{
@@ -16,22 +16,28 @@
 					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
 					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -47,6 +53,9 @@
 				},
 				{
 					"PackageIdentifier" : "Valve.Steam"
+				},
+				{
+					"PackageIdentifier" : "qBittorrent.qBittorrent"
 				},
 				{
 					"PackageIdentifier" : "AOMEI.PartitionAssistant"
@@ -79,10 +88,10 @@
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
-					"PackageIdentifier" : "Logitech.OnboardMemoryManager"
+					"PackageIdentifier" : "Google.PlatformTools"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
+					"PackageIdentifier" : "Logitech.OnboardMemoryManager"
 				},
 				{
 					"PackageIdentifier" : "Ookla.Speedtest.CLI"
@@ -113,6 +122,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier" : "Zwylair.BetterDiscordAutoInstaller"
 				},
 				{
 					"PackageIdentifier" : "Starpine.Screenbox"
