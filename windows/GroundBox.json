@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-08-09T09:21:49.008-00:00",
+	"CreationDate" : "2025-09-05T08:07:01.777-00:00",
 	"Sources" :
 	[
 		{
@@ -13,13 +13,13 @@
 					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
@@ -28,7 +28,7 @@
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -40,22 +40,7 @@
 					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "AOMEI.PartitionAssistant"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.9"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
-				},
-				{
-					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.8"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -74,6 +59,12 @@
 				},
 				{
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
+				},
+				{
+					"PackageIdentifier" : "Google.PlatformTools"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
 					"PackageIdentifier" : "Ookla.Speedtest.CLI"
@@ -160,5 +151,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.11.430"
+	"WinGetVersion" : "1.12.100-preview"
 }
