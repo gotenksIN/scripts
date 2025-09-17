@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-09-02T08:19:10.001-00:00",
+	"CreationDate" : "2025-09-17T07:23:25.055-00:00",
 	"Sources" :
 	[
 		{
@@ -25,22 +25,19 @@
 					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
-					"PackageIdentifier" : "Google.QuickShare"
-				},
-				{
 					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -58,22 +55,13 @@
 					"PackageIdentifier" : "qBittorrent.qBittorrent"
 				},
 				{
-					"PackageIdentifier" : "AOMEI.PartitionAssistant"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
-				},
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "xanderfrangos.twinkletray"
@@ -124,13 +112,13 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Zwylair.BetterDiscordAutoInstaller"
-				},
-				{
 					"PackageIdentifier" : "Starpine.Screenbox"
 				},
 				{
 					"PackageIdentifier" : "M2Team.NanaZip"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu"
@@ -160,6 +148,9 @@
 			"Packages" :
 			[
 				{
+					"PackageIdentifier" : "9P4CLT2RJ1RS"
+				},
+				{
 					"PackageIdentifier" : "9N97ZCKPD60Q"
 				},
 				{
@@ -184,5 +175,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.100-preview"
+	"WinGetVersion" : "1.12.210-preview"
 }
