@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-09-17T07:23:25.055-00:00",
+	"CreationDate" : "2025-09-25T19:26:33.641-00:00",
 	"Sources" :
 	[
 		{
@@ -22,10 +22,13 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
 					"PackageIdentifier" : "Motorola.MobileDrivers"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
@@ -37,13 +40,7 @@
 					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
-					"PackageIdentifier" : "Google.QuickShare"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.Edge"
-				},
-				{
-					"PackageIdentifier" : "OBSProject.OBSStudio"
 				},
 				{
 					"PackageIdentifier" : "BitSum.ParkControl"
@@ -115,7 +112,7 @@
 					"PackageIdentifier" : "Starpine.Screenbox"
 				},
 				{
-					"PackageIdentifier" : "M2Team.NanaZip"
+					"PackageIdentifier" : "M2Team.NanaZip.Preview"
 				},
 				{
 					"PackageIdentifier" : "AgileBits.1Password"
