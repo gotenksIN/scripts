@@ -1,5 +1,5 @@
 # Init oh-my-posh
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\star.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "star" | Invoke-Expression
 
 Import-Module Microsoft.WinGet.CommandNotFound
 Import-Module -Name Terminal-Icons
