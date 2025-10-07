@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-03-31T17:01:35.498-00:00",
+	"CreationDate" : "2025-10-07T12:12:48.390-00:00",
 	"Sources" :
 	[
 		{
@@ -10,64 +10,58 @@
 					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
-					"PackageIdentifier" : "Discord.Discord"
+					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
-					"PackageIdentifier" : "Git.Git"
+					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Edge"
+					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "Spotify.Spotify"
+					"PackageIdentifier" : "Google.GoogleDrive"
 				},
 				{
-					"PackageIdentifier" : "Valve.Steam"
-				},
-				{
-					"PackageIdentifier" : "VideoLAN.VLC"
-				},
-				{
-					"PackageIdentifier" : "WinDirStat.WinDirStat"
-				},
-				{
-					"PackageIdentifier" : "evsar3.sshfs-win-manager"
-				},
-				{
-					"PackageIdentifier" : "qBittorrent.qBittorrent"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Beta"
-				},
-				{
-					"PackageIdentifier" : "Logitech.GHUB"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "SSHFS-Win.SSHFS-Win"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "Adobe.Acrobat.Reader.64-bit"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Apple.iTunes"
+					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier" : "WinFsp.WinFsp"
+					"PackageIdentifier" : "AOMEI.PartitionAssistant"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.AppInstaller"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				}
 			],
 			"SourceDetails" :
@@ -79,5 +73,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.5.441-preview"
+	"WinGetVersion" : "1.12.210-preview"
 }
