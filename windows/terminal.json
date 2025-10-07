@@ -10,7 +10,8 @@
     "Windows.Terminal.VisualStudio",
     "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
     "Windows.Terminal.Azure",
-    "Windows.Terminal.PowershellCore"
+    "Windows.Terminal.PowershellCore",
+    "Windows.Terminal.SSH"
 ],
 "initialCols": 150,
 "initialRows": 40,
@@ -40,7 +41,7 @@
         "opacity": 80,
         "useAcrylic": true
     },
-    "list":
+    "list": 
     [
         {
             "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
