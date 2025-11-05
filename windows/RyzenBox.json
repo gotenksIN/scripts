@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-10-07T11:53:16.583-00:00",
+	"CreationDate" : "2025-11-05T09:25:40.527-00:00",
 	"Sources" :
 	[
 		{
 			"Packages" :
 			[
-				{
-					"PackageIdentifier" : "NexusMods.Vortex"
-				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
@@ -22,22 +19,25 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Motorola.MobileDrivers"
-				},
-				{
 					"PackageIdentifier" : "Google.QuickShare"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
-				},
-				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
+					"PackageIdentifier" : "Motorola.MobileDrivers"
+				},
+				{
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
+				},
+				{
 					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -50,9 +50,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -68,6 +65,9 @@
 				},
 				{
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
+				},
+				{
+					"PackageIdentifier" : "Genymobile.scrcpy"
 				},
 				{
 					"PackageIdentifier" : "Google.PlatformTools"
@@ -169,5 +169,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.210-preview"
+	"WinGetVersion" : "1.12.350"
 }
