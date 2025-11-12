@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-09-05T08:07:01.777-00:00",
+	"CreationDate" : "2025-11-12T09:06:03.066-00:00",
 	"Sources" :
 	[
 		{
@@ -13,22 +13,25 @@
 					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
-				},
-				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
-				},
-				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
+					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -46,12 +49,6 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
-				},
-				{
-					"PackageIdentifier" : "xanderfrangos.twinkletray"
-				},
-				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
 				},
 				{
@@ -61,10 +58,10 @@
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
-					"PackageIdentifier" : "Google.PlatformTools"
+					"PackageIdentifier" : "Genymobile.scrcpy"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
+					"PackageIdentifier" : "Google.PlatformTools"
 				},
 				{
 					"PackageIdentifier" : "Ookla.Speedtest.CLI"
@@ -91,7 +88,10 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "M2Team.NanaZip"
+					"PackageIdentifier" : "M2Team.NanaZip.Preview"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu"
@@ -133,6 +133,9 @@
 					"PackageIdentifier" : "9WZDNCRFJ3TJ"
 				},
 				{
+					"PackageIdentifier" : "9P4CLT2RJ1RS"
+				},
+				{
 					"PackageIdentifier" : "9NBDXK71NK08"
 				},
 				{
@@ -151,5 +154,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.100-preview"
+	"WinGetVersion" : "1.12.420"
 }
