@@ -28,7 +28,7 @@
 # ignore_failures = ["powershell"]
 
 # List of remote machines with Topgrade installed on them
-remote_topgrades = ["skybox", "raspibox"]
+remote_topgrades = ["raspibox"]
 
 # Path to Topgrade executable on remote machines
 # remote_topgrade_path = ".cargo/bin/topgrade"
