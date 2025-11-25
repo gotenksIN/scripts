@@ -1,7 +1,7 @@
 # Init oh-my-posh
 oh-my-posh init pwsh --config "star" | Invoke-Expression
 
-Import-Module Microsoft.WinGet.CommandNotFound
+Import-Module -Name Microsoft.WinGet.CommandNotFound
 Import-Module -Name Terminal-Icons
 
 # Set git aliases from commmon/aliases
