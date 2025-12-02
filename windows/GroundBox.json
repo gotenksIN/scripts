@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-11-12T09:06:03.066-00:00",
+	"CreationDate" : "2025-12-02T11:03:13.415-00:00",
 	"Sources" :
 	[
 		{
@@ -25,9 +25,6 @@
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
-				},
-				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
@@ -35,6 +32,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -88,6 +88,9 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.PowerToys"
+				},
+				{
 					"PackageIdentifier" : "M2Team.NanaZip.Preview"
 				},
 				{
@@ -120,9 +123,6 @@
 		{
 			"Packages" :
 			[
-				{
-					"PackageIdentifier" : "XP8JK4HZBVF435"
-				},
 				{
 					"PackageIdentifier" : "9NTSNMSVCB5L"
 				},
