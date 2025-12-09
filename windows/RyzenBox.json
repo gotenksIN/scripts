@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-12-01T17:47:50.465-00:00",
+	"CreationDate" : "2025-12-09T11:30:50.702-00:00",
 	"Sources" :
 	[
 		{
@@ -22,7 +22,10 @@
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Yubico.Authenticator"
+				},
+				{
+					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
@@ -37,7 +40,7 @@
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -110,9 +113,6 @@
 				},
 				{
 					"PackageIdentifier" : "M2Team.NanaZip.Preview"
-				},
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu"
