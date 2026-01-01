@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-12-09T11:30:50.702-00:00",
+	"CreationDate" : "2026-01-01T08:26:54.846-00:00",
 	"Sources" :
 	[
 		{
@@ -25,13 +25,13 @@
 					"PackageIdentifier" : "Yubico.Authenticator"
 				},
 				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
-				},
-				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
+				},
+				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "LRCLIB.LRCGET"
@@ -40,7 +40,7 @@
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -98,6 +98,9 @@
 				},
 				{
 					"PackageIdentifier" : "SlackTechnologies.Slack"
+				},
+				{
+					"PackageIdentifier" : "topgrade-rs.topgrade"
 				},
 				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
@@ -169,5 +172,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.420"
+	"WinGetVersion" : "1.12.440"
 }
