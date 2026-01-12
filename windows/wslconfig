@@ -1,6 +1,11 @@
 [wsl2]
 kernel=C:\\bzImage-x64v3
+kernelModules=C:\\bzImage-x64v3-addons.vhdx
 memory=8GB
 swap=0
 guiApplications=false
 nestedVirtualization=false
+hardwarePerformanceCounters=false
+
+[experimental]
+autoMemoryReclaim=dropcache
