@@ -11,12 +11,3 @@ services:
     network_mode: host
     environment:
       TZ: Asia/Kolkata
-  lms:
-    image: lmscommunity/lyrionmusicserver:latest
-    container_name: lms
-    network_mode: host
-    volumes:
-      - ${USERDIR:-$HOME}/Data/KPOP_FLACs:/music:ro
-      - ${USERDIR:-$HOME}/docker/logitechmediaserver/config:/config:rw
-      - /etc/localtime:/etc/localtime:ro
-    restart: unless-stopped
