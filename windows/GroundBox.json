@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-12-02T11:03:13.415-00:00",
+	"CreationDate" : "2026-02-17T01:03:42.511-00:00",
 	"Sources" :
 	[
 		{
@@ -19,16 +19,16 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Google.QuickShare"
-				},
-				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
+				},
+				{
+					"PackageIdentifier" : "Google.QuickShare"
+				},
+				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -70,9 +70,6 @@
 					"PackageIdentifier" : "Rclone.Rclone"
 				},
 				{
-					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
 					"PackageIdentifier" : "aria2.aria2"
 				},
 				{
@@ -80,6 +77,9 @@
 				},
 				{
 					"PackageIdentifier" : "SlackTechnologies.Slack"
+				},
+				{
+					"PackageIdentifier" : "topgrade-rs.topgrade"
 				},
 				{
 					"PackageIdentifier" : "WinSCP.WinSCP"
@@ -92,9 +92,6 @@
 				},
 				{
 					"PackageIdentifier" : "M2Team.NanaZip.Preview"
-				},
-				{
-					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu"
@@ -110,6 +107,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
 			"SourceDetails" : 
@@ -154,5 +154,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.420"
+	"WinGetVersion" : "1.28.190"
 }
