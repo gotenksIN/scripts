@@ -6,7 +6,7 @@ services:
     environment:
       - TS_AUTHKEY=${TS_AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
-      - TS_EXTRA_ARGS=--exit-node=${TS_EXIT_NODE} --accept-dns=false --exit-node-allow-lan-access=true
+      - TS_EXTRA_ARGS=--exit-node=${TS_EXIT_NODE} --accept-dns=false
       - TS_USERSPACE=false
     volumes:
       - ./tailscale-state:/var/lib/tailscale
