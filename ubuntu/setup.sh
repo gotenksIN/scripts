@@ -23,9 +23,9 @@ sudo nala install speedtest
 
 # Install bottom
 if [[ $arch = amd64 ]]; then
-sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.11.2/bottom_0.11.2-1_amd64.deb
+sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_0.12.3-1_amd64.deb
 elif [[ $arch = arm64 ]]; then
-sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.11.2/bottom_0.11.2-1_arm64.deb
+sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_0.12.3-1_arm64.deb
 fi
 
 if [[ $arch = amd64 ]]; then
