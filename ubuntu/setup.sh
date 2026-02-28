@@ -2,7 +2,7 @@
 
 sudo apt install nala
 
-sudo nala install zsh fortune-mod figlet git htop aria2 curl ncdu \
+sudo nala install zsh fortune-mod figlet git htop aria2 curl ncdu fastfetch \
                  python3-pip python3-venv bat 7zip ripgrep schedtool keychain
 
 # Find architecture
@@ -27,10 +27,6 @@ sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.11.
 elif [[ $arch = arm64 ]]; then
 sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.11.2/bottom_0.11.2-1_arm64.deb
 fi
-
-# Install fastfetch
-sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
-sudo nala install fastfetch
 
 if [[ $arch = amd64 ]]; then
 # Guard gui dependent applications behind this
