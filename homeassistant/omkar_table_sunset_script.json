@@ -1,0 +1,15 @@
+{
+  "alias": "Omkar Table Sunset",
+  "icon": "mdi:weather-sunset-down",
+  "sequence": [
+    {
+      "service": "light.turn_on",
+      "target": { "entity_id": "light.table" },
+      "data": {
+        "brightness_pct": 40,
+        "color_temp_kelvin": 2200
+      }
+    }
+  ],
+  "mode": "single"
+}

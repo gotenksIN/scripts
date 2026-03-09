@@ -1,0 +1,38 @@
+{
+  "alias": "Omkar Table Bedtime Auto",
+  "description": "At 10:30 PM, set table lights to 20% when either phone is home and on SkyNet.",
+  "trigger": [
+    {
+      "platform": "time",
+      "at": "22:30:00"
+    }
+  ],
+  "condition": [
+    {
+      "condition": "or",
+      "conditions": [
+        {
+          "condition": "and",
+          "conditions": [
+            { "condition": "state", "entity_id": "device_tracker.marblebox", "state": "home" },
+            { "condition": "state", "entity_id": "sensor.marblebox_wi_fi_connection", "state": "SkyNet" }
+          ]
+        },
+        {
+          "condition": "and",
+          "conditions": [
+            { "condition": "state", "entity_id": "device_tracker.oneplusbox", "state": "home" },
+            { "condition": "state", "entity_id": "sensor.oneplusbox_wi_fi_connection", "state": "SkyNet" }
+          ]
+        }
+      ]
+    }
+  ],
+  "action": [
+    {
+      "service": "script.turn_on",
+      "target": { "entity_id": "script.omkar_table_bedtime" }
+    }
+  ],
+  "mode": "single"
+}

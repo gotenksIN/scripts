@@ -133,7 +133,7 @@
                       "entity_id": "light.table"
                     },
                     "data": {
-                      "color_temp_kelvin": 2700
+                      "color_temp_kelvin": 2200
                     }
                   },
                   "hold_action": {
@@ -170,6 +170,63 @@
                     },
                     "data": {
                       "color_temp_kelvin": 6500
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Automation flow",
+              "icon": "mdi:clock-outline"
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": false,
+              "cards": [
+                {
+                  "type": "button",
+                  "name": "Evening",
+                  "icon": "mdi:weather-sunset-up",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.turn_on",
+                    "target": {
+                      "entity_id": "script.omkar_table_evening"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Sunset",
+                  "icon": "mdi:weather-sunset-down",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.turn_on",
+                    "target": {
+                      "entity_id": "script.omkar_table_sunset"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Bedtime",
+                  "icon": "mdi:power-sleep",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.turn_on",
+                    "target": {
+                      "entity_id": "script.omkar_table_bedtime"
                     }
                   },
                   "hold_action": {
