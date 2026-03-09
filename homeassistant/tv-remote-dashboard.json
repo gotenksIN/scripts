@@ -1,0 +1,472 @@
+{
+  "views": [
+    {
+      "title": "TV Remote",
+      "path": "0",
+      "type": "sections",
+      "max_columns": 1,
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "TV Remote",
+              "icon": "mdi:remote-tv"
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": true,
+              "cards": [
+                {
+                  "type": "button",
+                  "show_icon": false,
+                  "tap_action": {
+                    "action": "none"
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:chevron-up",
+                  "name": "Up",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "DPAD_UP"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Power",
+                  "icon": "mdi:power",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.toggle",
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:chevron-left",
+                  "name": "Left",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "DPAD_LEFT"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:circle-medium",
+                  "name": "Select",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "DPAD_CENTER"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "DPAD_CENTER",
+                      "hold_secs": 0.5
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:chevron-right",
+                  "name": "Right",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "DPAD_RIGHT"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:arrow-u-left-top",
+                  "name": "Back",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "BACK"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "BACK",
+                      "hold_secs": 0.5
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:chevron-down",
+                  "name": "Down",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "DPAD_DOWN"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:home-variant-outline",
+                  "name": "Home",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "HOME"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "HOME",
+                      "hold_secs": 0.5
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Media controls",
+              "icon": "mdi:play-circle-outline"
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": false,
+              "cards": [
+                {
+                  "type": "button",
+                  "icon": "mdi:skip-previous",
+                  "name": "Previous",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MEDIA_PREVIOUS"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MEDIA_REWIND"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:play-pause",
+                  "name": "Play/Pause",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MEDIA_PLAY_PAUSE"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MEDIA_STOP"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:skip-next",
+                  "name": "Next",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MEDIA_NEXT"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MEDIA_FAST_FORWARD"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": false,
+              "cards": [
+                {
+                  "type": "button",
+                  "icon": "mdi:volume-off",
+                  "name": "Mute",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "MUTE"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:volume-minus",
+                  "name": "Volume -",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "VOLUME_DOWN"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "icon": "mdi:volume-plus",
+                  "name": "Volume +",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.send_command",
+                    "data": {
+                      "command": "VOLUME_UP"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Apps",
+              "icon": "mdi:apps"
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": false,
+              "cards": [
+                {
+                  "type": "button",
+                  "name": "Netflix",
+                  "icon": "mdi:netflix",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.turn_on",
+                    "data": {
+                      "activity": "com.netflix.ninja"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Prime Video",
+                  "icon": "mdi:movie-play-outline",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.turn_on",
+                    "data": {
+                      "activity": "com.amazon.amazonvideo.livingroom"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Airtel Xstream",
+                  "icon": "mdi:play-network",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.turn_on",
+                    "data": {
+                      "activity": "tv.airtel.xstream.tvapp"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "YouTube",
+                  "icon": "mdi:youtube",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.turn_on",
+                    "data": {
+                      "activity": "com.google.android.youtube.tv"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Solid Explorer",
+                  "icon": "mdi:folder",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.turn_on",
+                    "data": {
+                      "activity": "pl.solidexplorer2"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Jellyfin",
+                  "icon": "mdi:movie-open",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "remote.turn_on",
+                    "data": {
+                      "activity": "org.jellyfin.androidtv"
+                    },
+                    "target": {
+                      "entity_id": "remote.tv"
+                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
