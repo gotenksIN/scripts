@@ -50,8 +50,17 @@ Components: main
 Architectures: amd64,arm64,armhf
 Signed-By: /usr/share/keyrings/microsoft.gpg
 EOF
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+sudo tee /etc/apt/sources.list.d/wezterm.sources > /dev/null <<EOF
+Types: deb
+URIs: https://apt.fury.io/wez/
+Suites: *
+Components: *
+Signed-By: /usr/share/keyrings/wezterm-fury.gpg
+EOF
 sudo nala update
-sudo nala install microsoft-edge-stable code font-manager flatpak
+sudo nala install microsoft-edge-stable code font-manager flatpak wezterm-nightly
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.telegram.desktop
 fi
