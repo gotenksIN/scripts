@@ -1,8 +1,31 @@
 #!/usr/bin/env bash
 
-sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
-                wget curl aria2 inetutils bat ripgrep p7zip efibootmgr fastfetch \
-                screen ccache networkmanager python-pip schedtool keychain ookla-speedtest-bin
+sudo pacman -Sy \
+        aria2 \
+        base-devel \
+        bat \
+        bottom \
+        ccache \
+        curl \
+        efibootmgr \
+        fastfetch \
+        figlet \
+        fortune-mod \
+        git \
+        htop \
+        inetutils \
+        keychain \
+        nano \
+        ncdu \
+        networkmanager \
+        ookla-speedtest-bin \
+        p7zip \
+        python-pip \
+        ripgrep \
+        schedtool \
+        screen \
+        wget \
+        zsh
 
 sudo systemctl enable NetworkManager.service
 sudo systemctl disable NetworkManager-wait-online.service
@@ -16,11 +39,20 @@ rm -rf yay-bin
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-yay -Sy microsoft-edge-stable-bin telegram-desktop \
-        visual-studio-code-bin ttf-dejavu ttf-droid \
-        gnu-free-fonts ttf-liberation noto-fonts noto-fonts-cjk \
-        noto-fonts-emoji noto-fonts-extra ttf-ubuntu-font-family \
-        gsfonts discord
+yay -Sy \
+        discord \
+        gnu-free-fonts \
+        gsfonts \
+        microsoft-edge-stable-bin \
+        noto-fonts noto-fonts-cjk \
+        noto-fonts-emoji \
+        noto-fonts-extra \
+        telegram-desktop \
+        ttf-dejavu \
+        ttf-droid \
+        ttf-liberation \
+        ttf-ubuntu-font-family \
+        visual-studio-code-bin \
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
