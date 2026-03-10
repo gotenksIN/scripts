@@ -2,7 +2,7 @@
 
 sudo pacman -Sy git base-devel fortune-mod figlet zsh htop ncdu nano bottom \
                 wget curl aria2 inetutils bat ripgrep p7zip efibootmgr fastfetch \
-                screen ccache networkmanager python-pip schedtool keychain
+                screen ccache networkmanager python-pip schedtool keychain ookla-speedtest-bin
 
 sudo systemctl enable NetworkManager.service
 sudo systemctl disable NetworkManager-wait-online.service
@@ -20,7 +20,7 @@ yay -Sy microsoft-edge-stable-bin telegram-desktop \
         visual-studio-code-bin ttf-dejavu ttf-droid \
         gnu-free-fonts ttf-liberation noto-fonts noto-fonts-cjk \
         noto-fonts-emoji noto-fonts-extra ttf-ubuntu-font-family \
-        gsfonts discord font-manager
+        gsfonts discord
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
