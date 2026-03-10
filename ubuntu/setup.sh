@@ -60,7 +60,7 @@ Components: *
 Signed-By: /usr/share/keyrings/wezterm-fury.gpg
 EOF
 sudo nala update
-sudo nala install microsoft-edge-stable code font-manager flatpak wezterm-nightly
+sudo nala install microsoft-edge-stable code font-manager flatpak wezterm-nightly scrcpy
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.telegram.desktop
 fi
