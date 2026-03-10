@@ -16,8 +16,7 @@ read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
 read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
 read -e -p "Enter loader name (e.g. vmlinuz-linux): " -i "vmlinuz-linux" loader
 read -e -p "Enter initrd name (e.g. initramfs-linux.img): " -i "initramfs-linux.img" initrd
-read -e -p "Enter label for uefi entry (Label is what would show up in UEFI entries): " -i "rendumOS" label
-read -e -p "Enter label for systemd-boot entry (This is what would show up in systemd-boot options): " -i "rendumOS (fallback)" flabel
+read -e -p "Enter label for entry (Label is what would show up in UEFI entries): " -i "rendumOS" label
 
 # Setup systemd-boot
 sudo tee /boot/loader/loader.conf > /dev/null <<EOF
@@ -29,7 +28,7 @@ EOF
 
 # Setup arch config for systemd-boot
 sudo tee /boot/loader/entries/arch.conf > /dev/null <<EOF
-title   $flabel
+title   $label
 linux   /$loader
 initrd  /$initrd
 EOF
