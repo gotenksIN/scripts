@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-02-17T01:03:42.511-00:00",
+	"CreationDate" : "2026-03-11T12:30:46.215-00:00",
 	"Sources" :
 	[
 		{
@@ -13,13 +13,10 @@
 					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
@@ -28,13 +25,7 @@
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -47,6 +38,12 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.9"
+				},
+				{
+					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
@@ -64,7 +61,13 @@
 					"PackageIdentifier" : "Google.PlatformTools"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
 					"PackageIdentifier" : "Ookla.Speedtest.CLI"
+				},
+				{
+					"PackageIdentifier" : "OpenAI.Codex"
 				},
 				{
 					"PackageIdentifier" : "Rclone.Rclone"
@@ -82,9 +85,6 @@
 					"PackageIdentifier" : "topgrade-rs.topgrade"
 				},
 				{
-					"PackageIdentifier" : "WinSCP.WinSCP"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
@@ -100,9 +100,6 @@
 					"PackageIdentifier" : "Microsoft.AppInstaller"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.UI.Xaml.2.7"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
 				},
 				{
@@ -112,7 +109,7 @@
 					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
-			"SourceDetails" : 
+			"SourceDetails" :
 			{
 				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
@@ -154,5 +151,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.28.190"
+	"WinGetVersion" : "1.29.30-preview"
 }
