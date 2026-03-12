@@ -5,6 +5,18 @@ local act = wezterm.action
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+local right_click_clipboard = wezterm.action_callback(function(window, pane)
+  local has_selection = window:get_selection_text_for_pane(pane) ~= ''
+
+  if has_selection then
+    window:perform_action(act.CopyTo 'ClipboardAndPrimarySelection', pane)
+    window:perform_action(act.ClearSelection, pane)
+    return
+  end
+
+  window:perform_action(act.PasteFrom 'Clipboard', pane)
+end)
+
 -- This is where you actually apply your config choices
 config.color_scheme = 'Dracula (Official)'
 config.default_cursor_style = 'SteadyBar'
@@ -26,6 +38,17 @@ config.mouse_bindings = {
     {
       event = { Down = { streak = 1, button = 'Left' } },
       mods = 'CTRL',
+      action = act.Nop,
+    },
+    -- Right click copies the current selection, otherwise it pastes.
+    {
+      event = { Up = { streak = 1, button = 'Right' } },
+      mods = 'NONE',
+      action = right_click_clipboard,
+    },
+    {
+      event = { Down = { streak = 1, button = 'Right' } },
+      mods = 'NONE',
       action = act.Nop,
     },
   }
