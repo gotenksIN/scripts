@@ -2,12 +2,10 @@
 
 sudo pacman -Sy \
         aria2 \
-        base-devel \
         bat \
         bottom \
         ccache \
         curl \
-        efibootmgr \
         fastfetch \
         figlet \
         fortune-mod \
@@ -15,7 +13,6 @@ sudo pacman -Sy \
         htop \
         inetutils \
         keychain \
-        nano \
         ncdu \
         networkmanager \
         ookla-speedtest-bin \
