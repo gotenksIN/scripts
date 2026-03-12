@@ -27,6 +27,14 @@ sed -i -E 's/^#\s*(en_IN\.UTF-8 UTF-8)/\1/' /etc/locale.gen
 printf 'LANG=en_GB.UTF-8\n' > /etc/locale.conf
 locale-gen
 
+sed -i -E '/^HOOKS=/ {
+        /\<plymouth\>/b done
+        /\<systemd\>/ s/\<systemd\>/systemd plymouth/
+        /\<systemd\>/! s/\<filesystems\>/plymouth filesystems/
+        :done
+}' /etc/mkinitcpio.conf
+mkinitcpio -P
+
 # Add muh user
 read -r -e -p "Enter your username: " -i "gotenks" username
 useradd -m -G wheel "${username}"
