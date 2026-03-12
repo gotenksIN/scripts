@@ -1,6 +1,6 @@
 {
   "alias": "Omkar Table Bedtime Auto",
-  "description": "At 10:30 PM, set table lights to 20% when either phone is home and on SkyNet.",
+  "description": "At 10:30 PM, dim table lights to 20% when either phone is home and on SkyNet, but only if the light is already on.",
   "trigger": [
     {
       "platform": "time",
@@ -26,6 +26,11 @@
           ]
         }
       ]
+    },
+    {
+      "condition": "state",
+      "entity_id": "light.table",
+      "state": "on"
     }
   ],
   "action": [
