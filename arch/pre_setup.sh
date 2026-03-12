@@ -4,32 +4,38 @@
 # and expected to be ran before setup.sh
 
 # Setup your timezone
-read -e -p "Enter your timezone: " -i "Asia/Kolkata" timezone
-ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
+read -r -e -p "Enter your timezone: " -i "Asia/Kolkata" timezone
+timezone_path="/usr/share/zoneinfo/${timezone}"
+if [[ ! -e "${timezone_path}" ]]; then
+        echo "Invalid timezone: ${timezone}"
+        exit 1
+fi
+ln -sf "${timezone_path}" /etc/localtime
 hwclock --systohc
 
 # Set hostname
-read -e -p "Enter your hostname: " hostname
-echo "$hostname" > /etc/hostname
+read -r -e -p "Enter your hostname: " hostname
+printf '%s\n' "${hostname}" > /etc/hostname
 
 # Allow users of group `wheel` to use sudo
-echo "%wheel ALL = (ALL) ALL" > /etc/sudoers.d/wheel
+printf '%%wheel ALL = (ALL) ALL\n' > /etc/sudoers.d/wheel
 
 # ello mate
-sed -i 's/^# en_GB\.U/en_GB\.U/' /etc/locale.gen
-sed -i 's/^# en_US\.U/en_US\.U/' /etc/locale.gen
-localectl set-locale LANG=en_GB.UTF-8
+sed -i -E 's/^#\s*(en_GB\.UTF-8 UTF-8)/\1/' /etc/locale.gen
+sed -i -E 's/^#\s*(en_US\.UTF-8 UTF-8)/\1/' /etc/locale.gen
+sed -i -E 's/^#\s*(en_IN\.UTF-8 UTF-8)/\1/' /etc/locale.gen
+printf 'LANG=en_GB.UTF-8\n' > /etc/locale.conf
 locale-gen
 
 # Add muh user
-read -e -p "Enter your username: " -i "gotenks" username
-useradd -m -G wheel $username
-echo "Set password for "$username
-passwd $username
+read -r -e -p "Enter your username: " -i "gotenks" username
+useradd -m -G wheel "${username}"
+echo "Set password for ${username}"
+passwd "${username}"
 
 # set root password
 echo "Set root password"
 passwd
 
 # Disable pcspkr
-echo 'blacklist pcspkr' > /etc/modprobe.d/nobeep.conf
+printf 'blacklist pcspkr\n' > /etc/modprobe.d/nobeep.conf
