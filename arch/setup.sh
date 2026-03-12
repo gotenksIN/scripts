@@ -53,6 +53,7 @@ yay -Sy \
         ttf-liberation \
         ttf-ubuntu-font-family \
         visual-studio-code-bin \
+        wezterm-nightly-bin
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
