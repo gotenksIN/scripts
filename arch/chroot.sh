@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This script assumes you are running in root shell of arch-chroot
-# and expected to be ran before setup.sh
+# and expected to be ran before user_setup.sh
 
 # Setup your timezone
 read -r -e -p "Enter your timezone: " -i "Asia/Kolkata" timezone
@@ -36,6 +36,32 @@ passwd "${username}"
 # set root password
 echo "Set root password"
 passwd
+
+pacman -Sy \
+        aria2 \
+        bat \
+        bottom \
+        ccache \
+        curl \
+        fastfetch \
+        figlet \
+        fortune-mod \
+        git \
+        htop \
+        inetutils \
+        keychain \
+        ncdu \
+        networkmanager \
+        p7zip \
+        python-pip \
+        ripgrep \
+        schedtool \
+        screen \
+        wget \
+        zsh
+
+systemctl enable NetworkManager.service
+systemctl disable NetworkManager-wait-online.service
 
 # Disable pcspkr
 printf 'blacklist pcspkr\n' > /etc/modprobe.d/nobeep.conf

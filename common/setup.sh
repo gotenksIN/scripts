@@ -27,7 +27,6 @@ if command -v apt >/dev/null 2>&1; then
     add_line ~/.zshrc "source ~/scripts/ubuntu/alias"
 elif command -v pacman >/dev/null 2>&1; then
     echo "Arch based distro detected"
-    bash ~/scripts/arch/setup.sh
     copy_dotfiles
     add_line ~/.zshrc "source ~/scripts/arch/alias"
 elif command -v dnf >/dev/null 2>&1; then
