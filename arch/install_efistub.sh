@@ -2,6 +2,16 @@
 
 # Run the script with root, sudo somehow breaks it
 
+if [[ ${EUID} -ne 0 ]]; then
+        echo "Run this script as the root user."
+        exit 1
+fi
+
+if [[ -n ${SUDO_USER:-} ]]; then
+        echo "Do not run this script with sudo. Switch to root first, then run it directly."
+        exit 1
+fi
+
 read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
 read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
 read -e -p "Enter loader name (e.g. vmlinuz-linux): " -i "vmlinuz-linux" loader
