@@ -25,22 +25,15 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
         if [[ "$cpu" =~ ^[1]$ ]]; then
         pacman -Sy intel-ucode
         microcode="\intel-ucode.img"
-        printf -v largs "%s " \
-                "root=UUID=$(findmnt -kno UUID /) rw" \
-                "rootfstype=$(findmnt -kno FSTYPE /)" \
-                "initrd"=${microcode} "initrd=${initrd}" \
-                quiet splash
         else
         pacman -Sy amd-ucode
         microcode="\amd-ucode.img"
+        fi
         printf -v largs "%s " \
                 "root=UUID=$(findmnt -kno UUID /) rw" \
                 "rootfstype=$(findmnt -kno FSTYPE /)" \
                 "initrd"=${microcode} "initrd=${initrd}" \
-                initcall_blacklist=acpi_cpufreq_init \
-                amd_pstate.shared_mem=1 \
                 quiet splash
-        fi
 else
         printf -v largs "%s " \
                 "root=UUID=$(findmnt -kno UUID /) rw" \
