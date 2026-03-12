@@ -29,6 +29,7 @@ if [[ "${input}" =~ ^[Yy]$ ]]; then
                 ttf-droid \
                 ttf-liberation \
                 ttf-ubuntu-font-family \
+                unzip \
                 visual-studio-code-bin \
                 wezterm-nightly-bin
 fi
