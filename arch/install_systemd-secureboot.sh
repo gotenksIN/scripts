@@ -48,7 +48,7 @@ fi
 echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 fi
 
-kernel_options=("root=UUID=$UUID" rw "resume=${swap_uuid}" quiet splash)
+kernel_options=("root=UUID=$UUID" rw "resume=${swap_uuid}" quiet)
 printf 'options %s\n' "${kernel_options[*]}" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 
 # Create secure-boot compatible entry

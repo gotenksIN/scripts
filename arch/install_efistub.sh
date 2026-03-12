@@ -35,6 +35,6 @@ fi
 printf -v largs "%s " \
         "${kernel_args[@]}" \
         "${initrd_args[@]}" \
-        quiet splash
+        quiet
 
 efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l "${loader}" -u "${largs%* } ${extra}" --verbose
