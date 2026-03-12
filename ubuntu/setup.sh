@@ -17,7 +17,8 @@ Suites: jammy
 Components: main
 Signed-By: /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg
 EOF
-curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/ookla_speedtest-cli-archive-keyring.gpg > /dev/null
+curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | sudo gpg --yes --dearmor -o /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg
+sudo chmod 644 /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg
 sudo nala update
 sudo nala install speedtest
 
