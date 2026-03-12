@@ -15,7 +15,9 @@ read -e -p "Enter any extra arguments you want to pass to kernel cmdline: " extr
 
 root_uuid=$(findmnt -kno UUID /)
 root_fstype=$(findmnt -kno FSTYPE /)
+swap_uuid=$(awk '$3 == "swap" && $1 !~ /^#/ { print $1; exit }' /etc/fstab)
 initrd_args=("initrd=${initrd}")
+kernel_args=("root=UUID=${root_uuid} rw" "rootfstype=${root_fstype}" "resume=${swap_uuid}")
 
 read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
@@ -31,8 +33,7 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
 fi
 
 printf -v largs "%s " \
-        "root=UUID=${root_uuid} rw" \
-        "rootfstype=${root_fstype}" \
+        "${kernel_args[@]}" \
         "${initrd_args[@]}" \
         quiet splash
 

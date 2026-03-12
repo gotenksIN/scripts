@@ -12,6 +12,7 @@ sudo cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 
 # Setup all vars
 export UUID=$(findmnt -kno UUID /)
+swap_uuid=$(awk '$3 == "swap" && $1 !~ /^#/ { print $1; exit }' /etc/fstab)
 read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
 read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
 read -e -p "Enter loader name (e.g. vmlinuz-linux): " -i "vmlinuz-linux" loader
@@ -47,7 +48,8 @@ fi
 echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 fi
 
-echo "options root=UUID=$UUID rw quiet splash" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
+kernel_options=("root=UUID=$UUID" rw "resume=${swap_uuid}" quiet splash)
+printf 'options %s\n' "${kernel_options[*]}" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null
 
 # Create secure-boot compatible entry
 sudo efibootmgr -c -d "${disk}" -p "${part}" -L "${label}" -l EFI/systemd/PreLoader.efi --verbose
