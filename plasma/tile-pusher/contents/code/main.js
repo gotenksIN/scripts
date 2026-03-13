@@ -34,6 +34,24 @@ function clearState(w) {
     delete stateByWindow[wid(w)];
 }
 
+function maximizeArea(w) {
+    return workspace.clientArea(KWin.MaximizeArea, w);
+}
+
+function placeWindow(w, x, y, width, height) {
+    var rect = maximizeArea(w);
+    rect.x = x;
+    rect.y = y;
+    rect.width = width;
+    rect.height = height;
+
+    if (isMaximized(w)) {
+        w.setMaximize(false, false);
+    }
+
+    w.frameGeometry = rect;
+}
+
 function tileTop() {
     workspace.slotWindowQuickTileTop();
 }
@@ -41,10 +59,20 @@ function tileBottom() {
     workspace.slotWindowQuickTileBottom();
 }
 function tileLeft() {
-    workspace.slotWindowQuickTileLeft();
+    var w = activeWindow();
+    if (!w) return;
+
+    var area = maximizeArea(w);
+    var split = Math.round(area.x + area.width / 2);
+    placeWindow(w, area.x, area.y, split - area.x, area.height);
 }
 function tileRight() {
-    workspace.slotWindowQuickTileRight();
+    var w = activeWindow();
+    if (!w) return;
+
+    var area = maximizeArea(w);
+    var split = Math.round(area.x + area.width / 2);
+    placeWindow(w, split, area.y, area.x + area.width - split, area.height);
 }
 function tileTopLeft() {
     workspace.slotWindowQuickTileTopLeft();
@@ -143,23 +171,12 @@ function onLeft() {
 
     var s = getState(w);
 
-    if (s === "MAX" || s === "FLOAT" || s === "RIGHT") {
-        tileLeft();
-        setState(w, "LEFT");
+    if (s === "LEFT") {
         return;
     }
 
-    if (s === "TOP" || s === "TR") {
-        tileTopLeft();
-        setState(w, "TL");
-        return;
-    }
-
-    if (s === "BOTTOM" || s === "BR") {
-        tileBottomLeft();
-        setState(w, "BL");
-        return;
-    }
+    tileLeft();
+    setState(w, "LEFT");
 }
 
 function onRight() {
@@ -168,23 +185,12 @@ function onRight() {
 
     var s = getState(w);
 
-    if (s === "MAX" || s === "FLOAT" || s === "LEFT") {
-        tileRight();
-        setState(w, "RIGHT");
+    if (s === "RIGHT") {
         return;
     }
 
-    if (s === "TOP" || s === "TL") {
-        tileTopRight();
-        setState(w, "TR");
-        return;
-    }
-
-    if (s === "BOTTOM" || s === "BL") {
-        tileBottomRight();
-        setState(w, "BR");
-        return;
-    }
+    tileRight();
+    setState(w, "RIGHT");
 }
 
 registerShortcut(
