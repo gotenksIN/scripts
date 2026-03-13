@@ -38,6 +38,7 @@ echo "Set root password"
 passwd
 
 pacman -Sy \
+        7zip \
         aria2 \
         bat \
         bottom \
@@ -52,7 +53,6 @@ pacman -Sy \
         keychain \
         ncdu \
         networkmanager \
-        p7zip \
         python-pip \
         ripgrep \
         schedtool \
