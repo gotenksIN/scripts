@@ -31,6 +31,8 @@ if [[ "${input}" =~ ^[Yy]$ ]]; then
                 ttf-ubuntu-font-family \
                 unzip \
                 visual-studio-code-bin \
+                vlc \
+                vlc-plugins-all \
                 wezterm-nightly-bin
 fi
 
