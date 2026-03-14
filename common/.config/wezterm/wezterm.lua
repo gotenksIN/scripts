@@ -27,6 +27,13 @@ config.font_size = 10.5
 config.initial_cols = 150
 config.initial_rows = 40
 config.window_background_opacity = 0.85
+config.keys = {
+    -- Make terminal-side clipboard shortcuts explicit for TUIs like Codex.
+    { key = 'C', mods = 'CTRL|SHIFT', action = act.CopyTo 'Clipboard' },
+    { key = 'V', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+    { key = 'Insert', mods = 'CTRL', action = act.CopyTo 'PrimarySelection' },
+    { key = 'Insert', mods = 'SHIFT', action = act.PasteFrom 'PrimarySelection' },
+}
 config.mouse_bindings = {
     -- Bind 'Up' event of CTRL-Click to open hyperlinks
     {
