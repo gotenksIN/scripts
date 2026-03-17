@@ -18,7 +18,7 @@ local right_click_clipboard = wezterm.action_callback(function(window, pane)
 end)
 
 -- This is where you actually apply your config choices
-config.color_scheme = 'Dracula (Official)'
+config.color_scheme = 'Catppuccin Frappe'
 config.default_cursor_style = 'SteadyBar'
 config.enable_scroll_bar=true
 config.enable_tab_bar = false
