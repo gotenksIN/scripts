@@ -69,6 +69,22 @@ function Install-DscWithWinget {
     return $dscCommandPath
 }
 
+function Disable-StoreSearchSuggestions {
+    $storeDbPath = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Packages\Microsoft.WindowsStore_8wekyb3d8bbwe\LocalState\store.db"
+
+    if (-not (Test-Path -LiteralPath $storeDbPath)) {
+        Write-Warning "Skipping Microsoft Store search suggestion tweak because the Store database was not found: $storeDbPath"
+        return
+    }
+
+    Write-Host "Blocking Microsoft Store search suggestions..."
+    Invoke-NativeCommand -FilePath "icacls.exe" -Arguments @(
+        $storeDbPath,
+        "/deny",
+        "Everyone:F"
+    )
+}
+
 if (-not (Test-IsAdministrator)) {
     throw "Run this script from an elevated PowerShell session."
 }
@@ -94,5 +110,7 @@ Write-Host "Taking ownership of Downloads folder type keys..."
 
 Write-Host "Applying registry state with DSC v3..."
 Invoke-NativeCommand -FilePath $dscCommandPath -Arguments @("config", "set", "--file", $dscConfigFile)
+
+Disable-StoreSearchSuggestions
 
 Write-Host "Windows setup changes applied. Restart Explorer or sign out to pick up the folder view change."
