@@ -89,3 +89,11 @@ resources:
       valueName: ConnectedSearchUseWebOverMeteredConnections
       valueData:
         UInt32: 0
+
+  - name: rtc-is-utc
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
+      valueName: RealTimeIsUniversal
+      valueData:
+        UInt32: 1
