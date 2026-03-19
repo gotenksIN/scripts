@@ -65,3 +65,27 @@ resources:
       valueName: DisableSearchBoxSuggestions
       valueData:
         UInt32: 1
+
+  - name: disable-search-box-suggestions-current-user
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer
+      valueName: DisableSearchBoxSuggestions
+      valueData:
+        UInt32: 1
+
+  - name: disable-search-web-results
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search
+      valueName: ConnectedSearchUseWeb
+      valueData:
+        UInt32: 0
+
+  - name: disable-search-web-results-metered
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search
+      valueName: ConnectedSearchUseWebOverMeteredConnections
+      valueData:
+        UInt32: 0
