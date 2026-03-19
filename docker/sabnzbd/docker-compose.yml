@@ -1,0 +1,14 @@
+services:
+  sabnzbd:
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    image: lscr.io/linuxserver/sabnzbd:latest
+    ports:
+      - 8082:8080
+    restart: unless-stopped
+    volumes:
+      - /home/gotenks/.config/sabnzbd:/config
+      - /home/gotenks/HDD/Downloads:/downloads
