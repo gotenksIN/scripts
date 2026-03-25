@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-01-05T08:56:22.602-00:00",
+	"CreationDate" : "2026-03-25T08:01:27.790-00:00",
 	"Sources" :
 	[
 		{
@@ -19,10 +19,16 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Google.QuickShare"
+					"PackageIdentifier" : "Yubico.Authenticator"
 				},
 				{
-					"PackageIdentifier" : "Yubico.Authenticator"
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
+					"PackageIdentifier" : "WireGuard.WireGuard"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
@@ -37,10 +43,7 @@
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -85,7 +88,7 @@
 					"PackageIdentifier" : "Rclone.Rclone"
 				},
 				{
-					"PackageIdentifier" : "Spotify.Spotify"
+					"PackageIdentifier" : "SST.opencode"
 				},
 				{
 					"PackageIdentifier" : "aria2.aria2"
@@ -128,6 +131,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
 			"SourceDetails" :
@@ -169,5 +175,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.440"
+	"WinGetVersion" : "1.29.30-preview"
 }
