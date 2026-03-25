@@ -7,9 +7,6 @@
     "logging": {
         "level": "verbose"
     },
-    "installPrefReq": {
-        "scope": "user"
-    },
     "installBehavior": {
         "disableInstallNotes": true
     },

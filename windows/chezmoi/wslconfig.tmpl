@@ -1,0 +1,30 @@
+[wsl2]
+{{- if eq .chezmoi.hostname "RyzenBox" }}
+memory=16GB
+kernel=C:\\bzImage-zen3
+kernelModules=C:\\bzImage-zen3-addons.vhdx
+{{- else if eq .chezmoi.hostname "GroundBox" }}
+memory=4GB
+kernel=C:\\bzImage-x64v3
+kernelModules=C:\\bzImage-x64v3-addons.vhdx
+{{- else }}
+memory=8GB
+kernel=C:\\bzImage-x64v3
+kernelModules=C:\\bzImage-x64v3-addons.vhdx
+{{- end }}
+
+swap=0
+guiApplications=false
+nestedVirtualization=false
+hardwarePerformanceCounters=false
+networkingMode=mirrored
+dnsTunneling=true
+firewall=true
+
+[boot]
+systemd=false
+
+[experimental]
+autoMemoryReclaim=dropcache
+sparseVhd=true
+hostAddressLoopback=true

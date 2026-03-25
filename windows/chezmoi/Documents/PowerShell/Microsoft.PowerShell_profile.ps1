@@ -1,0 +1,22 @@
+# Init oh-my-posh
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\star.omp.json" | Invoke-Expression
+
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+Import-Module -Name Terminal-Icons
+
+# Set git aliases from commmon/aliases
+function gita { git add @args }
+function gitc { git commit -S --signoff @args }
+function gitcp { git cherry-pick @args }
+function gitcpc { git cherry-pick --continue }
+function gitf { git fetch @args }
+function gitp { git push @args }
+function gitfp { git push -f @args }
+function gitr { git reset @args }
+function gitrh { git reset --hard @args }
+
+# Add some easy download aliases
+function quick_download { aria2c -x16 @args }
+
+# Clear terminal once profile is finished loading
+clear

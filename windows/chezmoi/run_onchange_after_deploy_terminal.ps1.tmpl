@@ -1,0 +1,21 @@
+# terminal.json hash: {{ include "terminal.json" | sha256sum }}
+
+$terminalContent = @'
+{{ include "terminal.json" }}
+'@
+
+$terminalVariants = @(
+    "Microsoft.WindowsTerminal_8wekyb3d8bbwe"
+    "Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe"
+    "Microsoft.WindowsTerminalCanary_8wekyb3d8bbwe"
+    "WindowsTerminalDev_8wekyb3d8bbwe"
+)
+
+foreach ($variant in $terminalVariants) {
+    $terminalStateDir = "$env:LOCALAPPDATA\Packages\$variant\LocalState"
+    if (Test-Path -LiteralPath $terminalStateDir) {
+        $targetPath = Join-Path -Path $terminalStateDir -ChildPath "settings.json"
+        Set-Content -Path $targetPath -Value $terminalContent -Encoding utf8
+        Write-Host "Deployed terminal.json to $targetPath via chezmoi run_onchange script"
+    }
+}

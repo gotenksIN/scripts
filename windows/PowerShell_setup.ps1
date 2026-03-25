@@ -1,5 +1,3 @@
-Enable-ExperimentalFeature PSFeedbackProvider
-Enable-ExperimentalFeature PSCommandNotFoundSuggestion
-Install-PSResource -Name Microsoft.WinGet.CommandNotFound
-Install-Module -Name PSWindowsUpdate
-Install-Module -Name Terminal-Icons
+Install-PSResource -Name Microsoft.WinGet.CommandNotFound -TrustRepository
+Install-PSResource -Name PSWindowsUpdate -TrustRepository
+Install-PSResource -Name Terminal-Icons -TrustRepository
