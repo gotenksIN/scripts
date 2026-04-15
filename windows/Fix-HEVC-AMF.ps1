@@ -152,8 +152,14 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
   }
 
   # Replace original (no backups)
-  Remove-Item -LiteralPath $in -Force
-  Move-Item  -LiteralPath $tmp -Destination $in -Force
+  try {
+    Move-Item -LiteralPath $tmp -Destination $in -Force -ErrorAction Stop
+  }
+  catch {
+    Write-Warning "Replace failed; original kept if possible."
+    Add-FailureEntry $name ("replace failed ({0})" -f $_.Exception.Message)
+    return
+  }
 
   Write-Status "Replaced OK."
   Add-ProcessedEntry $name
