@@ -30,21 +30,25 @@ $leaf = Split-Path -Leaf $folderPath
 $processedList = Join-Path (Get-Location) ($leaf + ".txt")
 $failedList    = Join-Path (Get-Location) ($leaf + ".failed.txt")
 
+function Write-Status([string]$Message) {
+  Write-Information $Message -InformationAction Continue
+}
+
 # Load processed file names (case-insensitive)
 $processed = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
 if (Test-Path -LiteralPath $processedList) {
   Get-Content -LiteralPath $processedList | ForEach-Object {
     $t = $_.Trim()
-    if ($t) { [void]$processed.Add($t) }
+      if ($t) { [void]$processed.Add($t) }
   }
 }
 
-function Mark-Processed([string]$name) {
+function Add-ProcessedEntry([string]$name) {
   Add-Content -LiteralPath $processedList -Value $name
   [void]$processed.Add($name)
 }
 
-function Mark-Failed([string]$name, [string]$reason) {
+function Add-FailureEntry([string]$name, [string]$reason) {
   $stamp = (Get-Date).ToString("s")
   Add-Content -LiteralPath $failedList -Value ("[{0}] {1} :: {2}" -f $stamp, $name, $reason)
 }
@@ -53,14 +57,14 @@ function Mark-Failed([string]$name, [string]$reason) {
 $MIN_VBR = 1500000
 $MAX_VBR = 25000000
 
-Write-Host "Input folder    : $folderPath"
-Write-Host "Processed list  : $processedList"
-Write-Host "Failed list     : $failedList"
-Write-Host "ShrinkFactor    : $ShrinkFactor"
-Write-Host "MaxRateFactor   : $MaxRateFactor"
-Write-Host "BufFactor       : $BufFactor"
-Write-Host "ValidateOutput  : $($ValidateOutput.IsPresent)"
-Write-Host ""
+Write-Status "Input folder    : $folderPath"
+Write-Status "Processed list  : $processedList"
+Write-Status "Failed list     : $failedList"
+Write-Status "ShrinkFactor    : $ShrinkFactor"
+Write-Status "MaxRateFactor   : $MaxRateFactor"
+Write-Status "BufFactor       : $BufFactor"
+Write-Status "ValidateOutput  : $($ValidateOutput.IsPresent)"
+Write-Status ""
 
 Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
 
@@ -70,12 +74,12 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
   $nv   = Join-Path $_.DirectoryName ($_.BaseName + ".nonvideo.tmp.mkv")
 
   if ($processed.Contains($name)) {
-    Write-Host "SKIP (already processed): $name"
+    Write-Status "SKIP (already processed): $name"
     return
   }
 
-  Write-Host ""
-  Write-Host "=== Processing: $name ==="
+  Write-Status ""
+  Write-Status "=== Processing: $name ==="
 
   # Duration
   $durStr = & ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 $in
@@ -84,7 +88,7 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
   [void][double]::TryParse($durStr, [ref]$dur)
   if ($dur -le 0) {
     Write-Warning "Can't read duration; skipping."
-    Mark-Failed $name "ffprobe duration unreadable"
+    Add-FailureEntry $name "ffprobe duration unreadable"
     return
   }
 
@@ -95,7 +99,7 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
 
   if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $nv)) {
     Write-Warning "Failed to create non-video probe; skipping."
-    Mark-Failed $name ("nonvideo probe failed (exitcode={0})" -f $LASTEXITCODE)
+    Add-FailureEntry $name ("nonvideo probe failed (exitcode={0})" -f $LASTEXITCODE)
     if (Test-Path -LiteralPath $nv) { Remove-Item -LiteralPath $nv -Force }
     return
   }
@@ -114,7 +118,7 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
   $maxKbps = [int]([Math]::Ceiling($vKbps * $MaxRateFactor))
   $bufKbps = [int]([Math]::Ceiling($maxKbps * $BufFactor))
 
-  Write-Host ("Target video bitrate: {0} kb/s (max {1} kb/s, buf {2} kb/s)" -f $vKbps, $maxKbps, $bufKbps)
+  Write-Status ("Target video bitrate: {0} kb/s (max {1} kb/s, buf {2} kb/s)" -f $vKbps, $maxKbps, $bufKbps)
 
   if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force }
 
@@ -131,17 +135,17 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
 
   if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $tmp)) {
     Write-Warning "Transcode failed; original kept."
-    Mark-Failed $name ("encode failed (exitcode={0})" -f $LASTEXITCODE)
+    Add-FailureEntry $name ("encode failed (exitcode={0})" -f $LASTEXITCODE)
     if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force }
     return
   }
 
   if ($ValidateOutput.IsPresent) {
-    Write-Host "Validating output (decode video to null)..."
+    Write-Status "Validating output (decode video to null)..."
     & ffmpeg -hide_banner -v error -nostdin -i $tmp -map 0:v:0 -an -f null - | Out-Null
     if ($LASTEXITCODE -ne 0) {
       Write-Warning "Validation failed; original kept."
-      Mark-Failed $name ("validation failed (exitcode={0})" -f $LASTEXITCODE)
+      Add-FailureEntry $name ("validation failed (exitcode={0})" -f $LASTEXITCODE)
       Remove-Item -LiteralPath $tmp -Force
       return
     }
@@ -151,6 +155,6 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
   Remove-Item -LiteralPath $in -Force
   Move-Item  -LiteralPath $tmp -Destination $in -Force
 
-  Write-Host "Replaced OK."
-  Mark-Processed $name
+  Write-Status "Replaced OK."
+  Add-ProcessedEntry $name
 }
