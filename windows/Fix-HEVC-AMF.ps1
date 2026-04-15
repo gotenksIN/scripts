@@ -85,7 +85,7 @@ Get-ChildItem -LiteralPath $folderPath -Filter *.mkv -File | ForEach-Object {
   $durStr = & ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 $in
   $durStr = ($durStr | Select-Object -First 1).Trim()
   $dur = 0.0
-  [void][double]::TryParse($durStr, [ref]$dur)
+  [void][double]::TryParse($durStr, [System.Globalization.NumberStyles]::Float, [System.Globalization.CultureInfo]::InvariantCulture, [ref]$dur)
   if ($dur -le 0) {
     Write-Warning "Can't read duration; skipping."
     Add-FailureEntry $name "ffprobe duration unreadable"
