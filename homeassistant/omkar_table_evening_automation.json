@@ -1,6 +1,6 @@
 {
   "alias": "Omkar Table Evening Auto",
-  "description": "When sun elevation drops below -2.0°, set table lights to 60% at 5000K when either phone is home and on SkyNet.",
+  "description": "When sun elevation drops below -2.0°, set table lights to 60% at 5000K when either phone is home.",
   "trigger": [
     {
       "platform": "numeric_state",
@@ -13,20 +13,8 @@
     {
       "condition": "or",
       "conditions": [
-        {
-          "condition": "and",
-          "conditions": [
-            { "condition": "state", "entity_id": "device_tracker.marblebox", "state": "home" },
-            { "condition": "state", "entity_id": "sensor.marblebox_wi_fi_connection", "state": "SkyNet" }
-          ]
-        },
-        {
-          "condition": "and",
-          "conditions": [
-            { "condition": "state", "entity_id": "device_tracker.oneplusbox", "state": "home" },
-            { "condition": "state", "entity_id": "sensor.oneplusbox_wi_fi_connection", "state": "SkyNet" }
-          ]
-        }
+        { "condition": "state", "entity_id": "binary_sensor.192_168_0_122", "state": "on" },
+        { "condition": "state", "entity_id": "binary_sensor.192_168_0_121", "state": "on" }
       ]
     }
   ],

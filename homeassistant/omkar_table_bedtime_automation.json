@@ -1,6 +1,6 @@
 {
   "alias": "Omkar Table Bedtime Auto",
-  "description": "At 10:30 PM, dim table lights to 20% when either phone is home and on SkyNet, but only if the light is already on.",
+  "description": "At 10:30 PM, dim table lights to 20% when either phone is home, but only if the light is already on.",
   "trigger": [
     {
       "platform": "time",
@@ -11,20 +11,8 @@
     {
       "condition": "or",
       "conditions": [
-        {
-          "condition": "and",
-          "conditions": [
-            { "condition": "state", "entity_id": "device_tracker.marblebox", "state": "home" },
-            { "condition": "state", "entity_id": "sensor.marblebox_wi_fi_connection", "state": "SkyNet" }
-          ]
-        },
-        {
-          "condition": "and",
-          "conditions": [
-            { "condition": "state", "entity_id": "device_tracker.oneplusbox", "state": "home" },
-            { "condition": "state", "entity_id": "sensor.oneplusbox_wi_fi_connection", "state": "SkyNet" }
-          ]
-        }
+        { "condition": "state", "entity_id": "binary_sensor.192_168_0_122", "state": "on" },
+        { "condition": "state", "entity_id": "binary_sensor.192_168_0_121", "state": "on" }
       ]
     },
     {
