@@ -1,11 +1,12 @@
 {
   "alias": "Omkar Table Evening Auto",
-  "description": "30 minutes before sunset, set table lights to 60% at 5000K when either phone is home and on SkyNet.",
+  "description": "When sun elevation drops below -2.0°, set table lights to 60% at 5000K when either phone is home and on SkyNet.",
   "trigger": [
     {
-      "platform": "sun",
-      "event": "sunset",
-      "offset": "-00:30:00"
+      "platform": "numeric_state",
+      "entity_id": "sun.sun",
+      "attribute": "elevation",
+      "below": -2.0
     }
   ],
   "condition": [
