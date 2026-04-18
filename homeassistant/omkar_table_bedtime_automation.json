@@ -35,7 +35,7 @@
   ],
   "action": [
     {
-      "service": "script.turn_on",
+      "action": "script.turn_on",
       "target": { "entity_id": "script.omkar_table_bedtime" }
     }
   ],
