@@ -1,12 +1,12 @@
 {
   "alias": "Omkar Table Sunset Auto",
-  "description": "When sun elevation drops below -7.5°, set table lights to 40% at 2200K when either phone is home.",
+  "description": "When sun elevation drops below -4°, set table lights to 40% at 2200K when either phone is home.",
   "trigger": [
     {
       "platform": "numeric_state",
       "entity_id": "sun.sun",
       "attribute": "elevation",
-      "below": -7.5
+      "below": -4
     }
   ],
   "condition": [
