@@ -11,8 +11,8 @@
     {
       "condition": "or",
       "conditions": [
-        { "condition": "state", "entity_id": "binary_sensor.192_168_0_122", "state": "on" },
-        { "condition": "state", "entity_id": "binary_sensor.192_168_0_121", "state": "on" }
+        { "condition": "state", "entity_id": "device_tracker.marblebox_2", "state": "home" },
+        { "condition": "state", "entity_id": "device_tracker.oneplusbox_2", "state": "home" }
       ]
     },
     {
