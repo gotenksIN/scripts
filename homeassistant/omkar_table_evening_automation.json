@@ -18,6 +18,11 @@
   ],
   "condition": [
     {
+      "condition": "state",
+      "entity_id": "light.table",
+      "state": "off"
+    },
+    {
       "condition": "template",
       "value_template": "{% set elevation = state_attr('sun.sun', 'elevation') | float(90) %}{{ elevation > 0 and elevation < 8 and not state_attr('sun.sun', 'rising') }}"
     },
