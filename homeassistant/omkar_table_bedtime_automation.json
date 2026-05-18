@@ -1,6 +1,6 @@
 {
   "alias": "Omkar Table Bedtime Auto",
-  "description": "At 10:30 PM, dim table lights to 20% when either phone is home, but only if the light is already on.",
+  "description": "At 10:30 PM, dim table lights to 20%, but only if the light is already on.",
   "trigger": [
     {
       "platform": "time",
@@ -8,13 +8,6 @@
     }
   ],
   "condition": [
-    {
-      "condition": "or",
-      "conditions": [
-        { "condition": "state", "entity_id": "device_tracker.nothingbox_2", "state": "home" },
-        { "condition": "state", "entity_id": "device_tracker.oneplusbox_2", "state": "home" }
-      ]
-    },
     {
       "condition": "state",
       "entity_id": "light.table",
