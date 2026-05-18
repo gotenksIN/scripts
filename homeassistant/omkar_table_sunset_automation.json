@@ -1,6 +1,6 @@
 {
   "alias": "Omkar Table Sunset Auto",
-  "description": "When sun elevation drops below -4°, set table lights to 40% at 2200K when either phone is home.",
+  "description": "When sun elevation drops below -4°, set table lights to 40% at 2200K if the light is already on or either phone is home.",
   "trigger": [
     {
       "platform": "numeric_state",
@@ -13,6 +13,7 @@
     {
       "condition": "or",
       "conditions": [
+        { "condition": "state", "entity_id": "light.table", "state": "on" },
         { "condition": "state", "entity_id": "device_tracker.nothingbox_2", "state": "home" },
         { "condition": "state", "entity_id": "device_tracker.oneplusbox_2", "state": "home" }
       ]
