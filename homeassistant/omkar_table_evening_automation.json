@@ -1,22 +1,20 @@
 {
   "alias": "Omkar Table Evening Auto",
   "description": "When sun elevation drops below 8, set table lights to 60% at 5000K when either phone is home.",
-  "trigger": [
+  "triggers": [
     {
-      "platform": "template",
-      "value_template": "{{ state_attr('sun.sun', 'elevation') | float(90) < 8 }}",
+      "platform": "numeric_state",
+      "entity_id": "sun.sun",
+      "attribute": "elevation",
+      "below": 8,
       "for": "00:05:00"
-    },
-    {
-      "platform": "time_pattern",
-      "minutes": "/5"
     },
     {
       "platform": "homeassistant",
       "event": "start"
     }
   ],
-  "condition": [
+  "conditions": [
     {
       "condition": "state",
       "entity_id": "light.table",
@@ -34,7 +32,7 @@
       ]
     }
   ],
-  "action": [
+  "actions": [
     {
       "action": "script.turn_on",
       "target": { "entity_id": "script.omkar_table_evening" }
