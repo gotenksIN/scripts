@@ -1,20 +1,20 @@
 {
   "alias": "Omkar Table Bedtime Auto",
   "description": "At 10:30 PM, dim table lights to 20%, but only if the light is already on.",
-  "trigger": [
+  "triggers": [
     {
       "platform": "time",
       "at": "22:30:00"
     }
   ],
-  "condition": [
+  "conditions": [
     {
       "condition": "state",
       "entity_id": "light.table",
       "state": "on"
     }
   ],
-  "action": [
+  "actions": [
     {
       "action": "script.turn_on",
       "target": { "entity_id": "script.omkar_table_bedtime" }
