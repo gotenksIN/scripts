@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-03-11T12:30:46.215-00:00",
+	"CreationDate" : "2026-05-23T14:09:15.075-00:00",
 	"Sources" :
 	[
 		{
@@ -13,19 +13,28 @@
 					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
-				},
-				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
 				},
 				{
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
+					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
+				},
+				{
+					"PackageIdentifier" : "WireGuard.WireGuard"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -37,13 +46,10 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.9"
-				},
-				{
 					"PackageIdentifier" : "Tailscale.Tailscale"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
@@ -61,13 +67,7 @@
 					"PackageIdentifier" : "Google.PlatformTools"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
 					"PackageIdentifier" : "Ookla.Speedtest.CLI"
-				},
-				{
-					"PackageIdentifier" : "OpenAI.Codex"
 				},
 				{
 					"PackageIdentifier" : "Rclone.Rclone"
@@ -85,13 +85,13 @@
 					"PackageIdentifier" : "topgrade-rs.topgrade"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
 				},
 				{
-					"PackageIdentifier" : "M2Team.NanaZip.Preview"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier" : "M2Team.NanaZip"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu"
@@ -100,10 +100,25 @@
 					"PackageIdentifier" : "Microsoft.AppInstaller"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.DotNet.Native.Runtime"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.7"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.8"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WSL"
@@ -121,25 +136,19 @@
 			"Packages" :
 			[
 				{
+					"PackageIdentifier" : "9P4CLT2RJ1RS"
+				},
+				{
 					"PackageIdentifier" : "9NTSNMSVCB5L"
 				},
 				{
 					"PackageIdentifier" : "9N97ZCKPD60Q"
 				},
 				{
-					"PackageIdentifier" : "9WZDNCRFJ3TJ"
-				},
-				{
-					"PackageIdentifier" : "9P4CLT2RJ1RS"
-				},
-				{
 					"PackageIdentifier" : "9NBDXK71NK08"
 				},
 				{
 					"PackageIdentifier" : "9PPGN2WM50QB"
-				},
-				{
-					"PackageIdentifier" : "9P6RC76MSMMJ"
 				}
 			],
 			"SourceDetails" :
@@ -151,5 +160,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.29.30-preview"
+	"WinGetVersion" : "1.29.180-preview"
 }
