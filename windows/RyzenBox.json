@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-03-25T08:01:27.790-00:00",
+	"CreationDate" : "2026-05-23T08:10:24.356-00:00",
 	"Sources" :
 	[
 		{
@@ -19,16 +19,13 @@
 					"PackageIdentifier" : "AntibodySoftware.WizTree"
 				},
 				{
-					"PackageIdentifier" : "Yubico.Authenticator"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
 					"PackageIdentifier" : "Tailscale.Tailscale"
 				},
 				{
-					"PackageIdentifier" : "WireGuard.WireGuard"
+					"PackageIdentifier" : "Yubico.Authenticator"
+				},
+				{
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Oracle.JavaRuntimeEnvironment"
@@ -37,13 +34,13 @@
 					"PackageIdentifier" : "Microsoft.OpenSSH.Preview"
 				},
 				{
-					"PackageIdentifier" : "LRCLIB.LRCGET"
+					"PackageIdentifier" : "WireGuard.WireGuard"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
-					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -61,9 +58,6 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
-					"PackageIdentifier" : "xanderfrangos.twinkletray"
-				},
-				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
 				},
 				{
@@ -79,6 +73,9 @@
 					"PackageIdentifier" : "Google.PlatformTools"
 				},
 				{
+					"PackageIdentifier" : "LRCLIB.LRCGET"
+				},
+				{
 					"PackageIdentifier" : "Logitech.OnboardMemoryManager"
 				},
 				{
@@ -86,9 +83,6 @@
 				},
 				{
 					"PackageIdentifier" : "Rclone.Rclone"
-				},
-				{
-					"PackageIdentifier" : "SST.opencode"
 				},
 				{
 					"PackageIdentifier" : "aria2.aria2"
@@ -106,22 +100,25 @@
 					"PackageIdentifier" : "WinSCP.WinSCP"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "Microsoft.PowerToys"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
 					"PackageIdentifier" : "Starpine.Screenbox"
 				},
 				{
-					"PackageIdentifier" : "M2Team.NanaZip.Preview"
+					"PackageIdentifier" : "M2Team.NanaZip"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.AppInstaller"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.Native.Runtime"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.UI.Xaml.2.7"
@@ -131,6 +128,21 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.5"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.7"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.8"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WSL"
@@ -154,16 +166,10 @@
 					"PackageIdentifier" : "9N97ZCKPD60Q"
 				},
 				{
-					"PackageIdentifier" : "9WZDNCRFJ3TJ"
-				},
-				{
 					"PackageIdentifier" : "9NBDXK71NK08"
 				},
 				{
 					"PackageIdentifier" : "9PPGN2WM50QB"
-				},
-				{
-					"PackageIdentifier" : "9P6RC76MSMMJ"
 				}
 			],
 			"SourceDetails" :
@@ -175,5 +181,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.29.30-preview"
+	"WinGetVersion" : "1.29.180-preview"
 }
