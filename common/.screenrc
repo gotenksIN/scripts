@@ -4,4 +4,5 @@ termcapinfo xterm*|rxvt*|kterm*|Eterm* ti@:te@
 defutf8 on
 defencoding utf8
 encoding UTF-8 UTF-8
+truecolor on
 
