@@ -36,6 +36,13 @@ if (-not (Test-Path -LiteralPath $dscConfigFile)) {
     throw "Missing DSC config file: $dscConfigFile"
 }
 
+# Grant Administrators access to protected Downloads folder registry keys first
+$ownershipScript = Join-Path -Path $PSScriptRoot -ChildPath "Take-FolderTypesOwnership.ps1"
+if (Test-Path -LiteralPath $ownershipScript) {
+    Write-Host "Taking ownership and adjusting permissions for protected Explorer registry keys..."
+    & $ownershipScript
+}
+
 Write-Host "Applying registry state with DSC v3..."
 dsc config set --file $dscConfigFile
 
@@ -62,14 +69,25 @@ if (Test-Path -LiteralPath $wslConfFile) {
 }
 
 
-# --- 3. Tweak Microsoft Store Search Suggestions ---
-$storeDbPath = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Packages\Microsoft.WindowsStore_8wekyb3d8bbwe\LocalState\store.db"
-if (Test-Path -LiteralPath $storeDbPath) {
-    Write-Host "Blocking Microsoft Store search suggestions..."
-    icacls.exe $storeDbPath /deny "Everyone:F"
-} else {
-    Write-Warning "Skipping Microsoft Store search suggestion tweak because the Store database was not found: $storeDbPath"
+# --- 3. Block Microsoft Store Search Suggestions ---
+$storeDbDir = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Packages\Microsoft.WindowsStore_8wekyb3d8bbwe\LocalState"
+$storeDbPath = Join-Path -Path $storeDbDir -ChildPath "store.db"
+
+Write-Host "Blocking Microsoft Store search suggestions..."
+if (-not (Test-Path -LiteralPath $storeDbDir)) {
+    New-Item -ItemType Directory -Path $storeDbDir -Force | Out-Null
 }
+
+if (Test-Path -LiteralPath $storeDbPath) {
+    # Unset ReadOnly if it was set before, so we can delete it
+    Set-ItemProperty -Path $storeDbPath -Name IsReadOnly -Value $false -ErrorAction SilentlyContinue
+    Remove-Item -Path $storeDbPath -Force -ErrorAction SilentlyContinue
+}
+
+# Create a blank store.db and make it permanently Read-Only
+New-Item -ItemType File -Path $storeDbPath -Value "" -Force | Out-Null
+Set-ItemProperty -Path $storeDbPath -Name IsReadOnly -Value $true -Force
+Write-Host "Successfully blocked Microsoft Store search suggestions."
 
 
 # --- 4. Import Winget Packages ---
