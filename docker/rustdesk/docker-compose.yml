@@ -1,0 +1,22 @@
+services:
+  hbbs:
+    container_name: rustdesk-hbbs
+    image: rustdesk/rustdesk-server:latest
+    command: hbbs
+    # To automatically configure the relay server for clients, uncomment the command line below and set your IP/domain:
+    # command: hbbs -r <your-ip-or-domain>
+    volumes:
+      - /home/gotenks/.config/rustdesk-server:/root
+    network_mode: host
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+
+  hbbr:
+    container_name: rustdesk-hbbr
+    image: rustdesk/rustdesk-server:latest
+    command: hbbr
+    volumes:
+      - /home/gotenks/.config/rustdesk-server:/root
+    network_mode: host
+    restart: unless-stopped
