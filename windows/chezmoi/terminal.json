@@ -13,6 +13,8 @@
     "Windows.Terminal.PowershellCore",
     "Windows.Terminal.SSH"
 ],
+"experimental.scrollToChangeOpacity": false,
+"experimental.scrollToZoom": false,
 "initialCols": 150,
 "initialRows": 40,
 "keybindings": [],
@@ -41,7 +43,7 @@
         "opacity": 80,
         "useAcrylic": true
     },
-    "list": 
+    "list":
     [
         {
             "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
