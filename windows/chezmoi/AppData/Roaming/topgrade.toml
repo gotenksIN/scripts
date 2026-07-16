@@ -18,11 +18,23 @@
 # (default: false)
 # pre_sudo = false
 
+# Periodically runs `sudo -v` or `please -w` to avoid password re-prompts during updates (default: false)
+# WARNING: This is a potential security risk; if you walk away from the computer while topgrade is running,
+# another person can come by, CTRL+C, and gain access to a sudo session.
+# sudo_loop = true
+# sudo_loop_interval = 240 # 4 minutes (240s); default if sudo_loop enabled
+
 # Sudo command to be used
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
 # disable = ["system", "emacs"]
+
+# Run these steps before all others
+# first = ["chezmoi"]
+
+# Run these steps after all others
+# last = ["system"]
 
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
@@ -48,7 +60,13 @@ remote_topgrades = ["newserver"]
 # Don't ask for confirmations (no default value)
 # assume_yes = true
 
-# Do not ask to retry failed steps (default: false)
+# Whether to ask what to do after a step fails (default: true)
+# ask_retry = true
+
+# Number of times to automatically retry a step when it fails (default: 0)
+# auto_retry = 0
+
+# Same as ask_retry = false (default: false) - legacy
 # no_retry = true
 
 # Show the reason for skipped steps (default: false)
@@ -70,7 +88,11 @@ remote_topgrades = ["newserver"]
 # Send a notification for every step (default: false)
 # notify_each_step = false
 
-# Skip sending a notification at the end of a run (default: false)
+# When to send a notification at the end of a run
+# (default: "always", allowed values: "always", "never", "on_failure")
+# notify_end = "on_failure"
+
+# Deprecated: use `notify_end = "never"` instead (default: false)
 # skip_notify = true
 
 # The Bash-it branch to update (default: "stable")
@@ -95,6 +117,12 @@ no_self_update = true
 # Pacman backup configuration files (*.pacsave and *.pacnew)
 # (default: true)
 # show_distribution_summary = false
+
+# For NixOS/home-manager, there are multiple ways to switch to newer configurations.
+# When set to autodetect: use nh when available, fall back to vanilla
+# Allowed values:
+#   autodetect, nh, vanilla
+# nix_handler = "autodetect"
 
 
 # Commands to run before anything
@@ -174,7 +202,7 @@ no_self_update = true
 [linux]
 # Arch Package Manager to use.
 # Allowed values:
-#   autodetect, aura, garuda_update, pacman, pamac, paru, pikaur, trizen, yay
+#   autodetect, aura, garuda_update, pacman, pamac, paru, pikaur, shelly, trizen, yay
 # arch_package_manager = "pacman"
 
 # Arguments to pass yay (or paru) when updating packages
@@ -195,6 +223,8 @@ no_self_update = true
 # pikaur_arguments = ""
 
 # pamac_arguments = "--no-devel"
+
+# shelly_arguments = ""
 
 # enable_tlmgr = true
 
@@ -220,6 +250,9 @@ no_self_update = true
 # Extra Home Manager arguments
 # home_manager_arguments = ["--flake", "file"]
 
+# Resolve tools from the Windows PATH (drive mounts like `/mnt/c`) while inside WSL.
+# Off by default so only the distro's own tools update (default: false).
+# wsl_use_windows_path = false
 
 [mandb]
 # Enable the mandb step (to update manual entries).
@@ -253,6 +286,11 @@ no_self_update = true
 
 # Whether to perform a `git fetch` instead of `git pull`
 # fetch_only = false
+
+# When a repo is not on its default branch, fetch the default branch (advancing
+# its local ref) instead of failing. The remote and default branch are detected
+# per repo. Has no effect on repos already on their default branch.
+# fallback_to_fetch_default = false
 
 [windows]
 # Manually select Windows updates
@@ -298,13 +336,29 @@ winget_silent_install = false
 # (default: false)
 # bump = false
 
-# Number of jobs to run in parallel
-# (default: 4)
-# jobs = 4
+# Number of jobs to run in parallel (mise's default)
+# jobs = 8
 
 # Run interactively
 # (default: false)
 # interactive = false
+
+# Suppress non-error messages
+# (default: false)
+# quiet = false
+
+# Suppress all task output and mise non-error messages
+# (default: false)
+# silent = false
+
+# Show extra output
+# (default: false)
+# verbose = false
+
+
+[go]
+# Exclude specified binaries from `gup update`
+# gup_exclude = ["kind", "pkgsite"]
 
 
 [npm]
@@ -322,9 +376,16 @@ winget_silent_install = false
 # version = "stable"
 
 
+[viteplus]
+# Use sudo if the Vite+ directory isn't owned by the current user
+# use_sudo = true
+
+
 [vim]
 # For `vim-plug`, execute `PlugUpdate!` instead of `PlugUpdate`
 # force_plug_update = true
+# For Neovim's `vim.pack`, remove inactive packages before updating
+# vim_pack_prune = true
 
 
 [firmware]
@@ -423,6 +484,18 @@ winget_silent_install = false
 # which enables ahead-of-time native compilation of packages.
 # (default: false)
 # aot = true
+
+[cargo]
+# If this is set to true, `cargo install-update` also updates git-originating packages.
+# (default: true)
+# git = false
+
+# If this is set to true, `cargo install-update` is run quietly.
+# (default: false)
+# quiet = true
+
+# Other options like `--locked` or `--jobs` can be passed to `cargo install`
+# using the `CARGO_INSTALL_OPTS` environment variable.
 
 [rustup]
 # If set, updates only these channels.
