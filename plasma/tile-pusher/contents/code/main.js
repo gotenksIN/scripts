@@ -48,6 +48,9 @@ function placeWindow(w, x, y, width, height) {
     if (isMaximized(w)) {
         w.setMaximize(false, false);
     }
+    if (w.tile) {
+        w.tile.unmanage(w);
+    }
 
     w.frameGeometry = rect;
 }
