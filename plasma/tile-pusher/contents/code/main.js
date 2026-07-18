@@ -243,28 +243,28 @@ function onRight() {
 registerShortcut(
     "Cinnamon Push Tile Up",
     "Cinnamon-style push tiling up",
-    "Meta+Up",
+    "",
     onUp
 );
 
 registerShortcut(
     "Cinnamon Push Tile Down",
     "Cinnamon-style push tiling down",
-    "Meta+Down",
+    "",
     onDown
 );
 
 registerShortcut(
     "Cinnamon Push Tile Left",
     "Cinnamon-style push tiling left",
-    "Meta+Left",
+    "",
     onLeft
 );
 
 registerShortcut(
     "Cinnamon Push Tile Right",
     "Cinnamon-style push tiling right",
-    "Meta+Right",
+    "",
     onRight
 );
 

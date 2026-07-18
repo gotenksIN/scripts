@@ -2,7 +2,7 @@
   "KPlugin": {
     "Id": "push-tiles",
     "Name": "Windows-style Push Tiling",
-    "Description": "Meta+Arrow push tiling similar to Windows.",
+    "Description": "Directional push tiling similar to Windows.",
     "Version": "1.0.0",
     "License": "GPL-3.0-or-later",
     "Authors": [
