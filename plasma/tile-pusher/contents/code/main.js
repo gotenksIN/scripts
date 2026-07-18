@@ -23,7 +23,7 @@ function getState(w) {
     if (isMaximized(w)) {
         return "MAX";
     }
-    return stateByWindow[wid(w)] || "FLOAT";
+    return stateByWindow[wid(w)] || detectState(w);
 }
 
 function setState(w, s) {
@@ -32,6 +32,50 @@ function setState(w, s) {
 
 function clearState(w) {
     delete stateByWindow[wid(w)];
+}
+
+function stateFromRelativeGeometry(rect) {
+    var left = rect.x <= 0.1;
+    var right = rect.x + rect.width >= 0.9;
+    var top = rect.y <= 0.1;
+    var bottom = rect.y + rect.height >= 0.9;
+    var halfWidth = rect.width >= 0.35 && rect.width <= 0.65;
+    var halfHeight = rect.height >= 0.35 && rect.height <= 0.65;
+
+    if (left && right && top && halfHeight) return "TOP";
+    if (left && right && bottom && halfHeight) return "BOTTOM";
+    if (left && top && bottom && halfWidth) return "LEFT";
+    if (right && top && bottom && halfWidth) return "RIGHT";
+    if (left && top && halfWidth && halfHeight) return "TL";
+    if (right && top && halfWidth && halfHeight) return "TR";
+    if (left && bottom && halfWidth && halfHeight) return "BL";
+    if (right && bottom && halfWidth && halfHeight) return "BR";
+    return "FLOAT";
+}
+
+function detectState(w) {
+    if (isMaximized(w)) return "MAX";
+    if (w.tile) return stateFromRelativeGeometry(w.tile.relativeGeometry);
+
+    var area = maximizeArea(w);
+    var geometry = w.frameGeometry;
+    return stateFromRelativeGeometry({
+        x: (geometry.x - area.x) / area.width,
+        y: (geometry.y - area.y) / area.height,
+        width: geometry.width / area.width,
+        height: geometry.height / area.height
+    });
+}
+
+function syncState(w) {
+    setState(w, detectState(w));
+}
+
+function watchWindow(w) {
+    syncState(w);
+    w.maximizedChanged.connect(function() { syncState(w); });
+    w.tileChanged.connect(function() { syncState(w); });
+    w.frameGeometryChanged.connect(function() { syncState(w); });
 }
 
 function maximizeArea(w) {
@@ -227,3 +271,6 @@ registerShortcut(
 workspace.windowRemoved.connect(function(w) {
     clearState(w);
 });
+
+workspace.windowAdded.connect(watchWindow);
+workspace.windowList().forEach(watchWindow);
