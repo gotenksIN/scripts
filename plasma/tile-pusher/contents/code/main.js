@@ -3,7 +3,8 @@ var stateByWindow = {};
 function activeWindow() {
     var w = workspace.activeWindow;
     if (!w) return null;
-    if (!w.normalWindow) return null;
+    if (!w.managed || w.specialWindow) return null;
+    if (!w.resizeable || !w.moveable) return null;
     return w;
 }
 
