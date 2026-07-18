@@ -16,7 +16,7 @@ function wid(w) {
 }
 
 function isMaximized(w) {
-    return !!(w.maximizedHorizontally && w.maximizedVertically);
+    return w.maximizeMode === KWin.MaximizeFull;
 }
 
 function getState(w) {
