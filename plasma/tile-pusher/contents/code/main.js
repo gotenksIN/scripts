@@ -223,6 +223,18 @@ function onLeft() {
         return;
     }
 
+    if (s === "TOP" || s === "TR") {
+        tileTopLeft();
+        setState(w, "TL");
+        return;
+    }
+
+    if (s === "BOTTOM" || s === "BR") {
+        tileBottomLeft();
+        setState(w, "BL");
+        return;
+    }
+
     tileLeft();
     setState(w, "LEFT");
 }
@@ -234,6 +246,18 @@ function onRight() {
     var s = getState(w);
 
     if (s === "RIGHT") {
+        return;
+    }
+
+    if (s === "TOP" || s === "TL") {
+        tileTopRight();
+        setState(w, "TR");
+        return;
+    }
+
+    if (s === "BOTTOM" || s === "BL") {
+        tileBottomRight();
+        setState(w, "BR");
         return;
     }
 
