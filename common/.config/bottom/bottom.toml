@@ -1,0 +1,2 @@
+[temperature.sensor_filter]
+list = ["nvme"]
