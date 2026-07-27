@@ -32,7 +32,7 @@
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
         "closeOnExit": "always",
-        "colorScheme": "Catppuccin Macchiato",
+        "colorScheme": "Catppuccin Frappe",
         "cursorShape": "bar",
         "font":
         {
@@ -84,27 +84,27 @@
 "schemes":
 [
     {
-        "background": "#24273A",
-        "black": "#494D64",
-        "blue": "#8AADF4",
-        "brightBlack": "#5B6078",
-        "brightBlue": "#8AADF4",
-        "brightCyan": "#8BD5CA",
-        "brightGreen": "#A6DA95",
-        "brightPurple": "#F5BDE6",
-        "brightRed": "#ED8796",
-        "brightWhite": "#A5ADCB",
-        "brightYellow": "#EED49F",
-        "cursorColor": "#F4DBD6",
-        "cyan": "#8BD5CA",
-        "foreground": "#CAD3F5",
-        "green": "#A6DA95",
-        "name": "Catppuccin Macchiato",
-        "purple": "#F5BDE6",
-        "red": "#ED8796",
-        "selectionBackground": "#5B6078",
-        "white": "#B8C0E0",
-        "yellow": "#EED49F"
+        "background": "#303446",
+        "black": "#51576D",
+        "blue": "#8CAAEE",
+        "brightBlack": "#626880",
+        "brightBlue": "#8CAAEE",
+        "brightCyan": "#81C8BE",
+        "brightGreen": "#A6D189",
+        "brightPurple": "#F4B8E4",
+        "brightRed": "#E78284",
+        "brightWhite": "#A5ADCE",
+        "brightYellow": "#E5C890",
+        "cursorColor": "#F2D5CF",
+        "cyan": "#81C8BE",
+        "foreground": "#C6D0F5",
+        "green": "#A6D189",
+        "name": "Catppuccin Frappe",
+        "purple": "#F4B8E4",
+        "red": "#E78284",
+        "selectionBackground": "#626880",
+        "white": "#B5BFE2",
+        "yellow": "#E5C890"
     },
     {
         "background": "#282A36",
@@ -180,7 +180,27 @@
 "showTerminalTitleInTitlebar": true,
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
-"theme": "dark",
-"themes": [],
+"theme": "Catppuccin Frappe",
+"themes":
+[
+    {
+        "name": "Catppuccin Frappe",
+        "tab":
+        {
+            "background": "#303446FF",
+            "showCloseButton": "always",
+            "unfocusedBackground": null
+        },
+        "tabRow":
+        {
+            "background": "#292C3CFF",
+            "unfocusedBackground": "#232634FF"
+        },
+        "window":
+        {
+            "applicationTheme": "dark"
+        }
+    }
+],
 "useAcrylicInTabRow": false
 }
