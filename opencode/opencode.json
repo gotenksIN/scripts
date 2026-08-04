@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": [
+    {
+      "package": "opencode-websearch-cited-fork@2.0.3",
+      "options": {
+        "provider": "google",
+        "model": "gemini-3.6-flash"
+      }
+    }
+  ],
+  "lsp": true
+}

@@ -1,0 +1,114 @@
+{
+  "providers": {
+    "google": {
+      "settings": {
+        "baseURL": "xxxx",
+        "apiKey": "xxxx"
+      }
+    },
+    "openai": {
+      "settings": {
+        "baseURL": "xxxx",
+        "apiKey": "xxxx"
+      }
+    },
+    "zai": {
+      "settings": {
+        "baseURL": "xxxx",
+        "apiKey": "xxxx"
+      }
+    },
+    "alibaba": {
+      "settings": {
+        "baseURL": "xxxx",
+        "apiKey": "xxxx"
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro",
+          "compatibility": {
+            "reasoningField": "reasoning_content"
+          },
+          "capabilities": {
+            "tools": true,
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          },
+          "cost": {
+            "input": 0.435,
+            "output": 0.87,
+            "cache": {
+              "read": 0.003625
+            }
+          },
+          "body": {
+            "thinking": {
+              "type": "enabled"
+            }
+          },
+          "variants": [
+            {
+              "id": "high",
+              "body": {
+                "reasoning_effort": "high"
+              }
+            },
+            {
+              "id": "max",
+              "body": {
+                "reasoning_effort": "max"
+              }
+            }
+          ]
+        },
+        "qwen3.8-max": {
+          "name": "Qwen 3.8 Max",
+          "compatibility": {
+            "reasoningField": "reasoning_content"
+          },
+          "capabilities": {
+            "tools": true,
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 131072
+          },
+          "cost": {
+            "input": 1.69,
+            "output": 5.07,
+            "cache": {
+              "read": 0.169,
+              "write": 2.1125
+            }
+          },
+          "variants": [
+            {
+              "id": "low",
+              "body": {
+                "reasoning_effort": "low"
+              }
+            },
+            {
+              "id": "medium",
+              "body": {
+                "reasoning_effort": "medium"
+              }
+            },
+            {
+              "id": "xhigh",
+              "body": {
+                "reasoning_effort": "xhigh"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "theme": {
+    "name": "catppuccin-macchiato",
+    "mode": "system"
+  },
+  "keybinds": {
+    "messages_first": "ctrl+a",
+    "messages_last": "ctrl+e",
+    "input_buffer_home": "home",
+    "input_buffer_end": "end"
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": true,
+    "thinking": "show",
+    "markdown": "rendered",
+    "grouping": "none"
+  },
+  "animations": true,
+  "hints": {
+    "onboarding": false
+  },
+  "attention": {
+    "notifications": false,
+    "sound": false
+  },
+  "scroll": {
+    "acceleration": true
+  },
+  "tabs": {
+    "enabled": false,
+    "vertical": false,
+    "scope": "global"
+  },
+  "debug": {
+    "turn_tokens": false
+  }
+}
