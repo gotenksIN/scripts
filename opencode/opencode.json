@@ -20,6 +20,9 @@
       }
     }
   ],
+  "experimental": {
+    "subagent_depth": 3
+  },
   "commands": {
     "goal": {
       "description": "Manage the session goal",
