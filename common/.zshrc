@@ -112,4 +112,5 @@ source ~/scripts/common/functions
 source ~/scripts/common/aliases
 
 onLogin
-export PATH=$PATH:/home/$USER/.local/bin
+export PATH=$HOME/.local/bin:$PATH
+
