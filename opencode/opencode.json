@@ -7,8 +7,25 @@
         "provider": "openai",
         "model": "gpt-5.6-luna"
       }
+    },
+    {
+      "package": "opencode2-goal-plugin@1.0.1",
+      "options": {
+        "autoContinue": true,
+        "maxContinuations": 12,
+        "continuationIntervalMs": 1500,
+        "maxDurationMs": 3600000,
+        "maxTokens": 120000,
+        "noProgressTurns": 3
+      }
     }
   ],
+  "commands": {
+    "goal": {
+      "description": "Manage the session goal",
+      "template": "Route this goal command through the matching goal controller tools. Arguments: $ARGUMENTS. With no arguments or status, call get_goal. A plain objective or create OBJECTIVE calls create_goal. pause, resume, and blocked BLOCKER call update_goal. For complete, call get_goal if needed, then copy an exact evidence candidate ID into structured evidence for update_goal. clear calls clear_goal. Never infer completion from prose."
+    }
+  },
   "lsp": true,
   "agents": {
     "coder": {
