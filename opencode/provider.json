@@ -9,7 +9,8 @@
     "openai": {
       "settings": {
         "baseURL": "xxxx",
-        "apiKey": "xxxx"
+        "apiKey": "xxxx",
+        "reasoningEffort": "medium"
       }
     },
     "zai": {
