@@ -4,7 +4,7 @@
     "mode": "system"
   },
   "keybinds": {
-    "messages_first": "ctrl+a",
+    "messages_first": "ctrl+q",
     "messages_last": "ctrl+e",
     "input_buffer_home": "home",
     "input_buffer_end": "end"
