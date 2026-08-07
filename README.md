@@ -66,18 +66,20 @@ Configuration files for the OpenCode AI assistant:
 - Agent instructions in `AGENTS.md`.
 - Command aliases for shell integration.
 
-To link `AGENTS.md` to your OpenCode configuration directories:
+To link `AGENTS.md` and `opencode.json` to your OpenCode configuration directories:
 
 - For OpenCode v1:
   ```bash
   mkdir -p ~/.config/opencode
   ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+  ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
   ```
 
 - For OpenCode v2:
   ```bash
   mkdir -p ~/.config/opencode2/opencode
   ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode2/opencode/AGENTS.md
+  ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode2/opencode/opencode.json
   ```
 
 ### KDE Plasma (`plasma/`)
