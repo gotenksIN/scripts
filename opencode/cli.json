@@ -7,7 +7,8 @@
     "messages_first": "ctrl+q",
     "messages_last": "ctrl+e",
     "input_buffer_home": "home",
-    "input_buffer_end": "end"
+    "input_buffer_end": "end",
+    "prompt_queue": "ctrl+enter"
   },
   "diffs": {
     "wrap": "word"
