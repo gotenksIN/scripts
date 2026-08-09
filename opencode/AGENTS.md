@@ -17,7 +17,6 @@
 ## Tooling Preferences
 
 - For Python projects, always use `uv` for running tools, managing dependencies, and virtual environments unless the repository explicitly requires a different workflow.
-- For web searches and technical research, always use `websearch_cited` to fetch grounded, up-to-date information with inline citations.
 - For GitHub repositories, issues, pull requests, releases, and file browsing, prefer `gh` CLI over `webfetch`.
   Use `webfetch` for non-GitHub pages or when `gh` cannot access the target.
 - Prefer `rg` over `grep` or `find` for shell-based searches.
