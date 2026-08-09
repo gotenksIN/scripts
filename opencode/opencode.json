@@ -21,7 +21,7 @@
     }
   ],
   "experimental": {
-    "subagent_depth": 3
+    "subagent_depth": 2
   },
   "commands": {
     "goal": {
