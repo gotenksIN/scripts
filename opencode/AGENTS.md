@@ -27,6 +27,12 @@
   Use `~/Projects/sandbox` instead for work outside the current workspace.
 - Never use `/dev/null` under any circumstances, including for suppressing command output, error redirection (2>/dev/null), piping, testing file existence, or sandbox checks.
 
+## Provider Quota Handling
+
+- When a provider request fails with the error `RequestExecutor.execute: Provider request failed with HTTP 429: Daily quota exceeded for provider openai`, the OpenAI daily quota is exhausted.
+- For coding tasks, use the `coder-medium` subagent instead of `coder-high`.
+- Prefer `coder-low` for routine scoped changes while the quota is exhausted.
+
 ## Git Workflow
 
 - Never create commits unless the user explicitly asks for them.

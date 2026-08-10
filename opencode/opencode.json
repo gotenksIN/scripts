@@ -33,50 +33,65 @@
       "template": "Route this goal command through the matching goal controller tools. Arguments: $ARGUMENTS. With no arguments or status, call get_goal. A plain objective or create OBJECTIVE calls create_goal. pause, resume, and blocked BLOCKER call update_goal. For complete, call get_goal if needed, then copy an exact evidence candidate ID into structured evidence for update_goal. clear calls clear_goal. Never infer completion from prose."
     }
   },
-  "lsp": true,
   "agents": {
-    "coder": {
-      "description": "Implements scoped changes and verifies them",
+    "coder-low": {
+      "description": "Implements routine scoped changes and verifies them",
       "mode": "subagent",
-      "model": "openai/gpt-5.6-sol#high",
+      "model": "opencode-go/deepseek-v4-flash#high",
+      "system": "Implement the assigned routine change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
+      "permissions": [
+        {
+          "action": "subagent",
+          "resource": "coder*",
+          "effect": "deny"
+        }
+      ]
+    },
+    "coder-medium": {
+      "description": "Implements standard changes when coder-high is unavailable, and verifies them",
+      "mode": "subagent",
+      "model": "xai/grok-4.5#high",
       "system": "Implement the assigned change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
       "permissions": [
         {
           "action": "subagent",
-          "resource": "coder",
+          "resource": "coder*",
           "effect": "deny"
         }
       ]
     },
-    "explore": {
+    "coder-high": {
+      "description": "Implements complex multi-file changes and verifies them",
       "mode": "subagent",
-      "model": "google/gemini-3.6-flash#high",
+      "model": "openai/gpt-5.6-sol#high",
+      "system": "Implement the assigned complex change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
       "permissions": [
         {
           "action": "subagent",
-          "resource": "*",
+          "resource": "coder*",
           "effect": "deny"
-        },
-        {
-          "action": "websearch_cited",
-          "resource": "*",
-          "effect": "allow"
         }
       ]
     },
-    "general": {
-      "mode": "subagent",
-      "model": "google/gemini-3.6-flash#high"
-    },
     "reasoner": {
-      "description": "Performs deep read-only analysis for difficult or ambiguous problems",
+      "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
-      "model": "openai/gpt-5.6-luna#high",
+      "model": "xai/grok-4.5#high",
       "system": "Analyze the assigned problem deeply and independently. Inspect the available evidence, identify hidden assumptions and edge cases, compare viable options, and return a concrete recommendation with file references or command evidence where useful. Do not modify files.",
       "permissions": [
         {
           "action": "subagent",
-          "resource": "coder",
+          "resource": "coder*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "execute",
+          "resource": "*",
           "effect": "deny"
         },
         {
@@ -85,6 +100,31 @@
           "effect": "deny"
         }
       ]
+    },
+    "explore": {
+      "description": "Scans codebase, searches files, and gathers context or external documentation",
+      "mode": "subagent",
+      "model": "google/gemini-3.6-flash#high",
+      "system": "Explore the codebase or external documentation to gather relevant context, file locations, and references. Report clear and concise structural findings.",
+      "permissions": [
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "allow"
+        }
+      ]
+    },
+    "general": {
+      "description": "Handles general non-coding subtasks and coordination",
+      "mode": "subagent",
+      "model": "google/gemini-3.6-flash#high",
+      "system": "Perform assigned general tasks concisely and accurately. Follow project guidelines and summarize results clearly.",
+      "permissions": []
     }
   },
   "websearch": {
