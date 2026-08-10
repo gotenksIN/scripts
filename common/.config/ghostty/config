@@ -1,0 +1,26 @@
+# Ghostty configuration
+
+# Theme
+theme = Catppuccin Frappe
+
+# Cursor: steady bar (wezterm: SteadyBar)
+cursor-style = bar
+cursor-style-blink = false
+
+# Font
+font-family = "MesloLGM Nerd Font Mono"
+font-size = 10.5
+
+# Window
+window-padding-x = 4
+window-padding-y = 4
+window-width = 150
+window-height = 40
+background-opacity = 0.8
+background-blur = true
+
+# Mouse
+right-click-action = copy-or-paste
+
+# Bell
+bell-features = no-audio
