@@ -48,7 +48,7 @@
       ]
     },
     "coder-medium": {
-      "description": "Implements standard changes when coder-high is unavailable, and verifies them",
+      "description": "Default implementer for standard changes; verifies them",
       "mode": "subagent",
       "model": "xai/grok-4.5#high",
       "system": "Implement the assigned change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
