@@ -25,3 +25,6 @@ right-click-action = copy-or-paste
 
 # Bell
 bell-features = no-audio
+
+# Shell Integration
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
