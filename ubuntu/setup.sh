@@ -23,10 +23,9 @@ sudo nala update
 sudo nala install speedtest
 
 # Install bottom
-if [[ $arch = amd64 ]]; then
-sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_0.14.4-1_amd64.deb
-elif [[ $arch = arm64 ]]; then
-sudo nala install https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_0.14.4-1_arm64.deb
+if [[ $arch = amd64 || $arch = arm64 ]]; then
+  BOTTOM_VERSION=$(curl -s https://api.github.com/repos/ClementTsang/bottom/releases/latest | grep '"tag_name"' | cut -d '"' -f 4)
+  sudo nala install "https://github.com/ClementTsang/bottom/releases/download/${BOTTOM_VERSION}/bottom_${BOTTOM_VERSION}-1_${arch}.deb"
 fi
 
 if [[ $arch = amd64 ]]; then
