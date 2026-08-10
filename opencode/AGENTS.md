@@ -16,6 +16,8 @@
 
 ## Tooling Preferences
 
+- Prefer the `coder-medium` subagent by default.
+  Use `coder-high` only when the user explicitly requests it.
 - For Python projects, always use `uv` for running tools, managing dependencies, and virtual environments unless the repository explicitly requires a different workflow.
 - For GitHub repositories, issues, pull requests, releases, and file browsing, prefer `gh` CLI over `webfetch`.
   Use `webfetch` for non-GitHub pages or when `gh` cannot access the target.
