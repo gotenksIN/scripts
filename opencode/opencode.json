@@ -39,12 +39,24 @@
       "description": "Implements scoped changes and verifies them",
       "mode": "subagent",
       "model": "openai/gpt-5.6-sol#high",
-      "system": "Implement the assigned change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk."
+      "system": "Implement the assigned change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
+      "permissions": [
+        {
+          "action": "subagent",
+          "resource": "coder",
+          "effect": "deny"
+        }
+      ]
     },
     "explore": {
       "mode": "subagent",
       "model": "google/gemini-3.6-flash#high",
       "permissions": [
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "deny"
+        },
         {
           "action": "websearch_cited",
           "resource": "*",
@@ -62,6 +74,11 @@
       "model": "openai/gpt-5.6-luna#high",
       "system": "Analyze the assigned problem deeply and independently. Inspect the available evidence, identify hidden assumptions and edge cases, compare viable options, and return a concrete recommendation with file references or command evidence where useful. Do not modify files.",
       "permissions": [
+        {
+          "action": "subagent",
+          "resource": "coder",
+          "effect": "deny"
+        },
         {
           "action": "edit",
           "resource": "*",
