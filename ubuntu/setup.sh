@@ -28,6 +28,12 @@ if [[ $arch = amd64 || $arch = arm64 ]]; then
   sudo nala install "https://github.com/ClementTsang/bottom/releases/download/${BOTTOM_VERSION}/bottom_${BOTTOM_VERSION}-1_${arch}.deb"
 fi
 
+# Install topgrade
+if [[ $arch = amd64 || $arch = arm64 ]]; then
+  TOPGRADE_VERSION=$(curl -s https://api.github.com/repos/topgrade-rs/topgrade/releases/latest | grep '"tag_name"' | cut -d '"' -f 4)
+  sudo nala install "https://github.com/topgrade-rs/topgrade/releases/download/${TOPGRADE_VERSION}/topgrade_${TOPGRADE_VERSION#v}_${arch}.deb"
+fi
+
 if [[ $arch = amd64 ]]; then
 # Guard gui dependent applications behind this
 read -e -p "Do you intend on using GUI? [y/n]: " input
