@@ -16,6 +16,7 @@ window-padding-x = 4
 window-padding-y = 4
 window-width = 150
 window-height = 40
+window-inherit-working-directory = false
 background-opacity = 0.8
 background-blur = true
 
