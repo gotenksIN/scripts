@@ -37,7 +37,7 @@
   Prefer native file-search and content-search tools when they are available.
 - Prefer `7z` for listing, testing, and extracting archives.
   Do not use `unzip` or `tar` when `7z` supports the archive format; use another tool only when `7z` is unavailable or incompatible, and state why.
-- You may use `/tmp` for temporary work outside the workspace.
+- You may use `/tmp/opencode` for temporary work outside the workspace.
   Always delete temporary files and directories you create when the task ends.
   WSL does not use tmpfs, so leftover files in `/tmp` persist on disk.
 
