@@ -1,1 +1,0 @@
-alias opencode2='XDG_CONFIG_HOME="$HOME/.config/opencode2" OPENCODE_CONFIG="$HOME/.config/opencode2/opencode/provider.json" opencode2'
