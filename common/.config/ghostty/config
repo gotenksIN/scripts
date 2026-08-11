@@ -1,7 +1,7 @@
 # Ghostty configuration
 
-# Theme
-theme = Catppuccin Frappe
+# Bell
+bell-features = no-audio
 
 # Cursor: steady bar (wezterm: SteadyBar)
 cursor-style = bar
@@ -11,20 +11,21 @@ cursor-style-blink = false
 font-family = "MesloLGM Nerd Font Mono"
 font-size = 10.5
 
-# Window
-window-padding-x = 4
-window-padding-y = 4
-window-width = 150
-window-height = 40
-window-inherit-working-directory = false
-background-opacity = 0.8
-background-blur = true
-
 # Mouse
 right-click-action = copy-or-paste
 
-# Bell
-bell-features = no-audio
+# Notifications
+app-notifications = no-clipboard-copy
 
 # Shell Integration
 shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
+
+# Theme
+theme = Catppuccin Frappe
+
+# Window
+background-blur = true
+background-opacity = 0.8
+window-height = 40
+window-inherit-working-directory = false
+window-width = 150
