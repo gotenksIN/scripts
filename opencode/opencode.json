@@ -13,7 +13,7 @@
       }
     },
     {
-      "package": "opencode2-goal-plugin@1.0.1",
+      "package": "opencode2-goal-plugin@1.0.2",
       "options": {
         "autoContinue": true,
         "maxContinuations": 12,
