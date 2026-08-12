@@ -3,8 +3,13 @@
 ## Working Style
 
 - Keep responses concise, direct, and technical.
-- Use ASD-STE100 Simplified Technical English for all text that people read.
-  This requirement includes documentation, commit messages, comments, user interfaces, and responses.
+- Use ASD-STE100 Simplified Technical English for human-facing text.
+  This includes documentation, commit messages, comments, user interfaces, and responses.
+  Agent instructions, including `AGENTS.md`, do not need to follow this guidance.
+- Follow Google developer documentation style guidance:
+  write for the reader, use active voice and present tense, use sentence-case headings, and give direct instructions.
+  Keep content concise, use inclusive language, define unfamiliar terms, and use examples when they improve clarity.
+  Apply this guidance only to human-facing text, not to agent instructions.
 - Use semantic line breaks in Markdown prose: put each complete sentence on its own source line and let the renderer wrap it.
 - Do not hard-wrap Markdown prose at a fixed column or split a phrase only to meet a line-length limit.
 - Prefer small, focused changes over broad refactors unless the user asks otherwise.
@@ -59,8 +64,10 @@
 - Do not replace these required inspections with abbreviated variants such as `git status --short`, `git diff --stat`, or `git log --oneline`.
 - Read the full commit messages from `git log -10`, including their bodies, and follow the repository's existing commit-message style.
 - Stage only files that belong to the current task.
-- Use concise, technical commit messages that explain why the change was made.
-- Keep commit subject lines at or under 72 characters.
-- Wrap commit body text at 72 characters per line.
+- Write concise, technical commit messages that explain what changed and why.
+- Write the subject in the imperative mood, capitalize it, and do not end it with a period.
+- Keep the subject near 50 characters and never longer than 72 characters.
+- Separate the subject from the body with a blank line and wrap body text at 72 characters.
+- Do not explain how the change works unless that detail gives needed context.
 - Do not amend commits, push, or rewrite history unless the user explicitly asks.
   When the user explicitly asks, perform the requested operation and do not refuse solely because it amends commits, pushes, or rewrites history.
