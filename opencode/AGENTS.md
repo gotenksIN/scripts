@@ -22,8 +22,7 @@
 
 ## Subagent Routing
 
-- Implementation: `coder-medium` by default.
-- Simple, low-reasoning edits: `coder-low`, or stay in the parent session.
+- Implementation: `coder-low` by default.
 - `coder-high` only when the user explicitly requests it and the OpenAI quota is not exhausted for the current date.
   Quota details are under Provider Quota Handling.
 - Read-only deep analysis: `reasoner`.
@@ -52,7 +51,7 @@
   Treat the OpenAI daily quota as refreshed when that date changes.
 - It is fine if a new session discovers exhaustion only after an OpenAI HTTP 429 or daily quota error.
 - While the OpenAI quota is exhausted for the current date, do not use `coder-high`.
-  Keep the normal `coder-medium` default and `coder-low` for simple work.
+  Use `coder-low` for all implementation work.
 - If `coder-high` is required and unavailable because the OpenAI quota is exhausted, stop the task and report that to the user.
   Do not silently fall back to another coder tier for that request.
 

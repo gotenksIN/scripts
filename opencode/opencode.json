@@ -35,23 +35,10 @@
   },
   "agents": {
     "coder-low": {
-      "description": "Implements routine scoped changes and verifies them",
-      "mode": "subagent",
-      "model": "opencode-go/deepseek-v4-flash#high",
-      "system": "Implement the assigned routine change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
-      "permissions": [
-        {
-          "action": "subagent",
-          "resource": "coder*",
-          "effect": "deny"
-        }
-      ]
-    },
-    "coder-medium": {
       "description": "Default implementer for standard changes; verifies them",
       "mode": "subagent",
-      "model": "alibaba/qwen3.8-max#xhigh",
-      "system": "Implement the assigned change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
+      "model": "deepseek/deepseek-v4-pro#max",
+      "system": "Implement the assigned routine change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
       "permissions": [
         {
           "action": "subagent",
@@ -76,7 +63,7 @@
     "reasoner": {
       "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
-      "model": "moonshotai/kimi-k3#max",
+      "model": "deepseek/deepseek-v4-pro#max",
       "system": "Analyze the assigned problem deeply and independently. Inspect the available evidence, identify hidden assumptions and edge cases, compare viable options, and return a concrete recommendation with file references or command evidence where useful. Do not modify files.",
       "permissions": [
         {
