@@ -16,22 +16,28 @@ Secrets stay local and never enter the repo.
 
 ## Setup on a new machine
 
-Prerequisite: install the `opencode2` binary manually at `~/.opencode/bin/opencode2`.
-See Updates are manual.
-
 1. Clone this repo.
 
    ```sh
    git clone git@github.com:gotenksIN/scripts.git ~/scripts
    ```
 
-2. Create the config directory.
+2. Install the `opencode2` binary with the update harness script.
+
+   ```sh
+   ~/scripts/harness/update-harness.sh opencode2
+   ```
+
+   The script downloads the latest release, verifies its checksum, and installs the binary to `~/.opencode/bin/opencode2`.
+   See Updating OpenCode2.
+
+3. Create the config directory.
 
    ```sh
    mkdir -p ~/.config/opencode
    ```
 
-3. Symlink the global config files.
+4. Symlink the global config files.
    Adjust the source paths if the clone lives elsewhere.
 
    ```sh
@@ -39,7 +45,7 @@ See Updates are manual.
    ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
    ```
 
-4. Create the provider credentials file.
+5. Create the provider credentials file.
    Copy the template, then replace every `xxxx` with real values.
 
    ```sh
@@ -50,23 +56,23 @@ See Updates are manual.
    Never commit the real values.
    The repo copy must keep the `xxxx` placeholders.
 
-5. Copy the TUI settings.
+6. Copy the TUI settings.
 
    ```sh
    cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
    ```
 
-6. Start OpenCode once.
+7. Start OpenCode once.
    It installs the configured plugins into `~/.cache/opencode/packages/` automatically.
 
    ```sh
    opencode2
    ```
 
-7. On WSL2 with mirrored networking, set the service port below 49152.
+8. On WSL2 with mirrored networking, set the service port below 49152.
    See the Service port section.
 
-8. Verify.
+9. Verify.
 
    ```sh
    opencode2 models
@@ -86,6 +92,20 @@ git pull
 opencode2 service restart
 ```
 
+## Updating OpenCode2
+
+Run the update harness script.
+It downloads the latest `next` release, verifies its checksum, and swaps the binary atomically with rollback on failure.
+
+```sh
+~/scripts/harness/update-harness.sh opencode2
+```
+
+Add a version after `opencode2` to install a specific one.
+
+The update warning "automatic update skipped: installation method not found" is expected.
+The binary is installed by the script, not a package manager, so auto-update cannot detect the installation method.
+
 ## Service port (WSL2 mirrored networking)
 
 The service port is set to 4096.
@@ -94,9 +114,3 @@ WSL2 mirrored networking blocks the Windows dynamic port range 49152-65535, so t
 ```sh
 opencode2 service set port 4096
 ```
-
-## Updates are manual
-
-The update warning "automatic update skipped: installation method not found" is expected.
-The binary is installed manually at `~/.opencode/bin/opencode2`, so auto-update cannot detect the installation method.
-Manually update the application when a new `next` version is announced.
