@@ -15,10 +15,10 @@
 - Prefer small, focused changes over broad refactors unless the user asks otherwise.
 - After code changes, run the project's existing tests, linter, or typecheck when those commands are defined.
   If none exist, do a minimal manual check of the changed behavior.
-- Do not use LaTeX math syntax, math mode, dollar-sign delimiters (`$...$`, `$$...$$`), or LaTeX escape sequences (such as `\rightarrow`, `\Rightarrow`, `\times`, `\pm`, `\circ`, `\approx`, etc.) in direct terminal output or conversational responses.
+- Do not use LaTeX math syntax, math mode, dollar-sign delimiters (`$...$`, `$$...$$`), or LaTeX escape sequences (such as `\rightarrow`, `\Rightarrow`, `\times`, `\pm`, `\circ`, `\approx`) in direct terminal output or conversational responses.
   Standard TUI environments do not render LaTeX math markup in terminal output.
   Use standard Unicode characters (e.g., `→`, `⇒`, `×`, `±`, `°`, `≈`) or plain text for terminal output.
-  In Markdown files, documentation, or other artifacts processed outside the terminal UI, rich Markdown and LaTeX math syntax are permitted.
+  Rich Markdown and LaTeX math syntax are permitted only in committed Markdown files or documentation.
 
 ## Subagent Routing
 
@@ -52,7 +52,7 @@
 - It is fine if a new session discovers exhaustion only after an OpenAI HTTP 429 or daily quota error.
 - While the OpenAI quota is exhausted for the current date, do not use `coder-high`.
   Use `coder-low` for all implementation work.
-- If `coder-high` is required and unavailable because the OpenAI quota is exhausted, stop the task and report that to the user.
+- If the user explicitly requested `coder-high` and it is unavailable because the OpenAI quota is exhausted, stop the task and report that to the user.
   Do not silently fall back to another coder tier for that request.
 
 ## Git Workflow
@@ -61,7 +61,9 @@
 - When the user requests per-task commits, commit each discrete task before starting the next one.
 - Before every commit, run the exact full commands `git status`, `git diff`, and `git log -10`.
 - Do not replace these required inspections with abbreviated variants such as `git status --short`, `git diff --stat`, or `git log --oneline`.
-- Read the full commit messages from `git log -10`, including their bodies, and follow the repository's existing commit-message style.
+- Read the full commit messages from `git log -10`, including their bodies.
+  If the repository has an established commit-message style, follow it.
+  Otherwise use the defaults below.
 - Stage only files that belong to the current task.
 - Write concise, technical commit messages that explain what changed and why.
 - Write the subject in the imperative mood, capitalize it, and do not end it with a period.
