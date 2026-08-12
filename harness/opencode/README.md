@@ -35,15 +35,15 @@ See Updates are manual.
    Adjust the source paths if the clone lives elsewhere.
 
    ```sh
-   ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-   ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
+   ln -sf ~/scripts/harness/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+   ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
    ```
 
 4. Create the provider credentials file.
    Copy the template, then replace every `xxxx` with real values.
 
    ```sh
-   cp ~/scripts/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
+   cp ~/scripts/harness/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
    ```
 
    This file contains API keys.
@@ -53,7 +53,7 @@ See Updates are manual.
 5. Copy the TUI settings.
 
    ```sh
-   cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
+   cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
    ```
 
 6. Start OpenCode once.
