@@ -328,6 +328,23 @@ Update the installed extension packages from inside Pi:
 pi update --extensions
 ```
 
+## Anti-slop lint skill
+
+[anti-slop](https://github.com/dmmulroy/anti-slop) provides opinionated Oxlint rules that reject low-evidence TypeScript and JavaScript patterns.
+Install the agent skill once per machine:
+
+```sh
+npx skills add dmmulroy/anti-slop --skill install-anti-slop
+```
+
+The command installs into `~/.agents/skills/install-anti-slop`, which Pi loads as a global skill source.
+Restart Pi so the skill appears.
+
+Then ask Pi to install anti-slop in a repository.
+The skill vendors the plugin under `tools/oxlint/anti-slop/`, registers it in the lint config, installs matching `oxlint` packages, and enables every rule at `error`.
+The copied rules are yours to adjust.
+See the upstream [README](https://github.com/dmmulroy/anti-slop) for the rule list and the manual path.
+
 ## Extensions
 
 Each extension has two documents in the pi-extensions repository:

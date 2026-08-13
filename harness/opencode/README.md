@@ -109,35 +109,29 @@ Add a version after `opencode2` to install a specific one.
 The update warning "automatic update skipped: installation method not found" is expected.
 The binary is installed by the script, not a package manager, so auto-update cannot detect the installation method.
 
-## Image paste on WSL2
-
-The TUI reads the clipboard natively through Wayland or X11.
-It does not use `wl-clipboard` or `xclip`.
-WSLg must run for the Windows clipboard to reach the TUI.
-
-1. Enable WSLg.
-   In `$env:USERPROFILE\.wslconfig`, set `guiApplications=true` or remove the line.
-   Then run `wsl --shutdown` and reopen the terminal.
-
-2. Install the Wayland client library in the distro.
-
-   ```sh
-   sudo apt install -y libwayland-client0
-   ```
-
-   OpenCode loads `libwayland-client.so.0` at runtime.
-   The X11 path uses `libxcb.so.1`, which is already present.
-
-3. Verify that WSLg provides a display.
-
-   ```sh
-   echo $WAYLAND_DISPLAY $DISPLAY
-   ```
-
-   Expected output: `wayland-0 :0`.
-
 Paste an image into the prompt with Ctrl+V.
 Screenshots copied in Windows arrive through WSLg as BMP data, and the TUI converts them to PNG automatically.
+
+## Anti-slop lint skill
+
+[anti-slop](https://github.com/dmmulroy/anti-slop) provides opinionated Oxlint rules that reject low-evidence TypeScript and JavaScript patterns.
+Install the agent skill once per machine:
+
+```sh
+npx skills add dmmulroy/anti-slop --skill install-anti-slop
+```
+
+The command installs into `~/.agents/skills/install-anti-slop`, which OpenCode loads as a global skill source.
+Restart the service so the skill appears:
+
+```sh
+opencode2 service restart
+```
+
+Then ask the agent to install anti-slop in a repository.
+The skill vendors the plugin under `tools/oxlint/anti-slop/`, registers it in the lint config, installs matching `oxlint` packages, and enables every rule at `error`.
+The copied rules are yours to adjust.
+See the upstream [README](https://github.com/dmmulroy/anti-slop) for the rule list and the manual path.
 
 ## Service port (WSL2 mirrored networking)
 
