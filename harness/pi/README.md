@@ -29,6 +29,7 @@ The `settings.json` package list installs that repository as a Pi extension pack
 2. Copy the settings file.
 
    ```sh
+   mkdir -p ~/.pi/agent
    cp ~/scripts/harness/pi/settings.json ~/.pi/agent/settings.json
    ```
 
@@ -103,6 +104,29 @@ The `settings.json` package list installs that repository as a Pi extension pack
    ```text
    /reload
    ```
+
+8. Log in to a provider before your first prompt.
+   Pi needs authenticated provider credentials for every model call, including the sandbox classifier and web search.
+
+   Start Pi and run `/login`, then select a provider:
+
+   ```text
+   /login
+   ```
+
+   The command supports OAuth subscriptions and API keys.
+   Credentials are stored in `~/.pi/agent/auth.json`.
+   For API-key providers you can also export the matching environment variable instead.
+   See the provider reference in `~/.local/lib/pi/docs/providers.md` for provider names, OAuth steps, and environment variable names.
+
+   Verify the provider is ready before you continue:
+
+   ```sh
+   pi auth check --provider <provider-name>
+   ```
+
+   The check must print `ready`.
+   Example: `pi auth check --provider openai`.
 
 Pi packages run with your user permissions.
 Review package source before you install it.
@@ -201,7 +225,7 @@ mkdir -p "$build_dir"
   -fstack-clash-protection -fstack-protector-strong -D_FORTIFY_SOURCE=3 \
   -ftrivial-auto-var-init=pattern -fPIE -pie -Wl,-z,relro,-z,now \
   -Wl,-z,noexecstack -Wall -Wextra -Werror \
-  -x c "$pkg_root/extensions/bwrap-sandbox/launcher/seccomp-profile.bpf" \
+  -x c "$pkg_root/bwrap-sandbox/launcher/seccomp-profile.bpf" \
   -o "$build_dir/seccomp-profile-generator"
 "$build_dir/seccomp-profile-generator" > "$build_dir/sandbox-seccomp.bpf"
 test -s "$build_dir/sandbox-seccomp.bpf"
@@ -211,7 +235,7 @@ test -s "$build_dir/sandbox-seccomp.bpf"
   -ftrivial-auto-var-init=pattern -fPIE -pie -Wl,-z,relro,-z,now \
   -Wl,-z,noexecstack -Wall -Wextra -Werror \
   -fsanitize=cfi -fsanitize=shadow-call-stack \
-  "$pkg_root/extensions/bwrap-sandbox/launcher/bwrap-hardened.c" \
+  "$pkg_root/bwrap-sandbox/launcher/bwrap-hardened.c" \
   -o "$build_dir/bwrap-hardened"
 
 ( cd "$build_dir" && sha256sum bwrap-hardened sandbox-seccomp.bpf > SHA256SUMS )
@@ -228,13 +252,13 @@ It expects them in the directory it runs from, or takes the build directory as i
 
 ```sh
 cd "$build_dir"
-sudo bash "$pkg_root/extensions/bwrap-sandbox/launcher/install.sh"
+sudo bash "$pkg_root/bwrap-sandbox/launcher/install.sh"
 ```
 
 Or, without changing directory:
 
 ```sh
-sudo bash "$pkg_root/extensions/bwrap-sandbox/launcher/install.sh" "$build_dir"
+sudo bash "$pkg_root/bwrap-sandbox/launcher/install.sh" "$build_dir"
 ```
 
 The script verifies the artifacts, stages them under `/root`, and installs:
@@ -250,7 +274,7 @@ Compare the built digests with the pins:
 
 ```sh
 sha256sum "$build_dir/bwrap-hardened" "$build_dir/sandbox-seccomp.bpf"
-grep -n 'SHA256' "$pkg_root/extensions/bwrap-sandbox/runtime-contract.ts"
+grep -n 'SHA256' "$pkg_root/bwrap-sandbox/runtime/runtime-contract.ts"
 ```
 
 If a built digest differs from its pin, update the matching constant in `runtime-contract.ts`.
@@ -303,14 +327,98 @@ Each extension has two documents in the pi-extensions repository:
 - `AGENTS.md` is for coding agents.
   It explains module ownership, implementation details, invariants, and change checks.
 
-- [`bwrap-sandbox`](https://github.com/gotenksIN/pi-extensions/tree/main/extensions/bwrap-sandbox) provides a Linux Bubblewrap boundary and approval gate for Bash and selected Pi file tools.
-- [`delete-session`](https://github.com/gotenksIN/pi-extensions/tree/main/extensions/delete-session) deletes the current session file after confirmation and starts a new session.
-- [`keybinding-shortcuts`](https://github.com/gotenksIN/pi-extensions/tree/main/extensions/keybinding-shortcuts) adds OpenCode-style command and word-deletion shortcuts to the Pi TUI editor.
-- [`websearch`](https://github.com/gotenksIN/pi-extensions/tree/main/extensions/websearch) provides provider-native grounded web search with citations and ordered fallback.
+- [`bwrap-sandbox`](https://github.com/gotenksIN/pi-extensions/tree/main/bwrap-sandbox) provides a Linux Bubblewrap boundary and approval gate for Bash and selected Pi file tools.
+- [`delete-session`](https://github.com/gotenksIN/pi-extensions/tree/main/delete-session) deletes the current session file after confirmation and starts a new session.
+- [`keybinding-shortcuts`](https://github.com/gotenksIN/pi-extensions/tree/main/keybinding-shortcuts) adds OpenCode-style command and word-deletion shortcuts to the Pi TUI editor.
+- [`websearch`](https://github.com/gotenksIN/pi-extensions/tree/main/websearch) provides provider-native grounded web search with citations and ordered fallback.
 
 Read the matching `AGENTS.md` before you change an extension.
 
 ### Bubblewrap sandbox
 
 `bwrap-sandbox` is Linux-only.
+It requires Bubblewrap and the `bwrap-hardened` launcher.
 See [Bubblewrap sandbox launcher installation](#bubblewrap-sandbox-launcher-installation) for the full setup.
+
+The extension starts from a read-only host root.
+It uses deterministic path and direct secret checks, Bubblewrap mounts, user-approved session grants, exact one-shot write paths, and one classifier reviewer for model-generated Bash.
+The default reviewer is `openai/gpt-5.6-luna` with `low` reasoning.
+The reviewer can use bounded user-role instructions to authorize matching, narrowly scoped Bash mutations and one deterministically validated atomic write-path set for one exact future Bash call.
+It treats deterministic reads from fixed public remote resources as routine when the request cannot include local, project, environment, credential, secret, proprietary, prior-output, or dynamic data.
+A missing or failed reviewer does not use model fallback and sends the exact action to human review.
+Bubblewrap is the primary security boundary.
+Read its [user guide](https://github.com/gotenksIN/pi-extensions/blob/main/bwrap-sandbox/README.md) before you configure it.
+
+The extension's global configuration is:
+
+```text
+~/.pi/agent/extensions/sandbox.json
+```
+
+The default classifier configuration is equivalent to:
+
+```json
+{
+  "classifier": {
+    "reviewer": {
+      "provider": "openai",
+      "model": "gpt-5.6-luna",
+      "reasoning": "low"
+    },
+    "timeoutMs": 30000,
+    "maxRetries": 1
+  }
+}
+```
+
+Only global configuration can replace `classifier.reviewer`.
+If the model, provider, authentication, or provider call is unavailable, the extension uses human review and tells the user that they can configure `classifier.reviewer` globally.
+It does not use a fallback model.
+
+Trusted project configuration is:
+
+```text
+.pi/sandbox.json
+```
+
+The extension registers the `/sandbox` command and the `sandbox_access` tool.
+`/sandbox` shows the current sandbox status.
+`/sandbox off` disables the sandbox for the current session only.
+It turns off the OS boundary, the tri-tier authorization, and the direct host file-tool checks for the rest of the session, without a confirmation prompt.
+`/sandbox on` re-enables the sandbox and re-runs full initialization.
+It is rejected when `--no-sandbox` or configuration disabled the sandbox.
+The toggles do not persist across sessions.
+These surfaces and their safety rules are documented in the extension guide.
+
+Starting Pi with `--no-sandbox` disables the sandbox for the parent and all subagent sessions in that Pi process.
+A child cannot restore it silently.
+
+### Web search
+
+`websearch` registers `websearch_cited`.
+It uses Pi's model registry and authentication.
+It does not need separate API keys.
+Its global and project configuration files are:
+
+```text
+~/.pi/agent/extensions/websearch.json
+.pi/websearch.json
+```
+
+Read the [websearch user guide](https://github.com/gotenksIN/pi-extensions/blob/main/websearch/README.md) for model fallback, tool parameters, provider behavior, and errors.
+
+### Delete session
+
+`delete-session` registers `/delete`.
+The command asks for confirmation, waits for Pi to become idle, removes the current session file, and starts a new session.
+It does nothing for an ephemeral session.
+
+Read the [delete-session user guide](https://github.com/gotenksIN/pi-extensions/blob/main/delete-session/README.md) for use.
+
+### Keybinding shortcuts
+
+`keybinding-shortcuts` replaces the editor component only in TUI mode.
+It maps `ctrl+p` to Pi's slash-command menu, and maps `ctrl+backspace` and `ctrl+delete` to word deletion.
+
+The extension needs the conflicting default `ctrl+p` actions removed from `~/.pi/agent/keybindings.json`.
+Read the [keybinding user guide](https://github.com/gotenksIN/pi-extensions/blob/main/keybinding-shortcuts/README.md) for details.
