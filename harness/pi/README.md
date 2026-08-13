@@ -61,9 +61,8 @@ The `settings.json` package list installs that repository as a Pi extension pack
      (
        set -e
 
-       work="$HOME/sandbox/bun-install"
-       rm -rf "$work"
-       mkdir -p "$work" "$HOME/.local/bin"
+       work="$(mktemp -d "${TMPDIR:-/tmp}/bun-install.XXXXXXXX")"
+       mkdir -p "$HOME/.local/bin"
        cd "$work"
 
        gh release download \
@@ -168,8 +167,7 @@ The toolchains at https://www.kernel.org/pub/tools/llvm/files/ are PGO-built and
 This step downloads the latest stable `x86_64` toolchain:
 
 ```sh
-work="$HOME/sandbox/bwrap-llvm"
-mkdir -p "$work"
+work="$(mktemp -d "${TMPDIR:-/tmp}/bwrap-llvm.XXXXXXXX")"
 cd "$work"
 
 curl -fsSL https://www.kernel.org/pub/tools/llvm/files/ -o files.html
@@ -191,15 +189,13 @@ The toolchains need these runtime libraries:
 
 ### 2. Build the launcher and Seccomp profile
 
-The build runs from the installed extension package and writes only under `$HOME/sandbox/bwrap-launcher-build`.
+The build runs from the installed extension package and writes only inside the temporary directory from step 1.
 
 ```sh
 pkg_root="$HOME/.pi/agent/git/github.com/gotenksIN/pi-extensions"
-llvm_dir="$(ls -d "$HOME/sandbox/bwrap-llvm"/llvm-*-x86_64 | sort -V | tail -n 1)"
-build_dir="$HOME/sandbox/bwrap-launcher-build"
+llvm_dir="$(ls -d "$work"/llvm-*-x86_64 | sort -V | tail -n 1)"
+build_dir="$work/build"
 mkdir -p "$build_dir"
-rm -f "$build_dir/bwrap-hardened" "$build_dir/sandbox-seccomp.bpf" \
-  "$build_dir/seccomp-profile-generator" "$build_dir/SHA256SUMS"
 
 "$llvm_dir/bin/clang" -O3 -flto=full -fuse-ld=lld -fvisibility=hidden \
   -fstack-clash-protection -fstack-protector-strong -D_FORTIFY_SOURCE=3 \
@@ -274,6 +270,14 @@ Expected ownership output:
 ```text
 root:root 755
 root:root 644
+```
+
+### 6. Clean up
+
+Delete the temporary directory that holds the toolchain and the built artifacts:
+
+```sh
+rm -rf "$work"
 ```
 
 ## Updating
