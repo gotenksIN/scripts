@@ -69,10 +69,13 @@ Secrets stay local and never enter the repo.
    opencode2
    ```
 
-8. On WSL2 with mirrored networking, set the service port below 49152.
+8. On WSL2, enable WSLg for image paste.
+   See the Image paste on WSL2 section.
+
+9. On WSL2 with mirrored networking, set the service port below 49152.
    See the Service port section.
 
-9. Verify.
+10. Verify.
 
    ```sh
    opencode2 models
@@ -105,6 +108,36 @@ Add a version after `opencode2` to install a specific one.
 
 The update warning "automatic update skipped: installation method not found" is expected.
 The binary is installed by the script, not a package manager, so auto-update cannot detect the installation method.
+
+## Image paste on WSL2
+
+The TUI reads the clipboard natively through Wayland or X11.
+It does not use `wl-clipboard` or `xclip`.
+WSLg must run for the Windows clipboard to reach the TUI.
+
+1. Enable WSLg.
+   In `$env:USERPROFILE\.wslconfig`, set `guiApplications=true` or remove the line.
+   Then run `wsl --shutdown` and reopen the terminal.
+
+2. Install the Wayland client library in the distro.
+
+   ```sh
+   sudo apt install -y libwayland-client0
+   ```
+
+   OpenCode loads `libwayland-client.so.0` at runtime.
+   The X11 path uses `libxcb.so.1`, which is already present.
+
+3. Verify that WSLg provides a display.
+
+   ```sh
+   echo $WAYLAND_DISPLAY $DISPLAY
+   ```
+
+   Expected output: `wayland-0 :0`.
+
+Paste an image into the prompt with Ctrl+V.
+Screenshots copied in Windows arrive through WSLg as BMP data, and the TUI converts them to PNG automatically.
 
 ## Service port (WSL2 mirrored networking)
 
