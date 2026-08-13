@@ -4,6 +4,8 @@
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/l6Yi9GMuGJjmHcntZfujdE0kCtg5Lkt1ZcJLeVZP+ gotenks@RyzenBox
 [gpg]
 	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
 [commit]
 	gpgsign = true
 [pull]
