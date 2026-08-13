@@ -30,6 +30,7 @@
   The sandbox parser rejects commands that are too complex, so split exploration into short simple commands and run them one at a time.
 - After code changes, run the project's existing tests, linter, or typecheck when those commands are defined.
   If none exist, do a minimal manual check of the changed behavior.
+- Write tests for observable behavior and outcomes, not implementation details or internal structure.
 - Do not use LaTeX math syntax, math mode, dollar-sign delimiters (`$...$`, `$$...$$`), or LaTeX escape sequences (such as `\rightarrow`, `\Rightarrow`, `\times`, `\pm`, `\circ`, `\approx`, etc.) in direct terminal output or conversational responses.
   Standard TUI environments do not render LaTeX math markup in terminal output.
   Use standard Unicode characters (e.g., `→`, `⇒`, `×`, `±`, `°`, `≈`) or plain text for terminal output.
