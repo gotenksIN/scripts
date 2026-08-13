@@ -8,6 +8,7 @@ The files link into `~/.pi/agent/`, so this repo is the source of truth.
 | File | Purpose | Installed as |
 | --- | --- | --- |
 | `settings.json` | Pi settings: extension package, theme, subagent package | Copied to `~/.pi/agent/settings.json` |
+| `keybindings.json` | Removes default `ctrl+p` bindings that conflict with the keybinding extension | Copied to `~/.pi/agent/keybindings.json` |
 | `AGENTS.md` | Global agent rules for Pi | Symlinked to `~/.pi/agent/AGENTS.md` |
 | `agents/` | Custom subagent definitions | Symlinked into `~/.pi/agent/agents/` |
 | `README.md` | This guide | Not installed |
@@ -36,13 +37,22 @@ The `settings.json` package list installs that repository as a Pi extension pack
    This replaces the destination settings file.
    Back up your current file first if it contains settings that you need to keep.
 
-3. Link the global agent rules.
+3. Copy the keybindings file.
+
+   ```sh
+   cp ~/scripts/harness/pi/keybindings.json ~/.pi/agent/keybindings.json
+   ```
+
+   This file removes the default `ctrl+p` bindings that conflict with the keybinding extension.
+   Skip this step if you do not use `keybinding-shortcuts`.
+
+4. Link the global agent rules.
 
    ```sh
    ln -sfn ~/scripts/harness/pi/AGENTS.md ~/.pi/agent/AGENTS.md
    ```
 
-4. Link the custom subagent definitions.
+5. Link the custom subagent definitions.
 
    ```sh
    mkdir -p ~/.pi/agent/agents
@@ -53,7 +63,7 @@ The `settings.json` package list installs that repository as a Pi extension pack
    After setup, `/agents` lists the tracked definitions as global agents.
    Agent names are case-insensitive, so `explore` resolves to `Explore.md`.
 
-5. Install Bun if missing, because Pi needs a JavaScript package manager for Git packages.
+6. Install Bun if missing, because Pi needs a JavaScript package manager for Git packages.
    The standalone Pi binary does not include Node.js or npm.
    Skip this step if `bun` is already installed and on your `PATH`.
 
@@ -86,7 +96,7 @@ The `settings.json` package list installs that repository as a Pi extension pack
    fi
    ```
 
-6. Resolve and install extension packages with Bun present.
+7. Resolve and install extension packages with Bun present.
 
    ```sh
    pi update --extensions
@@ -99,13 +109,13 @@ The `settings.json` package list installs that repository as a Pi extension pack
    bun install --production --ignore-scripts --no-save
    ```
 
-7. Restart Pi or reload its extensions:
+8. Restart Pi or reload its extensions:
 
    ```text
    /reload
    ```
 
-8. Log in to a provider before your first prompt.
+9. Log in to a provider before your first prompt.
    Pi needs authenticated provider credentials for every model call, including the sandbox classifier and web search.
 
    Start Pi and run `/login`, then select a provider:
@@ -421,4 +431,5 @@ Read the [delete-session user guide](https://github.com/gotenksIN/pi-extensions/
 It maps `ctrl+p` to Pi's slash-command menu, and maps `ctrl+backspace` and `ctrl+delete` to word deletion.
 
 The extension needs the conflicting default `ctrl+p` actions removed from `~/.pi/agent/keybindings.json`.
+The tracked `keybindings.json` in this directory removes them.
 Read the [keybinding user guide](https://github.com/gotenksIN/pi-extensions/blob/main/keybinding-shortcuts/README.md) for details.
