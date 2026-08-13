@@ -47,28 +47,6 @@ Write-Host "Applying registry state with DSC v3..."
 dsc config set --file $dscConfigFile
 
 
-# --- 2. Deploy WSL Configuration ---
-$wslConfFile = Join-Path -Path $PSScriptRoot -ChildPath "wsl.conf"
-if (Test-Path -LiteralPath $wslConfFile) {
-    $wslDistros = $null
-
-    if (Get-Command -Name wsl.exe -ErrorAction SilentlyContinue) {
-        $wslDistros = wsl.exe -l -q 2>$null
-    }
-
-    if ($wslDistros) {
-        Write-Host "Deploying wsl.conf to default WSL distribution..."
-        Get-Content -Path $wslConfFile | wsl.exe -u root tee /etc/wsl.conf | Out-Null
-
-        if ($LASTEXITCODE -ne 0) {
-            Write-Warning "Failed to deploy wsl.conf to WSL."
-        } else {
-            Write-Host "Deployed wsl.conf successfully."
-        }
-    }
-}
-
-
 # --- 3. Block Microsoft Store Search Suggestions ---
 $storeDbDir = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Packages\Microsoft.WindowsStore_8wekyb3d8bbwe\LocalState"
 $storeDbPath = Join-Path -Path $storeDbDir -ChildPath "store.db"
