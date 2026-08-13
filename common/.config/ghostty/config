@@ -28,4 +28,5 @@ background-blur = true
 background-opacity = 0.8
 window-height = 40
 window-inherit-working-directory = false
+window-theme = dark
 window-width = 150
