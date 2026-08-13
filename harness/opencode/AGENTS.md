@@ -35,8 +35,13 @@
 ## Tooling Preferences
 
 - For Python projects, always use `uv` for running tools, managing dependencies, and virtual environments unless the repository explicitly requires a different workflow.
-- For GitHub repositories, issues, pull requests, releases, and file browsing, prefer `gh` CLI over `webfetch`.
-  Use `webfetch` for non-GitHub pages or when `gh` cannot access the target.
+- For GitHub repositories, issues, pull requests, releases, and file browsing, try `gh` CLI first for small or short lookups.
+- For repositories hosted on GitHub or any other Git hosting service, clone the repository locally with `git` and use local searches and file reads.
+  If `gh` fails, clone locally instead of switching to `webfetch`.
+  For large repositories or exploration that requires many requests, clone locally from the start instead of repeatedly using `gh`.
+  Use a directory under `/tmp/opencode`, prefer a shallow clone when full history is not needed, and perform searches and file reads locally.
+  If cloning fails, fall back to `webfetch`.
+  Delete the temporary clone when the task ends, including after an unsuccessful task.
 - Prefer `rg` over `grep` or `find` for shell-based searches.
   Prefer native file-search and content-search tools when they are available.
 - Prefer `7z` for listing, testing, and extracting archives.
