@@ -55,6 +55,34 @@
         }
       ]
     },
+    "code-reviewer": {
+      "description": "Reviews code for correctness, risks, and missing tests",
+      "mode": "subagent",
+      "model": "openai/gpt-5.6-sol#high",
+      "system": "Review the assigned code without modifying files. Prioritize bugs, security risks, behavioral regressions, and missing tests. Report findings first, ordered by severity, with file paths and line numbers. State open questions and residual testing gaps after the findings. Use the ponytail review guidance to identify unnecessary complexity and over-engineering. Do not delegate work or dispatch subagents.",
+      "permissions": [
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "execute",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        }
+      ]
+    },
     "reasoner": {
       "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
