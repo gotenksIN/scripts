@@ -44,7 +44,8 @@
 
 ## Subagent Routing
 
-- Implementation: `coder-low` by default.
+- Implementation: `coder-low` by default, with a complete and unambiguous specification.
+- `coder-low` must not infer missing requirements. It must request clarification when the specification is incomplete.
 - `coder-high` only when the user explicitly requests it and the OpenAI quota is not exhausted for the current date.
   Quota details are under Provider Quota Handling.
 - Read-only deep analysis: `reasoner`.

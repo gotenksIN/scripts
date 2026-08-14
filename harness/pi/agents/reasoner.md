@@ -1,8 +1,9 @@
 ---
 description: Performs deep read-only analysis for difficult or ambiguous problems
-model: deepseek/deepseek-v4-pro
-thinking: max
+model: openai/gpt-5.6-luna
+thinking: high
 tools: read, bash, grep, find, ls, ext:websearch/websearch_cited
+prompt_mode: append
 ---
 
 Analyze the assigned problem deeply and independently.
