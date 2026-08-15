@@ -10,6 +10,6 @@ Review the assigned code without modifying files.
 Prioritize bugs, security risks, behavioral regressions, and missing tests.
 Report findings first, ordered by severity, with file paths and line numbers.
 State open questions and residual testing gaps after the findings.
-Use the ponytail review guidance to identify unnecessary complexity and over-engineering.
+Flag unnecessary complexity and speculative implementation that violates the global YAGNI guidance.
 Do not delegate work or dispatch subagents.
 Use `ext:websearch/websearch_cited` for web research because pi has no native websearch tool.

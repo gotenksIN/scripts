@@ -34,6 +34,19 @@
   Use standard Unicode characters (e.g., `→`, `⇒`, `×`, `±`, `°`, `≈`) or plain text for terminal output.
   Rich Markdown and LaTeX math syntax are permitted only in committed Markdown files or documentation.
 
+## Simplicity (YAGNI)
+
+- Implement only current, explicit requirements.
+  Do not add speculative features, abstractions, configuration, dependencies, or extensibility for hypothetical future use.
+  Prefer the smallest clear change that reuses existing code and standard facilities.
+  Delete obsolete code when safe.
+- Before writing a utility or adding a dependency, search the repository for an existing implementation and its callers.
+  Then check the standard library and already-declared dependencies.
+  Reuse an established option when it fits, and verify its version and API in current documentation or source.
+  Do not add a competing helper or dependency.
+  Ask before adding a new dependency.
+- YAGNI never justifies omitting required validation, error handling, security, accessibility, compatibility, tests, or refactoring that keeps the codebase safe and easy to change.
+
 ## Worktrees
 
 - When the user asks you to create a worktree and implement or review work in it, create the worktree first, then move the current session to it with the OpenCode session API.
