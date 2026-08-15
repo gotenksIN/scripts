@@ -26,6 +26,7 @@ theme = Catppuccin Frappe
 # Window
 background-blur = true
 background-opacity = 0.8
+window-padding-color = extend-always
 window-height = 40
 window-inherit-working-directory = false
 window-theme = dark
