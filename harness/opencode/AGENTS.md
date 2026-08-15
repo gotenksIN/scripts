@@ -28,7 +28,9 @@
 - Prefer small, focused changes over broad refactors unless the user asks otherwise.
 - After code changes, run the project's existing tests, linter, or typecheck when those commands are defined.
   If none exist, do a minimal manual check of the changed behavior.
-- Write tests for observable behavior and outcomes, not implementation details or internal structure.
+- Test observable behavior through the code's public or executable interfaces.
+  Assert outputs, side effects, errors, and externally visible state.
+  Do not test source text, symbol names, command fragments, control flow, private structure, or the presence or absence of implementation details.
 - Do not use LaTeX math syntax, math mode, dollar-sign delimiters (`$...$`, `$$...$$`), or LaTeX escape sequences (such as `\rightarrow`, `\Rightarrow`, `\times`, `\pm`, `\circ`, `\approx`) in direct terminal output or conversational responses.
   Standard TUI environments do not render LaTeX math markup in terminal output.
   Use standard Unicode characters (e.g., `→`, `⇒`, `×`, `±`, `°`, `≈`) or plain text for terminal output.
