@@ -96,7 +96,15 @@ The `settings.json` package list installs that repository as a Pi extension pack
    fi
    ```
 
-7. Resolve and install extension packages with Bun present.
+7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode and Pi.
+
+   ```sh
+   bunx skills@latest add mattpocock/skills --skill '*' --global --agent opencode --agent pi --yes
+   ```
+
+   The installer keeps one copy in `~/.agents/skills/` and links it into Pi's global skill directory.
+
+8. Resolve and install extension packages with Bun present.
 
    ```sh
    pi update --extensions
@@ -109,13 +117,13 @@ The `settings.json` package list installs that repository as a Pi extension pack
    bun install --production --ignore-scripts --no-save
    ```
 
-8. Restart Pi or reload its extensions:
+9. Restart Pi or reload its extensions:
 
    ```text
    /reload
    ```
 
-9. Log in to a provider before your first prompt.
+10. Log in to a provider before your first prompt.
    Pi needs authenticated provider credentials for every model call, including the sandbox classifier and web search.
 
    Start Pi and run `/login`, then select a provider:
@@ -137,6 +145,12 @@ The `settings.json` package list installs that repository as a Pi extension pack
 
    The check must print `ready`.
    Example: `pi auth check --provider openai`.
+
+11. In each repository, run the setup skill once and answer its prompts.
+
+    ```text
+    /setup-matt-pocock-skills
+    ```
 
 Pi packages run with your user permissions.
 Review package source before you install it.

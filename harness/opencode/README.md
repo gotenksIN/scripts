@@ -62,20 +62,36 @@ Secrets stay local and never enter the repo.
    cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
    ```
 
-7. Start OpenCode once.
+7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode and Pi.
+   Install Bun first if `bunx` is missing.
+   Use the verified Bun installation in the [Pi setup guide](../pi/README.md#setup-on-a-new-machine).
+
+   ```sh
+   bunx skills@latest add mattpocock/skills --skill '*' --global --agent opencode --agent pi --yes
+   ```
+
+   The installer keeps one copy in `~/.agents/skills/` and links it into Pi's global skill directory.
+
+8. Start OpenCode once.
    It installs the configured plugins into `~/.cache/opencode/packages/` automatically.
 
    ```sh
    opencode2
    ```
 
-8. On WSL2, enable WSLg for image paste.
+9. In each repository, run the setup skill once and answer its prompts.
+
+   ```text
+   /setup-matt-pocock-skills
+   ```
+
+10. On WSL2, enable WSLg for image paste.
    See the Image paste on WSL2 section.
 
-9. On WSL2 with mirrored networking, set the service port below 49152.
+11. On WSL2 with mirrored networking, set the service port below 49152.
    See the Service port section.
 
-10. Verify.
+12. Verify.
 
    ```sh
    opencode2 models
@@ -83,6 +99,7 @@ Secrets stay local and never enter the repo.
    ```
 
    In the TUI, check that the subagents `coder-low`, `coder-high`, `reasoner`, `explore`, and `general` appear.
+   Check that `/setup-matt-pocock-skills` appears in the command list.
 
 Do not copy `~/.config/opencode/service.json` between machines.
 OpenCode generates it and stores the service password in it.
