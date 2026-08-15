@@ -1,0 +1,30 @@
+#!/bin/sh
+
+message_file=$1
+subject=$(sed -n '1p' "$message_file")
+
+if [ "${#subject}" -gt 72 ] ||
+   ! printf '%s\n' "$subject" | grep -Eq '^[a-z0-9][a-z0-9-]*: [A-Z]' ||
+   printf '%s\n' "$subject" | grep -Eq '\.$'; then
+    echo "Commit subject must be '<lowercase-scope>: <Capitalized summary>', at most 72 characters, without a period." >&2
+    exit 1
+fi
+
+if [ -n "$(sed -n '2p' "$message_file")" ]; then
+    echo "Separate the commit subject and body with a blank line." >&2
+    exit 1
+fi
+
+if awk '!/^#/ && length > 72 { exit 1 }' "$message_file"; then
+    :
+else
+    echo "Wrap commit message lines at 72 characters." >&2
+    exit 1
+fi
+
+if [ "$(git config --bool commit.gpgsign 2>/dev/null)" = true ] &&
+   [ -n "$(git config user.signingkey 2>/dev/null)" ] &&
+   ! grep -Eq '^Signed-off-by: .+ <.+>$' "$message_file"; then
+    echo "Signed commits require a Signed-off-by trailer. Use git commit --signoff." >&2
+    exit 1
+fi

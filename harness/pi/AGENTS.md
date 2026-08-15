@@ -89,11 +89,11 @@
 - Format commit messages per the repository conventions:
   - Use the subject format `<scope>: <Capitalized summary>`.
     Derive the lowercase scope from the component or directory you changed.
-    Capitalize the first word after the colon.
   - Write the summary in the imperative mood and do not end it with a period.
   - Keep the subject near 50 characters and never longer than 72 characters.
-  - Write a concise, technical body that explains what changed and why.
-    Do not explain how the change works unless that detail gives needed context.
+  - Add a concise, technical body when the subject does not provide enough context.
+    Explain what changed and why.
+    Explain how only when that detail gives needed context.
   - Separate the subject from the body with a blank line and wrap body text at 72 characters.
 - Check commit signing once per session with `git config commit.gpgsign` and `git config user.signingkey`.
   Remember the result for the rest of the session.
