@@ -96,10 +96,10 @@ The `settings.json` package list installs that repository as a Pi extension pack
    fi
    ```
 
-7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode and Pi.
+7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for Pi.
 
    ```sh
-   bunx skills@latest add mattpocock/skills --skill '*' --global --agent opencode --agent pi --yes
+   bunx skills@latest add mattpocock/skills --skill '*' --global --agent pi --yes
    ```
 
    The installer keeps one copy in `~/.agents/skills/` and links it into Pi's global skill directory.
@@ -348,7 +348,7 @@ pi update --extensions
 Install the agent skill once per machine:
 
 ```sh
-npx skills add dmmulroy/anti-slop --skill install-anti-slop
+bunx skills@latest add dmmulroy/anti-slop --skill install-anti-slop --global --agent pi --yes
 ```
 
 The command installs into `~/.agents/skills/install-anti-slop`, which Pi loads as a global skill source.

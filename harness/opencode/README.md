@@ -62,15 +62,15 @@ Secrets stay local and never enter the repo.
    cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
    ```
 
-7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode and Pi.
+7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode.
    Install Bun first if `bunx` is missing.
    Use the verified Bun installation in the [Pi setup guide](../pi/README.md#setup-on-a-new-machine).
 
    ```sh
-   bunx skills@latest add mattpocock/skills --skill '*' --global --agent opencode --agent pi --yes
+   bunx skills@latest add mattpocock/skills --skill '*' --global --agent opencode --yes
    ```
 
-   The installer keeps one copy in `~/.agents/skills/` and links it into Pi's global skill directory.
+   The installer keeps one copy in `~/.agents/skills/` for OpenCode.
 
 8. Start OpenCode once.
    It installs the configured plugins into `~/.cache/opencode/packages/` automatically.
@@ -135,7 +135,7 @@ Screenshots copied in Windows arrive through WSLg as BMP data, and the TUI conve
 Install the agent skill once per machine:
 
 ```sh
-npx skills add dmmulroy/anti-slop --skill install-anti-slop
+bunx skills@latest add dmmulroy/anti-slop --skill install-anti-slop --global --agent opencode --yes
 ```
 
 The command installs into `~/.agents/skills/install-anti-slop`, which OpenCode loads as a global skill source.
