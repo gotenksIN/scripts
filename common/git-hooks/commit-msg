@@ -9,7 +9,7 @@ fi
 subject=$(sed -n '1p' "$message_file")
 
 if [ "${#subject}" -gt 72 ] ||
-   ! printf '%s\n' "$subject" | grep -Eq '^[a-z0-9][a-z0-9-]*: [A-Z]' ||
+   ! printf '%s\n' "$subject" | grep -Eq '^[a-z0-9][a-z0-9_-]*: [A-Z]' ||
    printf '%s\n' "$subject" | grep -Eq '\.$'; then
     echo "Commit subject must be '<lowercase-scope>: <Capitalized summary>', at most 72 characters, without a period." >&2
     exit 1
