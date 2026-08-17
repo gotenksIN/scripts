@@ -2,7 +2,8 @@
 
 message_file=$1
 
-if [ -f "$(git rev-parse --git-path CHERRY_PICK_HEAD 2>/dev/null)" ]; then
+if [ -f "$(git rev-parse --git-path CHERRY_PICK_HEAD 2>/dev/null)" ] ||
+   [ -f "$(git rev-parse --git-path MERGE_HEAD 2>/dev/null)" ]; then
     exit 0
 fi
 
