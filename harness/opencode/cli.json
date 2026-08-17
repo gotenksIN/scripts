@@ -4,20 +4,24 @@
   },
   "session": {
     "thinking": "show",
-    "scrollbar": true
+    "scrollbar": true,
+    "grouping": "auto",
+    "image_preview": true,
+    "new_location": "launch"
   },
   "animations": true,
   "tabs": {
-    "enabled": false,
-    "scope": "cwd"
+    "enabled": true,
+    "scope": "global",
+    "layout": "vertical"
   },
   "diffs": {
     "tree": true
   },
   "keybinds": {
-    "messages_first": "ctrl+q",
-    "messages_last": "ctrl+e",
-    "input_buffer_home": "home",
-    "input_buffer_end": "end"
+    "session.first": "ctrl+q",
+    "session.last": "ctrl+e",
+    "input.buffer.home": "home",
+    "input.buffer.end": "end"
   }
 }
