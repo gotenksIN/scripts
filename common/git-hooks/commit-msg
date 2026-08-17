@@ -1,6 +1,11 @@
 #!/bin/sh
 
 message_file=$1
+
+if [ -f "$(git rev-parse --git-path CHERRY_PICK_HEAD 2>/dev/null)" ]; then
+    exit 0
+fi
+
 subject=$(sed -n '1p' "$message_file")
 
 if [ "${#subject}" -gt 72 ] ||
