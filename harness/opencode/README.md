@@ -10,7 +10,7 @@ Secrets stay local and never enter the repo.
 | --- | --- | --- |
 | `AGENTS.md` | Global agent instructions and workflow rules | Symlink at `~/.config/opencode/AGENTS.md` |
 | `opencode.json` | Global config: plugins, subagents, websearch | Symlink at `~/.config/opencode/opencode.json` |
-| `opencode.jsonc` | Provider template with `xxxx` placeholders | Copied to `~/.config/opencode/opencode.jsonc` with real credentials |
+| `opencode.jsonc` | Provider template with `xxxx` placeholders | Not installed |
 | `cli.json` | TUI settings: theme, keybinds, diffs | Copied to `~/.config/opencode/cli.json` |
 | `README.md` | This guide | Not installed |
 
@@ -45,24 +45,13 @@ Secrets stay local and never enter the repo.
    ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
    ```
 
-5. Create the provider credentials file.
-   Copy the template, then replace every `xxxx` with real values.
-
-   ```sh
-   cp ~/scripts/harness/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
-   ```
-
-   This file contains API keys.
-   Never commit the real values.
-   The repo copy must keep the `xxxx` placeholders.
-
-6. Copy the TUI settings.
+5. Copy the TUI settings.
 
    ```sh
    cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
    ```
 
-7. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode.
+6. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode.
    Install Bun first if `bunx` is missing.
    Use the verified Bun installation in the [Pi setup guide](../pi/README.md#setup-on-a-new-machine).
 
@@ -72,26 +61,26 @@ Secrets stay local and never enter the repo.
 
    The installer keeps one copy in `~/.agents/skills/` for OpenCode.
 
-8. Start OpenCode once.
+7. Start OpenCode once.
    It installs the configured plugins into `~/.cache/opencode/packages/` automatically.
 
    ```sh
    opencode2
    ```
 
-9. In each repository, run the setup skill once and answer its prompts.
+8. In each repository, run the setup skill once and answer its prompts.
 
    ```text
    /setup-matt-pocock-skills
    ```
 
-10. On WSL2, enable WSLg for image paste.
+9. On WSL2, enable WSLg for image paste.
    See the Image paste on WSL2 section.
 
-11. On WSL2 with mirrored networking, set the service port below 49152.
+10. On WSL2 with mirrored networking, set the service port below 49152.
    See the Service port section.
 
-12. Verify.
+11. Verify.
 
    ```sh
    opencode2 models
