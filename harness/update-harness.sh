@@ -45,14 +45,14 @@ case "$target" in
     install_dir="${OPENCODE2_INSTALL_DIR:-$HOME/.opencode/bin}"
     executable="opencode2"
     package="cli-${os}-${arch}"
-    metadata="$(curl -fsSL --retry 3 'https://registry.npmjs.org/@opencode-ai/cli/next')"
+    metadata="$(curl -fsSL --retry 3 'https://registry.npmjs.org/@opencode-ai/cli/beta')"
     if [[ -n "$requested_version" ]]; then
       version="${requested_version#v}"
     else
       version="${metadata#*\"version\":\"}"
       version="${version%%\"*}"
       version="${version%\"}"
-      [[ -n "$version" ]] || die "npm metadata did not contain the next version"
+      [[ -n "$version" ]] || die "npm metadata did not contain the beta version"
     fi
     metadata_version="${metadata#*\"version\":\"}"
     metadata_version="${metadata_version%%\"*}"
