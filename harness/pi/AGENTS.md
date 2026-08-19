@@ -30,13 +30,25 @@
   The sandbox parser rejects commands that are too complex, so split exploration into short simple commands and run them one at a time.
 - After code changes, run the project's existing tests, linter, or typecheck when those commands are defined.
   If none exist, do a minimal manual check of the changed behavior.
-- Test observable behavior through the code's public or executable interfaces.
-  Assert outputs, side effects, errors, and externally visible state.
-  Do not test source text, symbol names, command fragments, control flow, private structure, or the presence or absence of implementation details.
 - Do not use LaTeX math syntax, math mode, dollar-sign delimiters (`$...$`, `$$...$$`), or LaTeX escape sequences (such as `\rightarrow`, `\Rightarrow`, `\times`, `\pm`, `\circ`, `\approx`, etc.) in direct terminal output or conversational responses.
   Standard TUI environments do not render LaTeX math markup in terminal output.
   Use standard Unicode characters (e.g., `→`, `⇒`, `×`, `±`, `°`, `≈`) or plain text for terminal output.
   In Markdown files, documentation, or other artifacts processed outside the terminal UI, rich Markdown and LaTeX math syntax are permitted.
+
+## Testing
+
+- Test contracts through public or executable interfaces.
+  Assert outputs, side effects, errors, and externally visible state that distinguish a conforming implementation from a broken one.
+- Every test must protect a behavioral contract.
+  Remove tests that only prove a feature, API, command, handler, or registration exists.
+- Let the typechecker enforce static type relationships.
+  Do not add runtime tests that a typecheck alone satisfies.
+- Test adapters against project-owned contracts at the integration boundary.
+  Do not simulate external providers or encode assumptions about their payload, event, or API shapes in unit tests.
+  For adapters such as Discord or inference providers, verify only the translation and behavior the project owns.
+- Keep UI and UX tests only for critical user-visible contracts that cannot be tested below the UI boundary.
+  Remove tests of appearance, interaction preferences, feature presence, or command registration.
+- Do not test source text, symbol names, command fragments, control flow, private structure, or implementation details.
 
 ## Simplicity (YAGNI)
 
