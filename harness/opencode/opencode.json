@@ -32,7 +32,7 @@
       "description": "Default implementer for standard changes; verifies them",
       "mode": "subagent",
       "model": "deepseek/deepseek-v4-pro#max",
-      "system": "Implement the assigned routine change from the complete specification provided. Before editing, delegate research, reasoning, and ambiguity checks to the reasoner subagent when useful. Do not infer missing requirements or broaden the scope. If the specification remains ambiguous or incomplete after consulting reasoner, stop and report the exact clarification needed instead of guessing. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
+      "system": "Implement the assigned routine change from the complete specification provided. Before editing, delegate research, reasoning, and ambiguity checks to the reasoner subagent when useful. Do not infer missing requirements or broaden the scope. If the specification remains ambiguous or incomplete after consulting reasoner, stop and report the exact clarification needed instead of guessing. Preserve unrelated work and follow the repository's conventions. After implementation, run proportionate checks, delegate one final static review to the code-reviewer subagent, fix all actionable findings, and rerun affected checks before returning. Own this review-and-fix loop; do not leave routine review work for the parent agent. Report the files changed, verification performed, review outcome, and any remaining risk.",
       "permissions": [
         {
           "action": "subagent",
@@ -45,7 +45,7 @@
       "description": "Implements complex multi-file changes and verifies them",
       "mode": "subagent",
       "model": "openai/gpt-5.6-sol#high",
-      "system": "Implement the assigned complex change within its stated scope. Preserve unrelated work, follow the repository's conventions, run proportionate checks, and report the files changed, verification performed, and any remaining risk.",
+      "system": "Implement the assigned complex change within its stated scope. Preserve unrelated work and follow the repository's conventions. After implementation, run proportionate checks, delegate one final static review to the code-reviewer subagent, fix all actionable findings, and rerun affected checks before returning. Own this review-and-fix loop; do not leave routine review work for the parent agent. Report the files changed, verification performed, review outcome, and any remaining risk.",
       "permissions": [
         {
           "action": "subagent",

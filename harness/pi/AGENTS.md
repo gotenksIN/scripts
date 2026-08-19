@@ -75,6 +75,8 @@
 - Stay in the parent session when the change is tiny and does not need a separate agent.
 - Never spawn a `coder-*` agent from inside a `coder-*` agent.
   Finish the work or return to the parent.
+- Each coder owns its final review loop.
+  Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
 
 ## Tooling Preferences
 
