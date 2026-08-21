@@ -10,6 +10,9 @@
     "new_location": "launch"
   },
   "animations": true,
+  "cursor": {
+    "style": "line"
+  },
   "tabs": {
     "enabled": true,
     "scope": "global",
