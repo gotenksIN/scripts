@@ -98,6 +98,11 @@
   Prefer native file-search and content-search tools when they are available.
 - Prefer `7z` for listing, testing, and extracting archives.
   Do not use `unzip` or `tar` when `7z` supports the archive format; use another tool only when `7z` is unavailable or incompatible, and state why.
+- When running grilling workflows (`grill-me`, `grill-with-docs`, `grilling`) or presenting decision frontiers, use the `question` tool instead of plain text.
+  - Present each frontier question as an entry in the `questions` array.
+  - Provide structured options for each choice when possible.
+  - Place your recommended option first with `(Recommended)` appended to the label.
+  - Set `multiple: true` when multiple choices apply.
 - You may use `/tmp/opencode` for temporary work outside the workspace.
   Always delete temporary files and directories you create when the task ends.
   WSL does not use tmpfs, so leftover files in `/tmp` persist on disk.
