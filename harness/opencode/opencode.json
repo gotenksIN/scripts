@@ -99,6 +99,11 @@
           "effect": "deny"
         },
         {
+          "action": "subagent",
+          "resource": "reasoner*",
+          "effect": "deny"
+        },
+        {
           "action": "shell",
           "resource": "*",
           "effect": "allow"
