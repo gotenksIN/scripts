@@ -45,7 +45,7 @@ case "$target" in
     install_dir="${OPENCODE2_INSTALL_DIR:-$HOME/.opencode/bin}"
     executable="opencode2"
     package="cli-${os}-${arch}"
-    metadata="$(curl -fsSL --retry 3 'https://registry.npmjs.org/@opencode-ai/cli/beta')"
+    metadata="$(curl -fsSL --retry 3 'https://registry.npmjs.org/@opencode-ai/cli/dev')"
     if [[ -n "$requested_version" ]]; then
       version="${requested_version#v}"
     else
