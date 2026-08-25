@@ -11,10 +11,6 @@ cursor-style-blink = false
 font-family = "MesloLGM Nerd Font Mono"
 font-size = 10.5
 
-# Keybindings
-keybind = copy=copy_to_clipboard:plain
-keybind = ctrl+shift+c=copy_to_clipboard:plain
-
 # Mouse
 right-click-action = copy-or-paste
 
