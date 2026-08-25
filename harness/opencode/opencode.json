@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "plugins": [
     {
-      "package": "opencode-websearch-addons@1.0.3",
+      "package": "opencode-websearch-addons@1.0.5",
       "options": {
         "timeoutMs": 120000,
         "google": {
@@ -13,14 +13,15 @@
       }
     },
     {
-      "package": "opencode2-goal-plugin@1.0.3",
+      "package": "opencode2-goal-plugin@1.0.5",
       "options": {
         "autoContinue": true,
         "maxContinuations": 12,
         "continuationIntervalMs": 1500,
         "maxDurationMs": 3600000,
         "maxTokens": 120000,
-        "noProgressTurns": 3
+        "noProgressTurns": 3,
+        "dataFile": "~/.local/share/opencode-goal-plugin/goals.json"
       }
     }
   ],
