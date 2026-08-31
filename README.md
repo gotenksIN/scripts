@@ -1,8 +1,8 @@
-# Personal Setup and System Scripts
+# Personal setup and system scripts
 
 This repository contains configuration files, deployment scripts, and dotfiles for operating systems, containers, and tools.
 
-## Repository Structure
+## Repository structure
 
 | Directory | Description |
 | --- | --- |
@@ -12,12 +12,12 @@ This repository contains configuration files, deployment scripts, and dotfiles f
 | `fedora/` | Setup, debloat, and management scripts for Fedora Linux. |
 | `homeassistant/` | Automation scripts and dashboard configurations for Home Assistant. |
 | `nixos/` | NixOS system configuration files and update scripts. |
-| `opencode/` | Configuration files, agent rules, and aliases for OpenCode. |
+| `harness/` | Configuration files, agent rules, and install scripts for AI agent harnesses (OpenCode, Pi). |
 | `plasma/` | KDE Plasma window management scripts and tiling tools. |
 | `ubuntu/` | Setup, debloat, and bootloader scripts for Ubuntu Linux. |
 | `windows/` | PowerShell scripts, Winget configurations, and chezmoi templates for Windows. |
 
-## Subsystem Details
+## Subsystem details
 
 ### Arch Linux (`arch/`)
 Scripts in this folder handle Arch Linux setup:
@@ -26,14 +26,14 @@ Scripts in this folder handle Arch Linux setup:
 - Kernel booting setup with `install_efistub.sh`.
 - NVIDIA driver installation and KDE Plasma desktop setup.
 
-### Common Dotfiles (`common/`)
+### Common dotfiles (`common/`)
 Shared environment settings and shell configurations:
 - Bootstrapper script `setup.sh` to install dotfiles across distributions.
 - Shell configuration files for Zsh (`.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
 - Terminal and tool settings (`wezterm.lua`, `bottom.toml`, `.screenrc`).
 - SSH and Git configuration templates.
 
-### Docker Services (`docker/`)
+### Docker services (`docker/`)
 Docker Compose files to deploy self-hosted applications:
 - **Home Assistant**: Home automation platform.
 - **Jellyfin**: Media server.
@@ -60,27 +60,20 @@ System configuration for NixOS builds:
 - Machine configuration file `RyzenBox.nix`.
 - Script to switch system channels to unstable.
 
-### OpenCode (`opencode/`)
-Configuration files for the OpenCode AI assistant:
-- Tool, provider, and CLI settings (`opencode.json`, `provider.json`, `cli.json`).
-- Agent instructions in `AGENTS.md`.
-- Command aliases for shell integration.
+### Agent harnesses (`harness/`)
+Configuration files, agent rules, and installation scripts for AI coding harnesses:
+- **OpenCode (`harness/opencode/`)**: Configuration files (`opencode.json`, `opencode.jsonc`, `cli.json`) and agent rules (`AGENTS.md`) for OpenCode v2.
+- **Pi (`harness/pi/`)**: Settings (`settings.json`), custom subagents (`agents/`), keybindings (`keybindings.json`), and agent rules (`AGENTS.md`) for Pi.
+- **Harness updater (`harness/update-harness.sh`)**: Script to download and update `opencode2` and `pi` binaries.
 
-To link `AGENTS.md` and `opencode.json` to your OpenCode configuration directories:
+To link the OpenCode configuration files to your configuration directory:
 
-- For OpenCode v1:
-  ```bash
-  mkdir -p ~/.config/opencode
-  ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-  ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
-  ```
-
-- For OpenCode v2:
-  ```bash
-  mkdir -p ~/.config/opencode2/opencode
-  ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode2/opencode/AGENTS.md
-  ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode2/opencode/opencode.json
-  ```
+```bash
+mkdir -p ~/.config/opencode
+ln -sf ~/scripts/harness/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
+cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
+```
 
 ### KDE Plasma (`plasma/`)
 Window management extensions:
@@ -100,7 +93,7 @@ Automation scripts for Windows and WSL:
 - Registry adjustments and hardware acceleration fixes (`Fix-HEVC-AMF.ps1`).
 - chezmoi templates for environment management.
 
-## Getting Started
+## Getting started
 
 To deploy the common dotfiles and distribution-specific configurations on Linux:
 
