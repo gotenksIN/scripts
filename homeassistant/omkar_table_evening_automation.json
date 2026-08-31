@@ -27,7 +27,7 @@
       "condition": "or",
       "conditions": [
         { "condition": "state", "entity_id": "device_tracker.rtwobox", "state": "home" },
-        { "condition": "state", "entity_id": "device_tracker.oneplusbox", "state": "home" }
+        { "condition": "state", "entity_id": "device_tracker.nothingbox", "state": "home" }
       ]
     }
   ],
