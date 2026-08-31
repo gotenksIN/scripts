@@ -1,6 +1,6 @@
 {
   "alias": "Omkar Table Evening Auto",
-  "description": "When sun elevation drops below 10, set table lights to 60% at 5000K when either phone is home.",
+  "description": "When sun elevation drops below 10, set table lights to 60% at 5000K when person is home.",
   "triggers": [
     {
       "platform": "numeric_state",
@@ -11,6 +11,11 @@
     {
       "platform": "homeassistant",
       "event": "start"
+    },
+    {
+      "platform": "state",
+      "entity_id": "person.omkar_chandorkar",
+      "to": "home"
     }
   ],
   "conditions": [
@@ -24,11 +29,9 @@
       "value_template": "{% set elevation = state_attr('sun.sun', 'elevation') | float(90) %}{{ elevation > 0 and elevation < 10 and not state_attr('sun.sun', 'rising') }}"
     },
     {
-      "condition": "or",
-      "conditions": [
-        { "condition": "state", "entity_id": "device_tracker.rtwobox", "state": "home" },
-        { "condition": "state", "entity_id": "device_tracker.nothingbox", "state": "home" }
-      ]
+      "condition": "state",
+      "entity_id": "person.omkar_chandorkar",
+      "state": "home"
     }
   ],
   "actions": [

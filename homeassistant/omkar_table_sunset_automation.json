@@ -1,21 +1,31 @@
 {
   "alias": "Omkar Table Sunset Auto",
-  "description": "When sun elevation drops below -4°, set table lights to 40% at 2200K if the light is already on or either phone is home.",
+  "description": "When sun elevation drops below -4°, set table lights to 40% at 2200K if the light is already on or person is home.",
   "triggers": [
     {
       "platform": "numeric_state",
       "entity_id": "sun.sun",
       "attribute": "elevation",
       "below": -4
+    },
+    {
+      "platform": "state",
+      "entity_id": "person.omkar_chandorkar",
+      "to": "home"
     }
   ],
   "conditions": [
     {
+      "condition": "numeric_state",
+      "entity_id": "sun.sun",
+      "attribute": "elevation",
+      "below": -4
+    },
+    {
       "condition": "or",
       "conditions": [
         { "condition": "state", "entity_id": "light.table", "state": "on" },
-        { "condition": "state", "entity_id": "device_tracker.rtwobox", "state": "home" },
-        { "condition": "state", "entity_id": "device_tracker.nothingbox", "state": "home" }
+        { "condition": "state", "entity_id": "person.omkar_chandorkar", "state": "home" }
       ]
     }
   ],
