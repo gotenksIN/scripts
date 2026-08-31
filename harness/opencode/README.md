@@ -2,7 +2,7 @@
 
 ## Overview
 
-This directory holds the global OpenCode2 configuration for this machine.
+This directory holds the global OpenCode v2 configuration for this machine.
 The files in `~/.config/opencode/` mostly symlink to or copy from this directory, so this repo is the source of truth.
 Secrets stay local and never enter the repo.
 
@@ -29,7 +29,7 @@ Secrets stay local and never enter the repo.
    ```
 
    The script downloads the latest release, verifies its checksum, and installs the binary to `~/.opencode/bin/opencode2`.
-   See Updating OpenCode2.
+   See [Updating OpenCode v2](#updating-opencode-v2).
 
 3. Create the config directory.
 
@@ -75,10 +75,10 @@ Secrets stay local and never enter the repo.
    ```
 
 9. On WSL2, enable WSLg for image paste.
-   See the Image paste on WSL2 section.
+   See the [Image paste on WSL2](#image-paste-on-wsl2) section.
 
 10. On WSL2 with mirrored networking, set the service port below 49152.
-   See the Service port section.
+   See the [Service port (WSL2 mirrored networking)](#service-port-wsl2-mirrored-networking) section.
 
 11. Verify.
 
@@ -101,10 +101,10 @@ git pull
 opencode2 service restart
 ```
 
-## Updating OpenCode2
+## Updating OpenCode v2
 
 Run the update harness script.
-It downloads the latest `next` release, verifies its checksum, and swaps the binary atomically with rollback on failure.
+It downloads the latest release, verifies its checksum, and swaps the binary atomically with rollback on failure.
 
 ```sh
 ~/scripts/harness/update-harness.sh opencode2
@@ -114,6 +114,8 @@ Add a version after `opencode2` to install a specific one.
 
 The update warning "automatic update skipped: installation method not found" is expected.
 The binary is installed by the script, not a package manager, so auto-update cannot detect the installation method.
+
+## Image paste on WSL2
 
 Paste an image into the prompt with Ctrl+V.
 Screenshots copied in Windows arrive through WSLg as BMP data, and the TUI converts them to PNG automatically.
