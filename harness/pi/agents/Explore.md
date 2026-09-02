@@ -1,6 +1,6 @@
 ---
 description: Fast read-only exploration with web search
-model: google/gemini-3.7-flash
+model: google/gemini-3.8-flash
 thinking: high
 tools: read, bash, grep, find, ls, ext:websearch/websearch_cited
 prompt_mode: append

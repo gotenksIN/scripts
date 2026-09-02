@@ -1,6 +1,6 @@
 ---
 description: Handles general multi-step tasks
-model: google/gemini-3.7-flash
+model: google/gemini-3.8-flash
 thinking: high
 tools: all, ext:websearch/websearch_cited
 prompt_mode: append

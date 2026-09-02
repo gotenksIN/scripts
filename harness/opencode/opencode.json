@@ -124,7 +124,7 @@
     "explore": {
       "description": "Scans codebase, searches files, and gathers context or external documentation",
       "mode": "subagent",
-      "model": "google/gemini-3.7-flash#high",
+      "model": "google/gemini-3.8-flash#high",
       "system": "Explore the codebase or external documentation to gather relevant context, file locations, and references. Report clear and concise structural findings.",
       "permissions": [
         {
@@ -142,7 +142,7 @@
     "general": {
       "description": "Handles general non-coding subtasks and coordination",
       "mode": "subagent",
-      "model": "google/gemini-3.7-flash#high",
+      "model": "google/gemini-3.8-flash#high",
       "system": "Perform assigned general tasks concisely and accurately. Follow project guidelines and summarize results clearly.",
       "permissions": []
     }
