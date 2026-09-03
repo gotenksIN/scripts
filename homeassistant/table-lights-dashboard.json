@@ -4,7 +4,7 @@
       "title": "Omkar Table Lights",
       "path": "0",
       "type": "sections",
-      "max_columns": 1,
+      "max_columns": 2,
       "sections": [
         {
           "type": "grid",
@@ -19,12 +19,24 @@
               "entity": "light.table",
               "name": "Table Lights",
               "features_position": "bottom",
-              "vertical": true,
-              "hide_state": false
+              "vertical": false,
+              "hide_state": false,
+              "state_content": [
+                "state",
+                "brightness"
+              ],
+              "features": [
+                {
+                  "type": "light-brightness"
+                },
+                {
+                  "type": "light-color-temp"
+                }
+              ]
             },
             {
               "type": "heading",
-              "heading": "Brightness",
+              "heading": "Quick Brightness Adjust",
               "icon": "mdi:brightness-6"
             },
             {
@@ -51,45 +63,18 @@
                   }
                 },
                 {
-                  "type": "conditional",
-                  "conditions": [
-                    {
-                      "entity": "light.table",
-                      "state": "off"
+                  "type": "button",
+                  "name": "Toggle",
+                  "icon": "mdi:power",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "light.toggle",
+                    "target": {
+                      "entity_id": "light.table"
                     }
-                  ],
-                  "card": {
-                    "type": "button",
-                    "name": "Off",
-                    "icon": "mdi:brightness-6",
-                    "tap_action": {
-                      "action": "none"
-                    },
-                    "hold_action": {
-                      "action": "none"
-                    }
-                  }
-                },
-                {
-                  "type": "conditional",
-                  "conditions": [
-                    {
-                      "entity": "light.table",
-                      "state_not": "off"
-                    }
-                  ],
-                  "card": {
-                    "type": "button",
-                    "entity": "sensor.omkar_table_brightness",
-                    "show_state": true,
-                    "show_name": false,
-                    "icon": "mdi:brightness-6",
-                    "tap_action": {
-                      "action": "none"
-                    },
-                    "hold_action": {
-                      "action": "none"
-                    }
+                  },
+                  "hold_action": {
+                    "action": "none"
                   }
                 },
                 {
@@ -111,7 +96,12 @@
                   }
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
             {
               "type": "heading",
               "heading": "Temperature presets",
