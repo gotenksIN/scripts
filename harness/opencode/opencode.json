@@ -128,6 +128,11 @@
       "system": "Explore the codebase or external documentation to gather relevant context, file locations, and references. Report clear and concise structural findings.",
       "permissions": [
         {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
           "action": "subagent",
           "resource": "*",
           "effect": "deny"

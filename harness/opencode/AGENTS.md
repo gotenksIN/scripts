@@ -60,6 +60,7 @@
 ## Worktrees
 
 - When the user asks you to create a worktree and implement or review work in it, create the worktree first, then move the current session to it with the OpenCode session API.
+- Move the session using Code Mode `tools.opencode.session_move({ directory: "<path>" })`.
 - Move the session only after worktree creation succeeds.
 - Verify the session location after moving it.
 - Do not move the session when the user only asks you to create a worktree.

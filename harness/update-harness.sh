@@ -52,7 +52,7 @@ case "$target" in
       version="${metadata#*\"version\":\"}"
       version="${version%%\"*}"
       version="${version%\"}"
-      [[ -n "$version" ]] || die "npm metadata did not contain the beta version"
+      [[ -n "$version" ]] || die "npm metadata did not contain the dev version"
     fi
     metadata_version="${metadata#*\"version\":\"}"
     metadata_version="${metadata_version%%\"*}"

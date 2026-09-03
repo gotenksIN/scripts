@@ -1,12 +1,14 @@
 {
+  "$schema": "https://opencode.ai/v2/cli.json",
   "theme": {
     "name": "catppuccin-macchiato"
   },
   "session": {
     "thinking": "show",
     "scrollbar": true,
-    "grouping": "auto",
     "image_preview": true,
+    "sidebar": "hide",
+    "grouping": "auto",
     "new_location": "launch"
   },
   "animations": true,
@@ -20,6 +22,9 @@
   },
   "diffs": {
     "tree": true
+  },
+  "terminal": {
+    "copy": "manual"
   },
   "keybinds": {
     "session.first": "ctrl+q",

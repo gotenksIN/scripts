@@ -46,6 +46,7 @@ Secrets stay local and never enter the repo.
    ```
 
 5. Copy the TUI settings.
+   Copy instead of symlinking because OpenCode writes interactive setting changes directly to this file.
 
    ```sh
    cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
@@ -85,6 +86,7 @@ Secrets stay local and never enter the repo.
    ```sh
    opencode2 models
    opencode2 service status
+   opencode2 api get /api/health
    ```
 
    In the TUI, check that the subagents `coder-low`, `coder-high`, `reasoner`, `explore`, and `general` appear.

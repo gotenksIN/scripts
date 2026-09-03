@@ -1,4 +1,5 @@
 {
+  "$schema": "https://opencode.ai/config.json",
   "providers": {
     "anthropic": {
       "settings": {
@@ -14,13 +15,6 @@
       }
     },
     "google": {
-      "settings": {
-        "baseURL": "xxxx",
-        "apiKey": "xxxx"
-      }
-    },
-    "xai": {
-      "package": "@opencode-ai/ai/providers/openai-compatible",
       "settings": {
         "baseURL": "xxxx",
         "apiKey": "xxxx"
