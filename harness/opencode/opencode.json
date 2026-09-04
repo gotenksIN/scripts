@@ -29,37 +29,34 @@
     "subagent_depth": 2
   },
   "agents": {
-    "coder-low": {
-      "description": "Default implementer for standard changes; verifies them",
-      "mode": "subagent",
-      "model": "zai/glm-5.3#max",
-      "system": "Implement the assigned routine change from the complete specification provided. Before editing, delegate research, reasoning, and ambiguity checks to the reasoner subagent when useful. Do not infer missing requirements or broaden the scope. If the specification remains ambiguous or incomplete after consulting reasoner, stop and report the exact clarification needed instead of guessing. Preserve unrelated work and follow the repository's conventions. After implementation, run proportionate checks, delegate one final static review to the code-reviewer subagent, fix all actionable findings, and rerun affected checks before returning. Own this review-and-fix loop; do not leave routine review work for the parent agent. Report the files changed, verification performed, review outcome, and any remaining risk.",
-      "permissions": [
-        {
-          "action": "subagent",
-          "resource": "coder*",
-          "effect": "deny"
-        }
-      ]
-    },
-    "coder-high": {
-      "description": "Implements complex multi-file changes and verifies them",
+    "coder": {
+      "description": "Implements changes and verifies them",
       "mode": "subagent",
       "model": "openai/gpt-5.6-sol#high",
-      "system": "Implement the assigned complex change within its stated scope. Preserve unrelated work and follow the repository's conventions. After implementation, run proportionate checks, delegate one final static review to the code-reviewer subagent, fix all actionable findings, and rerun affected checks before returning. Own this review-and-fix loop; do not leave routine review work for the parent agent. Report the files changed, verification performed, review outcome, and any remaining risk.",
+      "system": "Implement the assigned change within its stated scope. Do not write new tests unless the specification explicitly requests them; only run existing checks. Preserve unrelated work and follow the repository's conventions. After implementation, run proportionate checks, delegate one final static review to the code-reviewer subagent, fix all actionable findings, and rerun affected checks before returning. Own this review-and-fix loop; do not leave routine review work for the parent agent. Report the files changed, verification performed, review outcome, and any remaining risk.",
       "permissions": [
         {
           "action": "subagent",
-          "resource": "coder*",
+          "resource": "*",
           "effect": "deny"
+        },
+        {
+          "action": "subagent",
+          "resource": "code-reviewer",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "explore",
+          "effect": "allow"
         }
       ]
     },
     "code-reviewer": {
-      "description": "Reviews code for correctness, risks, and missing tests",
+      "description": "Reviews code for correctness, risks, and YAGNI violations",
       "mode": "subagent",
       "model": "openai/gpt-5.6-sol#high",
-      "system": "Review the assigned code without modifying files. Use read and search tools, plus `git diff` when needed to inspect changes. Do not invoke any other shell command or run tests; assess the code through static review and report any testing gaps. Prioritize bugs, security risks, behavioral regressions, and missing tests. Report findings first, ordered by severity, with file paths and line numbers. State open questions and residual testing gaps after the findings. Flag unnecessary complexity and speculative implementation that violates the global YAGNI guidance. Do not delegate work or dispatch subagents.",
+      "system": "Review the assigned code without modifying files. Use read and search tools, plus `git diff` when needed to inspect changes. Do not invoke any other shell command or run tests; assess the code through static review. Prioritize bugs, security risks, behavioral regressions, unnecessary complexity, and speculative implementation that violates the global YAGNI guidance. Flag low-value, shallow, or implementation-detail tests as YAGNI violations. Do not demand new tests unless the task explicitly required them. Report findings first, ordered by severity, with file paths and line numbers. State open questions after the findings. Do not delegate work or dispatch subagents.",
       "permissions": [
         {
           "action": "subagent",
@@ -96,18 +93,18 @@
       "permissions": [
         {
           "action": "subagent",
-          "resource": "coder*",
+          "resource": "*",
           "effect": "deny"
         },
         {
           "action": "subagent",
-          "resource": "reasoner*",
-          "effect": "deny"
+          "resource": "explore",
+          "effect": "allow"
         },
         {
           "action": "shell",
           "resource": "*",
-          "effect": "allow"
+          "effect": "deny"
         },
         {
           "action": "execute",
@@ -145,11 +142,22 @@
       ]
     },
     "general": {
-      "description": "Handles general non-coding subtasks and coordination",
+      "description": "General-purpose agent capable of any task, tool use, and subagent coordination",
       "mode": "subagent",
       "model": "google/gemini-3.8-flash#high",
-      "system": "Perform assigned general tasks concisely and accurately. Follow project guidelines and summarize results clearly.",
-      "permissions": []
+      "system": "Perform assigned tasks concisely and accurately. When auditing implementations, strictly enforce the project's YAGNI and testing rules. Delete speculative abstractions, unused helpers, and tests that assert implementation details or type relationships alone. Follow project guidelines and summarize results clearly.",
+      "permissions": [
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "general*",
+          "effect": "deny"
+        }
+      ]
     }
   },
   "websearch": {

@@ -31,6 +31,8 @@
 
 ## Testing
 
+- Do not write new tests unless the user or specification explicitly requests them.
+- Run only the project's existing tests and verification checks by default.
 - Test contracts through public or executable interfaces.
   Assert outputs, side effects, errors, and externally visible state that distinguish a conforming implementation from a broken one.
 - Every test must protect a behavioral contract.
@@ -68,20 +70,24 @@
 
 ## Subagent Routing
 
-- Implementation: `coder-low` by default, with a complete and unambiguous specification.
-- `coder-low` must not infer missing requirements. It must request clarification when the specification is incomplete.
-- `coder-high` only when the user explicitly requests it and the OpenAI quota is not exhausted for the current date.
-  Quota details are under Provider Quota Handling.
+- Implementation: `coder`.
 - Read-only deep analysis: `reasoner`.
 - Broad codebase or documentation search: `explore`.
-- Non-code coordination: `general`.
+- General multi-step tasks and coordination: `general`.
 - Stay in the parent session when the change is tiny and does not need a separate agent.
-- Never spawn a `coder-*` agent from inside a `coder-*` agent.
+- Launch `coder` directly from the parent session so `coder` can run its review loop within the depth limit.
+- Never spawn a `coder` agent from inside a `coder` agent.
 - Never spawn a `reasoner` agent from inside a `reasoner` agent.
 - Never spawn an `explore` agent from inside an `explore` agent.
+- Never spawn a `general` agent from inside a `general` agent.
+- Never spawn a `general` agent from inside a `reasoner` agent.
+- Never spawn a `general` agent from inside a `coder` agent.
   Finish the work or return to the parent.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
+- After `coder` completes an implementation, immediately launch a `general` subagent.
+  Use `general` to audit the changes against the project's YAGNI and testing rules.
+  Have `general` remove speculative code, unnecessary abstractions, and low-value tests.
 
 ## Tooling Preferences
 
@@ -105,16 +111,6 @@
 - You may use `/tmp/opencode` for temporary work outside the workspace.
   Always delete temporary files and directories you create when the task ends.
   WSL does not use tmpfs, so leftover files in `/tmp` persist on disk.
-
-## Provider Quota Handling
-
-- OpenCode injects the current date into the prompt.
-  Treat the OpenAI daily quota as refreshed when that date changes.
-- It is fine if a new session discovers exhaustion only after an OpenAI HTTP 429 or daily quota error.
-- While the OpenAI quota is exhausted for the current date, do not use `coder-high`.
-  Use `coder-low` for all implementation work.
-- If the user explicitly requested `coder-high` and it is unavailable because the OpenAI quota is exhausted, stop the task and report that to the user.
-  Do not silently fall back to another coder tier for that request.
 
 ## Git Workflow
 

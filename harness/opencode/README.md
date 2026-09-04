@@ -89,7 +89,7 @@ Secrets stay local and never enter the repo.
    opencode2 api get /api/health
    ```
 
-   In the TUI, check that the subagents `coder-low`, `coder-high`, `reasoner`, `explore`, and `general` appear.
+   In the TUI, check that the subagents `coder`, `reasoner`, `explore`, and `general` appear.
    Check that `/setup-matt-pocock-skills` appears in the command list.
 
 Do not copy `~/.config/opencode/service.json` between machines.
