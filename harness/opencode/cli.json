@@ -6,10 +6,12 @@
   "session": {
     "thinking": "show",
     "scrollbar": true,
-    "image_preview": true,
-    "sidebar": "hide",
     "grouping": "auto",
-    "new_location": "launch"
+    "image_preview": true,
+    "new_location": "launch",
+    "sidebar": "hide",
+    "terminal": true,
+    "tps": true
   },
   "animations": true,
   "cursor": {
@@ -18,18 +20,32 @@
   "tabs": {
     "enabled": true,
     "scope": "global",
-    "layout": "vertical"
+    "layout": "vertical",
+    "indicators": "status"
   },
   "diffs": {
     "tree": true
-  },
-  "terminal": {
-    "copy": "manual"
   },
   "keybinds": {
     "session.first": "ctrl+q",
     "session.last": "ctrl+e",
     "input.buffer.home": "home",
-    "input.buffer.end": "end"
+    "input.buffer.end": "end",
+    "prompt.queue": "alt+enter"
+  },
+  "prompt": {
+    "image_preview": true
+  },
+  "terminal": {
+    "title": true,
+    "copy": "manual"
+  },
+  "debug": {
+    "devtools": false,
+    "timing": false,
+    "turn_tokens": false
+  },
+  "experimental": {
+    "session-preview-tabs": false
   }
 }
