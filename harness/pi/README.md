@@ -10,7 +10,7 @@ The files link into `~/.pi/agent/`, so this repo is the source of truth.
 | `settings.json` | Pi settings: extension package, theme, subagent package | Copied to `~/.pi/agent/settings.json` |
 | `keybindings.json` | Removes default `ctrl+p` bindings that conflict with the keybinding extension | Copied to `~/.pi/agent/keybindings.json` |
 | `AGENTS.md` | Global agent rules for Pi | Symlinked to `~/.pi/agent/AGENTS.md` |
-| `agents/` | Custom subagent definitions | Symlinked into `~/.pi/agent/agents/` |
+| `agents/` | Custom subagent definitions | Directory symlink at `~/.pi/agent/agents` |
 | `README.md` | This guide | Not installed |
 
 The extensions themselves live in the separate [pi-extensions](https://github.com/gotenksIN/pi-extensions) repository.
@@ -54,12 +54,14 @@ The `settings.json` package list installs that repository as a Pi extension pack
 
 5. Link the custom subagent definitions.
 
+   If `~/.pi/agent/agents` is a real directory, move it aside first.
+   Copy any custom definitions you need to keep into `~/scripts/harness/pi/agents/`.
+
    ```sh
-   mkdir -p ~/.pi/agent/agents
-   ln -sfn ~/scripts/harness/pi/agents/*.md ~/.pi/agent/agents/
+   ln -sfnT ~/scripts/harness/pi/agents ~/.pi/agent/agents
    ```
 
-   These commands preserve custom agents with other names and replace agents with the same filenames.
+   The directory link includes added definitions and removes deleted definitions automatically.
    After setup, `/agents` lists the tracked definitions as global agents.
    Agent names are case-insensitive, so `explore` resolves to `Explore.md`.
 
@@ -341,6 +343,9 @@ Update the installed extension packages from inside Pi:
 ```bash
 pi update --extensions
 ```
+
+After repository updates change the custom agents, run `/reload` in Pi.
+The directory symlink needs no relinking.
 
 ## Anti-slop lint skill
 
