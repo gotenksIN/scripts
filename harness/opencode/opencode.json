@@ -169,6 +169,46 @@
     "provider": "google"
   },
   "providers": {
+    "deepseek": {
+      "models": {
+        "deepseek-v4.1-flash-expires-on-0910": {
+          "modelID": "deepseek-v4.1-flash-expires-on-0910",
+          "name": "DeepSeek V4.1 Flash (expires on 0910)",
+          "compatibility": {
+            "reasoningField": "reasoning_content"
+          },
+          "capabilities": {
+            "tools": true,
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          },
+          "variants": [
+            {
+              "id": "low",
+              "body": {
+                "reasoning_effort": "low"
+              }
+            },
+            {
+              "id": "high",
+              "body": {
+                "reasoning_effort": "high"
+              }
+            },
+            {
+              "id": "max",
+              "body": {
+                "reasoning_effort": "max"
+              }
+            }
+          ]
+        }
+      }
+    },
     "openai": {
       "models": {
         "gpt-6-astra": {
