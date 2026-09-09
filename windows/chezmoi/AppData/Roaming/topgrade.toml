@@ -28,7 +28,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-# disable = ["system", "emacs"]
+disable = ["pi"]
 
 # Run these steps before all others
 # first = ["chezmoi"]
@@ -479,6 +479,11 @@ winget_silent_install = false
 # (default: this won't be set by default)
 # profile = ""
 
+# Remove extension directories listed in each VS Code-compatible editor's
+# `.obsolete` marker after a successful extension update.
+# (default: false)
+# cleanup_obsolete_extensions = true
+
 [pixi]
 # Show the release notes of the latest pixi release
 # during the pixi step
@@ -507,3 +512,13 @@ winget_silent_install = false
 # If set, updates only these channels.
 # (default: [] (all channels))
 # channels = ["stable"]
+
+[skills]
+# Package runner to use to run the `skills` CLI when no local `skills`
+# binary is present in PATH.
+# Allowed values:
+#   npx  (runs `npx skills`)
+#   pnpm (runs `pnpx skills`)
+#   bun  (runs `bunx skills`)
+# (default: npx)
+# package_manager = "npx"
