@@ -103,6 +103,9 @@ parent_dir="$(dirname "$install_dir")"
 mkdir -p "$parent_dir"
 exec 9>"$parent_dir/.${target}-update.lock"
 flock -n 9 || die "another $target update is already running"
+if [[ "$target" == opencode2 ]]; then
+  mkdir -p "$install_dir"
+fi
 
 installed_binary="$install_dir/$executable"
 if [[ -x "$installed_binary" ]]; then
