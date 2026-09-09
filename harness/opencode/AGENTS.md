@@ -21,6 +21,9 @@
   - Do not use anthropomorphism, such as "the app thinks".
   - Do not use exclamation points in documentation.
 - Follow existing project style for code inside the project.
+- Keep `AGENTS.md` discovery within the project directory and its subdirectories.
+  If none exists there, continue with the instructions already provided.
+  Do not search parent directories or other locations outside the project just because the project has no `AGENTS.md`.
 - Agent instructions, including `AGENTS.md`, do not need to follow this style.
   Write them in whatever way agents understand best.
 - Use semantic line breaks in Markdown prose: put each complete sentence on its own source line and let the renderer wrap it.
