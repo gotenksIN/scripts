@@ -35,7 +35,6 @@ esac
 
 case "$(uname -m)" in
   x86_64|amd64) arch="x64" ;;
-  arm64|aarch64) arch="arm64" ;;
   *) die "unsupported architecture: $(uname -m)" ;;
 esac
 
@@ -45,26 +44,23 @@ case "$target" in
     install_dir="${OPENCODE2_INSTALL_DIR:-$HOME/.opencode/bin}"
     executable="opencode2"
     package="cli-${os}-${arch}"
-    metadata="$(curl -fsSL --retry 3 'https://registry.npmjs.org/@opencode-ai/cli/dev')"
     if [[ -n "$requested_version" ]]; then
       version="${requested_version#v}"
     else
+      metadata="$(curl -fsSL --retry 3 \
+        'https://opencode.ai/update/api/dev/cli/npm')"
       version="${metadata#*\"version\":\"}"
       version="${version%%\"*}"
-      version="${version%\"}"
-      [[ -n "$version" ]] || die "npm metadata did not contain the dev version"
     fi
-    metadata_version="${metadata#*\"version\":\"}"
-    metadata_version="${metadata_version%%\"*}"
-    if [[ "$version" != "$metadata_version" ]]; then
-      metadata="$(curl -fsSL --retry 3 \
-        "https://registry.npmjs.org/@opencode-ai/cli/${version}")"
-    fi
-    metadata_version="${metadata#*\"version\":\"}"
-    metadata_version="${metadata_version%%\"*}"
-    [[ "$metadata_version" == "$version" ]] || die "npm metadata reported unexpected version"
-    metadata="$(curl -fsSL --retry 3 \
-      "https://registry.npmjs.org/@opencode-ai/${package}/${version}")"
+
+    metadata="$(curl -sSL --retry 3 -w $'\n%{http_code}' \
+      "https://registry.npmjs.org/@opencode%2f${package}/${version}")" || \
+      die "failed to fetch platform package metadata"
+    http_status="${metadata##*$'\n'}"
+    metadata="${metadata%$'\n'*}"
+    [[ "$http_status" == 200 ]] || \
+      die "version $version is not available for $os-$arch"
+
     metadata_version="${metadata#*\"version\":\"}"
     metadata_version="${metadata_version%%\"*}"
     [[ "$metadata_version" == "$version" ]] || die "platform package metadata reported unexpected version"
@@ -72,7 +68,7 @@ case "$target" in
     expected="${expected%%\"*}"
     [[ "$expected" =~ ^[0-9a-fA-F]{40}$ ]] || die "npm metadata did not contain a valid package checksum"
     asset="${package}-${version}.tgz"
-    base_url="https://registry.npmjs.org/@opencode-ai/${package}/-"
+    base_url="https://registry.npmjs.org/@opencode/${package}/-"
     archive_prefix="package"
     binary_path="bin/opencode2"
     ;;
