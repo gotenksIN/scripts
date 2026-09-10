@@ -171,15 +171,15 @@
   "providers": {
     "deepseek": {
       "models": {
-        "deepseek-v4.1-flash-expires-on-0910": {
-          "modelID": "deepseek-v4.1-flash-expires-on-0910",
-          "name": "DeepSeek V4.1 Flash (expires on 0910)",
+        "deepseek-flash": {
+          "modelID": "deepseek-flash",
+          "name": "DeepSeek V4.1 Flash",
           "compatibility": {
             "reasoningField": "reasoning_content"
           },
           "capabilities": {
             "tools": true,
-            "input": ["text"],
+            "input": ["text", "image"],
             "output": ["text"]
           },
           "limit": {
