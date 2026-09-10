@@ -17,5 +17,5 @@ services:
       - /tmp
     tty: true
     volumes:
-      - /home/gotenks/.config:/config
+      - /home/gotenks/.config/qbittorrent:/config
       - /home/gotenks/HDD/Downloads:/downloads

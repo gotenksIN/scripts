@@ -9,7 +9,7 @@ services:
       - TS_EXTRA_ARGS=--exit-node=${TS_EXIT_NODE} --accept-dns=false
       - TS_USERSPACE=false
     volumes:
-      - ./tailscale-state:/var/lib/tailscale
+      - /home/gotenks/.config/tailscale-qbittorrent:/var/lib/tailscale
       - /dev/net/tun:/dev/net/tun
       - /lib/modules:/lib/modules:ro
     cap_add:
@@ -31,6 +31,6 @@ services:
       - TZ=${TZ}
       - WEBUI_PORT=8081
     volumes:
-      - ./config:/config
+      - /home/gotenks/.config/qbittorrent:/config
       - /home/gotenks/HDD/Downloads/Avistaz:/downloads
     restart: unless-stopped
