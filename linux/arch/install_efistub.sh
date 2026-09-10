@@ -23,10 +23,10 @@ read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
         read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
         if [[ "$cpu" =~ ^[1]$ ]]; then
-                pacman -Sy intel-ucode
+                pacman -Syu --needed intel-ucode
                 microcode="\\intel-ucode.img"
         else
-                pacman -Sy amd-ucode
+                pacman -Syu --needed amd-ucode
                 microcode="\\amd-ucode.img"
         fi
         initrd_args=("initrd=${microcode}" "${initrd_args[@]}")

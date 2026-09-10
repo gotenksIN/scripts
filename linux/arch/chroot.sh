@@ -37,7 +37,7 @@ passwd "${username}"
 echo "Set root password"
 passwd
 
-pacman -Sy \
+pacman -Syu --needed \
         7zip \
         aria2 \
         bat \

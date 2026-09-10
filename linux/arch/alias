@@ -1,4 +1,4 @@
-alias install='yay -Sy'
+alias install='yay -Syu --needed'
 alias remove='yay -Rs'
 alias search='yay -Ss'
 alias list='yay -Qs'

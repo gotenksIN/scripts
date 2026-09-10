@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install signed preloader for uefi and pacman hook to auto-update systemd-boot
-yay -Sy systemd-boot-pacman-hook preloader-signed
+yay -Syu --needed systemd-boot-pacman-hook preloader-signed
 
 # Install systemd-boot
 sudo bootctl install
@@ -39,10 +39,10 @@ read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
 if [[ "$cpu" =~ ^[1]$ ]]; then
-sudo pacman -Sy intel-ucode
+sudo pacman -Syu --needed intel-ucode
 microcode="intel-ucode.img"
 else
-sudo pacman -Sy amd-ucode
+sudo pacman -Syu --needed amd-ucode
 microcode="amd-ucode.img"
 fi
 echo "initrd  /$microcode" | sudo tee -a /boot/loader/entries/arch.conf > /dev/null

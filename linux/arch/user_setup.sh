@@ -8,12 +8,12 @@ makepkg -si
 cd ..
 rm -rf yay-bin
 
-yay -Sy ookla-speedtest-bin
+yay -Syu --needed ookla-speedtest-bin
 
 # Guard gui dependent applications behind this
 read -r -e -p "Do you intend on using GUI? [y/N]: " input
 if [[ "${input}" =~ ^[Yy]$ ]]; then
-        yay -Sy \
+        yay -Syu --needed \
                 discord \
                 gnu-free-fonts \
                 gsfonts \

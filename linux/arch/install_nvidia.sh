@@ -2,15 +2,15 @@
 
 read -e -p "Are you using any custom kernel? [Y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-sudo pacman -Sy nvidia-dkms nvidia-utils nvidia-settings libvdpau-va-gl
+sudo pacman -Syu --needed nvidia-dkms nvidia-utils nvidia-settings libvdpau-va-gl
 else
-sudo pacman -Sy nvidia nvidia-utils nvidia-settings libvdpau-va-gl
+sudo pacman -Syu --needed nvidia nvidia-utils nvidia-settings libvdpau-va-gl
 fi
 
 #Stuff for people with a integrated + dedicated GPU
 read -e -p "Do you have Intel integrated GPU and discrete NVIDIA GPU? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-yay -Sy system76-power
+yay -Syu --needed system76-power
 
 # Stuff for system76-power to work properly
 sudo systemctl enable system76-power.service
