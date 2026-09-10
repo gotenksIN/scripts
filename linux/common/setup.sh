@@ -34,6 +34,29 @@ add_distro_alias() {
     mv -- "${file}.tmp" "${file}"
 }
 
+setup_zsh() {
+    local zsh_dir="${ZSH:-$HOME/.oh-my-zsh}"
+    local p10k_dir="$zsh_dir/custom/themes/powerlevel10k"
+
+    if [[ ! -d "$zsh_dir" ]]; then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    fi
+
+    if [[ ! -d "$p10k_dir" ]]; then
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$p10k_dir"
+    fi
+
+    if [[ "${SHELL:-}" != */zsh ]] && command -v zsh >/dev/null 2>&1; then
+        local zsh_path
+        zsh_path="$(command -v zsh)"
+        if command -v chsh >/dev/null 2>&1; then
+            chsh -s "$zsh_path" "$USER" 2>/dev/null || chsh -s "$zsh_path" 2>/dev/null || true
+        elif command -v usermod >/dev/null 2>&1; then
+            sudo usermod --shell "$zsh_path" "$USER" 2>/dev/null || true
+        fi
+    fi
+}
+
 copy_dotfiles() {
     local src name
     for src in "$repo_dir"/linux/common/.*; do
@@ -44,6 +67,7 @@ copy_dotfiles() {
     done
 }
 
+setup_zsh
 copy_dotfiles
 bake_paths
 

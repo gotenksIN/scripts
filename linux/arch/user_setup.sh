@@ -34,9 +34,5 @@ if [[ "${input}" =~ ^[Yy]$ ]]; then
                 wezterm-nightly-bin
 fi
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
-chsh -s /usr/bin/zsh
-
 repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 bash "$repo_dir/linux/common/setup.sh" arch
