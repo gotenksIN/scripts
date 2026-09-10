@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 sudo apt install nala
 
 sudo nala install zsh fortune-mod figlet git htop aria2 curl ncdu fastfetch \
                  python3-pip python3-venv bat 7zip ripgrep schedtool keychain
 
 # Find architecture
-arch=`dpkg --print-architecture`
+arch="$(dpkg --print-architecture)"
 echo "Current system is detected as ${arch} architecture."
 
 # Install Ookla Speedtest

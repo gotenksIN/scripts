@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 sudo tee -a /etc/dnf/dnf.conf > /dev/null <<EOF
 fastestmirror=True
 max_parallel_downloads=10
@@ -31,8 +33,12 @@ if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo dnf group upgrade multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf group upgrade sound-and-video
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
-rpm -q mesa-va-drivers >/dev/null 2>&1 && sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld --allowerasing
-rpm -q mesa-vdpau-drivers >/dev/null 2>&1 && sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld --allowerasing
+if rpm -q mesa-va-drivers >/dev/null 2>&1; then
+    sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld --allowerasing
+fi
+if rpm -q mesa-vdpau-drivers >/dev/null 2>&1; then
+    sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld --allowerasing
+fi
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo dnf config-manager addrepo --overwrite --save-filename=microsoft-edge.repo --from-repofile=https://packages.microsoft.com/yumrepos/edge/config.repo
 sudo dnf config-manager addrepo --overwrite --save-filename=vscode.repo --from-repofile=https://packages.microsoft.com/yumrepos/vscode/config.repo

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # This script assumes you are running in root shell of arch-chroot
 # and expected to be ran before user_setup.sh
 
