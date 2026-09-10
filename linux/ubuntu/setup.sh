@@ -38,7 +38,7 @@ fi
 
 if [[ $arch = amd64 ]]; then
 # Guard gui dependent applications behind this
-read -e -p "Do you intend on using GUI? [y/n]: " input
+read -r -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/microsoft.gpg

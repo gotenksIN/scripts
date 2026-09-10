@@ -11,13 +11,14 @@ sudo cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
 sudo cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 
 # Setup all vars
-export UUID=$(findmnt -kno UUID /)
+UUID="$(findmnt -kno UUID /)"
+export UUID
 swap_uuid=$(awk '$3 == "swap" && $1 !~ /^#/ { print $1; exit }' /etc/fstab)
-read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
-read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
-read -e -p "Enter loader name (e.g. vmlinuz-linux): " -i "vmlinuz-linux" loader
-read -e -p "Enter initrd name (e.g. initramfs-linux.img): " -i "initramfs-linux.img" initrd
-read -e -p "Enter label for entry (Label is what would show up in UEFI entries): " -i "rendumOS" label
+read -r -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
+read -r -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
+read -r -e -p "Enter loader name (e.g. vmlinuz-linux): " -i "vmlinuz-linux" loader
+read -r -e -p "Enter initrd name (e.g. initramfs-linux.img): " -i "initramfs-linux.img" initrd
+read -r -e -p "Enter label for entry (Label is what would show up in UEFI entries): " -i "rendumOS" label
 
 # Setup systemd-boot
 sudo tee /boot/loader/loader.conf > /dev/null <<EOF
@@ -35,9 +36,9 @@ initrd  /$initrd
 EOF
 
 # Microcode setup for arch
-read -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
+read -r -e -p "Do you have an Intel or AMD CPU? (Y/n): " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
-read -e -p "Enter 1 for Intel and 2 for AMD: " cpu
+read -r -e -p "Enter 1 for Intel and 2 for AMD: " cpu
 if [[ "$cpu" =~ ^[1]$ ]]; then
 sudo pacman -Syu --needed intel-ucode
 microcode="intel-ucode.img"

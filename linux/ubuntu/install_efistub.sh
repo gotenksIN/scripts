@@ -11,10 +11,10 @@ sudo /etc/kernel/postinst.d/zz-update-efistub
 loader='\EFI\ubuntu\vmlinuz'
 initrd='\EFI\ubuntu\initrd.img'
 
-read -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
-read -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
-read -e -p "Enter label for this entry (Label is what would show up in UEFI entries): " -i "ubuntu (efistub)" label
-read -e -p "Enter any extra arguments you want to pass to kernel cmdline: " extra
+read -r -e -p "Enter your boot disk device (e.g. /dev/sda): " -i "/dev/sda" disk
+read -r -e -p "Enter partition number for your boot partition (e.g. if your /boot is in /dev/sda1, enter 1): " -i "1" part
+read -r -e -p "Enter label for this entry (Label is what would show up in UEFI entries): " -i "ubuntu (efistub)" label
+read -r -e -p "Enter any extra arguments you want to pass to kernel cmdline: " extra
 
 printf -v largs "%s " \
         "root=UUID=$(findmnt -kno UUID /) rw" \

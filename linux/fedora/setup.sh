@@ -28,7 +28,7 @@ sudo dnf install speedtest
 sudo dnf install https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom-0.14.3-1.x86_64.rpm
 
 # Guard gui dependent applications behind this
-read -e -p "Do you intend on using GUI? [y/n]: " input
+read -r -e -p "Do you intend on using GUI? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo dnf group upgrade multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf group upgrade sound-and-video

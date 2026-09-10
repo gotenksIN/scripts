@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-read -e -p "Are you using any custom kernel? [Y/n]: " input
+read -r -e -p "Are you using any custom kernel? [Y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 sudo pacman -Syu --needed nvidia-dkms nvidia-utils nvidia-settings libvdpau-va-gl
 else
@@ -8,7 +8,7 @@ sudo pacman -Syu --needed nvidia nvidia-utils nvidia-settings libvdpau-va-gl
 fi
 
 #Stuff for people with a integrated + dedicated GPU
-read -e -p "Do you have Intel integrated GPU and discrete NVIDIA GPU? [y/n]: " input
+read -r -e -p "Do you have Intel integrated GPU and discrete NVIDIA GPU? [y/n]: " input
 if [[ "$input" =~ ^[Yy]$ ]]; then
 yay -Syu --needed system76-power
 
