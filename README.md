@@ -6,62 +6,54 @@ This repository contains configuration files, deployment scripts, and dotfiles f
 
 | Directory | Description |
 | --- | --- |
-| `arch/` | Installation and configuration scripts for Arch Linux. |
-| `common/` | Shared shell configurations, dotfiles, and system setup scripts. |
-| `docker/` | Docker Compose files for self-hosted services. |
-| `fedora/` | Setup, debloat, and management scripts for Fedora Linux. |
-| `homeassistant/` | Automation scripts and dashboard configurations for Home Assistant. |
-| `nixos/` | NixOS system configuration files and update scripts. |
+| `linux/` | Installation, setup, dotfiles, and desktop configuration files for Linux. |
+| `services/` | Docker Compose files and Home Assistant configurations for self-hosted services. |
 | `harness/` | Configuration files, agent rules, and install scripts for AI agent harnesses (OpenCode, Pi). |
-| `plasma/` | KDE Plasma window management scripts and tiling tools. |
-| `ubuntu/` | Setup, debloat, and bootloader scripts for Ubuntu Linux. |
 | `windows/` | PowerShell scripts, Winget configurations, and chezmoi templates for Windows. |
 
 ## Subsystem details
 
-### Arch Linux (`arch/`)
-Scripts in this folder handle Arch Linux setup:
-- System installation using `pre_chroot.sh`, `chroot.sh`, and `user_setup.sh`.
-- Secure Boot configuration with `install_systemd-secureboot.sh`.
-- Kernel booting setup with `install_efistub.sh`.
-- NVIDIA driver installation and KDE Plasma desktop setup.
+### Linux (`linux/`)
 
-### Common dotfiles (`common/`)
-Shared environment settings and shell configurations:
-- Bootstrapper script `setup.sh` to install dotfiles across distributions.
-- Shell configuration files for Zsh (`.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
-- Terminal and tool settings (`wezterm.lua`, `bottom.toml`, `.screenrc`).
-- SSH and Git configuration templates.
+Distribution-specific setup:
 
-### Docker services (`docker/`)
-Docker Compose files to deploy self-hosted applications:
-- **Home Assistant**: Home automation platform.
-- **Jellyfin**: Media server.
-- **qBittorrent**: Torrent client with optional Tailscale integration.
-- **RustDesk**: Self-hosted remote desktop server.
-- **SABnzbd**: Usenet downloader.
-- **WireGuard**: VPN service.
-- **OpenSpeedTest**: Network performance test tool.
-- **h5ai**: File indexer interface.
+- `linux/arch/`: Arch Linux installation in three stages: `pre_chroot.sh` (archiso), `chroot.sh` (arch-chroot), and `user_setup.sh` (installed user). Also contains NVIDIA driver installation, KDE Plasma setup, Secure Boot configuration (`install_systemd-secureboot.sh`), and EFISTUB booting (`install_efistub.sh`).
+- `linux/fedora/`: Fedora maintenance with automated system configuration via `setup.sh`, package removal using `debloat_fedora.sh`, NVIDIA driver setup, and Rawhide channel switching.
+- `linux/ubuntu/`: Ubuntu system management with distro setup via `setup.sh`, package debloating, EFISTUB boot configuration, and GRUB removal.
+- `linux/nixos/`: NixOS system configuration (`RyzenBox.nix`) and a script to switch system channels to unstable.
 
-### Fedora (`fedora/`)
-Scripts for Fedora maintenance:
-- Automated system configuration via `setup.sh`.
-- Package removal using `debloat_fedora.sh`.
-- NVIDIA driver setup and Rawhide channel switching.
+Desktop configurations:
 
-### Home Assistant (`homeassistant/`)
-JSON configurations for smart home automation:
-- Custom dashboard layouts for television remotes and lighting controls.
-- Automation scripts for lighting based on time and sunset schedules.
+- `linux/desktop/plasma/`: KWin script for push-style window tiling (`tile-pusher`), shortcut binding, and installation scripts.
+- `linux/desktop/easyeffects/`: EasyEffects audio preset (`bass_boost.json`).
 
-### NixOS (`nixos/`)
-System configuration for NixOS builds:
-- Machine configuration file `RyzenBox.nix`.
-- Script to switch system channels to unstable.
+Common dotfiles:
+
+- `linux/common/`: Shared environment settings and shell configurations:
+  - Bootstrapper script `setup.sh` to install dotfiles across distributions.
+  - Shell configuration files for Zsh (`.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
+  - Terminal and tool settings (`wezterm.lua`, `bottom.toml`, `.screenrc`).
+  - SSH and Git configuration templates, and shared Git hooks.
+
+### Self-hosted services (`services/`)
+
+- `services/docker/`: Docker Compose files to deploy self-hosted applications:
+  - **Home Assistant**: Home automation platform.
+  - **Jellyfin**: Media server.
+  - **qBittorrent**: Torrent client with optional Tailscale integration.
+  - **RustDesk**: Self-hosted remote desktop server.
+  - **SABnzbd**: Usenet downloader.
+  - **WireGuard**: VPN service.
+  - **OpenSpeedTest**: Network performance test tool.
+  - **h5ai**: File indexer interface.
+- `services/homeassistant/`: JSON configurations for smart home automation:
+  - Custom dashboard layouts for television remotes and lighting controls.
+  - Automation scripts for lighting based on time and sunset schedules.
 
 ### Agent harnesses (`harness/`)
+
 Configuration files, agent rules, and installation scripts for AI coding harnesses:
+
 - **OpenCode (`harness/opencode/`)**: Configuration files (`opencode.json`, `opencode.jsonc`, `cli.json`) and agent rules (`AGENTS.md`) for OpenCode v2.
 - **Pi (`harness/pi/`)**: Settings (`settings.json`), custom subagents (`agents/`), keybindings (`keybindings.json`), and agent rules (`AGENTS.md`) for Pi.
 - **Harness updater (`harness/update-harness.sh`)**: Script to download and update `opencode2` and `pi` binaries.
@@ -75,19 +67,10 @@ ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
 cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
 ```
 
-### KDE Plasma (`plasma/`)
-Window management extensions:
-- `tile-pusher`: KWin script for push-style window tiling.
-- Shortcut binding and installation scripts.
-
-### Ubuntu (`ubuntu/`)
-Ubuntu system management scripts:
-- Distro setup via `setup.sh`.
-- System package debloating and GRUB removal.
-- EFISTUB boot configuration.
-
 ### Windows (`windows/`)
+
 Automation scripts for Windows and WSL:
+
 - PowerShell setup scripts (`setup.ps1`, PowerShell profiles).
 - Winget package configurations (`RyzenBox.json`, `GroundBox.json`).
 - Registry adjustments and hardware acceleration fixes (`Fix-HEVC-AMF.ps1`).
@@ -95,10 +78,10 @@ Automation scripts for Windows and WSL:
 
 ## Getting started
 
-To deploy the common dotfiles and distribution-specific configurations on Linux:
+To deploy the dotfiles and distribution-specific configurations on Linux:
 
 ```bash
-bash ~/scripts/common/setup.sh
+bash ~/scripts/linux/common/setup.sh
 ```
 
 The script detects your Linux distribution and applies the matching configuration files.

@@ -40,4 +40,4 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 chsh -s /usr/bin/zsh
 
-bash "scripts/common/setup.sh"
+bash "scripts/linux/common/setup.sh"

@@ -12,7 +12,7 @@ add_line() {
 
 copy_dotfiles() {
     local src name
-    for src in ~/scripts/common/.*; do
+    for src in ~/scripts/linux/common/.*; do
         [[ -e "${src}" ]] || continue
         name="$(basename "${src}")"
         [[ "${name}" == "." || "${name}" == ".." ]] && continue
@@ -22,16 +22,16 @@ copy_dotfiles() {
 
 if command -v apt >/dev/null 2>&1; then
     echo "Debian/Ubuntu based distro detected"
-    bash ~/scripts/ubuntu/setup.sh
+    bash ~/scripts/linux/ubuntu/setup.sh
     copy_dotfiles
-    add_line ~/.zshrc "source ~/scripts/ubuntu/alias"
+    add_line ~/.zshrc "source ~/scripts/linux/ubuntu/alias"
 elif command -v pacman >/dev/null 2>&1; then
     echo "Arch based distro detected"
     copy_dotfiles
-    add_line ~/.zshrc "source ~/scripts/arch/alias"
+    add_line ~/.zshrc "source ~/scripts/linux/arch/alias"
 elif command -v dnf >/dev/null 2>&1; then
     echo "Fedora based distro detected"
-    bash ~/scripts/fedora/setup.sh
+    bash ~/scripts/linux/fedora/setup.sh
     copy_dotfiles
-    add_line ~/.zshrc "source ~/scripts/fedora/alias"
+    add_line ~/.zshrc "source ~/scripts/linux/fedora/alias"
 fi
