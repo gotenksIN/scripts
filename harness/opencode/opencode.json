@@ -55,7 +55,7 @@
     "code-reviewer": {
       "description": "Reviews code for correctness, risks, and YAGNI violations",
       "mode": "subagent",
-      "model": "openai/gpt-5.6-sol#high",
+      "model": "openai/gpt-6-astra#medium",
       "system": "Review the assigned code without modifying files. Use read and search tools, plus `git log` and `git diff` when needed to inspect changes. Do not invoke any other shell command or run tests; assess the code through static review. Prioritize bugs, security risks, behavioral regressions, unnecessary complexity, and speculative implementation that violates the global YAGNI guidance. Flag low-value, shallow, or implementation-detail tests as YAGNI violations. Do not demand new tests unless the task explicitly required them. Report findings first, ordered by severity, with file paths and line numbers. State open questions after the findings. Do not delegate work or dispatch subagents.",
       "permissions": [
         {
@@ -93,7 +93,7 @@
     "reasoner": {
       "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
-      "model": "openai/gpt-5.6-sol#high",
+      "model": "openai/gpt-6-astra#high",
       "system": "Analyze the assigned problem deeply and independently. Inspect the available evidence, identify hidden assumptions and edge cases, compare viable options, and return a concrete recommendation with file references or command evidence where useful. Do not modify files.",
       "permissions": [
         {
