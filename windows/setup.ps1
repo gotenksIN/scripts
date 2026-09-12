@@ -17,37 +17,30 @@ if (-not (Test-IsAdministrator)) {
     exit
 }
 
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
 
-# --- 1. Apply Registry State via DSC v3 ---
-$dscConfigFile = Join-Path -Path $PSScriptRoot -ChildPath "configuration.dsc.yaml"
 
-if (-not (Get-Command -Name dsc -ErrorAction SilentlyContinue)) {
-    Write-Host "Installing DSC v3 with winget..."
-    winget install --id Microsoft.DSC --exact --accept-package-agreements --accept-source-agreements --disable-interactivity
-
-    $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-
-    if (-not (Get-Command -Name dsc -ErrorAction SilentlyContinue)) {
-        throw "DSC v3 was installed, but dsc.exe was not resolvable in the current session."
-    }
+# --- 1. Apply System Configuration via WinGet Configure (DSC v3) ---
+$configFile = Join-Path -Path $PSScriptRoot -ChildPath "configuration.dsc.yaml"
+if (-not (Test-Path -LiteralPath $configFile)) {
+    throw "Missing configuration file: $configFile"
 }
 
-if (-not (Test-Path -LiteralPath $dscConfigFile)) {
-    throw "Missing DSC config file: $dscConfigFile"
-}
+Write-Host "Ensuring winget configure is enabled..."
+& winget configure --enable --disable-interactivity 2>$null
 
-# Grant Administrators access to protected Downloads folder registry keys first
 $ownershipScript = Join-Path -Path $PSScriptRoot -ChildPath "scripts\Take-FolderTypesOwnership.ps1"
 if (Test-Path -LiteralPath $ownershipScript) {
     Write-Host "Taking ownership and adjusting permissions for protected Explorer registry keys..."
     & $ownershipScript
 }
 
-Write-Host "Applying registry state with DSC v3..."
-dsc config set --file $dscConfigFile
+Write-Host "Applying system state with winget configure..."
+winget configure --file $configFile --accept-configuration-agreements --disable-interactivity
 
 
-# --- 3. Block Microsoft Store Search Suggestions ---
+# --- 2. Block Microsoft Store Search Suggestions ---
 $storeDbDir = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Packages\Microsoft.WindowsStore_8wekyb3d8bbwe\LocalState"
 $storeDbPath = Join-Path -Path $storeDbDir -ChildPath "store.db"
 
@@ -57,28 +50,23 @@ if (-not (Test-Path -LiteralPath $storeDbDir)) {
 }
 
 if (Test-Path -LiteralPath $storeDbPath) {
-    # Unset ReadOnly if it was set before, so we can delete it
     Set-ItemProperty -Path $storeDbPath -Name IsReadOnly -Value $false -ErrorAction SilentlyContinue
     Remove-Item -Path $storeDbPath -Force -ErrorAction SilentlyContinue
 }
 
-# Create a blank store.db and make it permanently Read-Only
 New-Item -ItemType File -Path $storeDbPath -Value "" -Force | Out-Null
 Set-ItemProperty -Path $storeDbPath -Name IsReadOnly -Value $true -Force
 Write-Host "Successfully blocked Microsoft Store search suggestions."
 
 
-# --- 4. Import Winget Packages ---
+# --- 3. Import WinGet Packages ---
 $hostname = $env:COMPUTERNAME
 $wingetJsonFile = Join-Path -Path $PSScriptRoot -ChildPath "$hostname.json"
 
 if (-not (Test-Path -LiteralPath $wingetJsonFile)) {
     Write-Warning "No exact machine profile found for hostname: $hostname"
 
-    $availableConfigs = Get-ChildItem -Path $PSScriptRoot -Filter "*.json" | Where-Object {
-        $_.Name -ne "winget.json" -and $_.Name -ne "terminal.json"
-    }
-
+    $availableConfigs = Get-ChildItem -Path $PSScriptRoot -Filter "*.json"
     if ($availableConfigs.Count -gt 0) {
         Write-Host ""
         Write-Host "Please select a configuration profile to apply:"
@@ -119,44 +107,35 @@ if ($null -ne $wingetJsonFile -and (Test-Path -LiteralPath $wingetJsonFile)) {
     Write-Host "Importing packages..."
     winget import --import-file $wingetJsonFile --accept-package-agreements --accept-source-agreements --disable-interactivity
 
-    # Refresh PATH in current session to pick up newly installed tools like oh-my-posh
     $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
-    # --- 5. Install Oh My Posh Fonts ---
-    Write-Host "Installing Oh My Posh fonts..."
-    $fonts = @("Meslo", "JetBrainsMono")
-    foreach ($font in $fonts) {
-        Write-Host "Installing $font Nerd Font..."
-        oh-my-posh font install $font
+    if (Get-Command -Name oh-my-posh -ErrorAction SilentlyContinue) {
+        Write-Host "Installing Oh My Posh fonts..."
+        $fonts = @("Meslo", "JetBrainsMono")
+        foreach ($font in $fonts) {
+            Write-Host "Installing $font Nerd Font..."
+            oh-my-posh font install $font
+        }
     }
 }
 
 
-# --- 6. Deploy Dotfiles via Chezmoi ---
-Write-Host "Deploying dotfiles with chezmoi..."
-if (-not (Get-Command -Name chezmoi -ErrorAction SilentlyContinue)) {
-    Write-Host "Installing chezmoi..."
-    winget install --id twpayne.chezmoi --exact --accept-package-agreements --accept-source-agreements --disable-interactivity
-
-    $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-}
-
-$chezmoiSourceDir = Join-Path -Path $PSScriptRoot -ChildPath "chezmoi"
-if ((Get-Command -Name chezmoi -ErrorAction SilentlyContinue) -and (Test-Path -LiteralPath $chezmoiSourceDir)) {
-    chezmoi apply --source $chezmoiSourceDir --force
+# --- 4. Deploy Dotfiles ---
+$dotfilesScript = Join-Path -Path $PSScriptRoot -ChildPath "scripts\Deploy-Dotfiles.ps1"
+if (Test-Path -LiteralPath $dotfilesScript) {
+    Write-Host "Deploying dotfiles..."
+    & $dotfilesScript
     Write-Host "Deployed dotfiles successfully."
-} elseif (-not (Get-Command -Name chezmoi -ErrorAction SilentlyContinue)) {
-    Write-Warning "Failed to install chezmoi. Skipping dotfiles deployment."
 } else {
-    Write-Warning "Chezmoi source directory not found: $chezmoiSourceDir"
+    Write-Warning "Deploy-Dotfiles script not found: $dotfilesScript"
 }
 
 
-# --- 7. Run PowerShell Setup Script ---
-$powershellSetupScript = Join-Path -Path $PSScriptRoot -ChildPath "PowerShell_setup.ps1"
-if (Test-Path -LiteralPath $powershellSetupScript) {
-    Write-Host "Running PowerShell setup script..."
-    & $powershellSetupScript
+# --- 5. Install Essential PowerShell Modules ---
+Write-Host "Installing PowerShell modules..."
+$modules = @("Microsoft.WinGet.CommandNotFound", "PSWindowsUpdate", "Terminal-Icons")
+foreach ($module in $modules) {
+    Install-PSResource -Name $module -TrustRepository -Scope AllUsers -ErrorAction SilentlyContinue
 }
 
-Write-Host "Windows setup changes applied. Restart Explorer or sign out to pick up the folder view change."
+Write-Host "Windows setup completed successfully. Restart Explorer or sign out to pick up changes."
