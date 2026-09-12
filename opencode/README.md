@@ -22,10 +22,10 @@ Secrets stay local and never enter the repo.
    git clone git@github.com:gotenksIN/scripts.git ~/scripts
    ```
 
-2. Install the `opencode2` binary with the update harness script.
+2. Install the `opencode2` binary with the update script.
 
    ```sh
-   ~/scripts/harness/update-harness.sh opencode2
+   ~/scripts/opencode/update.sh
    ```
 
    The script downloads the latest release, verifies its checksum, and installs the binary to `~/.opencode/bin/opencode2`.
@@ -41,20 +41,25 @@ Secrets stay local and never enter the repo.
    Adjust the source paths if the clone lives elsewhere.
 
    ```sh
-   ln -sf ~/scripts/harness/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-   ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
+   ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+   ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
    ```
 
 5. Copy the TUI settings.
    Copy instead of symlinking because OpenCode writes interactive setting changes directly to this file.
 
    ```sh
-   cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
+   cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
    ```
 
 6. Install [Matt Pocock's skills](https://github.com/mattpocock/skills) globally for OpenCode.
    Install Bun first if `bunx` is missing.
-   Use the verified Bun installation in the [Pi setup guide](../pi/README.md#setup-on-a-new-machine).
+
+   ```sh
+   curl -fsSL https://bun.sh/install | bash
+   export BUN_INSTALL="$HOME/.bun"
+   export PATH="$BUN_INSTALL/bin:$PATH"
+   ```
 
    ```sh
    bunx skills@latest add mattpocock/skills --skill '*' --global --agent opencode --yes
@@ -105,14 +110,18 @@ opencode2 service restart
 
 ## Updating OpenCode v2
 
-Run the update harness script.
+Run the update script.
 It downloads the latest release, verifies its checksum, and swaps the binary atomically with rollback on failure.
 
 ```sh
-~/scripts/harness/update-harness.sh opencode2
+~/scripts/opencode/update.sh
 ```
 
-Add a version after `opencode2` to install a specific one.
+Pass a version as the first argument to install a specific one.
+
+```sh
+~/scripts/opencode/update.sh 1.2.3
+```
 
 The update warning "automatic update skipped: installation method not found" is expected.
 The binary is installed by the script, not a package manager, so auto-update cannot detect the installation method.

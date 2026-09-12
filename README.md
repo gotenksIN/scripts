@@ -8,7 +8,7 @@ This repository contains configuration files, deployment scripts, and dotfiles f
 | --- | --- |
 | `linux/` | Installation, setup, dotfiles, and desktop configuration files for Linux. |
 | `services/` | Docker Compose files and Home Assistant configurations for self-hosted services. |
-| `harness/` | Configuration files, agent rules, and install scripts for OpenCode. |
+| `opencode/` | Configuration files, agent rules, and an updater for OpenCode. |
 | `windows/` | PowerShell scripts, Winget configurations, and chezmoi templates for Windows. |
 
 ## Subsystem details
@@ -50,20 +50,27 @@ Common dotfiles:
   - Custom dashboard layouts for television remotes and lighting controls.
   - Automation scripts for lighting based on time and sunset schedules.
 
-### Agent harnesses (`harness/`)
+### OpenCode (`opencode/`)
 
-Configuration files, agent rules, and installation scripts for OpenCode v2:
+This directory contains configuration files, agent rules, and an updater for OpenCode v2.
 
-- **OpenCode (`harness/opencode/`)**: Configuration files (`opencode.json`, `opencode.jsonc`, `cli.json`) and agent rules (`AGENTS.md`) for OpenCode v2.
-- **Harness updater (`harness/update-harness.sh`)**: Script to download and update `opencode2`.
+- Configuration files: `opencode.json`, `opencode.jsonc`, and `cli.json`.
+- Global agent rules: `AGENTS.md`.
+- Binary updater: `update.sh`.
 
 To link the OpenCode configuration files to your configuration directory:
 
 ```bash
 mkdir -p ~/.config/opencode
-ln -sf ~/scripts/harness/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-ln -sf ~/scripts/harness/opencode/opencode.json ~/.config/opencode/opencode.json
-cp ~/scripts/harness/opencode/cli.json ~/.config/opencode/cli.json
+ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
+cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
+```
+
+To update OpenCode, run the updater with an optional version:
+
+```bash
+~/scripts/opencode/update.sh [version]
 ```
 
 ### Windows (`windows/`)
