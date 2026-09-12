@@ -13,7 +13,7 @@
 [core]
 	editor = nano
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [merge]
 	log = true
 [tag]
