@@ -74,5 +74,3 @@ bake_paths
 if (( $# > 0 )); then
     add_distro_alias "$1"
 fi
-
-git config --global core.hooksPath "$repo_dir/linux/common/git-hooks"

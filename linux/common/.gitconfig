@@ -12,7 +12,6 @@
 	rebase = false
 [core]
 	editor = nano
-	hooksPath = ~/scripts/linux/common/git-hooks
 [init]
 	defaultBranch = master
 [merge]

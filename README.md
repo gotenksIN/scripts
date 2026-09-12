@@ -33,7 +33,7 @@ Common dotfiles:
   - Setup script `setup.sh` that installs the shared dotfiles and adds a distribution alias when given one.
   - Shell configuration files for Zsh (`.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
   - Terminal and tool settings (`wezterm.lua`, `bottom.toml`, `.screenrc`).
-  - SSH and Git configuration templates, and shared Git hooks.
+  - SSH and Git configuration templates.
 
 ### Self-hosted services (`services/`)
 
@@ -93,7 +93,7 @@ bash ~/scripts/linux/ubuntu/setup.sh
 
 Use `linux/fedora/setup.sh` instead on Fedora.
 
-The setup script resolves the repository root from its own location and bakes the path into the deployed shell configuration and Git hooks.
+The setup script resolves the repository root from its own location and bakes the path into the deployed shell configuration.
 
 ## License
 
