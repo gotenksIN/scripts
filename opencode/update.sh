@@ -32,9 +32,9 @@ case "$(uname -m)" in
   *) die "unsupported architecture: $(uname -m)" ;;
 esac
 
-name="OpenCode v2"
-install_dir="${OPENCODE2_INSTALL_DIR:-$HOME/.opencode/bin}"
-executable="opencode2"
+name="OpenCode"
+install_dir="${OPENCODE_INSTALL_DIR:-$HOME/.opencode/bin}"
+executable="opencode"
 package="cli-${os}-${arch}"
 if [[ -n "$requested_version" ]]; then
   version="${requested_version#v}"
@@ -65,7 +65,7 @@ base_url="https://registry.npmjs.org/@opencode/${package}/-"
 
 parent_dir="$(dirname "$install_dir")"
 mkdir -p "$parent_dir"
-exec 9>"$parent_dir/.opencode2-update.lock"
+exec 9>"$parent_dir/.opencode-update.lock"
 flock -n 9 || die "another OpenCode update is already running"
 mkdir -p "$install_dir"
 
@@ -80,7 +80,7 @@ if [[ -x "$installed_binary" ]]; then
   fi
 fi
 
-work_dir="$(mktemp -d "${TMPDIR:-/tmp}/opencode2-update.XXXXXXXX")"
+work_dir="$(mktemp -d "${TMPDIR:-/tmp}/opencode-update.XXXXXXXX")"
 backup=""
 cleanup() {
   status=$?

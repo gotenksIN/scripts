@@ -22,13 +22,13 @@ Secrets stay local and never enter the repo.
    git clone git@github.com:gotenksIN/scripts.git ~/scripts
    ```
 
-2. Install the `opencode2` binary with the update script.
+2. Install the `opencode` binary with the update script.
 
    ```sh
    ~/scripts/opencode/update.sh
    ```
 
-   The script downloads the latest release, verifies its checksum, and installs the binary to `~/.opencode/bin/opencode2`.
+   The script downloads the latest release, verifies its checksum, and installs the binary to `~/.opencode/bin/opencode`.
    See [Updating OpenCode v2](#updating-opencode-v2).
 
 3. Create the config directory.
@@ -71,7 +71,7 @@ Secrets stay local and never enter the repo.
    It installs the configured plugins into `~/.cache/opencode/packages/` automatically.
 
    ```sh
-   opencode2
+   opencode
    ```
 
 8. In each repository, run the setup skill once and answer its prompts.
@@ -89,9 +89,9 @@ Secrets stay local and never enter the repo.
 11. Verify.
 
    ```sh
-   opencode2 models
-   opencode2 service status
-   opencode2 api get /api/health
+   opencode models
+   opencode service status
+   opencode api get /api/health
    ```
 
    In the TUI, check that the subagents `coder`, `reasoner`, `explore`, and `general` appear.
@@ -105,7 +105,7 @@ OpenCode generates it and stores the service password in it.
 ```sh
 cd ~/scripts
 git pull
-opencode2 service restart
+opencode service restart
 ```
 
 ## Updating OpenCode v2
@@ -144,7 +144,7 @@ The command installs into `~/.agents/skills/install-anti-slop`, which OpenCode l
 Restart the service so the skill appears:
 
 ```sh
-opencode2 service restart
+opencode service restart
 ```
 
 Then ask the agent to install anti-slop in a repository.
@@ -158,5 +158,5 @@ The service port is set to 4096.
 WSL2 mirrored networking blocks the Windows dynamic port range 49152-65535, so the port must stay below 49152.
 
 ```sh
-opencode2 service set port 4096
+opencode service set port 4096
 ```
