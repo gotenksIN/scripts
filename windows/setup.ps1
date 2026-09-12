@@ -37,7 +37,7 @@ if (-not (Test-Path -LiteralPath $dscConfigFile)) {
 }
 
 # Grant Administrators access to protected Downloads folder registry keys first
-$ownershipScript = Join-Path -Path $PSScriptRoot -ChildPath "Take-FolderTypesOwnership.ps1"
+$ownershipScript = Join-Path -Path $PSScriptRoot -ChildPath "scripts\Take-FolderTypesOwnership.ps1"
 if (Test-Path -LiteralPath $ownershipScript) {
     Write-Host "Taking ownership and adjusting permissions for protected Explorer registry keys..."
     & $ownershipScript
