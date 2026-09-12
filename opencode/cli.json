@@ -31,7 +31,7 @@
     "session.last": "ctrl+e",
     "input.buffer.home": "home",
     "input.buffer.end": "end",
-    "prompt.queue": "alt+enter"
+    "prompt.queue": "ctrl+enter"
   },
   "prompt": {
     "image_preview": true
