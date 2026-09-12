@@ -115,4 +115,4 @@ onLogin
 export PATH=$HOME/.local/bin:$PATH
 
 # LLMs
-export PATH=$HOME/.opencode/bin:$HOME/.local/lib/pi:$PATH
+export PATH=$HOME/.opencode/bin:$PATH

@@ -8,7 +8,7 @@ This repository contains configuration files, deployment scripts, and dotfiles f
 | --- | --- |
 | `linux/` | Installation, setup, dotfiles, and desktop configuration files for Linux. |
 | `services/` | Docker Compose files and Home Assistant configurations for self-hosted services. |
-| `harness/` | Configuration files, agent rules, and install scripts for AI agent harnesses (OpenCode, Pi). |
+| `harness/` | Configuration files, agent rules, and install scripts for OpenCode. |
 | `windows/` | PowerShell scripts, Winget configurations, and chezmoi templates for Windows. |
 
 ## Subsystem details
@@ -52,11 +52,10 @@ Common dotfiles:
 
 ### Agent harnesses (`harness/`)
 
-Configuration files, agent rules, and installation scripts for AI coding harnesses:
+Configuration files, agent rules, and installation scripts for OpenCode v2:
 
 - **OpenCode (`harness/opencode/`)**: Configuration files (`opencode.json`, `opencode.jsonc`, `cli.json`) and agent rules (`AGENTS.md`) for OpenCode v2.
-- **Pi (`harness/pi/`)**: Settings (`settings.json`), custom subagents (`agents/`), keybindings (`keybindings.json`), and agent rules (`AGENTS.md`) for Pi.
-- **Harness updater (`harness/update-harness.sh`)**: Script to download and update `opencode2` and `pi` binaries.
+- **Harness updater (`harness/update-harness.sh`)**: Script to download and update `opencode2`.
 
 To link the OpenCode configuration files to your configuration directory:
 
