@@ -85,3 +85,7 @@ function ccache_for_release () {
   $ccache_path -M 50G
   $ccache_path -o compression=true
 }
+
+function quick_download() {
+  aria2c -x16 "$@"
+}
