@@ -1,0 +1,246 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+$schema: https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+metadata:
+  winget:
+    processor: dscv3
+resources:
+  # ===========================================================================
+  # 1. Developer Environment & System Settings
+  # ===========================================================================
+  - name: DeveloperMode
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock
+      valueName: AllowDevelopmentWithoutDevLicense
+      valueData:
+        DWord: 1
+    metadata:
+      securityContext: elevated
+
+  - name: EnableLongPaths
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SYSTEM\CurrentControlSet\Control\FileSystem
+      valueName: LongPathsEnabled
+      valueData:
+        DWord: 1
+    metadata:
+      securityContext: elevated
+
+  - name: SudoInlineMode
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
+      valueName: Enabled
+      valueData:
+        DWord: 3
+    metadata:
+      securityContext: elevated
+
+  - name: HardwareClockUTC
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
+      valueName: RealTimeIsUniversal
+      valueData:
+        DWord: 1
+    metadata:
+      securityContext: elevated
+
+  # ===========================================================================
+  # 2. File Explorer & Taskbar Preferences
+  # ===========================================================================
+  - name: ExplorerShowFileExtensions
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      valueName: HideFileExt
+      valueData:
+        DWord: 0
+
+  - name: ExplorerShowHiddenFiles
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      valueName: Hidden
+      valueData:
+        DWord: 1
+
+  - name: TaskbarEndTask
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      valueName: TaskbarEndTask
+      valueData:
+        DWord: 1
+
+  - name: TaskbarHideWidgets
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      valueName: TaskbarDa
+      valueData:
+        DWord: 0
+
+  # ===========================================================================
+  # 3. Start Search & Privacy Policies (Windows 11 Home & Pro 25H2/26H2)
+  # ===========================================================================
+  - name: DisableBingSearchCurrentUser
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search
+      valueName: BingSearchEnabled
+      valueData:
+        DWord: 0
+
+  - name: DisableSearchBoxSuggestionsHKCU
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer
+      valueName: DisableSearchBoxSuggestions
+      valueData:
+        DWord: 1
+
+  - name: DisableSearchBoxSuggestionsHKLM
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer
+      valueName: DisableSearchBoxSuggestions
+      valueData:
+        DWord: 1
+    metadata:
+      securityContext: elevated
+
+  - name: DisableWebSearchPolicy
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search
+      valueName: DisableWebSearch
+      valueData:
+        DWord: 1
+    metadata:
+      securityContext: elevated
+
+  - name: ConnectedSearchUseWeb
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search
+      valueName: ConnectedSearchUseWeb
+      valueData:
+        DWord: 0
+    metadata:
+      securityContext: elevated
+
+  - name: ConnectedSearchUseWebMetered
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search
+      valueName: ConnectedSearchUseWebOverMeteredConnections
+      valueData:
+        DWord: 0
+    metadata:
+      securityContext: elevated
+
+  - name: DisableDynamicSearchHighlights
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings
+      valueName: IsDynamicSearchBoxEnabled
+      valueData:
+        DWord: 0
+
+  - name: DisableSearchTrending
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings
+      valueName: IsTrendingEnabled
+      valueData:
+        DWord: 0
+
+  - name: DisableDynamicContentInWSB
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search
+      valueName: EnableDynamicContentInWSB
+      valueData:
+        DWord: 0
+    metadata:
+      securityContext: elevated
+
+  # ===========================================================================
+  # 4. Downloads Folder Ungrouping (Native and WOW6432Node)
+  # Requires prior execution of Take-FolderTypesOwnership.ps1
+  # ===========================================================================
+  - name: DownloadsGroupAscendingNative
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: GroupAscending
+      _exist: false
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsGroupByNative
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: GroupBy
+      _exist: false
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsPrimaryPropertyNative
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: PrimaryProperty
+      _exist: false
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsSortByListNative
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: SortByList
+      valueData:
+        String: prop:System.ItemNameDisplay
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsGroupAscendingWOW64
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: GroupAscending
+      _exist: false
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsGroupByWOW64
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: GroupBy
+      _exist: false
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsPrimaryPropertyWOW64
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: PrimaryProperty
+      _exist: false
+    metadata:
+      securityContext: elevated
+
+  - name: DownloadsSortByListWOW64
+    type: Microsoft.Windows/Registry
+    properties:
+      keyPath: HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}
+      valueName: SortByList
+      valueData:
+        String: prop:System.ItemNameDisplay
+    metadata:
+      securityContext: elevated

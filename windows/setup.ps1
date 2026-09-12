@@ -19,7 +19,7 @@ if (-not (Test-IsAdministrator)) {
 
 
 # --- 1. Apply Registry State via DSC v3 ---
-$dscConfigFile = Join-Path -Path $PSScriptRoot -ChildPath "registry.dsc.yaml"
+$dscConfigFile = Join-Path -Path $PSScriptRoot -ChildPath "configuration.dsc.yaml"
 
 if (-not (Get-Command -Name dsc -ErrorAction SilentlyContinue)) {
     Write-Host "Installing DSC v3 with winget..."
