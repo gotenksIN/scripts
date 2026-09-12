@@ -25,7 +25,7 @@
       }
     },
     {
-      "package": "opencode-commit-guard@1.0.0",
+      "package": "opencode-commit-guard@1.0.1",
       "options": {
         "requireScope": true,
         "maxLineLength": 72,
