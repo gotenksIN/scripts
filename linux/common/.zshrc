@@ -108,8 +108,8 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source ~/scripts/linux/common/functions
-source ~/scripts/linux/common/aliases
+source "$HOME/scripts/linux/common/functions"
+source "$HOME/scripts/linux/common/aliases"
 
 onLogin
 export PATH=$HOME/.local/bin:$PATH

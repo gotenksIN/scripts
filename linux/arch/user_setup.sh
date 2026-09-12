@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-git clone https://github.com/gotenksIN/scripts.git
-
 git clone https://aur.archlinux.org/yay-bin.git --depth 1
 cd yay-bin
 makepkg -si
@@ -40,4 +38,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 chsh -s /usr/bin/zsh
 
-bash "scripts/linux/common/setup.sh"
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
+bash "$repo_dir/linux/common/setup.sh" arch

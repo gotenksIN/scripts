@@ -30,7 +30,7 @@ Desktop configurations:
 Common dotfiles:
 
 - `linux/common/`: Shared environment settings and shell configurations:
-  - Bootstrapper script `setup.sh` to install dotfiles across distributions.
+  - Setup script `setup.sh` that installs the shared dotfiles and adds a distribution alias when given one.
   - Shell configuration files for Zsh (`.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
   - Terminal and tool settings (`wezterm.lua`, `bottom.toml`, `.screenrc`).
   - SSH and Git configuration templates, and shared Git hooks.
@@ -84,13 +84,16 @@ Automation scripts for Windows and WSL:
 
 ## Getting started
 
-To deploy the dotfiles and distribution-specific configurations on Linux:
+Run the setup script for your Linux distribution.
+For example, run the Ubuntu setup:
 
 ```bash
-bash ~/scripts/linux/common/setup.sh
+bash ~/scripts/linux/ubuntu/setup.sh
 ```
 
-The script detects your Linux distribution and applies the matching configuration files.
+Use `linux/fedora/setup.sh` instead on Fedora.
+
+The setup script resolves the repository root from its own location and bakes the path into the deployed shell configuration and Git hooks.
 
 ## License
 
