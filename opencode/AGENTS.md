@@ -60,7 +60,7 @@
   Reuse an established option when it fits, and verify its version and API in current documentation or source.
   Do not add a competing helper or dependency.
   Ask before adding a new dependency.
-- YAGNI never justifies omitting required validation, error handling, security, accessibility, compatibility, tests, or refactoring that keeps the codebase safe and easy to change.
+- YAGNI never justifies omitting required validation, error handling, security, accessibility, compatibility, or refactoring that keeps the codebase safe and easy to change.
 
 ## Worktrees
 
@@ -73,11 +73,12 @@
 
 ## Subagent Routing
 
+- Stay in the parent session for small tasks unless the user explicitly requests delegation.
+- For larger tasks, use your judgment to decide whether to delegate.
 - Implementation: `coder`.
 - Read-only deep analysis: `reasoner`.
 - Broad codebase or documentation search: `explore`.
 - General multi-step tasks and coordination: `general`.
-- Stay in the parent session when the change is tiny and does not need a separate agent.
 - Launch `coder` directly from the parent session so `coder` can run its review loop within the depth limit.
 - Never spawn a `coder` agent from inside a `coder` agent.
 - Never spawn a `reasoner` agent from inside a `reasoner` agent.
