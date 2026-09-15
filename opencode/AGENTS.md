@@ -99,6 +99,7 @@
 ## Tooling Preferences
 
 - For Python projects, always use `uv` for running tools, managing dependencies, and virtual environments unless the repository explicitly requires a different workflow.
+- For open-source projects, prefer reading and searching the source code over running `strings` on binaries.
 - For GitHub repositories, issues, pull requests, releases, and file browsing, try `gh` CLI first for small or short lookups.
 - For repositories hosted on GitHub or any other Git hosting service, clone the repository locally with `git` and use local searches and file reads.
   If `gh` fails, clone locally instead of switching to `webfetch`.
