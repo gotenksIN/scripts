@@ -75,6 +75,9 @@
 
 - Stay in the parent session for small tasks unless the user explicitly requests delegation.
 - For larger tasks, use your judgment to decide whether to delegate.
+- In OpenCode, run nested subagents (subagents spawned by another subagent) in the foreground with `background: false`.
+  Only the top-level parent session may spawn subagents with `background: true`.
+  Include this constraint in delegation prompts so it applies at every nesting depth.
 - Implementation: `coder`.
 - Read-only deep analysis: `reasoner`.
 - Broad codebase or documentation search: `explore`.
