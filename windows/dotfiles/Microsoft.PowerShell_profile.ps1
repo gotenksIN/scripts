@@ -18,5 +18,41 @@ function gitrh { git reset --hard @args }
 # Add some easy download aliases
 function quick_download { aria2c -x16 @args }
 
+function Update-WslKernel {
+    [CmdletBinding()]
+    param(
+        [string]$Architecture = "x64v3",
+        [switch]$Force
+    )
+
+    $resolvedProfile = (Resolve-Path -LiteralPath $PROFILE -ErrorAction SilentlyContinue).ProviderPath
+    $repoRoot = if ($resolvedProfile) {
+        Split-Path -Parent (Split-Path -Parent $resolvedProfile)
+    } else {
+        Join-Path $env:USERPROFILE "scripts\windows"
+    }
+    $kernelScript = Join-Path $repoRoot "scripts\Install-WslKernel.ps1"
+
+    if (-not (Test-Path -LiteralPath $kernelScript)) {
+        throw "Install-WslKernel script not found: $kernelScript"
+    }
+
+    $arguments = @("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "`"$kernelScript`"", "-Architecture", $Architecture)
+    if ($Force) {
+        $arguments += "-Force"
+    }
+
+    $currentProcess = (Get-Process -Id $PID).Path
+    $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = [System.Security.Principal.WindowsPrincipal]::new($identity)
+    if ($principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        & $kernelScript -Architecture $Architecture -Force:$Force
+    } else {
+        Write-Host "Requesting administrative privileges to update custom WSL2 kernel..."
+        Start-Process -FilePath $currentProcess -ArgumentList ($arguments -join " ") -Verb RunAs -Wait
+    }
+}
+Set-Alias -Name update-kernel -Value Update-WslKernel
+
 # Clear terminal once profile is finished loading
 clear
