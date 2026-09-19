@@ -96,6 +96,6 @@ foreach ($subKeyPath in $downloadsFolderTypeKeys) {
             } finally { $key.Dispose() }
         }
     } catch {
-        Write-Warning "Failed to set ownership/permissions for $subKeyPath: $_"
+        Write-Warning "Failed to set ownership/permissions for ${subKeyPath}: $_"
     } finally { $baseKey.Dispose() }
 }
