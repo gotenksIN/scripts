@@ -8,6 +8,23 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
+function Test-IsAdministrator {
+    $currentIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = [System.Security.Principal.WindowsPrincipal]::new($currentIdentity)
+    return $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+if (-not (Test-IsAdministrator)) {
+    Write-Host "Requesting administrative privileges to install WSL2 kernel..."
+    $currentProcess = (Get-Process -Id $PID).Path
+    $argList = @("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "`"$PSCommandPath`"", "-DestinationDirectory", "`"$DestinationDirectory`"", "-Architecture", $Architecture)
+    if ($Force) {
+        $argList += "-Force"
+    }
+    Start-Process -FilePath $currentProcess -ArgumentList ($argList -join " ") -Verb RunAs
+    exit
+}
+
 $DestinationDirectory = (Resolve-Path -LiteralPath $DestinationDirectory).ProviderPath
 
 $releaseUrl = "https://api.github.com/repos/Locietta/xanmod-kernel-WSL2/releases/latest"
