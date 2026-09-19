@@ -9,7 +9,7 @@ This repository contains configuration files, deployment scripts, and dotfiles f
 | `linux/` | Installation, setup, dotfiles, and desktop configuration files for Linux. |
 | `services/` | Docker Compose files and Home Assistant configurations for self-hosted services. |
 | `opencode/` | Configuration files, agent rules, and an updater for OpenCode. |
-| `windows/` | PowerShell scripts, Winget configurations, and chezmoi templates for Windows. |
+| `windows/` | PowerShell scripts, WinGet configurations, and native dotfiles for Windows. |
 
 ## Subsystem details
 
@@ -75,12 +75,13 @@ To update OpenCode, run the updater with an optional version:
 
 ### Windows (`windows/`)
 
-Automation scripts for Windows and WSL:
+Automation scripts and declarative state for Windows and WSL:
 
-- PowerShell setup scripts (`setup.ps1`, PowerShell profiles).
-- Winget package configurations (`RyzenBox.json`, `GroundBox.json`).
-- Registry adjustments and hardware acceleration fixes (`Fix-HEVC-AMF.ps1`).
-- chezmoi templates for environment management.
+- Orchestrated setup script `setup.ps1` with native WinGet configuration and package imports.
+- Declarative OS baseline `configuration.dsc.yaml` applying system settings via DSC v3.
+- WinGet package manifests (`RyzenBox.json`, `GroundBox.json`).
+- Native dotfile deployment (`scripts/Deploy-Dotfiles.ps1`) for PowerShell, Windows Terminal, Topgrade, WinGet, and WSL.
+- Utility and maintenance scripts (`scripts/Take-FolderTypesOwnership.ps1`, `scripts/Fix-HEVC-AMF.ps1`).
 
 ## Getting started
 
