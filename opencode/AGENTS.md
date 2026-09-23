@@ -166,9 +166,12 @@ Messages delivered to a session appear in that session's conversation; a parent 
 
 - Never create commits unless the user explicitly asks for them.
 - When the user requests per-task commits, commit each discrete task before starting the next one.
-- Before every commit, run the exact full commands `git status`, `git diff`, and `git log -10`.
-- Do not replace these required inspections with abbreviated variants such as `git status --short`, `git diff --stat`, or `git log --oneline`.
-- Read the full commit messages from `git log -10`, including their bodies and trailers.
+- Prepare commit context before every commit when the `commit_context` tool is available.
+  It caches the repository's recent commit baselines and signing settings and returns the formatting and signoff guidance for the current checkout.
+  Call it again with `refresh: true` after a branch switch, a signing-settings change, or a change to the commit instructions.
+- Always run the exact full commands `git status` and `git diff` before committing.
+  Do not replace these required inspections with abbreviated variants such as `git status --short` or `git diff --stat`.
+- If `commit_context` is unavailable, fall back to running the exact full commands `git status`, `git diff`, and `git log -10`, and read the full commit messages including their bodies and trailers.
 - Stage only files that belong to the current task.
 - Format commit messages per the repository conventions:
   - Use the subject format `<scope>: <Capitalized summary>`.
@@ -179,8 +182,11 @@ Messages delivered to a session appear in that session's conversation; a parent 
     Explain what changed and why.
     Explain how only when that detail gives needed context.
   - Separate the subject from the body with a blank line and wrap body text at 72 characters.
-- Check commit signing once per session with `git config commit.gpgsign` and `git config user.signingkey`.
-  Remember the result for the rest of the session.
-  If both are set, sign every commit with the configured method and use `git commit --signoff`.
+- Decide signoff from the repository's signing configuration, and distinguish `commit.gpgsign=true` from `false` or unset.
+  When the commit context reports effective `commit.gpgsign=true`, add `-s` or `--signoff`.
+  When it is `false` or unset, do not add a signoff unless the user or repository requires it.
+- A signoff adds a `Signed-off-by` trailer; it is not a cryptographic signature.
+  Cryptographic signing is separate and follows `commit.gpgsign` and `user.signingkey`.
+  Check signing once per session with `git config commit.gpgsign` and `git config user.signingkey`, remember the result, and sign with the configured method when effective `commit.gpgsign=true` and `user.signingkey` is configured.
 - Do not amend commits, push, or rewrite history unless the user explicitly asks.
   When the user explicitly asks, perform the requested operation and do not refuse solely because it amends commits, pushes, or rewrites history.
