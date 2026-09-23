@@ -40,6 +40,11 @@
   Assert outputs, side effects, errors, and externally visible state that distinguish a conforming implementation from a broken one.
 - Every test must protect a behavioral contract.
   Remove tests that only prove a feature, API, command, handler, or registration exists.
+- Do not write tautological tests.
+  Derive assertions and expected values from requirements, specifications, or domain rules, never from the code under test.
+  Never assert whatever the implementation produces or mirror its logic to generate expected values.
+  Ensure every test can fail when behavior is broken.
+  Remove circular tests that only verify code against itself.
 - Let the typechecker enforce static type relationships.
   Do not add runtime tests that a typecheck alone satisfies.
 - Test adapters against project-owned contracts at the integration boundary.
@@ -94,7 +99,7 @@
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
 - After `coder` completes an implementation, immediately launch a `general` subagent.
   Use `general` to audit the changes against the project's YAGNI and testing rules.
-  Have `general` remove speculative code, unnecessary abstractions, and low-value tests.
+  Have `general` remove speculative code, unnecessary abstractions, tautological tests, and low-value tests.
 - Pass the parent session ID in the prompt whenever spawning subagents with `background: true`.
 - When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
   Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
