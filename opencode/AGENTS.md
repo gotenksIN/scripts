@@ -96,7 +96,9 @@
   Use `general` to audit the changes against the project's YAGNI and testing rules.
   Have `general` remove speculative code, unnecessary abstractions, and low-value tests.
 - Pass the parent session ID in the prompt whenever spawning subagents with `background: true`.
-- Foreground subagents (`background: false`) must return results through standard tool returns, not IPC.
+- When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
+  Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
+- Foreground subagents (`background: false`) must return results to their parent through standard tool returns. Use IPC to communicate with any other session.
 - When the parent receives an inbound `STATUS:` or `DECISION NEEDED:` message mid-turn, decide whether to steer with `"delivery": "steer"`, wait, or reply at the turn boundary.
 - If new user requirements invalidate running background work, steer the subagent immediately using `opencode api post /api/session/<childID>/prompt` with `"delivery": "steer"`.
 
@@ -104,13 +106,12 @@
 
 Sessions can message each other through the background OpenCode service.
 Use inter-agent messaging for:
-- Status updates and milestone reports back to the main thread or parent session.
+- Status updates and milestone reports from background subagents to the parent session.
 - Direct coordination, decision sharing, and dependency handoffs between concurrent subagents.
 - Cross-session coordination across separate worktrees so sessions collaborate and avoid duplicate work.
 - Mid-flight steering to redirect drifting background subagents without restarting them.
 - Asynchronous fan-out where background workers push structured findings back to a coordinator.
 - Escalating blocking decisions or user input requests from background agents to the main interactive session.
-- Automated review loops where a reviewer pushes targeted feedback to a coder session inbox.
 Messages delivered to a session appear in that session's conversation; a parent or peer session receives reports as incoming user messages.
 
 - Use the `opencode api` CLI for all calls; it handles service discovery and authentication.
@@ -118,7 +119,7 @@ Messages delivered to a session appear in that session's conversation; a parent 
 - Check the service: `opencode service status`, `opencode api get /api/info`.
 - List active sessions: `opencode api get /api/session/active`.
   Session IDs start with `ses_`.
-- Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ...","delivery":"steer"}'`.
+- Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"steer"}'`.
   - `"delivery":"steer"` injects the message into a running session mid-turn; use it for corrections and live coordination.
   - `"delivery":"queue"` delivers the message at the next turn boundary; use it for reports to an idle session.
 - Read another session's tail: `opencode api get /api/session/<sessionID>/message --param limit=8 --param order=desc`.
@@ -127,7 +128,7 @@ Messages delivered to a session appear in that session's conversation; a parent 
 - Include the sender session ID and a `STATUS:` or `DECISION NEEDED:` prefix in each message so the reader can attribute and reply.
 - Send one concise, content-rich message per milestone: bases resolved, artifacts written, blocked, done.
   Do not send acknowledgements or conversational replies.
-- Use only the messaging endpoints (`prompt`, `inbox`, `message`).
+- For sending and reading messages, use only the session `prompt`, `inbox`, and `message` endpoints.
   Never call mutating endpoints (`delete`, `revert`, `interrupt`, `config`, `move`) against another session.
 - A subagent that must reach the parent or a peer but has no shell tool may spawn a messenger subagent, which runs in the foreground.
 - Wrapper scripts that hide the JSON payload are fine; keep them small and pass the session ID and text as arguments.
