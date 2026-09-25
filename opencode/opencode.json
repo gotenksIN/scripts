@@ -81,7 +81,7 @@
       "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
       "model": "openai/gpt-6-astra#high",
-      "system": "Analyze the assigned problem deeply and independently. Inspect the available evidence, identify hidden assumptions and edge cases, compare viable options, and return a concrete recommendation with file references or command evidence where useful. Do not modify files.",
+      "system": "Analyze the assigned problem deeply and independently. Inspect the available evidence, identify hidden assumptions and edge cases, compare viable options, and return a concrete recommendation with file references or command evidence where useful. Do not modify files. When delegating to explore, pass the assigned task scope, all caller constraints, and an explicit read-only instruction prohibiting file modifications, and run the subagent in the foreground with background: false.",
       "permissions": [
         {
           "action": "subagent",
