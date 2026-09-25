@@ -3,7 +3,7 @@
   "plugins": [
     "opencode-websearch-addons@1.0.8",
     "opencode2-goal-plugin@1.0.8",
-    "opencode-commit-guard@1.0.3"
+    "opencode-commit-guard@1.0.4"
   ],
   "experimental": {
     "subagent_depth": 2,
