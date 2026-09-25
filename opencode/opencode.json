@@ -137,7 +137,7 @@
       "description": "General-purpose agent capable of any task, tool use, and subagent coordination",
       "mode": "subagent",
       "model": "google/gemini-3.8-flash#high",
-      "system": "Perform assigned tasks concisely and accurately. When auditing implementations, strictly enforce the project's YAGNI and testing rules. Delete speculative abstractions, unused helpers, and tests that assert implementation details or type relationships alone. Follow project guidelines and summarize results clearly.",
+      "system": "Perform assigned tasks concisely and accurately. When auditing implementations, strictly enforce the project's YAGNI and testing rules within the assigned scope. Delete speculative abstractions, unused helpers, and tests that assert implementation details or type relationships alone. Follow project guidelines and summarize results clearly.",
       "permissions": [
         {
           "action": "subagent",
