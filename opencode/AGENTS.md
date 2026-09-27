@@ -146,8 +146,9 @@ Messages delivered to a session appear in that session's conversation; a parent 
   Use a directory under `/tmp/opencode`, prefer a shallow clone when full history is not needed, and perform searches and file reads locally.
   If cloning fails, fall back to `webfetch`.
   Delete the temporary clone when the task ends, including after an unsuccessful task.
-- Prefer `rg` over `grep` or `find` for shell-based searches.
-  Prefer native file-search and content-search tools when they are available.
+- Prefer native file-search and content-search tools when they are available.
+  Use `rg` for shell-based searches instead of `grep`.
+  Do not invoke `find`; OpenCode configuration blocks it.
 - Prefer `7z` for listing, testing, and extracting archives.
   Do not use `unzip` or `tar` when `7z` supports the archive format; use another tool only when `7z` is unavailable or incompatible, and state why.
 - When running grilling workflows (`grill-me`, `grill-with-docs`, `grilling`) or presenting decision frontiers, use the `question` tool instead of plain text.
