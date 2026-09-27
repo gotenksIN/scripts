@@ -121,9 +121,9 @@ Messages delivered to a session appear in that session's conversation; a parent 
 - Check the service: `opencode service status`, `opencode api get /api/info`.
 - List active sessions: `opencode api get /api/session/active`.
   Session IDs start with `ses_`.
-- Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"steer"}'`.
-  - `"delivery":"steer"` injects the message into a running session mid-turn; use it for corrections and live coordination.
-  - `"delivery":"queue"` delivers the message at the next turn boundary; use it for reports to an idle session.
+- Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"queue"}'`.
+  - `"delivery":"queue"` delivers the message at the next turn boundary; use it for routine reports and handoffs even when the recipient is busy.
+  - `"delivery":"steer"` injects the message into a running session mid-turn; use it for time-sensitive corrections or decisions that must affect the active turn.
 - Read another session's tail: `opencode api get /api/session/<sessionID>/message --param limit=8 --param order=desc`.
 - Inspect pending input: `opencode api get /api/session/<sessionID>/inbox`.
   An empty inbox means earlier messages were already delivered.
