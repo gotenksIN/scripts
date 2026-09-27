@@ -97,9 +97,6 @@
   Finish the work or return to the parent.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
-- After `coder` completes an implementation, immediately launch a `general` subagent.
-  Use `general` to audit the changes against the project's YAGNI and testing rules.
-  Have `general` remove speculative code, unnecessary abstractions, tautological tests, and low-value tests.
 - Pass the parent session ID in the prompt whenever spawning subagents with `background: true`.
 - When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
   Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
