@@ -101,14 +101,15 @@
 - When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
   Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
 - Foreground subagents (`background: false`) must return results to their parent through standard tool returns. Use IPC to communicate with any other session.
-- When the parent receives an inbound `STATUS:` or `DECISION NEEDED:` message mid-turn, decide whether to steer with `"delivery": "steer"`, wait, or reply at the turn boundary.
+- When a session receives an inbound `STATUS:` or `DECISION NEEDED:` message mid-turn, assess its effect on active work.
+  Act immediately when it unblocks work or changes the plan; otherwise continue and incorporate it when relevant.
 - If new user requirements invalidate running background work, steer the subagent immediately using `opencode api post /api/session/<childID>/prompt` with `"delivery": "steer"`.
 
 ## Inter-agent messaging
 
 Sessions can message each other through the background OpenCode service.
 Use inter-agent messaging for:
-- Status updates and milestone reports from background subagents to the parent session.
+- Actionable findings, blockers, and completion reports from background subagents to the parent session.
 - Direct coordination, decision sharing, and dependency handoffs between concurrent subagents.
 - Cross-session coordination across separate worktrees so sessions collaborate and avoid duplicate work.
 - Mid-flight steering to redirect drifting background subagents without restarting them.
@@ -121,15 +122,17 @@ Messages delivered to a session appear in that session's conversation; a parent 
 - Check the service: `opencode service status`, `opencode api get /api/info`.
 - List active sessions: `opencode api get /api/session/active`.
   Session IDs start with `ses_`.
-- Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"queue"}'`.
-  - `"delivery":"queue"` delivers the message at the next turn boundary; use it for routine reports and handoffs even when the recipient is busy.
-  - `"delivery":"steer"` injects the message into a running session mid-turn; use it for time-sensitive corrections or decisions that must affect the active turn.
+- Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"steer"}'`.
+  - Use `"delivery":"steer"` by default for subagent coordination: actionable findings, dependency handoffs, blockers, decisions, corrections, and completion reports.
+    It injects the message into a running session mid-turn so the recipient can assess it before continuing with stale assumptions.
+  - Use `"delivery":"queue"` only for non-actionable context the recipient needs later and that can safely wait until its next turn boundary.
 - Read another session's tail: `opencode api get /api/session/<sessionID>/message --param limit=8 --param order=desc`.
 - Inspect pending input: `opencode api get /api/session/<sessionID>/inbox`.
   An empty inbox means earlier messages were already delivered.
 - Include the sender session ID and a `STATUS:` or `DECISION NEEDED:` prefix in each message so the reader can attribute and reply.
-- Send one concise, content-rich message per milestone: bases resolved, artifacts written, blocked, done.
-  Do not send acknowledgements or conversational replies.
+- Send one concise, content-rich message when it changes what the recipient can or should do, or reports completion.
+  Include the finding or result and its effect on the recipient's work.
+  Omit routine progress, acknowledgements, and conversational replies.
 - For sending and reading messages, use only the session `prompt`, `inbox`, and `message` endpoints.
   Never call mutating endpoints (`delete`, `revert`, `interrupt`, `config`, `move`) against another session.
 - A subagent that must reach the parent or a peer but has no shell tool may spawn a messenger subagent, which runs in the foreground.
