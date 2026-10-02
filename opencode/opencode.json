@@ -1,9 +1,9 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugins": [
-    "opencode-websearch-addons@1.0.8",
-    "opencode2-goal-plugin@1.0.8",
-    "opencode-commit-guard@1.0.4"
+    "opencode-websearch-addons@1.0.9",
+    "opencode2-goal-plugin@1.0.9",
+    "opencode-commit-guard@1.0.5"
   ],
   "experimental": {
     "subagent_depth": 2,
