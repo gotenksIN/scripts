@@ -1,7 +1,8 @@
 {
 "$help": "https://aka.ms/terminal-documentation",
-"$schema": "https://raw.githubusercontent.com/microsoft/terminal/main/doc/cascadia/profiles.schema.json",
+"$schema": "https://aka.ms/terminal-profiles-schema-preview",
 "actions": [],
+"centerOnLaunch": true,
 "copyFormatting": "none",
 "copyOnSelect": false,
 "defaultProfile": "{29e9424f-b246-4353-847c-ed7ba076c919}",
@@ -32,7 +33,7 @@
         "antialiasingMode": "cleartype",
         "bellStyle": "none",
         "closeOnExit": "always",
-        "colorScheme": "Catppuccin Frappe",
+        "colorScheme": "Catppuccin Macchiato",
         "cursorShape": "bar",
         "font":
         {
@@ -84,123 +85,34 @@
 "schemes":
 [
     {
-        "background": "#303446",
-        "black": "#51576D",
-        "blue": "#8CAAEE",
-        "brightBlack": "#626880",
-        "brightBlue": "#8CAAEE",
-        "brightCyan": "#81C8BE",
-        "brightGreen": "#A6D189",
-        "brightPurple": "#F4B8E4",
-        "brightRed": "#E78284",
-        "brightWhite": "#A5ADCE",
-        "brightYellow": "#E5C890",
-        "cursorColor": "#F2D5CF",
-        "cyan": "#81C8BE",
-        "foreground": "#C6D0F5",
-        "green": "#A6D189",
-        "name": "Catppuccin Frappe",
-        "purple": "#F4B8E4",
-        "red": "#E78284",
-        "selectionBackground": "#626880",
-        "white": "#B5BFE2",
-        "yellow": "#E5C890"
-    },
-    {
-        "background": "#282A36",
-        "black": "#21222C",
-        "blue": "#BD93F9",
-        "brightBlack": "#6272A4",
-        "brightBlue": "#D6ACFF",
-        "brightCyan": "#A4FFFF",
-        "brightGreen": "#69FF94",
-        "brightPurple": "#FF92DF",
-        "brightRed": "#FF6E6E",
-        "brightWhite": "#FFFFFF",
-        "brightYellow": "#FFFFA5",
-        "cursorColor": "#F8F8F2",
-        "cyan": "#8BE9FD",
-        "foreground": "#F8F8F2",
-        "green": "#50FA7B",
-        "name": "Dracula",
-        "purple": "#FF79C6",
-        "red": "#FF5555",
-        "selectionBackground": "#44475A",
-        "white": "#F8F8F2",
-        "yellow": "#F1FA8C"
-    },
-    {
-        "background": "#282A36",
-        "black": "#282A36",
-        "blue": "#57C7FF",
-        "brightBlack": "#686868",
-        "brightBlue": "#57C7FF",
-        "brightCyan": "#9AEDFE",
-        "brightGreen": "#5AF78E",
-        "brightPurple": "#FF6AC1",
-        "brightRed": "#FF5C57",
-        "brightWhite": "#EFF0EB",
-        "brightYellow": "#F3F99D",
-        "cursorColor": "#97979B",
-        "cyan": "#9AEDFE",
-        "foreground": "#EFF0EB",
-        "green": "#5AF78E",
-        "name": "Snazzy",
-        "purple": "#FF6AC1",
-        "red": "#FF5C57",
-        "selectionBackground": "#3E404A",
-        "white": "#F1F1F0",
-        "yellow": "#F3F99D"
-    },
-    {
-        "background": "#300A24",
-        "black": "#2E3436",
-        "blue": "#3465A4",
-        "brightBlack": "#555753",
-        "brightBlue": "#729FCF",
-        "brightCyan": "#34E2E2",
-        "brightGreen": "#8AE234",
-        "brightPurple": "#AD7FA8",
-        "brightRed": "#EF2929",
-        "brightWhite": "#EEEEEC",
-        "brightYellow": "#FCE94F",
-        "cursorColor": "#BBBBBB",
-        "cyan": "#06989A",
-        "foreground": "#EEEEEC",
-        "green": "#4E9A06",
-        "name": "Ubuntu Default",
-        "purple": "#75507B",
-        "red": "#CC0000",
-        "selectionBackground": "#B5D5FF",
-        "white": "#D3D7CF",
-        "yellow": "#C4A000"
+        "background": "#24273A",
+        "black": "#494D64",
+        "blue": "#8AADF4",
+        "brightBlack": "#5B6078",
+        "brightBlue": "#8AADF4",
+        "brightCyan": "#8BD5CA",
+        "brightGreen": "#A6DA95",
+        "brightPurple": "#F5BDE6",
+        "brightRed": "#ED8796",
+        "brightWhite": "#A5ADCB",
+        "brightYellow": "#EED49F",
+        "cursorColor": "#F4DBD6",
+        "cyan": "#8BD5CA",
+        "foreground": "#CAD3F5",
+        "green": "#A6DA95",
+        "name": "Catppuccin Macchiato",
+        "purple": "#F5BDE6",
+        "red": "#ED8796",
+        "selectionBackground": "#5B6078",
+        "white": "#B8C0E0",
+        "yellow": "#EED49F"
     }
 ],
 "showTabsInTitlebar": true,
 "showTerminalTitleInTitlebar": true,
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
-"theme": "Catppuccin Frappe",
-"themes":
-[
-    {
-        "name": "Catppuccin Frappe",
-        "tab":
-        {
-            "background": "#303446FF",
-            "showCloseButton": "always",
-            "unfocusedBackground": null
-        },
-        "tabRow":
-        {
-            "background": "#292C3CFF",
-            "unfocusedBackground": "#232634FF"
-        },
-        "window":
-        {
-            "applicationTheme": "dark"
-        }
-    }
-],
+"theme": "dark",
+"themes": [],
 "useAcrylicInTabRow": false
 }
