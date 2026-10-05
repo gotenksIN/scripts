@@ -28,6 +28,14 @@
   Write them in whatever way agents understand best.
 - Use semantic line breaks in Markdown prose: put each complete sentence on its own source line and let the renderer wrap it.
 - Do not hard-wrap Markdown prose at a fixed column or split a phrase only to meet a line-length limit.
+- Only output standard GitHub-flavored Markdown that OpenCode renders across all interfaces (terminal TUI, web, and desktop).
+  Do not emit text, syntax, or markup that OpenCode does not render:
+  - Do not use LaTeX math syntax or delimiters (such as `$...$`, `$$...$$`, `\(...\)`, `\[...\]`, `\to`, `\times`, `\approx`, `\le`, `\ge`, `\ne`, `\pm`, `\frac`, or `\dots`) for formulas, equations, variables, or units; OpenCode displays them as raw unrendered text.
+    Use standard Unicode symbols (such as `->`, `→`, `×`, `÷`, `≈`, `≤`, `≥`, `≠`, `±`, `…`, `²`, `³`, or plain text) or fenced code blocks instead.
+  - Do not output raw HTML tags or elements (such as `<br>`, `<b>`, `<i>`, `<details>`, `<summary>`, `<span>`, `<div>`, `<table>`, `<sup>`, `<sub>`, `<kbd>`, `<mark>`, or comments `<!-- ... -->`); OpenCode's terminal renderer does not parse HTML and prints raw tags.
+    Use native Markdown syntax for formatting and tables instead.
+  - Do not emit pseudo-XML, scratchpad, or thinking tags (such as `<thought>`, `<thinking>`, `<scratchpad>`, `<output>`, or `<response>`) in chat text.
+  - Do not use unsupported Markdown extensions such as footnotes (`[^1]`), GitHub alert callouts (`> [!NOTE]`), text highlight (`==text==`), or underline (`<u>...</u>`); OpenCode does not render these extensions and displays literal marker characters.
 - Prefer small, focused changes over broad refactors unless the user asks otherwise.
 - After code changes, run the project's existing tests, linter, or typecheck when those commands are defined.
   If none exist, do a minimal manual check of the changed behavior.
