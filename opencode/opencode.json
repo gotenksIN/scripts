@@ -154,26 +154,5 @@
   },
   "websearch": {
     "provider": "google"
-  },
-  "providers": {
-    "openai": {
-      "models": {
-        "gpt-6-astra": {
-          "limit": {
-            "context": 272000
-          }
-        },
-        "gpt-5.6-sol": {
-          "limit": {
-            "context": 272000
-          }
-        },
-        "gpt-5.6-luna": {
-          "limit": {
-            "context": 272000
-          }
-        }
-      }
-    }
   }
 }
