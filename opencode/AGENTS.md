@@ -28,17 +28,16 @@
   Write them in whatever way agents understand best.
 - Use semantic line breaks in Markdown prose: put each complete sentence on its own source line and let the renderer wrap it.
 - Do not hard-wrap Markdown prose at a fixed column or split a phrase only to meet a line-length limit.
-- In conversational chat responses, output only standard GitHub-flavored Markdown that OpenCode renders across all interfaces (terminal TUI, web, and desktop).
-  These rendering limitations apply strictly to interactive chat responses; do not apply them to repository files, documentation, markdown files, or code.
-  Repository files may freely use LaTeX math, raw HTML, footnotes, or any formatting appropriate for the project.
+- In conversational chat responses, output only terminal-compatible GitHub-flavored Markdown.
+  These constraints apply strictly to chat output; repository files, code, and documentation may use LaTeX, HTML, or any project-appropriate formatting.
   When producing conversational chat responses:
-  - Do not use LaTeX math syntax or delimiters (such as `$...$`, `$$...$$`, `\(...\)`, `\[...\]`, `\to`, `\times`, `\approx`, `\le`, `\ge`, `\ne`, `\pm`, `\frac`, or `\dots`) in chat output; OpenCode displays them as raw unrendered text.
-    Use standard Unicode symbols (such as `->`, `→`, `×`, `÷`, `≈`, `≤`, `≥`, `≠`, `±`, `…`, `²`, `³`, or plain text) or fenced code blocks instead.
-  - Do not output raw HTML tags or elements (such as `<br>`, `<b>`, `<i>`, `<details>`, `<summary>`, `<span>`, `<div>`, `<table>`, `<sup>`, `<sub>`, `<kbd>`, `<mark>`, or comments `<!-- ... -->`) in chat output; OpenCode's terminal renderer does not parse HTML and prints raw tags.
+  - Do not use LaTeX math delimiters (`$...$`, `$$...$$`, `\(...\)`, `\[...\]`) or LaTeX syntax in chat; OpenCode displays them as raw unrendered text.
+    Use standard Unicode symbols (such as `Δ`, `→`, `×`, `÷`, `≈`, `≤`, `≥`, `≠`, `±`, `²`, `³`, or plain text) or fenced code blocks instead.
+  - Do not output raw HTML tags in chat output; OpenCode's terminal renderer displays raw HTML tags.
     Use native Markdown syntax for formatting and tables instead.
-  - Do not emit pseudo-XML, scratchpad, or thinking tags (such as `<thought>`, `<thinking>`, `<scratchpad>`, `<output>`, or `<response>`) in chat text.
-  - Do not use unsupported Markdown extensions such as footnotes (`[^1]`), GitHub alert callouts (`> [!NOTE]`), text highlight (`==text==`), or underline (`<u>...</u>`) in chat output; OpenCode does not render these extensions and displays literal marker characters.
-  - Do not output compliance checklists, guidelines validation blocks, or meta-commentary about formatting rules in chat responses; deliver the substantive answer directly.
+  - Do not emit pseudo-XML or thinking tags (`<thought>`, `<thinking>`, `<scratchpad>`, `<output>`, `<response>`).
+  - Do not use unsupported Markdown extensions (footnotes `[^1]`, callouts `> [!NOTE]`, highlights `==text==`, underline `<u>`).
+  - Do not output compliance checklists or meta-commentary about formatting rules; deliver the substantive answer directly.
 - Prefer small, focused changes over broad refactors unless the user asks otherwise.
 - After code changes, run the project's existing tests, linter, or typecheck when those commands are defined.
   If none exist, do a minimal manual check of the changed behavior.
@@ -47,23 +46,9 @@
 
 - Do not write new tests unless the user or specification explicitly requests them.
 - Run only the project's existing tests and verification checks by default.
-- Test contracts through public or executable interfaces.
-  Assert outputs, side effects, errors, and externally visible state that distinguish a conforming implementation from a broken one.
-- Every test must protect a behavioral contract.
-  Remove tests that only prove a feature, API, command, handler, or registration exists.
-- Do not write tautological tests.
-  Derive assertions and expected values from requirements, specifications, or domain rules, never from the code under test.
-  Never assert whatever the implementation produces or mirror its logic to generate expected values.
-  Ensure every test can fail when behavior is broken.
-  Remove circular tests that only verify code against itself.
-- Let the typechecker enforce static type relationships.
-  Do not add runtime tests that a typecheck alone satisfies.
-- Test adapters against project-owned contracts at the integration boundary.
-  Do not simulate external providers or encode assumptions about their payload, event, or API shapes in unit tests.
-  For adapters such as Discord or inference providers, verify only the translation and behavior the project owns.
-- Keep UI and UX tests only for critical user-visible contracts that cannot be tested below the UI boundary.
-  Remove tests of appearance, interaction preferences, feature presence, or command registration.
-- Do not test source text, symbol names, command fragments, control flow, private structure, or implementation details.
+- When explicitly requested to write tests, test contracts through public interfaces. Assert externally visible behavior and state, never internal structure or implementation details.
+- Never write tautological or circular tests that mirror implementation logic or assert whatever the code produces.
+- Let the typechecker enforce static type relationships; do not add runtime tests for static types.
 
 ## Simplicity (YAGNI)
 
@@ -99,12 +84,7 @@
 - Broad codebase or documentation search: `explore`.
 - General multi-step tasks and coordination: `general`.
 - Launch `coder` directly from the parent session so `coder` can run its review loop within the depth limit.
-- Never spawn a `coder` agent from inside a `coder` agent.
-- Never spawn a `reasoner` agent from inside a `reasoner` agent.
-- Never spawn an `explore` agent from inside an `explore` agent.
-- Never spawn a `general` agent from inside a `general` agent.
-- Never spawn a `general` agent from inside a `reasoner` agent.
-- Never spawn a `general` agent from inside a `coder` agent.
+- Keep subagent hierarchies shallow (depth 1): never spawn recursive subagents of the same type, and never spawn `general` from inside `coder` or `reasoner`.
   Finish the work or return to the parent.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
