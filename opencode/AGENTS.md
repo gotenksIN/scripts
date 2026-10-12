@@ -152,7 +152,6 @@ Messages delivered to a session appear in that session's conversation; a parent 
   - Set `multiple: true` when multiple choices apply.
 - You may use `/tmp/opencode` for temporary work outside the workspace.
   Always delete temporary files and directories you create when the task ends.
-  WSL does not use tmpfs, so leftover files in `/tmp` persist on disk.
 
 ## Git Workflow
 
