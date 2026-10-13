@@ -86,7 +86,10 @@ Secrets stay local and never enter the repo.
 10. On WSL2 with mirrored networking, set the service port below 49152.
    See the [Service port (WSL2 mirrored networking)](#service-port-wsl2-mirrored-networking) section.
 
-11. Verify.
+11. On WSL2, add the binary directory to `~/.profile` for Topgrade.
+   See the [Topgrade on WSL2](#topgrade-on-wsl2) section.
+
+12. Verify.
 
    ```sh
    opencode models
@@ -159,4 +162,15 @@ WSL2 mirrored networking blocks the Windows dynamic port range 49152-65535, so t
 
 ```sh
 opencode service set port 4096
+```
+
+## Topgrade on WSL2
+
+Topgrade on Windows updates WSL distributions by running commands with `bash -lc`.
+Bash does not read `~/.zshrc`.
+If you use Zsh and only export `PATH` in `~/.zshrc`, Topgrade cannot find `opencode` and skips the step.
+Add `~/.opencode/bin` to `~/.profile` so login shells find the binary:
+
+```sh
+echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> ~/.profile
 ```
