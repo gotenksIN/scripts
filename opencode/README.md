@@ -12,28 +12,21 @@ Keep your API keys and credentials local; do not commit them to the repository.
 | `opencode.json` | Global configuration: plugins, subagents, and web search | Symlink at `~/.config/opencode/opencode.json` |
 | `opencode.jsonc` | Provider configuration template with placeholders | Not installed |
 | `cli.json` | TUI settings: themes, keybindings, and diff displays | Copied to `~/.config/opencode/cli.json` |
-| `update.sh` | Installer and updater for the `opencode` binary | Not installed |
 | `README.md` | Setup and maintenance guide | Not installed |
 
 ## Setup on a fresh machine
 
 Follow these steps to set up OpenCode on a fresh installation.
 
-### 1. Clone the repository
+### 1. Install OpenCode
+
+Run the installer to download and install the OpenCode binary into `~/.opencode/bin/`:
 
 ```sh
-git clone git@github.com:gotenksIN/scripts.git ~/scripts
+curl -fsSL https://opencode.ai/install | bash
 ```
 
-### 2. Install OpenCode
-
-Run the installer script to download and install the latest OpenCode binary into `~/.opencode/bin/`:
-
-```sh
-~/scripts/opencode/update.sh
-```
-
-### 3. Link the configuration files
+### 2. Link the configuration files
 
 Create the configuration directory, symlink the shared files, and copy the terminal settings:
 
@@ -44,13 +37,15 @@ ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
 cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
 ```
 
+If `~/scripts` is not present, ignore the symlink step and download the configuration files directly from Git.
+
 Copy `cli.json` instead of symlinking it.
 OpenCode writes interactive settings changes directly to `cli.json`.
 
 Do not copy `~/.config/opencode/service.json` between machines.
 OpenCode generates `service.json` automatically and stores the local service password inside it.
 
-### 4. Install global skills
+### 3. Install global skills
 
 OpenCode loads global agent skills from `~/.agents/skills/`.
 Install Bun if you do not have it:
@@ -75,7 +70,7 @@ The `--global` flag installs skills into `~/.agents/skills/`.
 The `--agent opencode` flag targets OpenCode and avoids writing copies to other agent directories.
 OpenCode watches `~/.agents/skills/` and detects added skills automatically.
 
-### 5. Start OpenCode
+### 4. Start OpenCode
 
 Run OpenCode once to start the background service:
 
@@ -85,11 +80,11 @@ opencode
 
 The service downloads and installs configured plugins in the background into `~/.cache/opencode/packages/`.
 
-### 6. Configure WSL2 (optional)
+### 5. Configure WSL2 (optional)
 
 If you run on WSL2, apply the configuration notes in the [WSL2 considerations](#wsl2-considerations) section.
 
-### 7. Verify the installation
+### 6. Verify the installation
 
 Verify that OpenCode and its services run correctly:
 
@@ -125,29 +120,17 @@ Refer to the upstream [README](https://github.com/dmmulroy/anti-slop) for rule d
 
 ### Updating OpenCode
 
-Run the update script to download and install the latest version:
+Run the built-in update command:
 
 ```sh
-~/scripts/opencode/update.sh
+opencode update
 ```
-
-To install a specific version, provide the version number as an argument:
-
-```sh
-~/scripts/opencode/update.sh 1.2.3
-```
-
-The script verifies release checksums and replaces the binary atomically.
-Ignore the warning "automatic update skipped: installation method not found".
-The script manages the binary directly outside a system package manager.
 
 ### Applying configuration updates
 
-Pull updates from Git and reload OpenCode:
+Reload OpenCode to apply configuration changes:
 
 ```sh
-cd ~/scripts
-git pull
 opencode reload
 ```
 
