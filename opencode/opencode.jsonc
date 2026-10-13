@@ -10,8 +10,7 @@
     "openai": {
       "settings": {
         "baseURL": "xxxx",
-        "apiKey": "xxxx",
-        "reasoningEffort": "medium"
+        "apiKey": "xxxx"
       }
     },
     "google": {
@@ -26,12 +25,6 @@
         "apiKey": "xxxx"
       }
     },
-    "alibaba": {
-      "settings": {
-        "baseURL": "xxxx",
-        "apiKey": "xxxx"
-      }
-    },
     "deepseek": {
       "settings": {
         "baseURL": "xxxx",
@@ -39,6 +32,12 @@
       }
     },
     "moonshotai": {
+      "settings": {
+        "baseURL": "xxxx",
+        "apiKey": "xxxx"
+      }
+    },
+    "alibaba": {
       "settings": {
         "baseURL": "xxxx",
         "apiKey": "xxxx"

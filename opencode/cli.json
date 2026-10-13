@@ -6,11 +6,13 @@
   "session": {
     "thinking": "show",
     "scrollbar": true,
-    "grouping": "auto",
     "image_preview": true,
-    "new_location": "launch",
     "sidebar": "hide",
-    "terminal": true,
+    "grouping": "auto",
+    "new_location": "launch",
+    "terminal": false,
+    "permissions": "prompt",
+    "verbosity": "high",
     "tps": true
   },
   "animations": true,
@@ -26,6 +28,9 @@
   "diffs": {
     "tree": true
   },
+  "terminal": {
+    "copy": "manual"
+  },
   "keybinds": {
     "session.first": "ctrl+q",
     "session.last": "ctrl+e",
@@ -35,17 +40,5 @@
   },
   "prompt": {
     "image_preview": true
-  },
-  "terminal": {
-    "title": true,
-    "copy": "manual"
-  },
-  "debug": {
-    "devtools": false,
-    "timing": false,
-    "turn_tokens": false
-  },
-  "experimental": {
-    "session-preview-tabs": false
   }
 }
