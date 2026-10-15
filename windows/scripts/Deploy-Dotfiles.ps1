@@ -76,12 +76,12 @@ $kernelModules = "C:\\bzImage-x64v3-addons.vhdx"
 
 $wslConfig = @"
 [wsl2]
-localhostForwarding=false
 memory=${memoryGb}GB
 kernel=$kernel
 kernelModules=$kernelModules
 
 swap=0
+guiApplications=true
 nestedVirtualization=false
 hardwarePerformanceCounters=false
 telemetry=false
