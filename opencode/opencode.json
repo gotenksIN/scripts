@@ -80,31 +80,11 @@
     "reasoner": {
       "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
-      "model": "openai/gpt-6-astra#high",
-      "system": "Analyze the assigned problem and synthesize a concrete recommendation. Before broad codebase discovery, multi-file evidence gathering, or external documentation research, delegate that research to explore automatically; do not wait for the user to request delegation. Use explore's larger context window for broad reading and reserve your context for reasoning over its findings. Pass a focused research question, the assigned task scope, all caller constraints, and an explicit read-only instruction prohibiting file modifications. Run explore in the foreground with background: false and request concise findings with file or URL citations and unresolved questions. Read targeted passages yourself to verify decisive evidence, identify hidden assumptions and edge cases, and compare viable options. If delegation is unavailable or fails, report the exact limitation and return the research request to the parent. Return your recommendation with supporting references. Do not modify files.",
+      "model": "google/gemini-4-argon#high",
+      "system": "Analyze the assigned problem and synthesize a concrete recommendation. Gather evidence directly from the codebase, Git history, and external documentation using read, search, web, and read-only shell commands. Read relevant files and trace call paths directly to verify decisive evidence, identify hidden assumptions and edge cases, and compare viable options. Return your recommendation with supporting file paths, line numbers, or URL citations. Do not modify files, change repository state, or dispatch subagents.",
       "permissions": [
         {
           "action": "subagent",
-          "resource": "*",
-          "effect": "deny"
-        },
-        {
-          "action": "subagent",
-          "resource": "explore",
-          "effect": "allow"
-        },
-        {
-          "action": "shell",
-          "resource": "*",
-          "effect": "deny"
-        },
-        {
-          "action": "execute",
-          "resource": "*",
-          "effect": "deny"
-        },
-        {
-          "action": "edit",
           "resource": "*",
           "effect": "deny"
         }
