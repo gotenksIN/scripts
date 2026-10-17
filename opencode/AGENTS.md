@@ -131,6 +131,7 @@ Messages delivered to a session appear in that session's conversation; a parent 
 
 ## Tooling Preferences
 
+- When you need a shell in Windows from WSL, use `pwsh.exe`.
 - For Python projects, always use `uv` for running tools, managing dependencies, and virtual environments unless the repository explicitly requires a different workflow.
 - For open-source projects, prefer reading and searching the source code over running `strings` on binaries.
 - For GitHub repositories, issues, pull requests, releases, and file browsing, try `gh` CLI first for small or short lookups.
