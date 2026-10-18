@@ -1,0 +1,10 @@
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /home/gotenks/scripts/docker/adguardhome/work:/opt/adguardhome/work
+      - /home/gotenks/scripts/docker/adguardhome/conf:/opt/adguardhome/conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro
