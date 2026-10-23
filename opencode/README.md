@@ -56,14 +56,19 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 ```
 
-The Bun installer provides only the `bun` binary.
-Always run `bun x` instead of `bunx`.
+Install the `skills` CLI globally and symlink `node` and `skills` into `~/.local/bin` so Topgrade can run `skills update --global` in non-interactive shells:
+
+```sh
+bun install -g skills@latest
+ln -sf ~/.local/bin/bun ~/.local/bin/node
+ln -sf ~/.bun/bin/skills ~/.local/bin/skills
+```
 
 Install Matt Pocock's skills and the anti-slop linting skill:
 
 ```sh
-bun x skills@latest add mattpocock/skills --skill '*' --global --agent opencode --yes
-bun x skills@latest add dmmulroy/anti-slop --skill install-anti-slop --global --agent opencode --yes
+skills add mattpocock/skills --skill '*' --global --agent opencode --yes
+skills add dmmulroy/anti-slop --skill install-anti-slop --global --agent opencode --yes
 ```
 
 The `--global` flag installs skills into `~/.agents/skills/`.
