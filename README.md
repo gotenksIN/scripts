@@ -83,6 +83,14 @@ Automation scripts and declarative state for Windows and WSL:
 - Native dotfile deployment (`scripts/Deploy-Dotfiles.ps1`) for PowerShell, Windows Terminal, Topgrade, WinGet, and WSL.
 - Utility and maintenance scripts (`scripts/Take-FolderTypesOwnership.ps1`, `scripts/Fix-HEVC-AMF.ps1`).
 
+Run the setup with sudo from PowerShell 7:
+
+```powershell
+sudo pwsh -NoProfile -ExecutionPolicy Bypass -File ~\scripts\windows\setup.ps1
+```
+
+If you start the script without administrator rights, it relaunches itself with sudo in the same window when sudo is in inline mode. Otherwise, it opens a new elevated window.
+
 ## Getting started
 
 Run the setup script for your Linux distribution.

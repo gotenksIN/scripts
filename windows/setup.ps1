@@ -11,9 +11,22 @@ function Test-IsAdministrator {
     return $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+function Test-SudoInline {
+    if (-not (Get-Command -Name sudo.exe -CommandType Application -ErrorAction SilentlyContinue)) {
+        return $false
+    }
+    $sudoMode = Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo" -Name Enabled -ErrorAction SilentlyContinue
+    return $sudoMode -eq 3
+}
+
 if (-not (Test-IsAdministrator)) {
     Write-Host "Requesting administrative privileges..."
     $currentProcess = (Get-Process -Id $PID).Path
+    if (Test-SudoInline) {
+        $PSNativeCommandUseErrorActionPreference = $false
+        & sudo.exe $currentProcess -NoProfile -ExecutionPolicy Bypass -File $PSCommandPath
+        exit $LASTEXITCODE
+    }
     Start-Process -FilePath $currentProcess -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     exit
 }
