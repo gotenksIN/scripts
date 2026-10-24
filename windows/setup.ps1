@@ -29,7 +29,7 @@ if (-not (Test-Path -LiteralPath $configFile)) {
 }
 
 Write-Host "Ensuring winget configure is enabled..."
-& winget configure --enable --disable-interactivity 2>$null
+& winget configure --enable 2>$null
 
 $ownershipScript = Join-Path -Path $PSScriptRoot -ChildPath "scripts\Take-FolderTypesOwnership.ps1"
 if (Test-Path -LiteralPath $ownershipScript) {
