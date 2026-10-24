@@ -106,7 +106,11 @@ if (-not (Test-Path -LiteralPath $wingetJsonFile)) {
 
 if ($null -ne $wingetJsonFile -and (Test-Path -LiteralPath $wingetJsonFile)) {
     Write-Host "Importing packages..."
-    winget import --import-file $wingetJsonFile --accept-package-agreements --accept-source-agreements --disable-interactivity
+    try {
+        winget import --import-file $wingetJsonFile --accept-package-agreements --accept-source-agreements --disable-interactivity
+    } catch {
+        Write-Warning "Some packages failed to install: $($_.Exception.Message)"
+    }
 
     $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
