@@ -80,7 +80,7 @@ Automation scripts and declarative state for Windows and WSL:
 - Orchestrated setup script `setup.ps1` with native WinGet configuration and package imports.
 - Declarative OS baseline `configuration.dsc.yaml` applying system settings via DSC v3.
 - WinGet package manifests (`RyzenBox.json`, `GroundBox.json`).
-- Native dotfile deployment (`scripts/Deploy-Dotfiles.ps1`) for PowerShell, Windows Terminal, Topgrade, WinGet, and WSL.
+- Native dotfile deployment (`scripts/Deploy-Dotfiles.ps1`) for PowerShell, Git, Windows Terminal, Topgrade, WinGet, and WSL.
 - Utility and maintenance scripts (`scripts/Take-FolderTypesOwnership.ps1`, `scripts/Fix-HEVC-AMF.ps1`).
 
 Run the setup with sudo from PowerShell 7:

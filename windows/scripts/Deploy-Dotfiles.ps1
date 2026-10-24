@@ -36,6 +36,9 @@ function Set-FileSymbolicLink {
 $profilePath = $PROFILE
 Set-FileSymbolicLink -Path $profilePath -Target (Join-Path $DotfilesRoot "Microsoft.PowerShell_profile.ps1")
 
+$commonDotfilesRoot = Join-Path (Split-Path -Parent (Split-Path -Parent $DotfilesRoot)) "linux\common"
+Set-FileSymbolicLink -Path (Join-Path $env:USERPROFILE ".gitconfig") -Target (Join-Path $commonDotfilesRoot ".gitconfig")
+
 $topgradePath = Join-Path $env:APPDATA "topgrade.toml"
 Set-FileSymbolicLink -Path $topgradePath -Target (Join-Path $DotfilesRoot "topgrade.toml")
 
