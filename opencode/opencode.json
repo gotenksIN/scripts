@@ -2,7 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "plugins": [
     "opencode-websearch-addons@1.0.9",
-    "opencode2-goal-plugin@1.0.9",
     "opencode-commit-guard@1.0.5"
   ],
   "experimental": {
