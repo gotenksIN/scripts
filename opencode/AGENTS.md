@@ -159,7 +159,11 @@ Messages delivered to a session appear in that session's conversation; a parent 
 - Never create commits unless the user explicitly asks for them.
 - When the user requests per-task commits, commit each discrete task before starting the next one.
 - Capture commit context before the first commit in each session and worktree when `commit_context` is available.
-  Run its returned command in the foreground shell with the indicated workdir, then call `commit_context` again for formatting and signoff guidance.
+  Run its returned command immediately and unchanged in the foreground shell with the indicated workdir.
+  Do not wrap the command or chain other commands onto it.
+  Commit only after the shell result or `commit_context` reports "Frozen commit baseline"; `RECEIPT_OK` alone is not enough.
+  Use the formatting and signoff rules in that baseline report.
+  Call `commit_context` again only when the shell result has no baseline report, and pass the same workdir.
   Call it with `refresh: true` after a branch switch, a signing-settings change, or a change to the commit instructions.
 - Always run the exact full commands `git status` and `git diff` before committing.
   Do not replace these required inspections with abbreviated variants such as `git status --short` or `git diff --stat`.
@@ -175,8 +179,11 @@ Messages delivered to a session appear in that session's conversation; a parent 
     Explain what changed and why.
     Explain how only when that detail gives needed context.
   - Separate the subject from the body with a blank line and wrap body text at 72 characters.
+  - Pass multi-line messages inline with `$'…'` and literal `\n` escapes, for example `git commit -m $'scope: Subject\n\nBody line one.\nBody line two.'`.
+    A single quoted stdin heredoc with `git commit -F - <<'EOF'` also works.
+    Commit guard rejects `-F <file>`, shell expansion in messages, and `--trailer`.
 - Decide signoff from the repository's signing configuration, and distinguish `commit.gpgsign=true` from `false` or unset.
-  Use the signing settings captured by `commit_context` when available.
+  Use the signing settings from the "Frozen commit baseline" report when available.
   Otherwise, check once per session with `git config commit.gpgsign` and `git config user.signingkey`.
   When effective `commit.gpgsign=true`, add `-s` or `--signoff`.
   When it is `false` or unset, do not add a signoff unless the user or repository requires it.
