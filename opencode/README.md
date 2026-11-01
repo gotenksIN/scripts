@@ -60,7 +60,7 @@ Install the `skills` CLI globally and symlink `node` and `skills` into `~/.local
 
 ```sh
 bun install -g skills@latest
-ln -sf ~/.local/bin/bun ~/.local/bin/node
+ln -sf ~/.bun/bin/bun ~/.local/bin/node
 ln -sf ~/.bun/bin/skills ~/.local/bin/skills
 ```
 
