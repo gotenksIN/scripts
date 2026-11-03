@@ -75,6 +75,20 @@ The `--global` flag installs skills into `~/.agents/skills/`.
 The `--agent opencode` flag targets OpenCode and avoids writing copies to other agent directories.
 OpenCode watches `~/.agents/skills/` and detects added skills automatically.
 
+Disable the Topgrade GitHub CLI skills step in `~/.config/topgrade.toml`:
+
+```toml
+[misc]
+disable = ["github_cli_skills"]
+```
+
+The `skills` CLI owns `~/.agents/skills/`, and the Topgrade `skills` step updates it.
+`gh skill update` cannot update skills that another tool installed.
+It prints a "has no GitHub metadata" warning for each skill.
+
+If you reinstall Bun, run this step again.
+Reinstalling Bun removes global packages, so `skills` disappears and Topgrade skips the update.
+
 ### 4. Start OpenCode
 
 Run OpenCode once to start the background service:
