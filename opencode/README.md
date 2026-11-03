@@ -172,15 +172,8 @@ Keep the OpenCode service port below 49152:
 opencode service set port 4096
 ```
 
-### Topgrade execution
+### Shell PATH
 
-Topgrade on Windows updates WSL distributions through non-interactive login shells using `bash -lc`.
-Non-interactive Bash shells read `~/.profile` but ignore `~/.zshrc`.
-Standard `~/.bashrc` files also return early when invoked non-interactively.
-If you define `PATH` only in `~/.zshrc`, Topgrade cannot find `opencode` and skips the upgrade step.
-
-Add the binary path to `~/.profile` so non-interactive shells find OpenCode:
-
-```sh
-echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> ~/.profile
-```
+OpenCode Desktop and Topgrade start WSL commands without an interactive shell.
+`linux/common/setup.sh` installs a `~/.profile` and `~/.zshenv` that add `~/.opencode/bin` to `PATH` for these shells.
+Refer to the [Linux shell PATH](../README.md#shell-path) section for details.

@@ -112,7 +112,3 @@ source "$HOME/scripts/linux/common/functions"
 source "$HOME/scripts/linux/common/aliases"
 
 onLogin
-export PATH=$HOME/.local/bin:$PATH
-
-# LLMs
-export PATH=$HOME/.opencode/bin:$PATH

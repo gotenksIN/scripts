@@ -31,9 +31,27 @@ Common dotfiles:
 
 - `linux/common/`: Shared environment settings and shell configurations:
   - Setup script `setup.sh` that installs the shared dotfiles and adds a distribution alias when given one.
-  - Shell configuration files for Zsh (`.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
+  - Shell configuration files (`.profile`, `.zshenv`, `.zshrc`, `.zprofile`, `.p10k.zsh`, `aliases`, `functions`).
   - Terminal and tool settings (`wezterm.lua`, `bottom.toml`, `.screenrc`).
   - SSH and Git configuration templates.
+
+#### Shell PATH
+
+`linux/common/.profile` adds `~/.local/bin` and `~/.opencode/bin` to `PATH`.
+`linux/common/.zshenv` sources it, so every shell gets the same `PATH`:
+
+| Caller | Shell | Reads |
+| --- | --- | --- |
+| Interactive terminal | `zsh` | `~/.zshenv`, then `~/.zshrc` |
+| OpenCode Desktop on Windows (WSL) | non-interactive `zsh` | `~/.zshenv` |
+| Topgrade on Windows (WSL) | `bash -lc` | `~/.profile` |
+
+Add `PATH` entries to `.profile` only.
+Keep `.profile` POSIX-compatible and free of output, because `zsh` also reads it.
+Keep interactive settings, such as aliases, prompts, and plugins, in `.zshrc`.
+
+OpenCode Desktop starts `opencode serve` directly from WSL `/init`.
+The server process keeps the default system `PATH`; only its shell tool reads `~/.zshenv`.
 
 ### Self-hosted services (`services/`)
 
