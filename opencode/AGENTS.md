@@ -157,6 +157,8 @@ Messages delivered to a session appear in that session's conversation; a parent 
 ## Git Workflow
 
 - Never create commits unless the user explicitly asks for them.
+  Exception: the `coder` subagent makes scoped commits by default, one per discrete task or review fix.
+  When the user says not to commit or gives other commit instructions, pass that instruction in the `coder` delegation prompt.
 - When the user requests per-task commits, commit each discrete task before starting the next one.
 - Capture commit context before the first commit in each session and worktree when `commit_context` is available.
   Run its returned command immediately and unchanged in the foreground shell with the indicated workdir.
