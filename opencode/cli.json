@@ -20,7 +20,7 @@
     "style": "line"
   },
   "tabs": {
-    "enabled": true,
+    "mode": "on",
     "scope": "global",
     "layout": "vertical",
     "indicators": "status"
