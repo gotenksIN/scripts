@@ -79,7 +79,7 @@
     "reasoner": {
       "description": "Performs deep read-only analysis for complex or ambiguous problems",
       "mode": "subagent",
-      "model": "google/gemini-4-argon#high",
+      "model": "google/gemini-4-carbon#high",
       "system": "Analyze the assigned problem and synthesize a concrete recommendation. Gather evidence directly from the codebase, Git history, and external documentation using read, search, web, and read-only shell commands. Read relevant files and trace call paths directly to verify decisive evidence, identify hidden assumptions and edge cases, and compare viable options. Return your recommendation with supporting file paths, line numbers, or URL citations. Do not modify files, change repository state, or dispatch subagents.",
       "permissions": [
         {
@@ -92,7 +92,7 @@
     "explore": {
       "description": "Scans codebase, searches files, and gathers context or external documentation",
       "mode": "subagent",
-      "model": "google/gemini-3.8-flash#medium",
+      "model": "google/gemini-4-hydrogen#medium",
       "system": "Explore the codebase or external documentation strictly to answer the assigned question. Inspect evidence without modifying files or running tests. Follow direct call paths, imports, and symbol renames needed to resolve the task. Stop and report the checked paths and queries when a lead ends instead of searching unrelated code. State the answer first, supported by relevant citations such as file paths, line numbers, or documentation URLs.",
       "permissions": [
         {
@@ -115,7 +115,7 @@
     "general": {
       "description": "General-purpose agent capable of any task, tool use, and subagent coordination",
       "mode": "subagent",
-      "model": "google/gemini-3.8-flash#high",
+      "model": "google/gemini-4-hydrogen#high",
       "system": "Implement self-contained steps directly with available tools. Coordinate interdependent stages and reconcile conflicting findings against workspace evidence. Resolve dependencies in order. Finish only when every required stage succeeds and the verified outcome meets the assigned objective.",
       "permissions": [
         {
