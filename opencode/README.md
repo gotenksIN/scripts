@@ -179,3 +179,30 @@ opencode service set port 4096
 OpenCode Desktop and Topgrade start WSL commands without an interactive shell.
 `linux/common/setup.sh` installs a `~/.profile` and `~/.zshenv` that add `~/.opencode/bin` to `PATH` for these shells.
 Refer to the [Linux shell PATH](../README.md#shell-path) section for details.
+
+## Troubleshooting
+
+### Missing provider labels in /models
+
+On a fresh installation using only `settings.apiKey` in `~/.config/opencode/opencode.jsonc`, `/models` omits provider names and grouping until at least one integration has a saved connection.
+Configuring `settings.apiKey` enables the provider on the server, but OpenCode checks `~/.local/share/opencode/opencode.db` for a saved connection when grouping models in the TUI.
+
+To fix this, connect any provider once with `/connect`, or add a row to the `credential` table in `~/.local/share/opencode/opencode.db` using `uv` and Python (`sqlite3`):
+
+1. Run `opencode` once so OpenCode initializes `~/.local/share/opencode/opencode.db`, then run `opencode service stop`.
+2. Insert an active row into `credential` for one configured provider using its real `apiKey` from `opencode.jsonc`:
+
+   | Column | Value |
+   | --- | --- |
+   | `id` | Unique string starting with `cred_` |
+   | `integration_id` | Provider key from `opencode.jsonc` |
+   | `label` | `"API key"` |
+   | `value` | `{"type":"key","key":"<apiKey>"}` |
+   | `active` | `1` |
+   | `time_created` | Current epoch time in milliseconds |
+   | `time_updated` | Current epoch time in milliseconds |
+
+3. Run `opencode service start`.
+
+Saved credentials in `opencode.db` take precedence over `settings.apiKey` in `opencode.jsonc`.
+If you rotate an API key in `opencode.jsonc`, update or delete that provider's row in `credential` (or reconnect with `/connect`) so OpenCode uses the updated key.
