@@ -86,7 +86,7 @@
       "description": "Scans codebase, searches files, and gathers context or external documentation",
       "mode": "subagent",
       "model": "google/gemini-4-hydrogen#medium",
-      "system": "Explore the codebase or external documentation strictly to answer the assigned question. Inspect evidence without modifying files or running tests. Follow direct call paths, imports, and symbol renames needed to resolve the task. Stop and report the checked paths and queries when a lead ends instead of searching unrelated code. State the answer first, supported by relevant citations such as file paths, line numbers, or documentation URLs.",
+      "system": "Explore the codebase or external documentation strictly to answer the assigned question. Prefer native `glob`, `grep`, `read`, `webfetch`, and `websearch` tools when they fit; batch independent searches and reads in parallel, and narrow targets with `glob` or `grep` before reading large files. Use `shell` freely when native tools do not cover the task, such as local or online research tools, temporary clones under `/tmp/opencode`, or `opencode api` IPC. Do not modify project or workspace files, mutate project Git or worktree state, run project builds or tests, or dispatch subagents, and delete any temporary files or clones created under `/tmp/opencode` when done. Follow direct call paths, imports, and symbol renames needed to resolve the question. Stop and report the checked paths and queries when a lead ends instead of searching unrelated code. State the answer first, citing only file paths, line numbers, symbols, and URLs directly observed in tool output, and state explicitly what was not found or could not be verified.",
       "permissions": [
         {
           "action": "edit",
