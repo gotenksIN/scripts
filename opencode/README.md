@@ -10,7 +10,7 @@ Keep your API keys and credentials local; do not commit them to the repository.
 | --- | --- | --- |
 | `AGENTS.md` | Global agent instructions and workflow rules | Symlink at `~/.config/opencode/AGENTS.md` |
 | `opencode.json` | Global configuration: plugins, subagents, and web search | Symlink at `~/.config/opencode/opencode.json` |
-| `opencode.jsonc` | Provider configuration template with placeholders | Not installed |
+| `opencode.jsonc` | Provider configuration template with placeholders | Copied to `~/.config/opencode/opencode.jsonc` when using custom provider settings |
 | `cli.json` | TUI settings: themes, keybindings, and diff displays | Copied to `~/.config/opencode/cli.json` |
 | `README.md` | Setup and maintenance guide | Not installed |
 
@@ -23,23 +23,25 @@ Follow these steps to set up OpenCode on a fresh installation.
 Run the installer to download and install the OpenCode binary into `~/.opencode/bin/`:
 
 ```sh
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://opencode.ai/v2/install | bash
 ```
 
 ### 2. Link the configuration files
 
-Create the configuration directory, symlink the shared files, and copy the terminal settings:
+Create the configuration directory, symlink the shared files, and copy the local settings:
 
 ```sh
 mkdir -p ~/.config/opencode
 ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
 ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
+cp ~/scripts/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
 ```
 
 If `~/scripts` is not present, ignore the symlink step and download the configuration files directly from Git.
 
-Copy `cli.json` instead of symlinking it.
+Copy `opencode.jsonc` and `cli.json` instead of symlinking them.
+Replace the `xxxx` placeholders in `~/.config/opencode/opencode.jsonc` with your local base URLs and API keys, or connect providers interactively with `/connect`.
 OpenCode writes interactive settings changes directly to `cli.json`.
 
 Do not copy `~/.config/opencode/service.json` between machines.
@@ -114,16 +116,16 @@ opencode api get /api/health
 ```
 
 Confirm that the subagents `coder`, `reasoner`, `explore`, and `general` appear in the TUI.
-Confirm that `/setup-matt-pocock-skills` appears in the commands list.
+Confirm that `setup-matt-pocock-skills` appears in the skills list.
 
 ## Skills
 
 ### Matt Pocock's skills
 
-Run the setup skill once in each repository:
+Load the `setup-matt-pocock-skills` skill once in each repository:
 
 ```text
-/setup-matt-pocock-skills
+Ask OpenCode to load the setup-matt-pocock-skills skill
 ```
 
 Answer the interactive prompts to configure project-level instructions.
