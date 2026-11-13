@@ -76,31 +76,33 @@
 
 - Stay in the parent session for small tasks unless the user explicitly requests delegation.
 - For larger tasks, use your judgment to decide whether to delegate.
-- In OpenCode, run nested subagents (subagents spawned by another subagent) in the foreground with `background: false`.
-  Only the top-level parent session may spawn subagents with `background: true`.
-  Include this constraint in delegation prompts so it applies at every nesting depth.
+- All subagents run in the background, return a `sessionID` immediately, and deliver a `<subagent>` report to their parent whenever they go idle.
+  Do not sleep, poll, or check on a running child's progress; continue non-overlapping work or end your turn to wait for its `<subagent>` report.
+- When a `<subagent>` report arrives with `state="running"` and a `Background work still running:` list, the child is waiting on its own background work (shell, image, or nested subagent).
+  Wait for its next report instead of treating the interim message as final or nudging the child.
 - Implementation: `coder`.
 - Read-only deep analysis: `reasoner`.
 - Broad codebase or documentation search: `explore`.
 - General multi-step tasks and coordination: `general`.
-- Launch `coder` directly from the parent session so `coder` can run its review loop within the depth limit.
-- Keep subagent hierarchies shallow (depth 1): never spawn recursive subagents of the same type, and never spawn `general` from inside `coder`.
-  Finish the work or return to the parent.
+- Launch `coder` directly from the parent session so `coder` can run its review loop within `experimental.subagent_depth: 2`.
+- Keep subagent hierarchies shallow: never spawn recursive subagents of the same type, and never spawn `general` from inside `coder`.
+  When a depth-1 subagent spawns a depth-2 child whose result it needs (such as `coder` launching `code-reviewer`), finish non-overlapping work and end the turn to wait for the child's `<subagent>` report before finishing.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
-- Pass the parent session ID in the prompt whenever spawning subagents with `background: true`.
+- Pass the parent session ID in the prompt when a subagent may need mid-run IPC with the parent.
 - When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
   Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
-- Foreground subagents (`background: false`) must return results to their parent through standard tool returns. Use IPC to communicate with any other session.
+- Subagents deliver their turn results to their parent automatically via `<subagent>` idle reports; do not duplicate normal completion reports over IPC.
+  Use IPC to communicate mid-run updates or coordinate with peers and other sessions.
 - When a session receives an inbound `STATUS:` or `DECISION NEEDED:` message mid-turn, assess its effect on active work.
   Act immediately when it unblocks work or changes the plan; otherwise continue and incorporate it when relevant.
-- If new user requirements invalidate running background work, steer the subagent immediately using `opencode api post /api/session/<childID>/prompt` with `"delivery": "steer"`.
+- If new user requirements invalidate a running child subagent's work, follow up with `subagent` using its `sessionID`, or steer it immediately using `opencode api post /api/session/<childID>/prompt` with `"delivery": "steer"`.
 
 ## Inter-agent messaging
 
 Sessions can message each other through the background OpenCode service.
 Use inter-agent messaging for:
-- Actionable findings, blockers, and completion reports from background subagents to the parent session.
+- Actionable mid-run findings and blockers from background subagents to the parent session (final turn results arrive automatically via `<subagent>` reports).
 - Direct coordination, decision sharing, and dependency handoffs between concurrent subagents.
 - Cross-session coordination across separate worktrees so sessions collaborate and avoid duplicate work.
 - Mid-flight steering to redirect drifting background subagents without restarting them.
@@ -114,19 +116,19 @@ Messages delivered to a session appear in that session's conversation; a parent 
 - List active sessions: `opencode api get /api/session/active`.
   Session IDs start with `ses_`.
 - Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"steer"}'`.
-  - Use `"delivery":"steer"` by default for subagent coordination: actionable findings, dependency handoffs, blockers, decisions, corrections, and completion reports.
+  - Use `"delivery":"steer"` by default for subagent coordination: actionable findings, dependency handoffs, blockers, decisions, and corrections.
     It injects the message into a running session mid-turn so the recipient can assess it before continuing with stale assumptions.
   - Use `"delivery":"queue"` only for non-actionable context the recipient needs later and that can safely wait until its next turn boundary.
 - Read another session's tail: `opencode api get /api/session/<sessionID>/message --param limit=8 --param order=desc`.
 - Inspect pending input: `opencode api get /api/session/<sessionID>/inbox`.
   An empty inbox means earlier messages were already delivered.
 - Include the sender session ID and a `STATUS:` or `DECISION NEEDED:` prefix in each message so the reader can attribute and reply.
-- Send one concise, content-rich message when it changes what the recipient can or should do, or reports completion.
+- Send one concise, content-rich message when it changes what the recipient can or should do.
   Include the finding or result and its effect on the recipient's work.
   Omit routine progress, acknowledgements, and conversational replies.
 - For sending and reading messages, use only the session `prompt`, `inbox`, and `message` endpoints.
   Never call mutating endpoints (`delete`, `revert`, `interrupt`, `config`, `move`) against another session.
-- A subagent that must reach the parent or a peer but has no shell tool may spawn a messenger subagent, which runs in the foreground.
+- A subagent that must reach a peer or escalate mid-run without a shell tool may spawn a messenger subagent if its permissions and depth limit allow.
 - Wrapper scripts that hide the JSON payload are fine; keep them small and pass the session ID and text as arguments.
 
 ## Tooling Preferences
