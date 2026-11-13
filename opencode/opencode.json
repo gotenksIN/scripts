@@ -5,14 +5,7 @@
     "opencode-commit-guard@1.0.7"
   ],
   "experimental": {
-    "subagent_depth": 2,
-    "policies": [
-      {
-        "action": "permission",
-        "resource": "shell:find *",
-        "effect": "deny"
-      }
-    ]
+    "subagent_depth": 2
   },
   "agents": {
     "coder": {
