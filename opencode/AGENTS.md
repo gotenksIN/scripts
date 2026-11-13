@@ -84,7 +84,7 @@
 - Broad codebase or documentation search: `explore`.
 - General multi-step tasks and coordination: `general`.
 - Launch `coder` directly from the parent session so `coder` can run its review loop within the depth limit.
-- Keep subagent hierarchies shallow (depth 1): never spawn recursive subagents of the same type, and never spawn `general` from inside `coder` or `reasoner`.
+- Keep subagent hierarchies shallow (depth 1): never spawn recursive subagents of the same type, and never spawn `general` from inside `coder`.
   Finish the work or return to the parent.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
