@@ -81,12 +81,12 @@
 - When a `<subagent>` report arrives with `state="running"` and a `Background work still running:` list, the child is waiting on its own background work (shell, image, or nested subagent).
   Wait for its next report instead of treating the interim message as final or nudging the child.
 - Implementation: `coder`.
-- Read-only deep analysis: `reasoner`.
+- Deep analysis, audits (including writing or updating audit and analysis reports), architecture or plan evaluation, and complex bug diagnosis: `reasoner`.
 - Broad codebase or documentation search: `explore`.
 - General multi-step tasks and coordination: `general`.
-- Launch `coder` directly from the parent session so `coder` can run its review loop within `experimental.subagent_depth: 2`.
-- Keep subagent hierarchies shallow: never spawn recursive subagents of the same type, and never spawn `general` from inside `coder`.
-  When a depth-1 subagent spawns a depth-2 child whose result it needs (such as `coder` launching `code-reviewer`), finish non-overlapping work and end the turn to wait for the child's `<subagent>` report before finishing.
+- Launch `coder` and `reasoner` directly from the parent session so `coder` can run its review loop and `reasoner` can delegate research to `explore` within `experimental.subagent_depth: 2`.
+- Keep subagent hierarchies shallow: never spawn recursive subagents of the same type, and never spawn `general` from inside `coder` or `reasoner`.
+  When a depth-1 subagent spawns a depth-2 child whose result it needs (such as `coder` launching `code-reviewer` or `reasoner` launching `explore`), finish non-overlapping work and end the turn to wait for the child's `<subagent>` report before finishing.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
 - Pass the parent session ID in the prompt when a subagent may need mid-run IPC with the parent.
