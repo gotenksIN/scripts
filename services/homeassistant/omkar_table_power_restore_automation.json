@@ -1,0 +1,118 @@
+{
+  "id": "omkar_table_power_restore_auto",
+  "alias": "Omkar Table Power Restore Auto",
+  "description": "Track last steady table light state across mains outages and turn lights off if they were off before power loss.",
+  "triggers": [
+    {
+      "id": "turned_off",
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": "on",
+      "to": "off"
+    },
+    {
+      "id": "turned_on",
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": "off",
+      "to": "on"
+    },
+    {
+      "id": "recovered_on",
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": [
+        "unavailable",
+        "unknown"
+      ],
+      "to": "on"
+    }
+  ],
+  "conditions": [],
+  "actions": [
+    {
+      "choose": [
+        {
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": "turned_off"
+            }
+          ],
+          "sequence": [
+            {
+              "action": "input_boolean.turn_on",
+              "target": {
+                "entity_id": "input_boolean.omkar_table_was_off"
+              }
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": "turned_on"
+            }
+          ],
+          "sequence": [
+            {
+              "action": "input_boolean.turn_off",
+              "target": {
+                "entity_id": "input_boolean.omkar_table_was_off"
+              }
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": "recovered_on"
+            },
+            {
+              "condition": "state",
+              "entity_id": "input_boolean.omkar_table_was_off",
+              "state": "on"
+            }
+          ],
+          "sequence": [
+            {
+              "wait_template": "{{ not is_state('light.table_left', 'unavailable') and not is_state('light.table_right', 'unavailable') }}",
+              "timeout": "00:00:20",
+              "continue_on_timeout": true
+            },
+            {
+              "action": "light.turn_off",
+              "target": {
+                "entity_id": "light.table"
+              }
+            },
+            {
+              "delay": "00:00:02"
+            },
+            {
+              "if": [
+                {
+                  "condition": "state",
+                  "entity_id": "light.table",
+                  "state": "on"
+                }
+              ],
+              "then": [
+                {
+                  "action": "light.turn_off",
+                  "target": {
+                    "entity_id": "light.table"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mode": "queued",
+  "max": 5
+}
