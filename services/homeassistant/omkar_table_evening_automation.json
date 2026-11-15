@@ -1,21 +1,33 @@
 {
+  "id": "omkar_table_evening_auto",
   "alias": "Omkar Table Evening Auto",
-  "description": "When sun elevation drops below 10, set table lights to 60% at 5000K when person is home.",
+  "description": "Between 10° and -4° descending sun elevation, set table lights to 60% at 5000K when person is home and lights are off.",
   "triggers": [
     {
-      "platform": "numeric_state",
+      "trigger": "numeric_state",
       "entity_id": "sun.sun",
       "attribute": "elevation",
       "below": 10
     },
     {
-      "platform": "homeassistant",
+      "trigger": "homeassistant",
       "event": "start"
     },
     {
-      "platform": "state",
+      "trigger": "state",
       "entity_id": "person.omkar_chandorkar",
+      "from": "not_home",
       "to": "home"
+    },
+    {
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": [
+        "unavailable",
+        "unknown"
+      ],
+      "to": "off",
+      "for": "00:00:05"
     }
   ],
   "conditions": [
@@ -26,7 +38,7 @@
     },
     {
       "condition": "template",
-      "value_template": "{% set elevation = state_attr('sun.sun', 'elevation') | float(90) %}{{ elevation > 0 and elevation < 10 and not state_attr('sun.sun', 'rising') }}"
+      "value_template": "{% set elevation = state_attr('sun.sun', 'elevation') | float(90) %}{{ elevation >= -4 and elevation < 10 and not state_attr('sun.sun', 'rising') }}"
     },
     {
       "condition": "state",
@@ -37,7 +49,9 @@
   "actions": [
     {
       "action": "script.turn_on",
-      "target": { "entity_id": "script.omkar_table_evening" }
+      "target": {
+        "entity_id": "script.omkar_table_evening"
+      }
     }
   ],
   "mode": "single"

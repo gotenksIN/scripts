@@ -1,38 +1,130 @@
 {
+  "id": "omkar_table_sunset_auto",
   "alias": "Omkar Table Sunset Auto",
-  "description": "When sun elevation drops below -4°, set table lights to 40% at 2200K if the light is already on or person is home.",
+  "description": "After -4° descending elevation (before 22:30), transition active white table lights or turn them on when home or arriving.",
   "triggers": [
     {
-      "platform": "numeric_state",
+      "id": "sunset",
+      "trigger": "numeric_state",
       "entity_id": "sun.sun",
       "attribute": "elevation",
       "below": -4
     },
     {
-      "platform": "state",
+      "id": "arrival",
+      "trigger": "state",
       "entity_id": "person.omkar_chandorkar",
+      "from": "not_home",
       "to": "home"
+    },
+    {
+      "id": "recovery_off",
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": [
+        "unavailable",
+        "unknown"
+      ],
+      "to": "off",
+      "for": "00:00:05"
+    },
+    {
+      "id": "recovery_on",
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": [
+        "unavailable",
+        "unknown"
+      ],
+      "to": "on",
+      "for": "00:00:05"
+    },
+    {
+      "id": "ha_start",
+      "trigger": "homeassistant",
+      "event": "start"
     }
   ],
   "conditions": [
     {
-      "condition": "numeric_state",
-      "entity_id": "sun.sun",
-      "attribute": "elevation",
-      "below": -4
+      "condition": "template",
+      "value_template": "{{ (state_attr('sun.sun', 'elevation') | float(90)) < -4 and not state_attr('sun.sun', 'rising') }}"
+    },
+    {
+      "condition": "time",
+      "before": "22:30:00"
     },
     {
       "condition": "or",
       "conditions": [
-        { "condition": "state", "entity_id": "light.table", "state": "on" },
-        { "condition": "state", "entity_id": "person.omkar_chandorkar", "state": "home" }
+        {
+          "condition": "and",
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": "arrival"
+            },
+            {
+              "condition": "state",
+              "entity_id": "light.table",
+              "state": "off"
+            }
+          ]
+        },
+        {
+          "condition": "and",
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": [
+                "sunset",
+                "recovery_off",
+                "ha_start"
+              ]
+            },
+            {
+              "condition": "state",
+              "entity_id": "light.table",
+              "state": "off"
+            },
+            {
+              "condition": "state",
+              "entity_id": "person.omkar_chandorkar",
+              "state": "home"
+            }
+          ]
+        },
+        {
+          "condition": "and",
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": [
+                "sunset",
+                "recovery_on",
+                "ha_start"
+              ]
+            },
+            {
+              "condition": "state",
+              "entity_id": "light.table",
+              "state": "on"
+            },
+            {
+              "condition": "template",
+              "value_template": "{{ (trigger.id != 'recovery_on' or is_state('input_boolean.omkar_table_was_off', 'off')) and state_attr('light.table', 'effect') is none and state_attr('light.table', 'color_mode') in [none, 'color_temp'] and (trigger.id == 'sunset' or (state_attr('light.table', 'color_temp_kelvin') | int(0)) >= 4500) }}"
+            }
+          ]
+        }
       ]
     }
   ],
   "actions": [
     {
       "action": "script.turn_on",
-      "target": { "entity_id": "script.omkar_table_sunset" }
+      "target": {
+        "entity_id": "script.omkar_table_sunset"
+      }
     }
   ],
   "mode": "single"

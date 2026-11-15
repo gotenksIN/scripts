@@ -1,23 +1,100 @@
 {
+  "id": "omkar_table_bedtime_auto",
   "alias": "Omkar Table Bedtime Auto",
-  "description": "At 10:30 PM, dim table lights to 20%, but only if the light is already on.",
+  "description": "At 22:30 (or on arrival or power recovery after 22:30), dim active white table lights or turn them on to 20% at 2200K.",
   "triggers": [
     {
-      "platform": "time",
+      "id": "bedtime",
+      "trigger": "time",
       "at": "22:30:00"
+    },
+    {
+      "id": "arrival",
+      "trigger": "state",
+      "entity_id": "person.omkar_chandorkar",
+      "from": "not_home",
+      "to": "home"
+    },
+    {
+      "id": "recovery_on",
+      "trigger": "state",
+      "entity_id": "light.table",
+      "from": [
+        "unavailable",
+        "unknown"
+      ],
+      "to": "on",
+      "for": "00:00:05"
+    },
+    {
+      "id": "ha_start",
+      "trigger": "homeassistant",
+      "event": "start"
     }
   ],
   "conditions": [
     {
-      "condition": "state",
-      "entity_id": "light.table",
-      "state": "on"
+      "condition": "or",
+      "conditions": [
+        {
+          "condition": "trigger",
+          "id": "bedtime"
+        },
+        {
+          "condition": "time",
+          "after": "22:30:00",
+          "before": "04:00:00"
+        }
+      ]
+    },
+    {
+      "condition": "or",
+      "conditions": [
+        {
+          "condition": "and",
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": "arrival"
+            },
+            {
+              "condition": "state",
+              "entity_id": "light.table",
+              "state": "off"
+            }
+          ]
+        },
+        {
+          "condition": "and",
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": [
+                "bedtime",
+                "recovery_on",
+                "ha_start"
+              ]
+            },
+            {
+              "condition": "state",
+              "entity_id": "light.table",
+              "state": "on"
+            },
+            {
+              "condition": "template",
+              "value_template": "{{ (trigger.id != 'recovery_on' or is_state('input_boolean.omkar_table_was_off', 'off')) and state_attr('light.table', 'effect') is none and state_attr('light.table', 'color_mode') in [none, 'color_temp'] and (trigger.id == 'bedtime' or (state_attr('light.table', 'brightness') | int(0)) > 55) }}"
+            }
+          ]
+        }
+      ]
     }
   ],
   "actions": [
     {
       "action": "script.turn_on",
-      "target": { "entity_id": "script.omkar_table_bedtime" }
+      "target": {
+        "entity_id": "script.omkar_table_bedtime"
+      }
     }
   ],
   "mode": "single"
