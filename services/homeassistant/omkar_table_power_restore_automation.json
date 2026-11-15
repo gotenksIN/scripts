@@ -1,29 +1,39 @@
 {
   "id": "omkar_table_power_restore_auto",
   "alias": "Omkar Table Power Restore Auto",
-  "description": "Track last steady table light state across mains outages and turn lights off if they were off before power loss.",
+  "description": "Track steady table light off state and shut off individual WiZ bulbs after short or long mains power cycles while preserving WiZ app turn-ons.",
   "triggers": [
     {
-      "id": "turned_off",
+      "id": "group_off",
       "trigger": "state",
       "entity_id": "light.table",
-      "from": "on",
       "to": "off"
     },
     {
-      "id": "turned_on",
+      "id": "ha_start",
+      "trigger": "homeassistant",
+      "event": "start"
+    },
+    {
+      "id": "ping_recovered_left",
       "trigger": "state",
-      "entity_id": "light.table",
+      "entity_id": "binary_sensor.192_168_0_195",
       "from": "off",
       "to": "on"
     },
     {
-      "id": "recovered_on",
+      "id": "ping_recovered_right",
       "trigger": "state",
-      "entity_id": "light.table",
-      "from": [
-        "unavailable",
-        "unknown"
+      "entity_id": "binary_sensor.192_168_0_196",
+      "from": "off",
+      "to": "on"
+    },
+    {
+      "id": "bulb_on",
+      "trigger": "state",
+      "entity_id": [
+        "light.table_left",
+        "light.table_right"
       ],
       "to": "on"
     }
@@ -35,8 +45,27 @@
         {
           "conditions": [
             {
-              "condition": "trigger",
-              "id": "turned_off"
+              "condition": "or",
+              "conditions": [
+                {
+                  "condition": "trigger",
+                  "id": "group_off"
+                },
+                {
+                  "condition": "and",
+                  "conditions": [
+                    {
+                      "condition": "trigger",
+                      "id": "ha_start"
+                    },
+                    {
+                      "condition": "state",
+                      "entity_id": "light.table",
+                      "state": "off"
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "sequence": [
@@ -52,23 +81,10 @@
           "conditions": [
             {
               "condition": "trigger",
-              "id": "turned_on"
-            }
-          ],
-          "sequence": [
-            {
-              "action": "input_boolean.turn_off",
-              "target": {
-                "entity_id": "input_boolean.omkar_table_was_off"
-              }
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "condition": "trigger",
-              "id": "recovered_on"
+              "id": [
+                "ping_recovered_left",
+                "ping_recovered_right"
+              ]
             },
             {
               "condition": "state",
@@ -78,32 +94,93 @@
           ],
           "sequence": [
             {
-              "wait_template": "{{ not is_state('light.table_left', 'unavailable') and not is_state('light.table_right', 'unavailable') }}",
-              "timeout": "00:00:20",
-              "continue_on_timeout": true
+              "variables": {
+                "target_bulb": "{{ 'light.table_left' if trigger.id == 'ping_recovered_left' else 'light.table_right' }}"
+              }
+            },
+            {
+              "delay": "00:00:00.500"
             },
             {
               "action": "light.turn_off",
               "target": {
-                "entity_id": "light.table"
-              }
+                "entity_id": "{{ target_bulb }}"
+              },
+              "continue_on_error": true
             },
             {
               "delay": "00:00:02"
             },
             {
+              "action": "light.turn_off",
+              "target": {
+                "entity_id": "{{ target_bulb }}"
+              },
+              "continue_on_error": true
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "condition": "trigger",
+              "id": "bulb_on"
+            },
+            {
+              "condition": "state",
+              "entity_id": "input_boolean.omkar_table_was_off",
+              "state": "on"
+            }
+          ],
+          "sequence": [
+            {
+              "variables": {
+                "ping_sensor": "{{ 'binary_sensor.192_168_0_195' if trigger.entity_id == 'light.table_left' else 'binary_sensor.192_168_0_196' }}",
+                "ha_intentional": "{{ (trigger.to_state.context.user_id is not none or trigger.to_state.context.parent_id is not none) and trigger.to_state.context.id != states.input_boolean.omkar_table_was_off.context.id and trigger.to_state.context.id != this.context.id }}",
+                "was_offline": "{{ (trigger.from_state is not none and trigger.from_state.state in ['unavailable', 'unknown']) or is_state(ping_sensor, 'off') or (states[ping_sensor] is not none and (now() - states[ping_sensor].last_changed).total_seconds() < 25 and (now() - states.automation.omkar_table_power_restore_auto.last_changed).total_seconds() > 25) }}"
+              }
+            },
+            {
               "if": [
                 {
-                  "condition": "state",
-                  "entity_id": "light.table",
-                  "state": "on"
+                  "condition": "template",
+                  "value_template": "{{ not ha_intentional and was_offline }}"
                 }
               ],
               "then": [
                 {
                   "action": "light.turn_off",
                   "target": {
-                    "entity_id": "light.table"
+                    "entity_id": "{{ trigger.entity_id }}"
+                  },
+                  "continue_on_error": true
+                },
+                {
+                  "delay": "00:00:02"
+                },
+                {
+                  "if": [
+                    {
+                      "condition": "template",
+                      "value_template": "{{ is_state(trigger.entity_id, 'on') }}"
+                    }
+                  ],
+                  "then": [
+                    {
+                      "action": "light.turn_off",
+                      "target": {
+                        "entity_id": "{{ trigger.entity_id }}"
+                      },
+                      "continue_on_error": true
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "action": "input_boolean.turn_off",
+                  "target": {
+                    "entity_id": "input_boolean.omkar_table_was_off"
                   }
                 }
               ]
@@ -114,5 +191,5 @@
     }
   ],
   "mode": "queued",
-  "max": 5
+  "max": 10
 }
