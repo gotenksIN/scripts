@@ -1,0 +1,34 @@
+{
+  "id": "omkar_table_ping_watch_auto",
+  "alias": "Omkar Table Ping Watch Auto",
+  "description": "Poll table bulb ICMP reachability every 3s only while table lights are supposed to stay off.",
+  "triggers": [
+    {
+      "trigger": "time_pattern",
+      "seconds": "/3"
+    }
+  ],
+  "conditions": [
+    {
+      "condition": "state",
+      "entity_id": "input_boolean.omkar_table_was_off",
+      "state": "on"
+    }
+  ],
+  "actions": [
+    {
+      "action": "homeassistant.update_entity",
+      "target": {
+        "entity_id": [
+          "binary_sensor.192_168_0_195",
+          "binary_sensor.192_168_0_196"
+        ]
+      }
+    }
+  ],
+  "mode": "single",
+  "max_exceeded": "silent",
+  "trace": {
+    "stored_traces": 1
+  }
+}
