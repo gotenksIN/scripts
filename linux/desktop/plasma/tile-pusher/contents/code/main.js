@@ -1,38 +1,31 @@
-var stateByWindow = {};
+const MAXIMIZE_RESTORE = 0;
+const MAXIMIZE_FULL = 3;
+const windows = new Map();
+var transitioning = false;
 
 function activeWindow() {
     var w = workspace.activeWindow;
     if (!w) return null;
-    if (!w.managed || w.specialWindow) return null;
+    if (!w.managed || w.specialWindow || w.minimized) return null;
     if (!w.resizeable || !w.moveable) return null;
     return w;
 }
 
-function wid(w) {
-    try {
-        return String(w.internalId);
-    } catch (e) {
-        return String(w);
-    }
-}
-
 function isMaximized(w) {
-    return w.maximizeMode === KWin.MaximizeFull;
+    return w.maximizeMode === MAXIMIZE_FULL;
 }
 
 function getState(w) {
-    if (isMaximized(w)) {
-        return "MAX";
-    }
-    return stateByWindow[wid(w)] || detectState(w);
+    watchWindow(w);
+    return windows.get(w).state || detectState(w);
 }
 
 function setState(w, s) {
-    stateByWindow[wid(w)] = s;
+    windows.get(w).state = s;
 }
 
 function clearState(w) {
-    delete stateByWindow[wid(w)];
+    windows.delete(w);
 }
 
 function stateFromRelativeGeometry(rect) {
@@ -68,15 +61,33 @@ function detectState(w) {
     });
 }
 
-function syncState(w) {
-    setState(w, detectState(w));
+function watchWindow(w) {
+    if (!w || !w.managed || w.specialWindow) return;
+    if (windows.has(w) && windows.get(w).watched) return;
+    const ctx = { state: null, preMaxState: null, watched: true };
+    windows.set(w, ctx);
+    function invalidate() {
+        if (!transitioning) {
+            ctx.state = null;
+            ctx.preMaxState = null;
+        }
+    }
+    w.interactiveMoveResizeFinished.connect(invalidate);
+    w.outputChanged.connect(invalidate);
+    w.tileChanged.connect(invalidate);
+    w.maximizedChanged.connect(invalidate);
+    w.closed.connect(function() { clearState(w); });
 }
 
-function watchWindow(w) {
-    syncState(w);
-    w.maximizedChanged.connect(function() { syncState(w); });
-    w.tileChanged.connect(function() { syncState(w); });
-    w.frameGeometryChanged.connect(function() { syncState(w); });
+function transition(handler) {
+    return function() {
+        transitioning = true;
+        try {
+            handler();
+        } finally {
+            transitioning = false;
+        }
+    };
 }
 
 function maximizeArea(w) {
@@ -90,7 +101,7 @@ function placeWindow(w, x, y, width, height) {
     rect.width = width;
     rect.height = height;
 
-    if (isMaximized(w)) {
+    if (w.maximizeMode !== MAXIMIZE_RESTORE) {
         w.setMaximize(false, false);
     }
     if (w.tile) {
@@ -134,10 +145,15 @@ function tileBottomLeft() {
 function tileBottomRight() {
     workspace.slotWindowQuickTileBottomRight();
 }
-function toggleMaximize() {
-    workspace.slotWindowMaximize();
+function maximizeWindow(maximize) {
+    var w = activeWindow();
+    if (!w || !w.maximizable) return;
+    w.setMaximize(maximize, maximize);
+    setState(w, maximize ? "MAX" : "FLOAT");
 }
 function minimize() {
+    var w = activeWindow();
+    if (!w || !w.minimizable) return;
     workspace.slotWindowMinimize();
 }
 
@@ -152,7 +168,7 @@ function onUp() {
     }
 
     if (s === "TOP" || s === "TL" || s === "TR") {
-        toggleMaximize();
+        maximizeWindow(true);
         return;
     }
 
@@ -185,7 +201,7 @@ function onDown() {
     var s = getState(w);
 
     if (s === "MAX") {
-        toggleMaximize();
+        maximizeWindow(false);
         return;
     }
 
@@ -269,28 +285,28 @@ registerShortcut(
     "Cinnamon Push Tile Up",
     "Cinnamon-style push tiling up",
     "",
-    onUp
+    transition(onUp)
 );
 
 registerShortcut(
     "Cinnamon Push Tile Down",
     "Cinnamon-style push tiling down",
     "",
-    onDown
+    transition(onDown)
 );
 
 registerShortcut(
     "Cinnamon Push Tile Left",
     "Cinnamon-style push tiling left",
     "",
-    onLeft
+    transition(onLeft)
 );
 
 registerShortcut(
     "Cinnamon Push Tile Right",
     "Cinnamon-style push tiling right",
     "",
-    onRight
+    transition(onRight)
 );
 
 workspace.windowRemoved.connect(function(w) {
