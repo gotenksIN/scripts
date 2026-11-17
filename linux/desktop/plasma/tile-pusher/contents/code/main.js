@@ -29,12 +29,12 @@ function clearState(w) {
 }
 
 function stateFromRelativeGeometry(rect) {
-    var left = rect.x <= 0.1;
-    var right = rect.x + rect.width >= 0.9;
-    var top = rect.y <= 0.1;
-    var bottom = rect.y + rect.height >= 0.9;
-    var halfWidth = rect.width >= 0.35 && rect.width <= 0.65;
-    var halfHeight = rect.height >= 0.35 && rect.height <= 0.65;
+    var left = rect.x <= 0.01;
+    var right = rect.x + rect.width >= 0.99;
+    var top = rect.y <= 0.01;
+    var bottom = rect.y + rect.height >= 0.99;
+    var halfWidth = rect.width >= 0.05 && rect.width <= 0.95;
+    var halfHeight = rect.height >= 0.05 && rect.height <= 0.95;
 
     if (left && right && top && halfHeight) return "TOP";
     if (left && right && bottom && halfHeight) return "BOTTOM";
@@ -44,21 +44,13 @@ function stateFromRelativeGeometry(rect) {
     if (right && top && halfWidth && halfHeight) return "TR";
     if (left && bottom && halfWidth && halfHeight) return "BL";
     if (right && bottom && halfWidth && halfHeight) return "BR";
-    return "FLOAT";
+    return "CUSTOM";
 }
 
 function detectState(w) {
     if (isMaximized(w)) return "MAX";
-    if (w.tile) return stateFromRelativeGeometry(w.tile.relativeGeometry);
-
-    var area = maximizeArea(w);
-    var geometry = w.frameGeometry;
-    return stateFromRelativeGeometry({
-        x: (geometry.x - area.x) / area.width,
-        y: (geometry.y - area.y) / area.height,
-        width: geometry.width / area.width,
-        height: geometry.height / area.height
-    });
+    if (!w.tile) return "FLOAT";
+    return stateFromRelativeGeometry(w.tile.relativeGeometry);
 }
 
 function watchWindow(w) {
@@ -90,60 +82,61 @@ function transition(handler) {
     };
 }
 
-function maximizeArea(w) {
-    return workspace.clientArea(KWin.MaximizeArea, w);
+function untileToFloat(w) {
+    const out = w.output;
+    if (w.tile) w.tile.unmanage(w);
+    // Restore can change the pending output before Wayland updates w.output.
+    workspace.sendClientToScreen(w, out);
 }
 
-function placeWindow(w, x, y, width, height) {
-    var rect = maximizeArea(w);
-    rect.x = x;
-    rect.y = y;
-    rect.width = width;
-    rect.height = height;
-
-    if (w.maximizeMode !== MAXIMIZE_RESTORE) {
-        w.setMaximize(false, false);
+function applyQuickTile(w, targetState, allowCrossMonitorWrap) {
+    const slots = {
+        LEFT: "slotWindowQuickTileLeft",
+        RIGHT: "slotWindowQuickTileRight",
+        TOP: "slotWindowQuickTileTop",
+        BOTTOM: "slotWindowQuickTileBottom",
+        TL: "slotWindowQuickTileTopLeft",
+        TR: "slotWindowQuickTileTopRight",
+        BL: "slotWindowQuickTileBottomLeft",
+        BR: "slotWindowQuickTileBottomRight"
+    };
+    const source = getState(w);
+    const cornerToHalf =
+        ((source === "TL" || source === "BL") && targetState === "LEFT") ||
+        ((source === "TR" || source === "BR") && targetState === "RIGHT") ||
+        ((source === "TL" || source === "TR") && targetState === "TOP") ||
+        ((source === "BL" || source === "BR") && targetState === "BOTTOM");
+    if (w.maximizeMode !== MAXIMIZE_RESTORE) w.setMaximize(false, false);
+    if (w.tile !== null && (cornerToHalf ||
+        (source === targetState && !allowCrossMonitorWrap))) {
+        untileToFloat(w);
     }
-    if (w.tile) {
-        w.tile.unmanage(w);
-    }
-
-    w.frameGeometry = rect;
+    workspace[slots[targetState]]();
 }
 
 function tileTop() {
-    workspace.slotWindowQuickTileTop();
+    applyQuickTile(activeWindow(), "TOP", false);
 }
 function tileBottom() {
-    workspace.slotWindowQuickTileBottom();
+    applyQuickTile(activeWindow(), "BOTTOM", false);
 }
 function tileLeft() {
-    var w = activeWindow();
-    if (!w) return;
-
-    var area = maximizeArea(w);
-    var split = Math.round(area.x + area.width / 2);
-    placeWindow(w, area.x, area.y, split - area.x, area.height);
+    applyQuickTile(activeWindow(), "LEFT", false);
 }
 function tileRight() {
-    var w = activeWindow();
-    if (!w) return;
-
-    var area = maximizeArea(w);
-    var split = Math.round(area.x + area.width / 2);
-    placeWindow(w, split, area.y, area.x + area.width - split, area.height);
+    applyQuickTile(activeWindow(), "RIGHT", false);
 }
 function tileTopLeft() {
-    workspace.slotWindowQuickTileTopLeft();
+    applyQuickTile(activeWindow(), "TL", false);
 }
 function tileTopRight() {
-    workspace.slotWindowQuickTileTopRight();
+    applyQuickTile(activeWindow(), "TR", false);
 }
 function tileBottomLeft() {
-    workspace.slotWindowQuickTileBottomLeft();
+    applyQuickTile(activeWindow(), "BL", false);
 }
 function tileBottomRight() {
-    workspace.slotWindowQuickTileBottomRight();
+    applyQuickTile(activeWindow(), "BR", false);
 }
 function maximizeWindow(maximize) {
     var w = activeWindow();
