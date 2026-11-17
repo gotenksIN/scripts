@@ -1,6 +1,22 @@
 const MAXIMIZE_RESTORE = 0;
 const MAXIMIZE_FULL = 3;
 const windows = new Map();
+const topBottomHalves = readConfig("topBottomHalves", false);
+const crossMonitorWrap = readConfig("crossMonitorWrap", true);
+const debug = readConfig("debug", false);
+const TRANSITIONS = {
+    FLOAT: { Up: "MAX", Down: "MINIMIZE", Left: "LEFT", Right: "RIGHT" },
+    MAX: { Up: null, Down: "RESTORE", Left: "LEFT", Right: "RIGHT" },
+    LEFT: { Up: "TL", Down: "BL", Left: "WRAP", Right: "FLOAT" },
+    RIGHT: { Up: "TR", Down: "BR", Left: "FLOAT", Right: "WRAP" },
+    TOP: { Up: "MAX", Down: "FLOAT", Left: "TL", Right: "TR" },
+    BOTTOM: { Up: "FLOAT", Down: "MINIMIZE", Left: "BL", Right: "BR" },
+    TL: { Up: "MAX", Down: "LEFT", Left: "WRAP", Right: "FLOAT" },
+    TR: { Up: "MAX", Down: "RIGHT", Left: "FLOAT", Right: "WRAP" },
+    BL: { Up: "LEFT", Down: "MINIMIZE", Left: "WRAP", Right: "FLOAT" },
+    BR: { Up: "RIGHT", Down: "MINIMIZE", Left: "FLOAT", Right: "WRAP" },
+    CUSTOM: { Up: "MAX", Down: "FLOAT", Left: "LEFT", Right: "RIGHT" }
+};
 var transitioning = false;
 
 function activeWindow() {
@@ -18,10 +34,6 @@ function isMaximized(w) {
 function getState(w) {
     watchWindow(w);
     return windows.get(w).state || detectState(w);
-}
-
-function setState(w, s) {
-    windows.get(w).state = s;
 }
 
 function clearState(w) {
@@ -59,7 +71,7 @@ function watchWindow(w) {
     const ctx = { state: null, preMaxState: null, watched: true };
     windows.set(w, ctx);
     function invalidate() {
-        if (!transitioning) {
+        if (!transitioning && detectState(w) !== ctx.state) {
             ctx.state = null;
             ctx.preMaxState = null;
         }
@@ -114,197 +126,103 @@ function applyQuickTile(w, targetState, allowCrossMonitorWrap) {
     workspace[slots[targetState]]();
 }
 
-function tileTop() {
-    applyQuickTile(activeWindow(), "TOP", false);
-}
-function tileBottom() {
-    applyQuickTile(activeWindow(), "BOTTOM", false);
-}
-function tileLeft() {
-    applyQuickTile(activeWindow(), "LEFT", false);
-}
-function tileRight() {
-    applyQuickTile(activeWindow(), "RIGHT", false);
-}
-function tileTopLeft() {
-    applyQuickTile(activeWindow(), "TL", false);
-}
-function tileTopRight() {
-    applyQuickTile(activeWindow(), "TR", false);
-}
-function tileBottomLeft() {
-    applyQuickTile(activeWindow(), "BL", false);
-}
-function tileBottomRight() {
-    applyQuickTile(activeWindow(), "BR", false);
-}
-function maximizeWindow(maximize) {
-    var w = activeWindow();
-    if (!w || !w.maximizable) return;
-    w.setMaximize(maximize, maximize);
-    setState(w, maximize ? "MAX" : "FLOAT");
-}
-function minimize() {
-    var w = activeWindow();
-    if (!w || !w.minimizable) return;
-    workspace.slotWindowMinimize();
+function applyTarget(w, target, wrap) {
+    const source = getState(w);
+    const ctx = windows.get(w);
+    if (target === "MINIMIZE") {
+        if (w.minimizable) workspace.slotWindowMinimize();
+        return;
+    }
+    if (target === "MAX") {
+        if (!w.maximizable) return;
+        ctx.preMaxState = source;
+        w.setMaximize(true, true);
+    } else {
+        // Cancel pending maximization even before the client acknowledges it.
+        w.setMaximize(false, false);
+        if (target === "FLOAT") {
+            untileToFloat(w);
+        } else {
+            applyQuickTile(w, target, wrap);
+        }
+        ctx.preMaxState = null;
+    }
+    // Native wrap can move to the opposite edge of the adjacent output.
+    ctx.state = wrap ? detectState(w) : target;
+    if (debug) console.info("push-tiles: " + source + " -> " + ctx.state);
 }
 
-function onUp() {
-    var w = activeWindow();
+function push(direction) {
+    const w = activeWindow();
     if (!w) return;
-
-    var s = getState(w);
-
-    if (s === "MAX") {
-        return;
+    const source = getState(w);
+    let target = TRANSITIONS[source][direction];
+    if (topBottomHalves && source === "FLOAT") {
+        if (direction === "Up") target = "TOP";
+        if (direction === "Down") target = "BOTTOM";
     }
-
-    if (s === "TOP" || s === "TL" || s === "TR") {
-        maximizeWindow(true);
-        return;
+    if (!target) return;
+    const wrap = target === "WRAP";
+    if (wrap) {
+        if (!crossMonitorWrap) return;
+        target = source;
     }
-
-    if (s === "LEFT" || s === "BL") {
-        tileTopLeft();
-        setState(w, "TL");
-        return;
+    if (target === "RESTORE") {
+        const previous = windows.get(w).preMaxState;
+        target = previous === "TL" || previous === "TR" || previous === "TOP"
+            ? previous : "FLOAT";
     }
-
-    if (s === "RIGHT" || s === "BR") {
-        tileTopRight();
-        setState(w, "TR");
-        return;
-    }
-
-    if (s === "BOTTOM") {
-        tileTop();
-        setState(w, "TOP");
-        return;
-    }
-
-    tileTop();
-    setState(w, "TOP");
-}
-
-function onDown() {
-    var w = activeWindow();
-    if (!w) return;
-
-    var s = getState(w);
-
-    if (s === "MAX") {
-        maximizeWindow(false);
-        return;
-    }
-
-    if (s === "BOTTOM" || s === "BL" || s === "BR") {
-        minimize();
-        return;
-    }
-
-    if (s === "TOP" || s === "FLOAT") {
-        tileBottom();
-        setState(w, "BOTTOM");
-        return;
-    }
-
-    if (s === "LEFT" || s === "TL") {
-        tileBottomLeft();
-        setState(w, "BL");
-        return;
-    }
-
-    if (s === "RIGHT" || s === "TR") {
-        tileBottomRight();
-        setState(w, "BR");
-        return;
-    }
-}
-
-function onLeft() {
-    var w = activeWindow();
-    if (!w) return;
-
-    var s = getState(w);
-
-    if (s === "LEFT") {
-        return;
-    }
-
-    if (s === "TOP" || s === "TR") {
-        tileTopLeft();
-        setState(w, "TL");
-        return;
-    }
-
-    if (s === "BOTTOM" || s === "BR") {
-        tileBottomLeft();
-        setState(w, "BL");
-        return;
-    }
-
-    tileLeft();
-    setState(w, "LEFT");
-}
-
-function onRight() {
-    var w = activeWindow();
-    if (!w) return;
-
-    var s = getState(w);
-
-    if (s === "RIGHT") {
-        return;
-    }
-
-    if (s === "TOP" || s === "TL") {
-        tileTopRight();
-        setState(w, "TR");
-        return;
-    }
-
-    if (s === "BOTTOM" || s === "BL") {
-        tileBottomRight();
-        setState(w, "BR");
-        return;
-    }
-
-    tileRight();
-    setState(w, "RIGHT");
+    applyTarget(w, target, wrap);
 }
 
 registerShortcut(
     "Cinnamon Push Tile Up",
     "Cinnamon-style push tiling up",
     "",
-    transition(onUp)
+    transition(function() { push("Up"); })
 );
 
 registerShortcut(
     "Cinnamon Push Tile Down",
     "Cinnamon-style push tiling down",
     "",
-    transition(onDown)
+    transition(function() { push("Down"); })
 );
 
 registerShortcut(
     "Cinnamon Push Tile Left",
     "Cinnamon-style push tiling left",
     "",
-    transition(onLeft)
+    transition(function() { push("Left"); })
 );
 
 registerShortcut(
     "Cinnamon Push Tile Right",
     "Cinnamon-style push tiling right",
     "",
-    transition(onRight)
+    transition(function() { push("Right"); })
 );
 
-workspace.windowRemoved.connect(function(w) {
-    clearState(w);
-});
+registerShortcut(
+    "Cinnamon Push Tile Top Half",
+    "Snap window to the top half",
+    "",
+    transition(function() {
+        const w = activeWindow();
+        if (w) applyTarget(w, "TOP", false);
+    })
+);
 
+registerShortcut(
+    "Cinnamon Push Tile Bottom Half",
+    "Snap window to the bottom half",
+    "",
+    transition(function() {
+        const w = activeWindow();
+        if (w) applyTarget(w, "BOTTOM", false);
+    })
+);
+
+workspace.windowRemoved.connect(clearState);
 workspace.windowAdded.connect(watchWindow);
 workspace.windowList().forEach(watchWindow);

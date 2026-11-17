@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PushTilesConfig</class>
+ <widget class="QWidget" name="PushTilesConfig">
+  <layout class="QVBoxLayout" name="layout">
+   <item>
+    <widget class="QCheckBox" name="kcfg_topBottomHalves">
+     <property name="text">
+      <string>Use top and bottom halves before maximizing or minimizing</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_crossMonitorWrap">
+     <property name="text">
+      <string>Move to the adjacent monitor when you push the same edge again</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_debug">
+     <property name="text">
+      <string>Log tiling transitions</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="restartNotice">
+     <property name="text">
+      <string>Disable and re-enable the script after you apply changes.</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
