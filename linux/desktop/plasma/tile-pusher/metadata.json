@@ -2,8 +2,9 @@
   "KPlugin": {
     "Id": "push-tiles",
     "Name": "Windows-style Push Tiling",
-    "Description": "Directional push tiling similar to Windows.",
-    "Version": "1.1.1",
+    "Description": "Windows 11-style directional push tiling.",
+    "Icon": "preferences-system-windows",
+    "Version": "1.2.0",
     "License": "GPL-3.0-or-later",
     "Authors": [
       {
@@ -13,6 +14,5 @@
   },
   "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
   "X-Plasma-API": "javascript",
-  "X-Plasma-MainScript": "code/main.js",
   "KPackageStructure": "KWin/Script"
 }
