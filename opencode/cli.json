@@ -10,7 +10,6 @@
     "sidebar": "hide",
     "grouping": "auto",
     "new_location": "launch",
-    "terminal": false,
     "permissions": "prompt",
     "verbosity": "high",
     "tps": true
@@ -34,6 +33,7 @@
   "keybinds": {
     "session.first": "ctrl+q",
     "session.last": "ctrl+e",
+    "input.line.end": "none",
     "input.buffer.home": "home",
     "input.buffer.end": "end",
     "prompt.queue": "ctrl+enter"
