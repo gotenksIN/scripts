@@ -88,7 +88,7 @@
   Tell depth-2 children that they cannot delegate.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
-- Pass the parent session ID in the prompt when a subagent may need mid-run IPC with the parent.
+- Always pass your session ID (`ses_...`) as the parent session ID in every subagent delegation prompt so children can initiate IPC as needed.
 - When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
   Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
 - Subagents deliver their turn results to their parent automatically via `<subagent>` idle reports; do not duplicate normal completion reports over IPC.
@@ -135,11 +135,9 @@ Use inter-agent messaging (IPC) for actionable mid-run findings, blockers, decis
   If cloning fails, fall back to `webfetch`.
 - Prefer `7z` for listing, testing, and extracting archives.
   Do not use `unzip` or `tar` when `7z` supports the archive format; use another tool only when `7z` is unavailable or incompatible, and state why.
-- When running grilling workflows (`grill-me`, `grill-with-docs`, `grilling`) or presenting decision frontiers, use the `question` tool instead of plain text.
-  - Present each frontier question as an entry in the `questions` array.
-  - Provide structured options for each choice when possible.
-  - Place your recommended option first with `(Recommended)` appended to the label.
-  - Set `multiple: true` when multiple choices apply.
+- In interactive sessions where `question` is available, use it for grilling workflows (`grill-me`, `grill-with-docs`, `grilling`) and decision frontiers.
+  Use one entry per question and provide structured options when possible.
+  Subagents escalate blocking questions to the supplied parent session ID over IPC with `DECISION NEEDED:` (or report the blocker in their response if no parent ID was provided).
 - Delete temporary files, directories, and clones you create when the task ends, including after failure.
 
 ## Git Workflow
