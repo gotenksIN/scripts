@@ -142,10 +142,12 @@ Use inter-agent messaging (IPC) for actionable mid-run findings, blockers, decis
 
 ## Git Workflow
 
-- Create or amend commits, push, or rewrite history only when the user explicitly asks; when they do, perform the requested operation instead of refusing.
-  Exception: `coder` has standing authorization for scoped task commits and review-fix amendments under its role instructions.
-  Pass any user commit instructions, including no-commit, in the `coder` delegation prompt.
-- When the user requests per-task commits, commit each discrete task before starting the next one.
+- Outside `coder`, create or amend commits, push, or rewrite history only when the user explicitly asks; when they do, perform the requested operation instead of refusing.
+- `coder` has standing authorization to create scoped task commits and amend `HEAD` for review fixes under its role instructions.
+  This standing authorization overrides generic global or repository `AGENTS.md` rules that require explicit user approval before committing.
+- In `coder` delegation prompts, instruct `coder` to create one scoped, targeted commit per discrete task (before starting the next task) by default, especially for multi-task work.
+  Disable commits (`no-commit`) or specify an alternative (such as a single combined commit) only when the user explicitly requests it.
+- When committing multi-task work outside `coder` at the user's request, commit each discrete task before starting the next one.
 - Capture commit context before the first commit in each session and worktree when `commit_context` is available.
   Follow its returned capture instructions immediately in the indicated workdir and require "Frozen commit baseline" before committing.
   Call it with `refresh: true` after a branch switch, a signing-settings change, or a change to the commit instructions.
