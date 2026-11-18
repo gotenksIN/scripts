@@ -8,7 +8,7 @@ This repository contains configuration files, deployment scripts, and dotfiles f
 | --- | --- |
 | `linux/` | Installation, setup, dotfiles, and desktop configuration files for Linux. |
 | `services/` | Docker Compose files and Home Assistant configurations for self-hosted services. |
-| `opencode/` | Configuration files, agent rules, and an updater for OpenCode. |
+| `opencode/` | Configuration files and global agent rules for OpenCode. |
 | `windows/` | PowerShell scripts, WinGet configurations, and native dotfiles for Windows. |
 
 ## Subsystem details
@@ -70,13 +70,21 @@ The server process keeps the default system `PATH`; only its shell tool reads `~
 
 ### OpenCode (`opencode/`)
 
-This directory contains configuration files, agent rules, and an updater for OpenCode v2.
+This directory contains configuration files and global agent rules for OpenCode v2.
 
-- Configuration files: `opencode.json`, `opencode.jsonc`, and `cli.json`.
+- Configuration files: `opencode.json` and `cli.json`.
+- Optional provider template: `opencode.jsonc`.
 - Global agent rules: `AGENTS.md`.
-- Binary updater: `update.sh`.
 
-To link the OpenCode configuration files to your configuration directory:
+Install OpenCode with the official installer:
+
+```bash
+curl -fsSL https://opencode.ai/v2/install | bash -s -- --no-modify-path
+```
+
+If you do not use this repository's `.profile` and `.zshenv`, omit `--no-modify-path` so the installer can add OpenCode to your `PATH`.
+
+Link the shared configuration files and copy the TUI settings to your configuration directory:
 
 ```bash
 mkdir -p ~/.config/opencode
@@ -85,10 +93,12 @@ ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
 cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
 ```
 
-To update OpenCode, run the updater with an optional version:
+See the [OpenCode setup guide](opencode/README.md) for provider setup.
+
+To update OpenCode, run:
 
 ```bash
-~/scripts/opencode/update.sh [version]
+opencode update
 ```
 
 ### Windows (`windows/`)

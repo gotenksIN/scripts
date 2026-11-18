@@ -10,7 +10,7 @@ Keep your API keys and credentials local; do not commit them to the repository.
 | --- | --- | --- |
 | `AGENTS.md` | Global agent instructions and workflow rules | Symlink at `~/.config/opencode/AGENTS.md` |
 | `opencode.json` | Global configuration: plugins, subagents, and web search | Symlink at `~/.config/opencode/opencode.json` |
-| `opencode.jsonc` | Provider configuration template with placeholders | Copied to `~/.config/opencode/opencode.jsonc` when using custom provider settings |
+| `opencode.jsonc` | Optional template for custom provider URLs or static API keys | Optional copy at `~/.config/opencode/opencode.jsonc` |
 | `cli.json` | TUI settings: themes, keybindings, and diff displays | Copied to `~/.config/opencode/cli.json` |
 | `README.md` | Setup and maintenance guide | Not installed |
 
@@ -23,8 +23,10 @@ Follow these steps to set up OpenCode on a fresh installation.
 Run the installer to download and install the OpenCode binary into `~/.opencode/bin/`:
 
 ```sh
-curl -fsSL https://opencode.ai/v2/install | bash
+curl -fsSL https://opencode.ai/v2/install | bash -s -- --no-modify-path
 ```
+
+If you do not use this repository's `.profile` and `.zshenv`, omit `--no-modify-path` so the installer can add OpenCode to your `PATH`.
 
 ### 2. Link the configuration files
 
@@ -34,15 +36,21 @@ Create the configuration directory, symlink the shared files, and copy the local
 mkdir -p ~/.config/opencode
 ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
 ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
-cp ~/scripts/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
 ```
 
 If `~/scripts` is not present, ignore the symlink step and download the configuration files directly from Git.
 
-Copy `opencode.jsonc` and `cli.json` instead of symlinking them.
-Replace the `xxxx` placeholders in `~/.config/opencode/opencode.jsonc` with your local base URLs and API keys, or connect providers interactively with `/connect`.
-OpenCode writes interactive settings changes directly to `cli.json`.
+Copy `cli.json` instead of symlinking it because OpenCode writes interactive settings changes directly to this file.
+
+After you start OpenCode, connect your providers with `/connect`.
+Use a Google API key for `opencode-websearch-addons`; the plugin rejects Google OAuth credentials.
+
+If you need a custom `baseURL` or static `apiKey`, copy the optional `opencode.jsonc` template to `~/.config/opencode/opencode.jsonc`.
+Delete or comment out unused provider blocks because each block enables its provider.
+Replace the placeholders for the settings you need.
+Omit `baseURL` to use the provider's default endpoint.
+Omit `apiKey` if you use `/connect` for credentials.
 
 Do not copy `~/.config/opencode/service.json` between machines.
 OpenCode generates `service.json` automatically and stores the local service password inside it.
@@ -99,7 +107,7 @@ Run OpenCode once to start the background service:
 opencode
 ```
 
-The service downloads and installs configured plugins in the background into `~/.cache/opencode/packages/`.
+The service downloads and installs configured plugins in the background into `~/.cache/opencode/npm/`.
 
 ### 5. Configure WSL2 (optional)
 
@@ -112,10 +120,10 @@ Verify that OpenCode and its services run correctly:
 ```sh
 opencode models
 opencode service status
-opencode api get /api/health
+opencode api get /api/info
 ```
 
-Confirm that the subagents `coder`, `reasoner`, `explore`, and `general` appear in the TUI.
+Confirm that the subagents `coder`, `code-reviewer`, `reasoner`, `explore`, and `general` appear in the TUI.
 Confirm that `setup-matt-pocock-skills` appears in the skills list.
 
 ## Skills
@@ -162,6 +170,7 @@ opencode reload
 ### Image paste
 
 Press `Ctrl+V` to paste images directly into the TUI prompt.
+You need WSLg Wayland (`WAYLAND_DISPLAY` or `/mnt/wslg/runtime-dir`, plus `libwayland-client.so.0`) because WSLg does not pass clipboard images over X11.
 WSLg passes images copied in Windows as BMP format.
 The TUI converts them to PNG automatically.
 
