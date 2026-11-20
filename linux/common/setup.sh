@@ -67,9 +67,56 @@ copy_dotfiles() {
     done
 }
 
+setup_opencode() {
+    local opencode_dir="$repo_dir/opencode"
+
+    export BUN_INSTALL="$HOME/.local"
+    export PATH="$HOME/.opencode/bin:$HOME/.local/bin:$PATH"
+
+    if ! command -v opencode >/dev/null 2>&1; then
+        curl -fsSL https://opencode.ai/v2/install | bash -s -- --no-modify-path
+    fi
+
+    mkdir -p "$HOME/.config/opencode"
+    ln -sf "$opencode_dir/AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
+    ln -sf "$opencode_dir/opencode.json" "$HOME/.config/opencode/opencode.json"
+    [[ -e "$HOME/.config/opencode/cli.json" ]] || cp "$opencode_dir/cli.json" "$HOME/.config/opencode/cli.json"
+
+    if ! command -v bun >/dev/null 2>&1; then
+        curl -fsSL https://bun.sh/install | bash
+    fi
+
+    bun install -g skills@latest
+    ln -sf "$HOME/.local/bin/bun" "$HOME/.local/bin/node"
+
+    skills add mattpocock/skills --skill '*' --global --agent universal --yes
+    skills add dmmulroy/anti-slop --skill install-anti-slop --global --agent universal --yes
+
+    if [[ ! -e "$HOME/.config/topgrade.toml" ]]; then
+        cat <<'EOF' >"$HOME/.config/topgrade.toml"
+[misc]
+disable = ["github_cli_skills"]
+EOF
+    fi
+
+    if [[ -n "${WSL_DISTRO_NAME:-}" ]]; then
+        opencode service set port 4096
+    fi
+
+    opencode service start
+    opencode models
+    opencode service status
+    opencode api get /api/info
+}
+
 setup_zsh
 copy_dotfiles
 bake_paths
+
+read -r -e -p "Install OpenCode? [Y/n]: " input
+if [[ ! "$input" =~ ^[Nn]$ ]]; then
+    setup_opencode
+fi
 
 if (( $# > 0 )); then
     add_distro_alias "$1"

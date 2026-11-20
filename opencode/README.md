@@ -16,34 +16,23 @@ Keep your API keys and credentials local; do not commit them to the repository.
 
 ## Setup on a fresh machine
 
-Follow these steps to set up OpenCode on a fresh installation.
-
-### 1. Install OpenCode
-
-Run the installer to download and install the OpenCode binary into `~/.opencode/bin/`:
+Run `linux/common/setup.sh` (or your distribution's setup script, which calls it) and accept the OpenCode prompt:
 
 ```sh
-curl -fsSL https://opencode.ai/v2/install | bash -s -- --no-modify-path
+bash ~/scripts/linux/common/setup.sh
 ```
 
-If you do not use this repository's `.profile` and `.zshenv`, omit `--no-modify-path` so the installer can add OpenCode to your `PATH`.
+The setup script handles installation and configuration:
 
-### 2. Link the configuration files
+- Installs OpenCode into `~/.opencode/bin/` with `--no-modify-path`.
+- Symlinks `AGENTS.md` and `opencode.json` into `~/.config/opencode/`, and copies `cli.json` when absent.
+- Installs Bun into `~/.local/bin/`, installs `skills@latest` globally, symlinks `~/.local/bin/node`, and installs Matt Pocock's skills and `install-anti-slop` into `~/.agents/skills/`.
+- Disables Topgrade's `github_cli_skills` step in `~/.config/topgrade.toml` when absent.
+- Sets the service port to `4096` on WSL2, starts the background service, and verifies the installation.
 
-Create the configuration directory, symlink the shared files, and copy the local settings:
+### Manual steps after setup
 
-```sh
-mkdir -p ~/.config/opencode
-ln -sf ~/scripts/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-ln -sf ~/scripts/opencode/opencode.json ~/.config/opencode/opencode.json
-cp ~/scripts/opencode/cli.json ~/.config/opencode/cli.json
-```
-
-If `~/scripts` is not present, ignore the symlink step and download the configuration files directly from Git.
-
-Copy `cli.json` instead of symlinking it because OpenCode writes interactive settings changes directly to this file.
-
-After you start OpenCode, connect your providers with `/connect`.
+Start `opencode` and connect your providers with `/connect`.
 Use a Google API key for `opencode-websearch-addons`; the plugin rejects Google OAuth credentials.
 
 If you need a custom `baseURL` or static `apiKey`, copy the optional `opencode.jsonc` template to `~/.config/opencode/opencode.jsonc`.
@@ -55,76 +44,11 @@ Omit `apiKey` if you use `/connect` for credentials.
 Do not copy `~/.config/opencode/service.json` between machines.
 OpenCode generates `service.json` automatically and stores the local service password inside it.
 
-### 3. Install global skills
-
-OpenCode loads global agent skills from `~/.agents/skills/`.
-Install Bun if you do not have it:
-
-```sh
-curl -fsSL https://bun.sh/install | bash
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-```
-
-Install the `skills` CLI globally and symlink `node` and `skills` into `~/.local/bin` so Topgrade can run `skills update --global` in non-interactive shells:
-
-```sh
-bun install -g skills@latest
-ln -sf ~/.bun/bin/bun ~/.local/bin/node
-ln -sf ~/.bun/bin/skills ~/.local/bin/skills
-```
-
-Install Matt Pocock's skills and the anti-slop linting skill:
-
-```sh
-skills add mattpocock/skills --skill '*' --global --agent opencode --yes
-skills add dmmulroy/anti-slop --skill install-anti-slop --global --agent opencode --yes
-```
-
-The `--global` flag installs skills into `~/.agents/skills/`.
-The `--agent opencode` flag targets OpenCode and avoids writing copies to other agent directories.
-OpenCode watches `~/.agents/skills/` and detects added skills automatically.
-
-Disable the Topgrade GitHub CLI skills step in `~/.config/topgrade.toml`:
-
-```toml
-[misc]
-disable = ["github_cli_skills"]
-```
-
-The `skills` CLI owns `~/.agents/skills/`, and the Topgrade `skills` step updates it.
-`gh skill update` cannot update skills that another tool installed.
-It prints a "has no GitHub metadata" warning for each skill.
-
-If you reinstall Bun, run this step again.
-Reinstalling Bun removes global packages, so `skills` disappears and Topgrade skips the update.
-
-### 4. Start OpenCode
-
-Run OpenCode once to start the background service:
-
-```sh
-opencode
-```
-
-The service downloads and installs configured plugins in the background into `~/.cache/opencode/npm/`.
-
-### 5. Configure WSL2 (optional)
-
-If you run on WSL2, apply the configuration notes in the [WSL2 considerations](#wsl2-considerations) section.
-
-### 6. Verify the installation
-
-Verify that OpenCode and its services run correctly:
-
-```sh
-opencode models
-opencode service status
-opencode api get /api/info
-```
-
-Confirm that the subagents `coder`, `code-reviewer`, `reasoner`, `explore`, and `general` appear in the TUI.
+In the TUI, confirm that the subagents `coder`, `code-reviewer`, `reasoner`, `explore`, and `general` appear.
 Confirm that `setup-matt-pocock-skills` appears in the skills list.
+
+If you reinstall Bun, reinstall the global `skills` CLI with `bun install -g skills@latest`.
+Reinstalling Bun removes global packages, so `skills` disappears and Topgrade skips the update.
 
 ## Skills
 
@@ -177,17 +101,7 @@ The TUI converts them to PNG automatically.
 ### Service port for mirrored networking
 
 WSL2 mirrored networking reserves the dynamic port range 49152-65535 on Windows.
-Keep the OpenCode service port below 49152:
-
-```sh
-opencode service set port 4096
-```
-
-### Shell PATH
-
-OpenCode Desktop and Topgrade start WSL commands without an interactive shell.
-`linux/common/setup.sh` installs a `~/.profile` and `~/.zshenv` that add `~/.opencode/bin` to `PATH` for these shells.
-Refer to the [Linux shell PATH](../README.md#shell-path) section for details.
+`linux/common/setup.sh` sets the OpenCode service port to `4096` automatically on WSL2 so it stays below that range.
 
 ## Troubleshooting
 
