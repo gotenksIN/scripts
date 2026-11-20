@@ -27,7 +27,7 @@ The setup script handles installation and configuration:
 - Installs OpenCode into `~/.opencode/bin/` with `--no-modify-path`.
 - Symlinks `AGENTS.md` and `opencode.json` into `~/.config/opencode/`, and copies `cli.json` when absent.
 - Installs Bun into `~/.local/bin/`, installs `skills@latest` globally, symlinks `~/.local/bin/node`, and installs Matt Pocock's skills and `install-anti-slop` into `~/.agents/skills/`.
-- Disables Topgrade's `github_cli_skills` step in `~/.config/topgrade.toml` when absent.
+- Disables Topgrade's `github_cli_skills` step in `~/.config/topgrade.d/skills.toml`.
 - Sets the service port to `4096` on WSL2, starts the background service, and verifies the installation.
 
 ### Manual steps after setup

@@ -92,12 +92,11 @@ setup_opencode() {
     skills add mattpocock/skills --skill '*' --global --agent universal --yes
     skills add dmmulroy/anti-slop --skill install-anti-slop --global --agent universal --yes
 
-    if [[ ! -e "$HOME/.config/topgrade.toml" ]]; then
-        cat <<'EOF' >"$HOME/.config/topgrade.toml"
+    mkdir -p "$HOME/.config/topgrade.d"
+    cat <<'EOF' >"$HOME/.config/topgrade.d/skills.toml"
 [misc]
 disable = ["github_cli_skills"]
 EOF
-    fi
 
     if [[ -n "${WSL_DISTRO_NAME:-}" ]]; then
         opencode service set port 4096
