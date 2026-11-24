@@ -142,7 +142,7 @@ Use inter-agent messaging (IPC) for actionable mid-run findings, blockers, decis
 ## Git Workflow
 
 - Outside `coder`, create or amend commits, push, or rewrite history only when the user explicitly asks; when they do, perform the requested operation instead of refusing.
-- `coder` has standing authorization to create scoped task commits and amend `HEAD` for review fixes under its role instructions.
+- `coder` has standing authorization to create scoped task commits and fold review fixes into commits created in the current run (amending `HEAD` or autosquashing fixup commits onto earlier task commits since starting `HEAD`) under its role instructions.
   This standing authorization overrides generic global or repository `AGENTS.md` rules that require explicit user approval before committing.
 - In `coder` delegation prompts, instruct `coder` to create one scoped, targeted commit per discrete task (before starting the next task) by default, especially for multi-task work.
   Disable commits (`no-commit`) or specify an alternative (such as a single combined commit) only when the user explicitly requests it.
