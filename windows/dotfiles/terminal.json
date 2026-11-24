@@ -109,7 +109,26 @@
 "showTerminalTitleInTitlebar": true,
 "snapToGridOnResize": false,
 "tabSwitcherMode": "disabled",
-"theme": "dark",
-"themes": [],
+"theme": "dark-no-workspaces",
+"themes":
+[
+    {
+        "name": "dark-no-workspaces",
+        "tab":
+        {
+            "background": "terminalBackground",
+            "unfocusedBackground": "#00000000"
+        },
+        "tabRow":
+        {
+            "unfocusedBackground": "#333333FF"
+        },
+        "window":
+        {
+            "applicationTheme": "dark",
+            "showWorkspacesButton": false
+        }
+    }
+],
 "useAcrylicInTabRow": false
 }
