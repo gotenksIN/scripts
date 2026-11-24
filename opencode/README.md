@@ -105,15 +105,15 @@ WSL2 mirrored networking reserves the dynamic port range 49152-65535 on Windows.
 
 ## Troubleshooting
 
-### Missing provider labels in /models
+### Providers not marked as connected in /connect
 
-On a fresh installation using only `settings.apiKey` in `~/.config/opencode/opencode.jsonc`, `/models` omits provider names and grouping until at least one integration has a saved connection.
-Configuring `settings.apiKey` enables the provider on the server, but OpenCode checks `~/.local/share/opencode/opencode.db` for a saved connection when grouping models in the TUI.
+Configuring `settings.apiKey` in `~/.config/opencode/opencode.jsonc` enables the provider and lists its models in `/models`.
+The `/connect` dialog checks saved credentials in `~/.local/share/opencode/opencode.db` (or environment variables), so config-only providers do not appear as connected in `/connect`.
 
-To fix this, connect any provider once with `/connect`, or add a row to the `credential` table in `~/.local/share/opencode/opencode.db` using `uv` and Python (`sqlite3`):
+To mark configured providers as connected in `/connect`, connect each provider with `/connect` or add rows to the `credential` table in `~/.local/share/opencode/opencode.db` using `uv` and Python (`sqlite3`):
 
 1. Run `opencode` once so OpenCode initializes `~/.local/share/opencode/opencode.db`, then run `opencode service stop`.
-2. Insert an active row into `credential` for one configured provider using its real `apiKey` from `opencode.jsonc`:
+2. Insert an active row into `credential` for each configured provider using its real `apiKey` from `opencode.jsonc`:
 
    | Column | Value |
    | --- | --- |
