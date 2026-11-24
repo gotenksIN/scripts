@@ -69,7 +69,7 @@
 ## Worktrees
 
 - When asked to create a worktree and work or review in it, create it first.
-  After creation succeeds, move the session with Code Mode `tools.opencode.session_move({ directory: "<path>" })` and verify its location.
+  After creation succeeds, move the session with Code Mode `tools.opencode.session.move({ directory: "<path>" })` and verify its location in a subsequent call (the move takes effect at the next safe boundary).
 - Do not move the session when the user only asks you to create a worktree.
 - Report the worktree path.
 
@@ -77,7 +77,7 @@
 
 - When routing work from the parent session, stay in the parent session for small tasks unless the user explicitly requests delegation.
 - For larger tasks, use your judgment to decide whether to delegate.
-- When a `<subagent>` report arrives with `state="running"` and a `Background work still running:` list, the child is waiting on its own background work (shell, image, or nested subagent).
+- When a `<background-result kind="subagent">` report arrives with `state="running"` and a `Background work still running:` list, the child is waiting on its own background work.
   Wait for its next report instead of treating the interim message as final or nudging the child.
 - Implementation: `coder`.
 - Deep analysis, audits (including writing or updating audit and analysis reports), architecture or plan evaluation, and complex bug diagnosis: `reasoner`.
@@ -88,10 +88,10 @@
   Tell depth-2 children that they cannot delegate.
 - Each coder owns its final review loop.
   Do not repeat that review in the parent after the coder returns unless the user asks for an independent review or the coder reports an unresolved risk.
-- Always pass your session ID (`ses_...`) as the parent session ID in every subagent delegation prompt so children can initiate IPC as needed.
+- Always pass your session ID (`ses_...`, available in `$OPENCODE_SESSION_ID`) as the parent session ID in every subagent delegation prompt so children can initiate IPC as needed.
 - When delegated subagent tasks overlap, require the subagents to coordinate through IPC.
   Pass known peer session IDs in their delegation prompts, and share IDs created later through IPC.
-- Subagents deliver their turn results to their parent automatically via `<subagent>` idle reports; do not duplicate normal completion reports over IPC.
+- Subagents deliver their turn results to their parent automatically via `<background-result kind="subagent">` reports; do not duplicate normal completion reports over IPC.
   Use IPC to communicate mid-run updates or coordinate with peers and other sessions.
 - When a session receives an inbound `STATUS:` or `DECISION NEEDED:` message mid-turn, assess its effect on active work.
   Act immediately when it unblocks work or changes the plan; otherwise continue and incorporate it when relevant.
@@ -105,7 +105,7 @@ Use inter-agent messaging (IPC) for actionable mid-run findings, blockers, decis
   Do not construct raw HTTP requests unless you already hold the server URL and token.
 - Check the service: `opencode service status`, `opencode api get /api/info`.
 - List active sessions: `opencode api get /api/session/active`.
-  Session IDs start with `ses_`.
+  Session IDs start with `ses_`; the current session ID is in `$OPENCODE_SESSION_ID`.
 - Send a message: `opencode api post /api/session/<sessionID>/prompt --data '{"text":"STATUS: ses_<senderID> ...","delivery":"steer"}'`.
   - Use `"delivery":"steer"` by default for subagent coordination: actionable findings, dependency handoffs, blockers, decisions, and corrections.
     It injects the message into a running session mid-turn so the recipient can assess it before continuing with stale assumptions.
@@ -119,7 +119,6 @@ Use inter-agent messaging (IPC) for actionable mid-run findings, blockers, decis
   Omit routine progress, acknowledgements, and conversational replies.
 - For sending and reading messages, use only the session `prompt`, `inbox`, and `message` endpoints.
   Never call mutating endpoints (`delete`, `revert`, `interrupt`, `move`) against another session.
-- A subagent that must reach a peer or escalate mid-run without a shell tool may spawn a messenger subagent if its permissions and depth limit allow.
 - Wrapper scripts that hide the JSON payload are fine; keep them small and pass the session ID and text as arguments.
 
 ## Tooling Preferences
