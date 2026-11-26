@@ -78,8 +78,14 @@ setup_opencode() {
     fi
 
     mkdir -p "$HOME/.config/opencode"
+    mkdir -p "$HOME/.config/opencode/skills"
     ln -sf "$opencode_dir/AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
     ln -sf "$opencode_dir/opencode.json" "$HOME/.config/opencode/opencode.json"
+    for skill_dir in "$opencode_dir/skills"/*/; do
+        [[ -d "$skill_dir" ]] || continue
+        skill_dir="${skill_dir%/}"
+        ln -sfn "$skill_dir" "$HOME/.config/opencode/skills/$(basename "$skill_dir")"
+    done
     [[ -e "$HOME/.config/opencode/cli.json" ]] || cp "$opencode_dir/cli.json" "$HOME/.config/opencode/cli.json"
 
     if ! command -v bun >/dev/null 2>&1; then

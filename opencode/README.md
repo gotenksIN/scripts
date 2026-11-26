@@ -10,6 +10,7 @@ Keep your API keys and credentials local; do not commit them to the repository.
 | --- | --- | --- |
 | `AGENTS.md` | Global agent instructions and workflow rules | Symlink at `~/.config/opencode/AGENTS.md` |
 | `opencode.json` | Global configuration: plugins, subagents, and web search | Symlink at `~/.config/opencode/opencode.json` |
+| `skills/` | Global on-demand skills (`agent-ipc`, `git-commit`) | Symlinks under `~/.config/opencode/skills/` |
 | `opencode.jsonc` | Optional template for custom provider URLs or static API keys | Optional copy at `~/.config/opencode/opencode.jsonc` |
 | `cli.json` | TUI settings: themes, keybindings, and diff displays | Copied to `~/.config/opencode/cli.json` |
 | `README.md` | Setup and maintenance guide | Not installed |
@@ -25,7 +26,7 @@ bash ~/scripts/linux/common/setup.sh
 The setup script handles installation and configuration:
 
 - Installs OpenCode into `~/.opencode/bin/` with `--no-modify-path`.
-- Symlinks `AGENTS.md` and `opencode.json` into `~/.config/opencode/`, and copies `cli.json` when absent.
+- Symlinks `AGENTS.md`, `opencode.json`, and each directory in `skills/` into `~/.config/opencode/`, and copies `cli.json` when absent.
 - Installs Bun into `~/.local/bin/`, installs `skills@latest` globally, symlinks `~/.local/bin/node`, and installs Matt Pocock's skills and `install-anti-slop` into `~/.agents/skills/`.
 - Disables Topgrade's `github_cli_skills` step in `~/.config/topgrade.d/skills.toml`.
 - Sets the service port to `4096` on WSL2, starts the background service, and verifies the installation.

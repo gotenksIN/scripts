@@ -33,6 +33,7 @@
   "keybinds": {
     "session.first": "ctrl+q",
     "session.last": "ctrl+e",
+    "session.fork": "<leader>f",
     "input.line.end": "none",
     "input.buffer.home": "home",
     "input.buffer.end": "end",
